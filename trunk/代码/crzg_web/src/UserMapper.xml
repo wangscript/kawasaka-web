@@ -1,0 +1,32 @@
+<!DOCTYPE mapper  
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+    
+<mapper namespace="t5demo.model.UserMapper">
+    <select id="selectUserById" parameterType="int" resultType="t5demo.model.User">  
+        select * from tbl_user where id = #{id}  
+    </select>
+    
+    <select id="selectUserByName" parameterType="String" resultType="t5demo.model.User">  
+        select * from tbl_user where username like #{%name%}  
+    </select>
+    
+    <select id="selectUsers" resultType="t5demo.model.User">  
+        select * from tbl_user
+    </select>
+    
+    <insert id="insertUser" parameterType="t5demo.model.User" keyProperty="id"  
+       useGeneratedKeys="true">  
+       insert into tbl_user (username, password, email, birthday) values (#{userName}, #{password}, #{email}, #{birthday});   
+    </insert>
+    
+    <update id="updateUser" parameterType="t5demo.model.User">  
+       update tbl_user Set username=#{userName}, password=#{password}, email=#{email}, birthday= #{birthday} where id=#{id};   
+    </update>
+   
+   <delete id="deleteUserById" parameterType="int">  
+        delete from tbl_user where id = #{id}  
+    </delete>  
+    
+</mapper>
+
