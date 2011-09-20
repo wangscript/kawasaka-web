@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>选择字体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</title>
+<style type="text/css">
+<!--
+	html, body, button, div, input, select, fieldset, td { font-family: MS Shell Dlg; font-size: 8pt; }
+	.button { width: 100px; height: 20px; }
+-->
+</style>
+<script language="JavaScript" src="js/selectfont.js"></script>
+</head>
+<body style="background: threedface; color: windowtext;">
+<form name="form1" method="post">
+<table>
+	<tr>
+		<td width="5"></td>
+		<td>字体:</td>
+		<td>字形:</td>
+		<td>字号:</td>
+		<td></td>
+		<td width="5"></td>
+	</tr>
+	<tr>
+		<td width="5"></td>
+		<td valign="top">
+			<select id="fontFace" name="fontFace" size="7" style="width:150px;" onclick="updatePreview();" onchange="updatePreview();"></select>
+		</td>
+		<td valign="top">
+			<select name="fontStyle" size="7" onclick="updatePreview();" onchange="updatePreview();">
+				<option value="" selected>常规</option>
+				<option value="Italic">倾斜</option>
+				<option value="Bold">加粗</option>
+				<option value="Bold Italic">加粗 倾斜</option>
+			</select>
+		</td>
+		<td valign="top">
+			<select id="fontSize" name="fontSize" size="7" onclick="updatePreview();" onchange="updatePreview();">
+				<option value="1">8</option>
+				<option value="2">10</option>
+				<option value="3">12</option>
+				<option value="4">14</option>
+				<option value="5">18</option>
+				<option value="6">24</option>
+				<option value="7">36</option>
+			</select>
+		</td>
+		<td valign="top">
+			<input type="button" id="select" name="select" value="确定" class="button" onclick="selectFont();"><br>
+			<input type="button" id="cancel" name="cancel" value="取消" class="button" onclick="window.close();">
+		</td>
+		<td width="5"></td>
+	</tr>
+	<tr>
+		<td width="5"></td>
+		<td valign="top">
+			<fieldset>
+				<legend>效果</legend>
+				<input type="checkbox" id="underline" name="underline" id="underline" value="1" onclick="updatePreview();" onchange="updatePreview();"> <label for="underline">下划线</label><br>
+				<input type="checkbox" id="strikeThrough" name="strikeThrough" value="1" onclick="updatePreview();" onchange="updatePreview();"> <label for="strikeThrough">删除线</label><br>
+				<input type="checkbox" id="superScript" name="superScript" value="1" onclick="selectScript(this);updatePreview();" onchange="selectScript(this);updatePreview();"> <label for="superScript">上标</label><br>
+				<input type="checkbox" id="subScript" name="subScript" value="1" onclick="selectScript(this);updatePreview();" onchange="selectScript(this);updatePreview();"> <label for="subScript">下标</label><br>
+			</fieldset>
+		</td>
+		<td colspan="3" valign="top">
+			<fieldset>
+				<legend>预览</legend>
+				<div id="previewDiv" style="width:200; height:60; border:2px inset; margin:10px; padding:3px; overflow:hidden;">AaBbCcDdEeFfGgHhIiJj</div>
+			</fieldset>
+		</td>
+		<td width="5">&nbsp;</td>
+	</tr>
+</table>
+</form>
+<script language="javascript"><!--
+init();
+// --></script>
+</body>
+</html>

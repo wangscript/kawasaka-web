@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: ExportConfig.html,v 1.26 2009/10/17 11:54:27 liaos Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Export Config</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+(function(){
+	/** init */
+	Wade.onReady(function(){
+		Wade.dom.getElement("NOTIFY_MODE").disabled = true;
+		Wade.dom.getElement("EXEC_TIME").value = Wade.dom.getElementValue("SYS_DATE") + " 23:59";
+		Wade.dom.getElement("EXEC_TIME").setAttribute('oldval',Wade.dom.getElementValue("SYS_DATE") + " 23:59");
+	});
+	
+	/** sel notify mode */
+	window['selNotifyMode']=function() {
+		var need_notify = Wade.dom.getElementValue("NEED_NOTIFY") == "1";
+		
+		var notify_mode = Wade.dom.getElement("NOTIFY_MODE");
+		var label_notify_mode = Wade.dom.getElement("LABEL_NOTIFY_MODE");
+		
+		notify_mode.disabled = !need_notify;
+		notify_mode.nullable = need_notify ? "no" : "yes";
+		label_notify_mode.className  = need_notify ? "starlist" : "";
+		
+		notify_mode.value = "";
+	}
+	/** submit export */
+	window['submitExport']=function(obj) {
+		var exec_time_obj = Wade.dom.getElement("EXEC_TIME");
+		var exec_time = exec_time_obj.value + ":00";
+		var sys_time = Wade.dom.getElementValue("SYS_TIME");
+		var start_time = "08:00:00";
+		var end_time = "18:00:00";
+		if (exec_time != "" && exec_time < sys_time) {
+			alert("执行时间不能小于系统当前时间！");
+			exec_time_obj.focus();
+			return false;
+		}
+		if (exec_time != "" && exec_time.substr(11) >= start_time && exec_time.substr(11) <= end_time) {
+			alert("执行时间必须在" + start_time + "-" + end_time + "时间段之外的时间！");
+			exec_time_obj.focus();
+			return false;
+		}
+		if (!confirmForm(obj)) return false;
+		return true;
+	}
+	window['queryExecTimes']=function() {
+		var exec_time_obj = Wade.dom.getElement("EXEC_TIME");
+		var exec_time = exec_time_obj.value + ":00";
+		var sys_time = Wade.dom.getElementValue("SYS_TIME");
+		var start_time = "08:00:00";
+		var end_time = "18:00:00";
+		var old_exec_time = exec_time_obj.oldval;
+		if (exec_time.substring(0,14) == exec_time.match(old_exec_time.substring(0,14))) {
+			if (30>parseInt(exec_time.substring(14)) && 30>parseInt(old_exec_time.substring(14)))
+				return false;
+			if (30<parseInt(exec_time.substring(14)) && 30<parseInt(old_exec_time.substring(14)))
+				return false;
+		}
+		if (exec_time != "" && exec_time < sys_time) {
+			alert("执行时间不能小于系统当前时间！");
+			exec_time_obj.value=exec_time_obj.getAttribute('oldval');
+			exec_time_obj.focus();
+			return false;
+		}
+		if (exec_time != "" && exec_time.substr(11) >= start_time && exec_time.substr(11) <= end_time) {
+			alert("执行时间必须在" + start_time + "-" + end_time + "时间段之外的时间！");
+			exec_time_obj.value=exec_time_obj.getAttribute('oldval');
+			exec_time_obj.focus();
+			return false;
+		}
+		Wade.ajax.setAjaxLoading(false);
+		exec_time_obj.oldval = exec_time_obj.value;
+		Wade.ajax.ajaxDirect(this, 'queryExceTimes', '&EXEC_TIME='+exec_time, 'exectimes',true)
+		Wade.ajax.setAjaxLoading(true);
+		return true;
+	}
+})();	
+-->
+</script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	<div class="c_inputField l_mt" style="z-index:10;">
+		<div class="top e_lSet">配置基本信息</div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">导出文件：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="FILE_NAME@TextField" value="ognl:info.FILE_NAME" nullable="no" desc="导出文件" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">导出文件类型：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="EXPORT_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(exportTypes, 'COMMON_EXPORTTYPE', 'COMMON_EXPORTNAME', true)" value="ognl:info.EXPORT_TYPE" nullable="no" desc="导出文件类型"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<table class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">执行时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="EXEC_TIME@TextField" value="ognl:info.EXEC_TIME" oldval="ognl:info.EXEC_TIME" format="yyyy-MM-dd HH:mm" nullable="no" desc="执行时间" datatype="date" class="e_input" onblur="return queryExecTimes();"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>已定制信息：</span></div>
+							<div class="inputArea"><div>
+								<div jwcid="@wade:Part" id="exectimes" optimize="true">
+									<input type="text" jwcid="EXEC_TIMES@wade:ComboBox" filter="true" value="ognl:info.EXEC_TIME" model="ognl:execTimes" valueField="TIME_INTERVAL" textField="TIME_INTERVAL" showHeads="时段,总数" showFields="TIME_INTERVAL,EXEC_COUNT" onchange="getElement('EXEC_TIME').value=this.value" class="e_input" />
+								</div>
+							</div></div>
+						</div>
+					</td>					
+				</tr>	
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">是否提醒：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="NEED_NOTIFY@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'COMMON_NEEDNOTIFY', true)" value="ognl:info.NEED_NOTIFY" nullable="no" desc="是否提醒" class="e_input" onclick="selNotifyMode();"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span id="LABEL_NOTIFY_MODE">提醒方式：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="NOTIFY_MODE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'COMMON_NOTIFYMODE')" value="ognl:info.NOTIFY_MODE" desc="提醒方式" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div>
+	</div>
+	
+	<div class="c_inputField l_mt">
+		<div class="top e_lSet">配置导出列 [<a jwcid="@wade:PageRedirect" value="全选/反选" onclick="ognl:'checkedOther(\'CELL_NAME' + rowIndex + '\')'"/>]</div>
+		<div class="body"><div class="aclinicOff">
+			<table class="col1" jwcid="@Foreach" source="ognl:sheets" value="ognl:cells" element="table" index="ognl:rowIndex">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<!--<div class="label"></div>-->
+							<div class="inputArea"><div>
+								<!-- 横向列表 开始 -->
+								<div class="c_sidelong"><div class="label6">
+									<ul jwcid="@Foreach" source="ognl:cells" value="ognl:cellset" element="ul">
+										<li jwcid="@Foreach" source="ognl:cellset" value="ognl:cell" element="li">
+											<label><input type="checkbox" jwcid="@wade:Checkbox" id="ognl:'CELL_NAME'+rowIndex" name="ognl:'CELL_NAME'+rowIndex" value="ognl:cell.CELL_NAME" checked="true"/><span jwcid="@Insert" value="ognl:cell.CELL_DESC" encode="false"/></label>
+										</li>
+									</ul>
+								</div></div>
+								<!-- 横向列表 结束 -->
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div>
+	</div>
+	
+	<!-- 按钮区 -->
+	<div class="c_submit e_cSet l_mt">
+		<input type="button" jwcid="bsubmit@Submit" value="提交" listener="ognl:listeners.createCriteriaExec" class="e_button" onclick="if (!submitExport(this)) return false;"/>
+		<input type="button" id="bcancel" name="bcancel" value="返回" class="e_button" onclick="cancel(true);"/>		
+	</div>
+<input type="hidden" id="SYS_DATE" name="SYS_DATE" jwcid="@Any" value="ognl:@com.linkage.component.util.Utility@getSysDate()"/>
+<input type="hidden" id="SYS_TIME" name="SYS_TIME" jwcid="@Any" value="ognl:@com.linkage.component.util.Utility@getSysTime()"/>
+<input type="hidden" id="SHEET_COUNT" name="SHEET_COUNT" jwcid="@Any" value="ognl:sheets.length"/>
+</form>
+
+</div></div>
+</body>

@@ -1,0 +1,29 @@
+<PUBLIC:COMPONENT>
+<PUBLIC:ATTACH EVENT="ondocumentready" ONEVENT="select_ready()"/>
+<PUBLIC:ATTACH EVENT="onmousedown" ONEVENT="mouseDown()"/>
+<PUBLIC:ATTACH EVENT="onmouseup" ONEVENT="mouseUp()"/>
+<PUBLIC:ATTACH EVENT="onmouseover" ONEVENT="mouseOver()"/>
+<PUBLIC:ATTACH EVENT="onfocus" ONEVENT="onFocus()"/>
+<PUBLIC:ATTACH EVENT="onblur" ONEVENT="onBlur()"/>
+<SCRIPT language="javascript">
+function select_ready() {
+if (this.style.position!='relative') {
+this.style.fontSize=12;
+this.style.width="101.5%";
+this.style.position="relative";
+this.style.left=-2;
+this.style.top=-2;
+this.outerHTML = '<span style="border:1 solid #34516A; height: 20px; width:100%;">'
+	+'<div style=" border:1 solid #FFFFFF; overflow: hidden; width: 100%; height: 18px;">'
+	+ this.outerHTML + '</div></span>';	
+	}
+}
+function onFocus()
+{ style.backgroundColor='#B8DEF3';}
+function onBlur()
+{ style.backgroundColor='';}
+function mouseOver(){}
+function mouseUp() {}
+function mouseDown() {}
+</SCRIPT>
+</PUBLIC:COMPONENT>

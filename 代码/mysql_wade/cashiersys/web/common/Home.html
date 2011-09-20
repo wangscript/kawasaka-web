@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<link jwcid="@wade:Style" href="common/styles/frame.css" rel="stylesheet" type="text/css" media="screen"/>
+<title><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getProperty('project/title')"/></title>
+</head>
+<body jwcid="@Body">
+<form jwcid="@Form" stateful="false" target="_top" style="height:100%;">
+<div class="p_login">
+	<div class="f_header">
+		<h1 class="consol"><span><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getProperty('project/title')" raw="true"/></span></h1>
+	</div>
+	<div class="f_slip">
+		<div class="x">
+		</div>
+	</div>
+	<div class="f_login">
+		<div class="input">
+			<ul>
+				<li>
+					<div class="label">用户名：</div>
+					<input type="text" name="STAFF_ID" value="CHENZG" desc="用户名" nullable="no" datatype="text" class="e_input" onfocus="select();"/>
+				</li>
+				<li>
+					<div class="label">密　码：</div>
+					<input type="password" id="PASSWORD" name="PASSWORD" desc="密码" value="1" nullable="no" datatype="text" class="e_input" onfocus="select();"/>
+				</li>
+			</ul>
+		</div>
+		<div class="submit">
+			<input class="e_button" type="type" jwcid="bLogin@Submit" listener="ognl:listeners.login" value="登录" onclick="return verifyAll(this)"/>
+			<label class="remember" for="remember"><input type="checkbox" id="LOGIN_FLAG" name="LOGIN_FLAG" value="1" checked/>记住我的用户名</label>
+		</div>
+	</div>
+</form>	
+</body>
+</html>

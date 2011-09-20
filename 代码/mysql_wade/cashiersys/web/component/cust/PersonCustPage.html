@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Person Cust List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/cust.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<div class="c_inputField">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn"><div class="char4">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>电话号码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_SERIAL_NUMBER@TextField" value="ognl:condition.cond_SERIAL_NUMBER" desc="电话号码" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>证件号码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PSPT_ID@TextField" value="ognl:condition.cond_PSPT_ID" desc="证件号码" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>客户名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_CUST_NAME@TextField" value="ognl:condition.cond_CUST_NAME" desc="客户名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div></div>
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" listener="ognl:listeners.queryCustsByPerson" class="e_button" onclick="return Wade.cust.queryPersonCusts(this);"/>
+		</div>
+	</div>
+
+	<div id="CustPart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryCustsByVip" refreshParts="CustPart" checkboxName="custs"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:210px;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+	      				<span jwcid="@Conditional" condition="ognl:pageData.getParameter('multi') == 'true'">
+	      					<th><input type="checkbox" id="custs_ctrl" name="custs_ctrl" onclick="checkedAll('custs', checked)"/></th>
+	      				</span>
+	      				<th>客户标识</th>
+						<th>客户名称</th>
+						<th>电话号码</th>
+						<th>证件号码</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<span jwcid="@Conditional" condition="ognl:pageData.getParameter('multi') == 'true'">
+							<td><input type="checkbox" id="custs" name="custs" jwcid="@wade:Checkbox" value="ognl:info.USER_ID + ';' + info.USECUST_ID + ';' + info.SERIAL_NUMBER + ';' + info.CUST_NAME"/></td>
+						</span>
+						<td><a jwcid="@wade:PageRedirect" value="ognl:info.USECUST_ID" user_id="ognl:info.USER_ID" cust_id="ognl:info.USECUST_ID" cust_name="ognl:info.CUST_NAME" cust_code="ognl:info.SERIAL_NUMBER" onclick="Wade.dialog.setReturnValue(cust_id, cust_name, ['USER_ID','CUST_CODE'], [getAttribute('user_id'),getAttribute('cust_code')])"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.CUST_NAME" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.SERIAL_NUMBER" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.PSPT_ID" raw="false"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+	</div></div>
+	</div>
+	
+	<div class="c_submit l_mt">
+		<div class="bottom e_cSet">
+			<span jwcid="@Conditional" condition="ognl:pageData.getParameter('multi') == 'true'">
+				<input type="button" id="bselect" name="bselect" value=" 选择 " class="e_button" onclick="Wade.cust.selectPersonCusts()"/>
+			</span>
+			<input type="button" id="bclean" name="bclean" value=" 清除 " class="e_button" onclick="Wade.dialog.setReturnValue('', '', ['USER_ID','CUST_CODE'], ['',''])"/>
+			<input type="button" id="bcancel" name="bcancel" value=" 返回 " class="e_button" onclick="Wade.page.cancel(true)"/>
+		</div>
+	</div>
+</form>
+	
+</div></div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head" reduce="true" button="excedesc_breturn">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Exception</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/excedesc.js"></script>
+</head>
+<body>
+<div id="exceDescPageContent" style="visibility:hidden;position:absolute;">
+    <div class="x-dlg-hd">&nbsp;</div>
+    <div class="x-dlg-bd" style="text-align:center;">
+				<div id="exceDescMsgContent" jwcid="@Any" contentheight="ognl:messageHeight" style="text-align:left;" class="x-errormsg">
+						<table id="exceDescPageContent" style="border:none;width:100%;height100%;"><tr><td valign="top" jwcid="@Any" style="ognl:'height:' +messageHeight+'px;padding-left:42px;word-break:break-all;word-wrap:break-word;'"><span jwcid="@Insert" value="ognl:message" raw="true"/></td></tr></table>
+						<div jwcid="@Conditional" condition="ognl:!disableDetail">
+							<div id="StackArea" style="display:none;width:100%" class="errorInfo">
+								<p style="border-top:dashed 1px black;margin-top:8px;"></p>
+								<div jwcid="@ExceptionDisplay" exceptions="ognl:exceptions"/>
+							</div>
+						</div>				
+				</div>	
+    </div>
+    <div clas="x-dlg-ft"></div> 
+</div>
+<script language="javascript"><!--
+System.onLoad(function(){
+ 	Wade.excedesc.initExceDesc();
+});
+//--></script>
+</body>
+</html>

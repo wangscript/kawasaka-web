@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head" privs="COM_DOC_PROVVIEW">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Item Edit</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/doc.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+
+	<!-- 外框 开始 -->
+	<div class="c_edge">
+		<h4><span class="text">项目信息</span></h4>
+		<div class="c_edgeBody"><div class="l_padding">
+			<!-- 详情区 -->
+			<div class="c_inputField"><div class="aclinicOn">
+				<table class="col3">
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>归属地州：</span></div>
+								<div class="inputArea"><div>
+									<select jwcid="EPARCHY_CODE@PropertySelection" model="ognl:@com.linkage.component.util.DataUtil@getCitys(page, visit.provinceId)" value="ognl:info.EPARCHY_CODE" disabled="ognl:!visit.hasPriv('COM_DOC_PROVVIEW')" desc="归属地州" nullable="no" class="e_select"/>
+								</div></div>
+							</div>
+						</td>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>项目类型：</span></div>
+								<div class="inputArea"><div>
+									<select jwcid="ITEM_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, getParamItemtype(pageData.getParameter('cond_CONFIG')))" value="ognl:info.ITEM_TYPE" desc="项目类型" nullable="no" class="e_select" onclick="javascript:Wade.doc.itemEdit_SelItemType()"/>
+								</div></div>
+							</div>
+						</td>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>项目分类：</span></div>
+								<div class="inputArea"><div>
+									<select jwcid="TEMP_CLASS@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(queryParamClass(pageData.getParameter('cond_CONFIG')))" value="ognl:info.TEMP_CLASS" disabled="ognl:pageData.getParameter('cond_FLAG') == null" desc="项目分类" class="e_select"/>
+								</div></div>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<table class="col1">
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>项目主题：</span></div>
+								<div class="inputArea"><div>
+									<textarea jwcid="ITEM_DESC@TextArea" value="ognl:info.ITEM_DESC" rows="4" desc="项目主题" nullable="no" maxsize="1024" datatype="text" class="t_textarea"/>
+								</div></div>
+							</div>
+						</td>	
+					</tr>
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>项目编号：</span></div>
+								<div class="inputArea"><div>
+									<input jwcid="ITEM_CODE@TextField" value="ognl:info.ITEM_CODE" desc="项目编号" maxsize="20" datatype="text" class="e_input"/>
+								</div></div>
+							</div>
+						</td>	
+					</tr>				
+				</table>	
+				<table class="col1" jwcid="@ListEdit" source="ognl:fieldConfigs" value="ognl:fieldConfig" element="table">
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span><div jwcid="@Any" class="ognl:fieldConfig.nullable == 'no' ? 'starlist' : ''"><div jwcid="@Insert" value="ognl:fieldConfig.CONF_DESC" raw="false"/></div>：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" id="ognl:fieldConfig.CONF_NAME" name="ognl:fieldConfig.CONF_NAME" jwcid="@component:ItemConfig" value="ognl:info != null && fieldConfig.CONF_NAME != null ? info.get(fieldConfig.CONF_NAME) : null" param="ognl:fieldConfig.CONF_PARAM" desc="ognl:fieldConfig.CONF_DESC" class="e_input"/>
+								</div></div>
+							</div>
+						</td>	
+					</tr>
+				</table>
+			</div></div>
+		</div></div>
+	</div>
+	<!-- 外框 结束 -->
+	<!-- 外框 开始 -->
+	<div class="c_edge l_mt" id="OptionArea">
+		<h4><span class="text">项目选项</span></h4>
+		<div class="c_edgeBody"><div class="l_padding">
+			<div class="c_table l_mt"><div class="nowrapOn">
+				<div class="fctTop">
+					<div class="fctRight">
+						<div class="button">
+							<ul>
+								<li><a href="javascript:Wade.doc.itemEdit_AddOption('OptionList')" class="e_bLinkAdd"><span>新增选项</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+					<table id="OptionList">
+						<thead>
+							<tr>
+								<th style="width:80px"><span class="">选项编码</span></th>
+								<th><span class="">选项描述</span></th>
+								<th jwcid="@ListEdit" source="ognl:optionConfigs" value="ognl:optionConfig" element="th"><span class=""><span jwcid="@Insert" value="ognl:optionConfig.CONF_DESC" raw="false"/></span></th>
+								<th id="optionTypeTH" name="optionTypeTH" style="width:100px"><span class="">是否添加文本框</span></th>
+								<th style="width:80px"><span class="">删除</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr jwcid="@ListEdit" source="ognl:options" value="ognl:option" element="tr">
+								<td style="width:100px"><input type="text" id="OPTION_ID" name="OPTION_ID" jwcid="@Any" value="ognl:option.OPTION_ID" desc="选项值" nullable="no" disabled="true" class="e_input"/></td>
+								<td><input type="text" id="OPTION_DESC" name="OPTION_DESC" jwcid="@Any" value="ognl:option.OPTION_DESC" desc="选项描述" nullable="no" class="e_input"/></td>
+								<td jwcid="@ListEdit" source="ognl:optionConfigs" value="ognl:optionConfig" element="td">
+									<input type="text" id="ognl:optionConfig.CONF_NAME" name="ognl:optionConfig.CONF_NAME" jwcid="@component:ItemConfig" value="ognl:info != null && optionConfig.CONF_NAME != null ? option.get(optionConfig.CONF_NAME) : null" param="ognl:optionConfig.CONF_PARAM" desc="ognl:optionConfig.CONF_DESC" class="e_input"/>
+								</td>
+								<td style="width:100px"><input jwcid="@wade:Radio" id="OPTION_TYPE" name="OPTION_TYPE" value="ognl:option.OPTION_ID" checked="ognl:option.OPTION_TYPE==@com.linkage.component.bean.doc.DocumentFactory@OPTION_TYPE_TEXTFIELD" desc="是否添加文本框"/></td>
+								<td style="width:40px"><div class="operation"><a href="javascript:void(0)" onclick="javascript:Wade.doc.itemEdit_DelOption('OptionList', this.parentNode.parentNode.rowIndex)" class="e_bLinkDeleteNB"><span>删除</span></a></div></td>
+							</tr>
+						</tbody>
+					</table>
+				</div></div></div>
+			</div></div>
+		</div></div>
+	</div>
+	<!-- 外框 结束 -->
+	
+	<!-- 按钮区 -->
+	<div class="c_inputField">
+	<div class="bottom e_cSet">
+		<input type="button" jwcid="bcreate@Submit" value="新增" listener="ognl:listeners.createItem" desc="项目信息" class="e_button" onclick="if (!Wade.doc.itemEdit_ValidItemOptions()) return false;return confirmForm(this);"/>
+		<input type="button" jwcid="bupdate@Submit" value="修改" listener="ognl:listeners.updateItem" desc="项目信息" class="e_button" onclick="if (!Wade.doc.itemEdit_ValidItemOptions()) return false;return confirmForm(this);"/>
+		<input type="button" jwcid="bdelete@Submit" value="删除" listener="ognl:listeners.deleteItem" desc="项目信息" class="e_button" onclick="return confirmInfo(this);"/>
+		<input type="button" jwcid="brelease@Submit" value="发布" listener="ognl:listeners.releaseItem" desc="项目信息" class="e_button" onclick="return confirmInfo(this);"/>
+	</div>
+	</div>		
+
+<input type="hidden" jwcid="ITEM_ID@Hidden" value="ognl:info.ITEM_ID" encode="false"/>
+<input type="hidden" jwcid="ITEM_STATUS@Hidden" value="ognl:info.ITEM_STATUS" encode="false"/>
+<div jwcid="@ListEdit" source="ognl:optionConfigs" value="ognl:optionConfig" element="span">
+	<input type="hidden" id="OPTION_CONFIG" name="OPTION_CONFIG" jwcid="@Any" conf_name="ognl:optionConfig.CONF_NAME" conf_param="ognl:optionConfig.CONF_PARAM" conf_desc="ognl:optionConfig.CONF_DESC"/>
+</div>
+</form>
+<script language="javascript">
+<!--
+Wade.onLoad(function(){
+	Wade.doc.itemEdit_Init();
+});
+//--></script>
+</div></div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Sidebar</title>
+<link jwcid="@wade:Style" href="common/styles/frame.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="common/scripts/frame.js"></script>
+<script jwcid="@wade:Script" language="JavaScript" src="common/scripts/sidebar.js"></script>
+</head>
+<body>
+<div id="menuDiv" class="f_side">
+
+	<h4 id="menu_300" class="unfold" style="display:none;"><a href="javascript:void(0)">收银管理</a></h4>
+	<ul style="display:none;">
+ 		<li id="menu_301"><a jwcid="@wade:PageRedirect" value="收银录入" onclick="redirectToNav('cashiersys.business.BusiMain', 'init', null, 'contentframe')"/></li>	    
+ 		<li id="menu_302"><a jwcid="@wade:PageRedirect" value="签单室录入" onclick="redirectToNav('cashiersys.business.BusiMainPlus', 'init', null, 'contentframe')"/></li>
+	</ul>
+	
+	<h4 id="menu_400" class="unfold" style="display:none;"><a href="javascript:void(0)">报表管理</a></h4>
+	<ul style="display:none;">
+ 		<li id="menu_401"><a jwcid="@wade:PageRedirect" value="明细营业报表" onclick="redirectToNav('cashiersys.busisheet.QueryBusiItemForAll', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_402"><a jwcid="@wade:PageRedirect" value="收入报表" onclick="redirectToNav('cashiersys.busisheet.TotelBusiItem', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_403"><a jwcid="@wade:PageRedirect" value="旅行社签单统计表" onclick="redirectToNav('cashiersys.busisheet.TravelQianDan', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_404"><a jwcid="@wade:PageRedirect" value="旅行社签单结算统计表" onclick="redirectToNav('cashiersys.busisheet.TravelJieSuan', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_405"><a jwcid="@wade:PageRedirect" value="前台来团统计报表" onclick="redirectToNav('cashiersys.busisheet.CountQianTai', 'init', null, 'contentframe')"/></li>
+		<li id="menu_406"><a jwcid="@wade:PageRedirect" value="营业日报表" onclick="redirectToNav('cashiersys.busisheet.QueryBusiItemByDay', 'init', null, 'contentframe')"/></li>
+	</ul>	
+	<h4 id="menu_500" class="unfold" style="display:none;"><a href="javascript:void(0)">会员管理</a></h4>
+	<ul style="display:none;">
+ 		<li id="menu_501"><a jwcid="@wade:PageRedirect" value="会员管理" onclick="redirectToNav('cashiersys.member.MemberList', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_502"><a jwcid="@wade:PageRedirect" value="卡管理" onclick="redirectToNav('cashiersys.member.CardList', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_503"><a jwcid="@wade:PageRedirect" value="详细消费查询" onclick="redirectToNav('cashiersys.member.BillList', 'init', null, 'contentframe')"/></li>
+ 	</ul>	
+    <h4 id="menu_000" class="fold" style="display:none;"><a href="javascript:void(0)">员工信息管理</a></h4>
+	<ul style="display:none;">
+		<li id="menu_001"><a jwcid="@wade:PageRedirect" value="员工管理" onclick="redirectToNav('cashiersys.staff.StaffList', 'init', null, 'contentframe')"/></li>
+		<li id="menu_002"><a jwcid="@wade:PageRedirect" value="员工密码管理" onclick="redirectToNav('cashiersys.staff.StaffPasswd', 'init', null, 'contentframe')"/></li>
+	</ul>  
+	
+	<h4 id="menu_100" class="unfold" style="display:none;"><a href="javascript:void(0)">参数管理</a></h4>
+	<ul style="display:none;">
+		<li id="menu_101"><a jwcid="@wade:PageRedirect" value="项目参数管理" onclick="redirectToNav('cashiersys.params.ItemsList', 'init', null, 'contentframe')"/></li>
+		<li id="menu_102"><a jwcid="@wade:PageRedirect" value="部门参数管理" onclick="redirectToNav('cashiersys.params.DepartsList', 'init', null, 'contentframe')"/></li>
+		<li id="menu_103"><a jwcid="@wade:PageRedirect" value="部门项目参数管理" onclick="redirectToNav('cashiersys.params.DepartsItemsList', 'init', null, 'contentframe')"/></li>
+		<li id="menu_104"><a jwcid="@wade:PageRedirect" value="酒店参数管理" onclick="redirectToNav('cashiersys.params.HotelsList', 'init', null, 'contentframe')"/></li>
+		<li id="menu_105"><a jwcid="@wade:PageRedirect" value="酒店项目参数管理" onclick="redirectToNav('cashiersys.params.HotelsItemsList', 'init', null, 'contentframe')"/></li>
+	    <li id="menu_106"><a jwcid="@wade:PageRedirect" value="业务区参数管理" onclick="redirectToNav('cashiersys.params.AreasList', 'init', null, 'contentframe')"/></li>
+	    <li id="menu_107"><a jwcid="@wade:PageRedirect" value="业务区酒店参数管理" onclick="redirectToNav('cashiersys.params.AreasHotelsList', 'init', null, 'contentframe')"/></li>
+	    <li id="menu_108"><a jwcid="@wade:PageRedirect" value="旅行社参数管理" onclick="redirectToNav('cashiersys.params.TravelList', 'init', null, 'contentframe')"/></li>
+	</ul>
+	
+	<h4 id="menu_200" class="unfold" style="display:none;"><a href="javascript:void(0)">系统管理</a></h4>
+	<ul style="display:none;">
+	    <li id="menu_201"><a jwcid="@wade:PageRedirect" value="菜单管理" onclick="redirectToNav('cashiersys.system.MenusList', 'init', null, 'contentframe')"/></li>
+	    <li id="menu_202"><a jwcid="@wade:PageRedirect" value="员工菜单管理" onclick="redirectToNav('cashiersys.system.StaffMenuList', 'init', null, 'contentframe')"/></li>
+	    <li id="menu_203"><a jwcid="@wade:PageRedirect" value="权限管理" onclick="redirectToNav('cashiersys.system.RightsList', 'init', null, 'contentframe')"/></li>
+		<li id="menu_204"><a jwcid="@wade:PageRedirect" value="员工权限管理" onclick="redirectToNav('cashiersys.system.StaffRightList', 'init', null, 'contentframe')"/></li>
+	</ul>  
+<script language="javascript"><!--
+	Wade.onLoad(function(){
+		initPage();
+	});
+// --></script>
+</div>
+</body>
+</html>

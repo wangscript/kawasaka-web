@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Dept Tree</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/org.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<div id="tabset">
+		<div id="tabset_tabs"></div>
+		<div id="tabset_content">
+			<div id="deptTree">
+				<div class="tabOverflow" style="height:238px;">
+					<span jwcid="@wade:LoadTree" root="ognl:root" nodes="ognl:nodes" param="ognl:param" listener="ognl:listeners.loadDeptTree" expand="false"/>
+				</div>
+			</div>
+			<div id="grantTree">
+				<div class="tabOverflow" style="height:238px;">
+					<span id="GrantPart" jwcid="@wade:Part" optimize="true">
+						<span jwcid="@Conditional" condition="ognl:'grant'.equals(pageData.getParameter('clickflag'))">
+							<span id="GrantLoadTree">
+								<span jwcid="@wade:LoadTree" root="ognl:root" nodes="ognl:nodes" param="ognl:param" listener="ognl:listeners.loadDeptTreeByGrant" expand="false"/>
+							</span>
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="c_submit">
+		<div class="bottom e_cSet">
+			<input type="button" value="返回" class="e_button" onclick="Wade.page.cancel(true)"/>
+		</div>
+	</div>
+
+</form>
+<script language="javascript"><!--
+Wade.onLoad(function(){
+	Wade.org.addTabsetByDeptTree();
+});
+// --></script>
+</div></div>
+</body>
+</html>

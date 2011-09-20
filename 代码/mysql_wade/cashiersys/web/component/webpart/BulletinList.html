@@ -1,0 +1,20 @@
+<div class="l_padding">
+	<!-- 列表 开始 -->
+	<div class="c_list"><div class="ellipsisOn">
+		<table>
+			<tr>
+  				<th class="title">公告主题</th>
+				<th class="date">发布时间</th>
+			</tr>
+			<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" >
+				<td class="title"><div><a jwcid="@wade:PageRedirect" source="ognl:{info}" title="ognl:info.INFO_TOPIC"  value="ognl:info.INFO_TOPIC" onclick="redirectTo('component.info.BulletinEdit', 'queryInfo', parameters + '&Action=view')"/></div></td>
+				<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd', info.SEND_TIME)" raw="false"/></td>
+			</tr>			
+		</table>
+	</div></div>
+	<!-- 列表 结束 -->
+	<div class="l_mt e_rSet">
+		<a class="e_bLinkNextNB l_mot l_mob" href="javascript:void(0);" caption="我的公告信息" onclick="redirectTo('component.info.BulletinList', 'queryInfos', '')"><span>更多</span></a>
+	</div>
+</div>
+

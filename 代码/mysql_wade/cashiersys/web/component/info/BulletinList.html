@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Bulletin List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<!-- 查询区 -->
+	<div class="c_inputField l_mt">
+		<!-- 顶部区 -->
+		<div class="top"></div>
+		<!-- 条件区 -->
+		<div class="body"><div class="aclinicOn">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>开始时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_START_DATE@wade:DateField" value="ognl:condition.cond_START_DATE" desc="开始时间" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>结束时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_END_DATE@wade:DateField" value="ognl:condition.cond_END_DATE" desc="结束时间" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>公告主题: </span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_INFO_TOPIC@TextField" value="ognl:condition.cond_INFO_TOPIC" desc="公告主题" class="e_input"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>
+			</table>
+		</div></div>
+		<!-- 按钮区 -->
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" listener="ognl:listeners.queryInfos" class="e_button" onclick="queryAll(this)"/>
+		</div>
+	</div>
+		
+	
+	<!-- 表格区 -->
+	<div id="InfoPart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<!-- 控制区 -->
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" source="ognl:condition" value="新增" caption="发布公告信息" class="e_bLinkAdd" display="ognl:pageData.getParameter('cond_QUERY_MODE') == @com.linkage.component.bean.info.InfoFactory@BULLETIN_QUERYMODE_RECV" onclick="redirectTo('component.info.BulletinEdit', 'queryInfo', parameters + '&Action=add')"/></li>
+					</ul>
+				</div>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryInfos" refreshParts="InfoPart"/>
+			</div>
+		</div>
+		<!-- 数据区 -->
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+						<th>公告主题</th>
+						<th>发布区域</th>
+						<th>发布人</th>
+						<th>发布时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><a jwcid="@wade:PageRedirect" source="ognl:{condition,info}" columns="ognl:{null,'INST_ID'}" value="ognl:info.INFO_TOPIC" onclick="redirectTo('component.info.BulletinEdit', 'queryInfo', parameters+ '&Action=view')"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_AREA', 'AREA_CODE', 'AREA_NAME', info.RECE_OBJ)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.INFO_AUTH)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.SEND_TIME)" raw="false"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<!-- 控制区 -->
+		<div class="fctBottom e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" source="ognl:condition" value="新增" caption="发布公告信息" class="e_bLinkAdd" display="ognl:pageData.getParameter('cond_QUERY_MODE') == @com.linkage.component.bean.info.InfoFactory@BULLETIN_QUERYMODE_RECV" onclick="redirectTo('component.info.BulletinEdit', 'queryInfo', parameters + '&Action=add')"/></li>
+					</ul>
+				</div>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryInfos" refreshParts="InfoPart"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+	
+<input type="hidden" jwcid="cond_QUERY_MODE@wade:Hidden" value="ognl:condition.cond_QUERY_MODE" encode="false"/>
+</form>
+
+</div></div>
+</body>
+</html>

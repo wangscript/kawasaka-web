@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head" reserveBase="true" reduce="true" button="BUTTON_1">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Message</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/message.js"></script>
+</head>
+<body jwcid="@Body">
+<form jwcid="@Form">
+<div id="massagePageContent" class="c_popup" style="display:block;">
+	<div id="PopupArea" class="c_popupPopup" style="width:398px; height:232px; margin-top:-150px; margin-left:-200px;">
+		<div class="c_popupFillet">
+			<div class="c_popupFilletTop">
+				<div class="c_popupFillet11"></div>
+				<div class="c_popupFillet12"></div>
+			</div>
+		</div>
+		<div id="PopupTitle" class="c_popupTop" opertype="expand" ondblclick="getAttribute('opertype') == 'expand' ? Wade.message.expandPopup() : Wade.message.revertPopup();">
+			<div id="titlebar" class="c_popupTitle">操作提示窗口</div>
+			<div class="c_popupFct">
+				<a id="popupMin" style="display:none" class="c_popupMin" title="还原窗口" href="javascript:void(0)" onclick="Wade.message.revertPopup()"></a>
+				<a id="popupMax" style="display:none" class="c_popupMax" title="放大窗口" href="javascript:void(0)" onclick="Wade.message.expandPopup()"></a>
+				<a id="popupClose" style="display:none" class="c_popupClose" title="关闭窗口" href="javascript:void(0)"></a>
+			</div>
+		</div>
+		<div class="c_popupWrapper">
+			<div class="c_popupBody">
+				<div class="c_warning">
+					<div jwcid="@Any" class="ognl:messageType == @com.linkage.component.AppPage@MESSAGE_CONFIRM ? 'success' : (messageType == @com.linkage.component.AppPage@MESSAGE_ERROR ? 'error' : 'warning')">
+						<div class="minHeight"></div>
+						<div class="tip">
+							<ul>
+								<li>错误信息：</li>
+								<li>成功信息：</li>
+								<li>警告信息：</li>
+							</ul>
+						</div>
+						<div class="content">
+							<p><span jwcid="@Insert" value="ognl:message" raw="true"/></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="buttonbar" class="c_popupBottom">
+			<span jwcid="@Foreach" source="ognl:objects" value="ognl:object">
+				<span jwcid="@Conditional" condition="ognl:object.PATH != null">
+					<input type="button" jwcid="@wade:PageRedirect" id="ognl:object.NAME" name="ognl:object.NAME" source="ognl:parameters" value="ognl:object.BUTTON" path="ognl:object.PATH" event="ognl:object.EVENT" target="ognl:object.TARGET" onclick="Wade.message.redirectToByMessage(this)" class="e_button"/>
+				</span>
+				<span jwcid="@Conditional" condition="ognl:object.FUNCTION != null">
+					<input type="button" jwcid="@wade:PageRedirect" id="ognl:object.NAME" name="ognl:object.NAME" source="ognl:parameters" value="ognl:object.BUTTON" onclick="ognl:object.FUNCTION" class="e_button"/>
+				</span>
+			</span>
+		</div>
+		<div class="c_popupFillet">
+			<div class="c_popupFilletBottom">
+				<div class="c_popupFillet21"></div>
+				<div class="c_popupFillet22"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<input type="hidden" jwcid="@Any" name="PAGE_REFERER" id="PAGE_REFERER" value="ognl:pageData.getRequest().getHeader('referer')"/>
+<iframe id="printframe" name="printframe" width="0" height="0"></iframe>
+</form>
+<script language="javascript"><!-- 
+System.onLoad(function(){
+	Wade.message.initMessage();
+});
+//--></script>
+</body>
+</html>

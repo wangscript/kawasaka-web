@@ -1,0 +1,34 @@
+<!-- 表格 开始 -->
+<div class="c_table l_ct l_cr l_cb l_cl"><div class="nowrapOff">
+	<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+		<table>
+			<tbody>
+				<tr>
+					<td class="tdLabel e_lSet" style="width:6em;">个人信息</td>
+					<td class="e_lSet"><span jwcid="@Insert" value="ognl:info.StaffName" /></td>
+				</tr>
+				<tr>
+					<td class="tdLabel e_lSet">工号</td>
+					<td class="e_lSet"><span jwcid="@Insert" value="ognl:info.StaffID" /></td>
+				</tr>
+				<tr>
+					<td class="tdLabel e_lSet">职位描述</td>
+					<td class="e_lSet"><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_S_JOBINFO', 'JOB_CODE','JOB_INFO', info.JobCode)" /></td>
+				</tr>
+				<tr>
+					<td class="tdLabel e_lSet">客户分类</td>
+					<td class="e_lSet"><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_OPERATOR_KIND', 'OPERATOR_KIND_CODE','OPERATOR_KIND_NAME', info.StaffType)" /></td>
+				</tr>
+				<tr>
+					<td class="tdLabel e_lSet">归属部门</td>
+					<td class="e_lSet"><span jwcid="@Insert" value="ognl:info.DeptName" /></td>
+				</tr>
+				<tr>
+					<td class="tdLabel e_lSet">归属区域</td>
+					<td class="e_lSet"><span jwcid="@Insert" value="ognl:info.CityName" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div></div></div>
+</div></div>
+<!-- 表格 结束 -->

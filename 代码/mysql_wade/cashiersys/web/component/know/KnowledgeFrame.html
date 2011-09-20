@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Knowledge Frame</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/know.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo" />
+
+<div class="l_widthMarginOff l_mt">
+	<table class="l_widthBody">
+		<tr>
+			<td class="l_widthCol" style="width:200px;">
+				<div class="c_edge"><div class="c_overflow" style="height:158px;"><div class="l_padding">
+					<!-- 树状结构菜单 开始-->
+					<div jwcid="@wade:LoadTree" root="ognl:root" nodes="ognl:nodes" param="ognl:param" listener="ognl:page.listeners.loadTree" />
+					<!-- 树状结构菜单 结束-->
+				</div></div></div>
+			</td>
+			<td class="l_widthCol" style="width:auto;">
+			<!-- 查询组件 开始 -->
+				<div class="c_inputField">
+					<div class="top"></div>
+					<div class="body"><div class="aclinicOn">
+						<table class="col2">
+							<tr>
+								<td class="li">
+									<div class="wrapper">
+										<div class="label"><span class="">开始时间：</span></div>
+										<div class="inputArea"><div>
+											<input type="text" jwcid="cond_START_DATE@wade:DateField" value="ognl:condition.cond_START_DATE" maxName="cond_END_DATE" desc="开始时间" class="e_input"/>
+										</div></div>
+									</div>
+								</td>
+								<td class="li">
+									<div class="wrapper">
+										<div class="label"><span class="">结束时间：</span></div>
+										<div class="inputArea"><div>
+											<input type="text" jwcid="cond_END_DATE@wade:DateField" value="ognl:condition.cond_END_DATE" minName="cond_START_DATE" desc="结束时间" class="e_input"/>
+										</div></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="li">
+									<div class="wrapper">
+										<div class="label"><span class="">知识类型：</span></div>
+										<div class="inputArea"><div>
+											<select jwcid="cond_KNOW_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'KNOWLEDGE_KNOWTYPE')" value="ognl:condition.cond_KNOW_TYPE" desc="知识类型" class="e_input"/>
+										</div></div>
+									</div>
+								</td>
+								<td class="li">
+									<div class="wrapper">
+										<div class="label"><span class="">知识标题：</span></div>
+										<div class="inputArea"><div>
+											<input type="text" jwcid="cond_KNOW_TITLE@TextField" value="ognl:condition.cond_KNOW_TITLE" desc="知识标题" class="e_input"/>
+										</div></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="li">
+									<div class="wrapper">
+										<div class="label"><span class="">知识内容：</span></div>
+										<div class="inputArea"><div>
+											<input type="text" jwcid="cond_KNOW_CONTENT@TextField" value="ognl:condition.cond_KNOW_CONTENT" desc="知识内容" class="e_input"/>
+										</div></div>
+									</div>
+								</td>
+								<td class="li">
+									<div class="wrapper">
+										<div class="label"><span class="">知识附件：</span></div>
+										<div class="inputArea"><div>
+											<input type="text" jwcid="cond_KNOW_ATTACH@TextField" value="ognl:condition.cond_KNOW_ATTACH" desc="知识附件" class="e_input"/>
+										</div></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="li">
+									<div class="wrapper">
+										<div class="label"><span class="">文号：</span></div>
+										<div class="inputArea"><div>
+											<input type="text" jwcid="cond_KNOW_VERSION@TextField" value="ognl:condition.cond_KNOW_VERSION" desc="文号" class="e_input"/>
+										</div></div>
+									</div>
+								</td>
+								<td class="li">
+									<div class="wrapper">
+										<div class="label"><span class="">关键字：</span></div>
+										<div class="inputArea"><div>
+											<input type="text" jwcid="cond_KNOW_KEYWORD@TextField" value="ognl:condition.cond_KNOW_KEYWORD" desc="关键字" class="e_input"/>
+										</div></div>
+									</div>
+								</td>
+							</tr>							
+						</table>
+					</div></div>
+					<div class="bottom e_rSet">
+						<input type="hidden" jwcid="cond_CATA_ID@Hidden" value="ognl:condition.cond_CATA_ID" class="e_button" encode="false"/>
+						<input type="button" id="bquery" name="bquery" value=" 执行查询 " class="e_button" onclick="if (!queryAll(this)) return false;Wade.know.knowledgeFrame_QueryKnowledges(getDataByStr(this, 'cond'));"/>
+					</div>
+				</div>
+				<!-- 查询组件 结束 -->
+			</td>
+		</tr>
+	</table>
+</div>
+
+<!-- 查询列表 -->		
+<iframe id="knows" name="knows" jwcid="@wade:PageRedirect" type="iframe" class="myframe" width="100%" height="400px" frameborder=no/>
+
+</form>
+<script language="javascript"><!--
+Wade.onLoad(function(){
+	Wade.know.knowledgeFrame_Init();
+});
+//--></script>
+</div></div>
+</body>
+</html>

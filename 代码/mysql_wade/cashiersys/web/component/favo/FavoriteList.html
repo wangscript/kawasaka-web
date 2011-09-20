@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Favorite List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/favo.js"></script>
+<style type="text/css">
+<!--
+	.previewbox { float:left; width:180px; }
+	.modifibox { margin-left:180px; zoom:1; }
+-->
+</style>
+</head>
+<body jwcid="@Body">
+<div id="PageArea" class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<!-- 目录区 -->
+	<div class="previewbox">
+		<fieldset class="l_padding l_mt">
+		<legend>分类区</legend>
+
+		<div jwcid="@wade:Part" id="GroupListPart" optimize="true">
+			<div class="c_table l_mt"><div class="nowrapOn">
+				<!-- 数据区 -->
+				<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+					<table>
+		      			<thead>
+				  			<tr>
+								<th>分类名</th>
+								<th width="20%">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+								<tr>
+									<td><a jwcid="@wade:PageRedirect" value="ognl:'全部(' + favorites.count() + ')'" title="全部" onclick="ajaxDirect('component.favo.FavoriteList', 'queryFavorites', null, 'FavoriteListPart,FavoritePaginPart,FavoriteCtrlPart')"/></td>
+									<td>
+										<a  jwcid="@wade:PageRedirect" class="e_bLinkDeleteNB" title="删除" group_id="ognl:favoriteGroup.GROUP_ID" disabled="true"/>
+										<a jwcid="@wade:PageRedirect" class="e_bLinkEditNB"  title="修改" disabled="true"/>
+									</td>
+								</tr>
+								<tr jwcid="@Foreach" source="ognl:favoriteGroups" value="ognl:favoriteGroup" element="tr">
+									<td><a jwcid="@wade:PageRedirect" value="ognl:favoriteGroup.GROUP_NAME + '(' + favoriteGroup.NODE_COUNT + ')'" group_id="ognl:favoriteGroup.GROUP_ID" onclick="ajaxDirect('component.favo.FavoriteList', 'queryFavorites', '&cond_GROUP_ID=' + getAttribute('group_id'), 'FavoriteListPart,FavoritePaginPart,FavoriteCtrlPart')"/></td>
+									<td>
+										<a jwcid="@wade:PageRedirect" class="e_bLinkDeleteNB" title="删除" group_id="ognl:favoriteGroup.GROUP_ID" onclick="return Wade.favo.favoriteList_DeleteFavoriteGroup(this);"/>
+										<a jwcid="@wade:PageRedirect" class="e_bLinkEditNB" title="修改" group_id="ognl:favoriteGroup.GROUP_ID" group_name="ognl:favoriteGroup.GROUP_NAME" onclick="getElement('GROUP_ID').value = getAttribute('group_id');getElement('GROUP_NAME').value = getAttribute('group_name');hidden(getElement('bcreate'), true);hidden(getElement('bupdate'), false);"/>
+									</td>
+							  </tr>						
+						</tbody>
+					</table>
+				</div></div></div>			
+			</div></div>
+					
+		</div>
+
+		<div id="GroupEditArea" class="c_inputField l_mt" style="zoom:1;">
+			<!-- 顶部区 -->
+			<div class="top"></div>
+			<!-- 条件区 -->
+			<div class="body"><div class="aclinicOff">
+				<table class="col1">
+				<table>
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>分类名：</span></div>
+								<div class="inputArea"><div>
+									<input type="hidden" id="GROUP_ID" name="GROUP_ID"/>
+									<input type="text" id="GROUP_NAME" name="GROUP_NAME" desc="分类名" nullable="no" maxsize="100" datatype="text" class="e_input" />
+							    </div></div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div></div>
+			<!-- 按钮区 -->
+			<div class="bottom e_rSet">
+				<input type="button" class="e_button" id="bcreate" name="bcreate" value="添加" desc="分类" onclick="return Wade.favo.favoriteList_CreateFavoriteGroup();"/>
+				<input type="button" class="e_button" id="bupdate" name="bupdate" value="修改" desc="分类" onclick="return Wade.favo.favoriteList_UpdateFavoriteGroup();"/>
+			</div>				
+		</div>
+				
+		</fieldset>
+	</div>
+	<!-- 列表区 -->
+	<div class="modifibox">
+		<fieldset class="l_padding l_mt l_ml">
+		<legend>收藏区</legend>
+		<div class="c_table"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div id="FavoriteCtrlPart" jwcid="@wade:Part" optimize="true">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="删除" class="e_bLinkDelete" desc="收藏" onclick="if (!confirmBox(this, 'favos')) return false;ajaxSubmit('component.favo.FavoriteList', 'deleteFavorites', '&FAVOS=' + getCheckedBoxStr('favos'), 'FavoriteListPart,FavoritePaginPart');"/></li>
+						<li><a jwcid="@wade:PageRedirect" value="转移" class="e_bLinkGeneration" desc="收藏" onclick="if (!verifyBox(this, 'favos')) return false;hidden(getElement('GroupSelectPane'), false);"/></li>
+					</ul>
+				</div>
+			</div>
+			</div>
+			<div id="GroupSelectPart" jwcid="@wade:Part" optimize="true">
+			<div id="GroupSelectPane" style="display:none" class="newmyinputbox">
+				<div class="newmyinput">
+					<div>
+						<div align="right"><a href="javascript:void(0)" onclick="hidden(getElement('GroupSelectPane'), true);"><img src="component/images/close.jpg" alt="关闭" width="9" height="9" border="0"/></a></div>
+					</div>
+					<div>
+						<table width="100%" border="0">
+							<tr jwcid="@Foreach" source="ognl:favoriteGroups" value="ognl:favoriteGroup" element="tr">
+								<td width="90%"><span jwcid="@Insert" value="ognl:favoriteGroup.GROUP_NAME" raw="false"/></td>
+								<td width="10%"><a jwcid="@wade:PageRedirect" title="转移" icon="component/images/modefi_2.gif" group_id="ognl:favoriteGroup.GROUP_ID" onclick="return Wade.favo.favoriteList_MoveFavorites(this);"/></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			</div>
+					
+			<div id="FavoritePaginPart" jwcid="@wade:Part" optimize="true">
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:favorites" listener="ognl:listeners.queryFavorites" refreshParts="FavoriteListPart"/>
+			</div>
+			</div>
+		</div>		
+
+      	<!-- 数据区 -->
+      	
+      		<div id="FavoriteListPart" jwcid="@wade:Part" optimize="true">
+      		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+      		<table>
+      			<thead>
+      			<tr>
+      				<th class="sign"><input type="checkbox" name="favos_ctrl" onclick="checkedAll('favos', checked)"/></th>
+					<th>收藏标题</th>
+					<th>收藏分组</th>
+					<th>收藏说明</th>
+					<th>收藏等级</th>
+					<th>关键字</th>
+					<th>收藏人</th>
+					<th>收藏时间</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:favorites" value="ognl:favorite" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td class="signbj"><input type="checkbox" id="favos" name="favos" jwcid="@wade:Checkbox" value="ognl:favorite.FAVO_ID"/></td>
+						<td><a jwcid="@wade:PageRedirect" value="ognl:favorite.FAVO_TITLE" address="ognl:favorite.FAVO_ADDRESS" onclick="redirectToByUrl(address, 'contentframe', true);"/></td>
+						<td><span jwcid="@Insert" value="ognl:favorite.GROUP_NAME" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:favorite.FAVO_EXPLAIN" raw="false"/></td>
+						<td><div jwcid="@Any" class="ognl:info.favorite.FAVO_LEVEL == null ? '' : 'e_level e_level' + favorite.FAVO_LEVEL"></div></td>
+						<td><span jwcid="@Insert" value="ognl:favorite.FAVO_KEYWORD" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TF_WM_STAFF', 'STAFF_ID', 'STAFF_NAME', favorite.CREATE_STAFF_ID)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', favorite.CREATE_TIME)" raw="false"/></td>
+					</tr>
+				</tbody>
+			</table>
+			</div></div></div>
+			<span style="display:none">
+				<input type="text" jwcid="cond_GROUP_ID@TextField" value="ognl:condition.cond_GROUP_ID"/>
+			</span>
+			</div>
+			
+		</div></div>
+		</fieldset>
+	</div>
+	
+</form>
+<script language="javascript">
+<!--
+Wade.onLoad(function(){
+	Wade.favo.favoriteList_Init();
+});
+//--></script>
+</div></div>
+</body>
+</html>

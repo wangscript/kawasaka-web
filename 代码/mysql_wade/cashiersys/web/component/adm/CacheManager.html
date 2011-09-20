@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Cache Monitor</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script type="text/javascript" language="javascript">
+	function queryServers(obj) {
+		ajaxDirect(this,'queryServers','&SUBSYSCODE='+obj.value,'ServerPart',null,afterQueryServers);
+	}
+	function afterQueryServers() {
+		var count = this.ajaxDataset.get(0).get('SERVER_COUNT');
+		if(count == '0') {
+			alert('application.xml或td_m_naming配置不正确，找不到对应的数据');
+		}
+	}
+	function queryCachesByServer(obj) {
+		if (!queryAll(obj)) return false;
+		ajaxSubmit(this,'queryCachesByServer',null,'TablePart');
+	}
+	function cleanupCaches(obj, name) {
+		if (!queryBox(obj,name)) return false;
+		ajaxSubmit(this,'cleanupCaches',null,'TablePart');
+	}
+</script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<span jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">子系统：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="SUBSYSCODE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(subsyses, 'ADDR', 'NAME', false)" value="ognl:condition.SUBSYSCODE" nullable="no" desc="子系统" onchange="queryServers(this);"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>服务器：</span></div>
+							<div class="inputArea"><div>
+								<div jwcid="@wade:Part" id="ServerPart">
+									<select jwcid="SERVER_ADDR@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(servers, 'ADDR', 'NAME', false)" value="ognl:condition.SERVER_ADDR" nullable="no" desc="服务器"/>
+								</div>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_rSet">
+			<input type="button" value="执行查询" class="e_button" onclick="return queryCachesByServer(this);"/>
+		</div>
+	</div>
+	
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('caches')"/></li>
+						<li><a jwcid="@wade:PageRedirect" value="清空" desc="缓存" class="e_bLinkClear" onclick="return cleanupCaches(this, 'caches');"/></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div jwcid="@wade:Part" id="TablePart">
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+		  				<th><input type="checkbox" id="caches_ctrl" name="caches_ctrl" onclick="checkedAll('caches', checked)"/></th>
+						<th>缓存名</th>
+						<th>缓存数</th>
+						<th>状态</th>
+						<th>命中数</th>
+						<th>未中数</th>
+						<th>命中率</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:caches" value="ognl:cache" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><input type="checkbox" id="caches" name="caches" jwcid="@Any" value="ognl:cache.name"/></td>
+						<td><a jwcid="@wade:PageRedirect" value="ognl:cache.name" cache_name="ognl:cache.name" /></td>
+						<td><span jwcid="@Insert" value="ognl:cache.COUNT" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:getCacheStatus(cache.status)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:cache.hitCount" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:cache.missCount" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@formatDecimal('0.0', (cache.hitCount + cache.missCount) == 0 ? 0 : @java.lang.Double@parseDouble(cache.hitCount) / @java.lang.Double@parseDouble(cache.hitCount + cache.missCount)) * 100 + '%'" raw="false"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		</div>
+		<div class="fctBottom e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('caches')"/></li>
+						<li><a jwcid="@wade:PageRedirect" value="清空" desc="缓存" class="e_bLinkClear" onclick="return cleanupCaches(this, 'caches');"/></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div></div>
+	
+</form>	
+</div></div>
+</body>
+</html>

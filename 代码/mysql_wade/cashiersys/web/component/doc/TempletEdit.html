@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Templet Edit</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/doc.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+
+	<!-- 查询区 -->
+	<div class="c_inputField">
+		<div class="top"></div>
+		<!-- 控件区 -->
+		<div class="body"><div class="aclinicOn">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">归属地州：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="itemcond_EPARCHY_CODE@PropertySelection" model="ognl:@com.linkage.component.util.DataUtil@getCitys(page, visit.provinceId)" value="ognl:itemcond.itemcond_EPARCHY_CODE" disabled="ognl:!visit.hasPriv('COM_DOC_PROVVIEW')" desc="归属地州" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">项目分类：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="itemcond_TEMP_CLASS@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(queryParamClass(pageData.getParameter('cond_CONFIG')))" value="ognl:itemcond.itemcond_TEMP_CLASS" disabled="ognl:pageData.getParameter('cond_FLAG') == null" desc="项目分类" class="e_select"/>	
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">录入时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="itemcond_CREATE_TIME@wade:DateField" value="ognl:itemcond.itemcond_CREATE_TIME" desc="录入时间" class="e_input"/>
+							</div></div>
+						</div>
+					</td>										
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">项目类型：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="itemcond_ITEM_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, getParamItemtype(pageData.getParameter('cond_CONFIG')))" value="ognl:itemcond.itemcond_ITEM_TYPE" desc="项目类型" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">项目状态：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="itemcond_ITEM_STATUS@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'ITEM_ITEMSTATUS')" value="ognl:itemcond.itemcond_ITEM_STATUS" disabled="true" desc="项目状态" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">项目主题：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="itemcond_ITEM_DESC@TextField" value="ognl:itemcond.itemcond_ITEM_DESC" desc="项目主题" class="e_input"/>
+							</div></div>
+						</div>
+					</td>										
+				</tr>
+			</table>
+		</div></div>
+		
+		<!-- 按钮区 -->
+		<div class="bottom e_rSet">
+			<input type="button" value="执行查询" class="e_button" onclick="ajaxdo('linkAvaiItem', '&itemcond_EPARCHY_CODE=' + getElementValue('itemcond_EPARCHY_CODE') + '&itemcond_TEMP_CLASS=' + getElementValue('itemcond_TEMP_CLASS') + '&itemcond_CREATE_TIME=' + getElementValue('itemcond_CREATE_TIME') + '&itemcond_ITEM_TYPE=' + getElementValue('itemcond_ITEM_TYPE') + '&itemcond_ITEM_STATUS=' + getElementValue('itemcond_ITEM_STATUS') + '&itemcond_ITEM_DESC=' + getElementValue('itemcond_ITEM_DESC') + '&cond_CONFIG=' + getElementValue('cond_CONFIG'));"/>
+			<a id="linkAvaiItem" jwcid="@wade:AjaxDirectLink" listener="ognl:listeners.queryItems" refreshParts="AVAILABLE_ITEM_PART"></a>
+		</div>
+	</div>
+		
+
+
+	<!-- 详情区 -->
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<!-- 控件区 -->
+		<div class="body"><div class="aclinicOn">
+			<table class="col1">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">模板名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="TEMP_NAME@TextField" value="ognl:info.TEMP_NAME" nullable="no" maxsize="100" datatype="text" desc="模板名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>				
+			</table>
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">归属地州：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="EPARCHY_CODE@PropertySelection" model="ognl:@com.linkage.component.util.DataUtil@getCitys(page, visit.provinceId)" value="ognl:info.EPARCHY_CODE" disabled="ognl:!visit.hasPriv('COM_DOC_PROVVIEW')" nullable="no" desc="归属地州" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">模板大类：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="TEMP_CLASS@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(queryParamClass(pageData.getParameter('cond_CONFIG')))" value="ognl:info.TEMP_CLASS" disabled="ognl:pageData.getParameter('cond_FLAG') == null" nullable="no" desc="模板大类" class="e_select" onchange="ajaxdo('linkTempType','&cond_CONFIG=' + getElementValue('cond_CONFIG') + '&TEMP_CLASS=' + value)"/>
+								<a id="linkTempType" jwcid="@wade:AjaxDirectLink" listener="ognl:listeners.queryTypes" refreshParts="TempTypePart"></a>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">模板小类：</span></div>
+							<div class="inputArea"><div>
+								<div id="TempTypePart" jwcid="@wade:Part" optimize="true">			
+								<select jwcid="TEMP_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(types)" value="ognl:info.TEMP_TYPE" nullable="no" desc="模板小类" class="e_select"/>
+								</div>
+							</div></div>
+						</div>
+					</td>										
+				</tr>
+			</table>
+			<table class="col1">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">项目配置：</span></div>
+							<div class="inputArea"><div>
+								<div jwcid="@wade:FlipFlop" availableModel="ognl:@com.linkage.component.util.Utility@getSelection(availableItems, 'ITEM_ID', 'ITEM_DESC', true)" selectedModel="ognl:@com.linkage.component.util.Utility@getSelection(selectedItems, 'ITEM_ID', 'ITEM_DESC', true)" rows="15"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>				
+			</table>
+		
+			<table class="col1">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span id="switchLabel" class="e_required">是否必选：</span></div>
+							<div id="switchArea" class="inputArea"><div>
+								
+							</div></div>
+						</div>
+					</td>
+				</tr>				
+			</table>				
+		</div></div>
+		
+		<!-- 按钮区 -->
+		<div class="bottom e_cSet">
+			<input type="button" jwcid="bcreate@Submit" value="新增" listener="ognl:listeners.createTemplet" desc="模板信息" class="e_button" onclick="return Wade.doc.templateEdit_SubmitTemplet(this);"/>
+			<input type="button" jwcid="bupdate@Submit" value="修改" listener="ognl:listeners.updateTemplet" desc="模板信息" class="e_button" onclick="return Wade.doc.templateEdit_SubmitTemplet(this);"/>
+			<input type="button" jwcid="bdelete@Submit" value="删除" listener="ognl:listeners.deleteTemplet" desc="模板信息" class="e_button" onclick="return confirmInfo(this);"/>
+			<input type="button" jwcid="brelease@Submit" value="发布" listener="ognl:listeners.releaseTemplet" desc="模板信息" class="e_button" onclick="return confirmInfo(this);"/>
+			<input type="button" id="bpreview" name="bpreview" jwcid="@wade:PageRedirect" source="ognl:{pageData.getData('cond'), info}" value="预览" class="e_button" onclick="popupDialog('component.doc.TempletPreview', 'queryItemsByTemplet', parameters, '模板预览', '600', '400')"/>
+		</div>
+	</div>
+	
+	
+
+<input type="hidden" jwcid="TEMP_ID@Hidden" value="ognl:info.TEMP_ID" encode="false"/>
+<input type="hidden" jwcid="TEMP_STATUS@Hidden" value="ognl:info.TEMP_STATUS" encode="false"/>
+<input type="hidden" jwcid="NULLABLES@Hidden" value="ognl:info.NULLABLES" encode="false"/>
+</form>
+<script language="javascript">
+<!--
+Wade.onLoad(function(){
+	Wade.doc.templateEdit_Init();
+});
+//--></script>
+</div></div>
+</body>
+</html>

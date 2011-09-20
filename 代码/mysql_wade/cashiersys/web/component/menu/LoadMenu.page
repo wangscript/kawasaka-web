@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.linkage.component.view.menu.LoadMenu">
+    <property-specification name="menuId" type="java.lang.String"/>
+    <property-specification name="subsys" type="java.lang.String"/>
+    <property-specification name="rootId" type="java.lang.String"/>
+    <property-specification name="rootName" type="java.lang.String"/>
+    <property-specification name="defaultActionNode" type="java.lang.String"/>
+    <property-specification name="test" type="boolean"/>
+</page-specification>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE project [<!ENTITY buildfile SYSTEM "file:../../../wadelib/build/build_wadelib_plus.xml">]>
+<!-- $Id: build.xml,v 1.1 2009/10/27 12:41:55 wangmo Exp $ -->
+<project name="resmanm" default="all" basedir=".">
+	
+	&buildfile;
+	
+	<target name="all" depends="clean,compile,copymetafile,webunzip,jar"/>
+	
+	<target name="allcompile" depends="clean,compile,copymetafile,webunzip"/>
+    
+	<target name="allwar" depends="clean,compile,copymetafile,webunzip,jar,war"/>
+	
+	<target name="allear" depends="clean,compile,copymetafile,webunzip,jar,ear"/>
+
+	<target name="allintf" depends="clean,compile,copymetafile,webunzip,jar,intf"/>
+	
+</project>

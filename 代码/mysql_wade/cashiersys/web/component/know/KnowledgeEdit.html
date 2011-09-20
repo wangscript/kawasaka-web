@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head" privs="COM_KNOWLEDGE_KNOWADM">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Knowledge Edit</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/know.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+
+	<!-- 详情区 -->
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<!-- 控件区 -->
+		<div class="body"><div class="aclinicOn">
+				<table class="col3">
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span class="e_required">知识标题：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="KNOW_TITLE@TextField" value="ognl:info.KNOW_TITLE" desc="知识标题" nullable="no" maxsize="100" datatype="text" class="e_input"/>
+								</div></div>
+							</div>
+						</td>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span class="">文号：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="KNOW_VERSION@TextField" value="ognl:info.KNOW_VERSION" desc="文号" maxsize="20" datatype="text" class="e_input"/>
+								</div></div>
+							</div>
+						</td>		
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span class="">关键字：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="KNOW_KEYWORD@TextField" value="ognl:info.KNOW_KEYWORD" desc="关键字" maxsize="50" datatype="text" class="e_input"/>
+								</div></div>
+							</div>
+						</td>										
+					</tr>				
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span class="e_required">知识类型：</span></div>
+								<div class="inputArea"><div>
+									<select jwcid="KNOW_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'KNOWLEDGE_KNOWTYPE')" value="ognl:info.KNOW_TYPE" nullable="no" desc="知识类型" class="e_select"/>
+								</div></div>
+							</div>
+						</td>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span class="">生效日期：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="EFFECT_TIME@wade:DateField" maxName="EXPIRE_TIME" value="ognl:info.EFFECT_TIME" desc="生效时间" class="e_input"/>
+								</div></div>
+							</div>
+						</td>		
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span class="">失效日期：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="EXPIRE_TIME@wade:DateField" minName="EFFECT_TIME" value="ognl:info.EXPIRE_TIME" desc="失效时间" class="e_input"/>
+								</div></div>
+							</div>
+						</td>										
+					</tr>	
+				</table>
+				<table class="col1">
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span class="">知识内容：</span></div>
+								<div class="inputArea"><div>
+									<textarea jwcid="KNOW_CONTENT@TextArea" value="ognl:info.KNOW_CONTENT" rows="20" desc="知识内容" maxsize="2000" datatype="text" nullable="yes" class="t_textarea"/>
+								</div></div>
+							</div>
+						</td>	
+					</tr>
+					<tr>		
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span class="">知识附件：</span></div>
+								<div class="inputArea"><div>
+									<div jwcid="KNOW_ATTACH@wade:UploadField" value="ognl:info.KNOW_ATTACH" className="e_input"/>
+								</div></div>
+							</div>
+						</td>										
+					</tr>					
+				</table>
+		</div></div>
+		
+		<!-- 按钮区 -->
+		<div class="bottom e_cSet">
+			<input type="button" jwcid="bcreate@Submit" value="新 增" listener="ognl:listeners.createKnowledge" desc="知识" class="e_button" onclick="return confirmForm(this);"/>
+			<input type="button" jwcid="bupdate@Submit" value="修 改" listener="ognl:listeners.updateKnowledge" desc="知识" class="e_button" onclick="return confirmForm(this);"/>
+			<input type="button" jwcid="bdelete@Submit" value="删 除" listener="ognl:listeners.deleteKnowledge" desc="知识" class="e_button" onclick="return confirmInfo(this);"/>
+		</div>
+	</div>
+    	
+
+<input type="hidden" jwcid="KNOW_ID@Hidden" value="ognl:info.KNOW_ID" encode="false"/>
+</form>
+<script language="javascript"><!--
+Wade.onLoad(function(){
+	Wade.know.knowledgeEdit_Init();
+});
+//--></script>
+</div></div>
+</body>
+</html>

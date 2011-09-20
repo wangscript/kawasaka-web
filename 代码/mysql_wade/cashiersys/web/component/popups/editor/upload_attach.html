@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Test</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script language="JavaScript">
+Include("component/popups/editor/js/uploadattach.js",true);
+System.onLoad(function(){
+	document.forms[0].action=Wade.context.getRelativelyDir() + "attach?action=upload&uploadtype=component";
+	if(typeof(Wade.uploadattach)!="undefined"){Wade.uploadattach.init();}
+});
+</script>
+</head>
+<body ondrag="return false;">
+<div class="e_wrapper"><div class="e_wrapper2">
+<iframe id="upload_attach_iframe" name="upload_attach_iframe" style="display:none;" ></iframe>
+<form jwcid="@Form" target="upload_attach_iframe" method="post" enctype="multipart/form-data">
+<input type="hidden" id="FILE_KIND" name="FILE_KIND" value="2"/>
+<input type="hidden" id="UPLOAD_PATH" name="UPLOAD_PATH"/>
+<input type="hidden" id="RECORD" name="RECORD"/>
+<!-- 输入 开始 -->
+<div class="c_inputField">
+	<div class="top e_cSet">来源</div>
+	<div class="body"><div class="aclinicOn"><div class="char4">
+		<table class="col1">
+			<tr>
+				<td class="li">
+					<div class="wrapper">
+						<div class="label"><span><input type="radio" id="UPLOAD_MODE" name="UPLOAD_MODE" value="upload" onclick="Wade.uploadattach.selectUploadMode();"/>上传：</span></div>
+						<div class="inputArea"><div>
+							<input id="FILE_PATH" name="FILE_PATH" class="e_input" type="file" onfocus="select();" />
+						</div></div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="li">
+					<div class="wrapper">
+						<div class="label"><span><input type="radio" id="UPLOAD_MODE" name="UPLOAD_MODE" value="network" onclick="Wade.uploadattach.selectUploadMode();"/>网络：</span></div>
+						<div class="inputArea"><div>
+							<input id="FILE_URL" name="FILE_URL"  value="http://" onfocus="select();" class="e_input" type="text" />
+						</div></div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="li">
+					<div class="wrapper">
+						<div class="label"><span>描述：</span></div>
+						<div class="inputArea"><div>
+							<input id="FILE_DESC" name="FILE_DESC" class="e_input" type="text" onfocus="select();" />
+						</div></div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div></div></div>
+	<div class="bottom e_cSet">
+		<a class="e_bLinkUp" onfocus="this.blur();" href="javascript:void(0);" onclick="Wade.uploadattach.uploadFile();"><span>上传</span></a>
+		<a class="e_bLinkCancel" onfocus="this.blur();" href="javascript:void(0);" onclick="Wade.uploadattach.closeWindow();"><span>取消</span></a>
+	</div>
+</div>
+<!-- 输入 结束 -->
+</form>
+</div></div>
+</body>
+</html>

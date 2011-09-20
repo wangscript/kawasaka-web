@@ -1,0 +1,57 @@
+<page name="Home" specification-path="/common/Home.page"/>
+<page name="Main" specification-path="/common/Main.page"/>  
+<page name="Header" specification-path="/common/Header.page"/>	
+<page name="Bottom" specification-path="/common/Bottom.page"/>
+<page name="Sliptop" specification-path="/common/Sliptop.page"/>
+<page name="Slipleft" specification-path="/common/Slipleft.page"/>
+<page name="Sidebar" specification-path="/common/Sidebar.page"/>
+
+<!-- chenzg begin-->
+<page name="cashiersys.staff.StaffList" specification-path="/cashiersys/pages/staff/StaffList.page"/>
+<page name="cashiersys.staff.StaffAdd" specification-path="/cashiersys/pages/staff/StaffAdd.page"/>
+<page name="cashiersys.staff.StaffEdit" specification-path="/cashiersys/pages/staff/StaffEdit.page"/>
+<page name="cashiersys.staff.StaffPasswd" specification-path="/cashiersys/pages/staff/StaffPasswd.page"/>
+
+<page name="cashiersys.system.MenusList" specification-path="/cashiersys/pages/system/menu/MenusList.page"/>
+<page name="cashiersys.system.MenusAdd" specification-path="/cashiersys/pages/system/menu/MenusAdd.page"/>
+<page name="cashiersys.system.MenusEdit" specification-path="/cashiersys/pages/system/menu/MenusEdit.page"/>
+<page name="cashiersys.system.RightsList" specification-path="/cashiersys/pages/system/right/RightsList.page"/>
+<page name="cashiersys.system.RightsAdd" specification-path="/cashiersys/pages/system/right/RightsAdd.page"/>
+<page name="cashiersys.system.RightsEdit" specification-path="/cashiersys/pages/system/right/RightsEdit.page"/>
+<page name="cashiersys.system.StaffMenuList" specification-path="/cashiersys/pages/system/staffmenu/StaffMenuList.page"/>
+<page name="cashiersys.system.StaffMenuEdit" specification-path="/cashiersys/pages/system/staffmenu/StaffMenuEdit.page"/>
+<page name="cashiersys.system.StaffMenuAdd" specification-path="/cashiersys/pages/system/staffmenu/StaffMenuAdd.page"/>
+<page name="cashiersys.system.StaffRightList" specification-path="/cashiersys/pages/system/staffright/StaffRightList.page"/>
+<page name="cashiersys.system.StaffRightEdit" specification-path="/cashiersys/pages/system/staffright/StaffRightEdit.page"/>
+<page name="cashiersys.system.StaffRightAdd" specification-path="/cashiersys/pages/system/staffright/StaffRightAdd.page"/>
+<page name="cashiersys.system.MenusRightsEdit" specification-path="/cashiersys/pages/system/right/MenusRightsEdit.page"/>
+
+
+<page name="cashiersys.params.ItemsList" specification-path="/cashiersys/pages/params/items/ItemsList.page"/>
+<page name="cashiersys.params.ItemsEdit" specification-path="/cashiersys/pages/params/items/ItemsEdit.page"/>
+<page name="cashiersys.params.ItemsAdd" specification-path="/cashiersys/pages/params/items/ItemsAdd.page"/>
+<page name="cashiersys.params.DepartsList" specification-path="/cashiersys/pages/params/departs/DepartsList.page"/>
+<page name="cashiersys.params.DepartsEdit" specification-path="/cashiersys/pages/params/departs/DepartsEdit.page"/>
+<page name="cashiersys.params.DepartsAdd" specification-path="/cashiersys/pages/params/departs/DepartsAdd.page"/>
+<page name="cashiersys.params.DepartsItemsList" specification-path="/cashiersys/pages/params/departsitems/DepartsItemsList.page"/>
+<page name="cashiersys.params.DepartsItemsEdit" specification-path="/cashiersys/pages/params/departsitems/DepartsItemsEdit.page"/>
+<page name="cashiersys.params.DepartsItemsAdd" specification-path="/cashiersys/pages/params/departsitems/DepartsItemsAdd.page"/>
+<page name="cashiersys.params.HotelsList" specification-path="/cashiersys/pages/params/hotels/HotelsList.page"/>
+<page name="cashiersys.params.HotelsEdit" specification-path="/cashiersys/pages/params/hotels/HotelsEdit.page"/>
+<page name="cashiersys.params.HotelsAdd" specification-path="/cashiersys/pages/params/hotels/HotelsAdd.page"/>
+<page name="cashiersys.params.HotelsItemsList" specification-path="/cashiersys/pages/params/hotelsitems/HotelsItemsList.page"/>
+<page name="cashiersys.params.HotelsItemsEdit" specification-path="/cashiersys/pages/params/hotelsitems/HotelsItemsEdit.page"/>
+<page name="cashiersys.params.HotelsItemsAdd" specification-path="/cashiersys/pages/params/hotelsitems/HotelsItemsAdd.page"/>
+<page name="cashiersys.params.AreasList" specification-path="/cashiersys/pages/params/areas/AreasList.page"/>
+<page name="cashiersys.params.AreasEdit" specification-path="/cashiersys/pages/params/areas/AreasEdit.page"/>
+<page name="cashiersys.params.AreasAdd" specification-path="/cashiersys/pages/params/areas/AreasAdd.page"/>
+<page name="cashiersys.params.AreasHotelsList" specification-path="/cashiersys/pages/params/areashotels/AreasHotelsList.page"/>
+<page name="cashiersys.params.AreasHotelsEdit" specification-path="/cashiersys/pages/params/areashotels/AreasHotelsEdit.page"/>
+<page name="cashiersys.params.AreasHotelsAdd" specification-path="/cashiersys/pages/params/areashotels/AreasHotelsAdd.page"/>
+<page name="cashiersys.params.TravelList" specification-path="/cashiersys/pages/params/travel/TravelList.page"/>
+<page name="cashiersys.params.TravelEdit" specification-path="/cashiersys/pages/params/travel/TravelEdit.page"/>
+<page name="cashiersys.params.TravelAdd" specification-path="/cashiersys/pages/params/travel/TravelAdd.page"/>
+
+<!-- chenzg end-->
+
+

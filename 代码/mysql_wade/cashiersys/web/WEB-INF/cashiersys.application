@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd"[
+	<!ENTITY component SYSTEM "component.application">
+	<!ENTITY page.common SYSTEM "page.common.application">
+  <!ENTITY page.cashiersys SYSTEM "page.cashiersys.application">
+
+]>
+<application name="resmanm" engine-class="com.linkage.component.AppEngine">
+	<description>Cashiersys Application</description>
+
+	<property name="org.apache.tapestry.disable-caching" value="true"/>
+	<property name="org.apache.tapestry.enable-reset-service" value="true"/>
+	<property name="org.apache.tapestry.template-encoding" value="GBK"/>
+	<property name="org.apache.tapestry.output-encoding" value="GBK"/>
+	<property name="org.apache.tapestry.visit-class">com.linkage.component.AppContext</property>
+    
+	&page.common;
+	&page.cashiersys;
+	&component;	
+	
+</application>
