@@ -1,1 +1,2 @@
-wcw_diy 文件夹放到相应的数据库下如：C:\Program Files\MySQL\MySQL Server 5.0\data
+wcw_diy 文件夹放到相应的数据库下如：C:\Program Files\MySQL\MySQL Server 5.0\data下
+还有两个tomcat的配置文件覆盖即可。注意自己本地desql配置。
