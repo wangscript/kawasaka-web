@@ -1,0 +1,6 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+	<h1>Edit/Create Citizen</h1>
+	<div id="section">
+		<t:beaneditform t:id="form" object="user" />
+	</div>
+</t:layout>

@@ -1,0 +1,28 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<div id="section">
+		<t:zone t:id="viewZone"/>
+		<t:block id="userDetails">
+			<h2>${detailUser.username}</h2>
+				<ul style="padding-left: 40px;">
+					<li>Identifier: ${detailUser.id}</li>
+					<li>Email: ${detailUser.email}</li>
+					<li>Birthday: ${detailUser.birthday}</li>
+				</ul>
+		</t:block>
+		<t:grid t:id="grid" source="users" model="model"
+				empty="block:usersNotFound" row="user">
+			<t:parameter name="userNameCell">
+				<t:pagelink page="edit" context="user.id">${user.userName}</t:pagelink>
+        	</t:parameter>
+			<t:parameter name="deleteCell">
+				<t:actionlink t:id="delete" context="user.id">Delete</t:actionlink>
+        	</t:parameter>
+        	<t:parameter name="viewCell">
+				<t:actionlink t:id="view" zone="viewZone" context="user.id">View</t:actionlink>
+        	</t:parameter>
+		</t:grid>
+		<t:block id="usersNotFound">No Citizens Found</t:block>
+		<br/>
+		<t:pagelink page="Edit" context="0">Create new user</t:pagelink>
+	</div>
+</t:layout>
