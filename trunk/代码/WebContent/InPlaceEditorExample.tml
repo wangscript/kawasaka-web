@@ -1,0 +1,6 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+	<h1>Using InPlaceEditor</h1>
+	<div id="section">
+		<div t:type="InPlaceEditor" value="edit"/>
+	</div>
+</t:layout>
