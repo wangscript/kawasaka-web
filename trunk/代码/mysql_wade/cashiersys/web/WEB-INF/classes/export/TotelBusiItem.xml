@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="GB2312"?>
+<workbook>
+
+	<sheet desc="收入统计报表">
+		<header isshow="true" height="300">
+			<cell
+				name="BUSI_ITEM_NAME"
+				desc="项目"
+				type="1"
+				align="1"
+				width="6000"
+			/>
+			<cell
+				name="BUSI_NUM"
+				desc="人数"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="BUSI_FEE"
+				desc="金额"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="BUSI_PARTY1"
+				desc="付合作方1"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="BUSI_PARTY2"
+				desc="付合作方2"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="BUSI_SIGINBILL"
+				desc="应付签单"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="TOTAL_BUSI_NUM"
+				desc="累计人数"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="TOTAL_BUSI_FEE"
+				desc="累计金额"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="TOTAL_BUSI_PARTY1"
+				desc="累计付合作方1"
+				type="1"
+				align="1"
+				width="4000"
+			/>	
+			<cell
+				name="TOTAL_BUSI_PARTY2"
+				desc="累计付合作方2"
+				type="1"
+				align="1"
+				width="4000"
+			/>	
+			<cell
+				name="TOTAL_BUSI_SIGINBILL"
+				desc="累计应付签单"
+				type="1"
+				align="1"
+				width="4000"
+			/>																								
+		</header>
+	</sheet>
+	
+</workbook>

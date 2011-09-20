@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Sidebar</title>
+<link jwcid="@wade:Style" href="common/styles/frame.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="common/scripts/frame.js"></script>
+<script jwcid="@wade:Script" language="JavaScript" src="common/scripts/sidebar.js"></script>
+</head>
+<body>
+<div id="menuDiv" class="f_side">
+
+	
+	<h4 id="menu_500" class="unfold" style="display:block;"><a href="javascript:void(0)">会员管理</a></h4>
+	<ul style="display:block;">
+ 		<li id="menu_501"><a jwcid="@wade:PageRedirect" value="会员管理" onclick="redirectToNav('cashiersys.member.MemberList', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_502"><a jwcid="@wade:PageRedirect" value="会员卡管理" onclick="redirectToNav('cashiersys.member.CardList', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_503"><a jwcid="@wade:PageRedirect" value="详细消费记录" onclick="redirectToNav('cashiersys.member.BillList', 'init', null, 'contentframe')"/></li>
+ 	</ul>	
+
+	
+
+	
+
+  
+<script language="javascript"><!--
+	Wade.onLoad(function(){
+		initPage();
+	});
+// --></script>
+</div>
+</body>
+</html>

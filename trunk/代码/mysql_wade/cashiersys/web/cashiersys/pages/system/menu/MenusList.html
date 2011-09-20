@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>查询菜单</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="cashiersys/scripts/params/params.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col4">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>菜单编码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_MENU_CODE@TextField" value="ognl:conditions.MENU_CODE" desc="菜单编码" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>菜单名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_MENU_NAME@TextField" value="ognl:conditions.MENU_NAME" desc="菜单名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>菜单类型：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_MENU_TYPE@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'BUSI_MENU_TYPES')"
+									value="ognl:conditions.MENU_TYPE" desc="菜单类型" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>状态：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_FLAG@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'BUSI_ITEM_FLAGS')"
+									value="ognl:conditions.FLAG" desc="状态" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" listener="ognl:listeners.queryMenus" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>
+	
+	<div id="ResultDataPart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<ul>
+					<li><a jwcid="@wade:PageRedirect" value="新增" onclick="popupDialog('cashiersys.system.MenusAdd', 'init', '&refresh=true&operType=add', '新增菜单信息', '500', '300')" desc="新增" class="e_bLinkAdd"/></li>
+				</ul>
+			</div>
+			<div class="fctRight">
+			 	<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryMenus" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table id="printTable">
+      			<thead>
+		  			<tr>
+						<th>菜单编码</th>
+						<th>菜单名称</th>
+						<th>父菜单编码</th>
+						<th>父菜单名称</th>
+						<th>菜单地址</th>
+						<th>菜单描述</th>
+						<th>菜单类型</th>
+						<th>状态</th>
+						<th>更新员工</th>
+						<th>更新时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.MENU_CODE" onclick="popupDialog('cashiersys.system.MenusEdit', 'init', '&operType=edit&refresh=true&MENU_CODE='+ this.value, '修改菜单信息', '500', '300')" raw="false" /></td>
+						<td><span jwcid="@Insert" value="ognl:info.MENU_NAME"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.PARENT_MENU_CODE"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.PARENT_MENU_NAME"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.MENU_URL"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.MENU_DESC"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'BUSI_MENU_TYPES', info.MENU_TYPE)"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'BUSI_ITEM_FLAGS', info.FLAG)"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.UPDATE_STAFF_ID"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.UPDATE_TIME"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<div class="fctBottom e_clear">
+			<div class="fctLeft">
+				<ul>
+					<li><a jwcid="@wade:PageRedirect" value="新增" onclick="popupDialog('cashiersys.system.MenusAdd', 'init', '&refresh=true&operType=add', '新增菜单信息', '500', '300')" desc="新增" class="e_bLinkAdd"/></li>
+				</ul>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryMenus" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+	
+</form>	
+</div></div>
+</body>
+</html>

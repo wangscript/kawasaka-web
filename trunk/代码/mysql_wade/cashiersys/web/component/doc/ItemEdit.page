@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.linkage.component.view.doc.ItemEdit">
+    <property-specification name="fieldConfigs" type="com.linkage.appframework.data.IDataset"/>
+	<property-specification name="fieldConfig" type="com.linkage.appframework.data.IData"/>
+    <property-specification name="optionConfigs" type="com.linkage.appframework.data.IDataset"/>
+	<property-specification name="optionConfig" type="com.linkage.appframework.data.IData"/>
+    <property-specification name="info" type="com.linkage.appframework.data.IData"/>
+	<property-specification name="types" type="com.linkage.appframework.data.IDataset"/>
+    <property-specification name="options" type="com.linkage.appframework.data.IDataset"/>
+    <property-specification name="option" type="com.linkage.appframework.data.IData"/>
+</page-specification>

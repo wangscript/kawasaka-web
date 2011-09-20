@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Staff Select</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/org.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<div class="c_inputField">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn"><div class="char4">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>业务区：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_AREA_CODE@component:AreaField" value="ognl:condition.cond_AREA_CODE" readOnly="ognl:'true'.equals(pageData.getParameter('relaflag'))" open="ognl:'false'.equals(pageData.getParameter('relaflag')) && 'true'.equals(pageData.getParameter('isopen'))" desc="归属业务区" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>归属部门：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_DEPART_ID@component:DeptField" value="ognl:condition.cond_DEPART_ID" areaName="cond_AREA_CODE" readOnly="ognl:'true'.equals(pageData.getParameter('relaflag'))" open="ognl:'false'.equals(pageData.getParameter('relaflag')) && 'true'.equals(pageData.getParameter('isopen'))" desc="归属部门" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>员工名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_STAFF_NAME@TextField" value="ognl:condition.cond_STAFF_NAME" desc="员工名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>性别：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_SEX@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'STAFF_SEX')" value="ognl:condition.cond_SEX" desc="性别" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>服务号码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_SERIAL_NUMBER@TextField" value="ognl:condition.cond_SERIAL_NUMBER" desc="服务号码" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>员工编码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_STAFF_ID@TextField" value="ognl:condition.cond_STAFF_ID" maxLength="8" maxsize="8" onkeydown="if(event.keyCode==13||event.keyCode==8||(event.keyCode>=65&&event.keyCode<=90)||(!event.shiftKey&&event.keyCode>=48&&event.keyCode<=57)||(!event.shiftKey&&event.keyCode>=96&&event.keyCode<=105)){return true;}else{return false;}" onkeyup="this.value=this.value.toUpperCase()" desc="员工编码" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div></div>
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" listener="ognl:listeners.queryStaffs" class="e_button" onclick="return queryAll(this)"/>
+		</div>
+	</div>
+
+	<div id="StaffPart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryStaffs" refreshParts="StaffPart" checkboxName="staffs"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:179px;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+	       				<span jwcid="@Conditional" condition="ognl:'true'.equals(pageData.getParameter('multi'))">
+	      					<th><input type="checkbox" id="staffs_ctrl" name="staffs_ctrl" onclick="checkedAll('staffs', checked)"/></th>
+	      				</span>
+	      				<th>员工编号</th>
+						<th>员工名称</th>
+						<th>服务号码</th>
+						<th>性别</th>
+						<th>归属部门</th>
+						<th>归属业务区</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<span jwcid="@Conditional" condition="ognl:'true'.equals(pageData.getParameter('multi'))">
+							<td><input type="checkbox" id="staffs" name="staffs" jwcid="@wade:Checkbox" value="ognl:info.STAFF_ID + ';' + info.STAFF_NAME"/></td>
+						</span>
+						<td><a jwcid="@wade:PageRedirect" value="ognl:info.STAFF_ID" staff_id="ognl:info.STAFF_ID" staff_name="ognl:info.STAFF_NAME" onclick="Wade.dialog.setReturnValue(getAttribute('staff_id'), getAttribute('staff_name'))"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.STAFF_NAME" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.SERIAL_NUMBER" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'STAFF_SEX', info.SEX)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_DEPART', 'DEPART_ID', 'DEPART_NAME', info.DEPART_ID)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_AREA', 'AREA_CODE', 'AREA_NAME', info.CITY_CODE)" raw="false"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+	</div></div>
+	</div>
+	
+	<div class="c_submit l_mt">
+		<div class="bottom e_cSet">
+			<span jwcid="@Conditional" condition="ognl:pageData.getParameter('multi') == 'true'">
+				<input type="button" id="bselect" name="bselect" value="选择" class="e_button" onclick="Wade.org.selectStaffs()"/>
+			</span>
+			<input type="button" id="bcleanup" name="bcleanup" value="清除" class="e_button" onclick="Wade.org.cleanupSelect();"/>
+			<input type="button" id="bcancel" name="bcancel" value="返回" class="e_button" onclick="Wade.page.cancel(true)"/>
+		</div>
+	</div>
+
+</form>
+<script language="javascript"><!--
+Wade.onLoad(function(){
+	Wade.org.initStaffSelect();
+});
+// --></script>
+
+</div></div>
+</body>
+</html>

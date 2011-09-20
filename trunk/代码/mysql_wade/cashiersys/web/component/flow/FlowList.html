@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Flow List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+
+	<!-- 查询区 -->
+	<div class="c_inputField l_mt">
+		<!-- 顶部区 -->
+		<div class="top"></div>
+		<!-- 条件区 -->
+		<div class="body"><div class="aclinicOn">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>执行方式：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_EXEC_MODE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'FLOW_EXECMODE')" value="ognl:condition.cond_EXEC_MODE" desc="执行方式" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>执行状态：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_EXEC_STATUS@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'FLOW_EXECSTATUS')" value="ognl:condition.cond_EXEC_STATUS" desc="执行状态" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>执行结果: </span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_EXEC_RESULT@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'FLOW_EXECRESULT')" value="ognl:condition.cond_EXEC_RESULT" desc="执行结果" class="e_select"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>流程标识：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_FLOW_ID@TextField" value="ognl:condition.cond_FLOW_ID" desc="流程标识" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>需要提醒：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_NEED_NOTIFY@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'COMMON_NEEDNOTIFY')" value="ognl:condition.cond_NEED_NOTIFY" desc="需要提醒" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>提醒方式: </span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_NOTIFY_MODE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'COMMON_NOTIFYMODE')" value="ognl:condition.cond_NOTIFY_MODE" desc="提醒方式" class="e_select"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>	
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>流程名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_FLOW_NAME@TextField" value="ognl:condition.cond_FLOW_NAME" desc="流程名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>执行开始时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_START_DATE@wade:DateField" value="ognl:condition.cond_START_DATE" desc="执行开始时间" maxName="cond_END_DATE" datatype="date" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>执行结束时间: </span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_END_DATE@wade:DateField" value="ognl:condition.cond_END_DATE" desc="执行结束时间" minName="cond_START_DATE" datatype="date" class="e_input"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>								
+			</table>
+		</div></div>
+		<!-- 按钮区 -->
+		<div class="bottom e_rSet">
+			<input type="submit" class="e_button" jwcid="bquery@Submit" value=" 执行查询 " listener="ognl:listeners.queryFlows" onclick="return queryAll(this)"/>
+		</div>
+	</div>
+	
+	<!-- 表格区 -->
+	<div id="FlowPart" jwcid="@wade:Part" optimize="true">	
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<!-- 控制区 -->
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						
+					</ul>
+				</div>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryFlows" refreshParts="FlowPart"/>
+			</div>
+		</div>
+		<!-- 数据区 -->
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+      				<th>流程标识</th>
+      				<th>流程名称</th>
+					<th>流程描述</th>
+					<th>执行时间</th>
+					<th>完成时间</th>
+					<th>执行方式</th>
+					<th>执行状态</th>
+					<th>执行结果</th>
+					<th>需要提醒</th>
+					<th>提醒方式</th>
+					<th>登记员工</th>
+					<th>登记时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><a jwcid="@wade:PageRedirect" value="ognl:info.FLOW_ID" source="ognl:info" columns="FLOW_ID,FLOW_FILE" onclick="redirectTo('component.flow.StepList', 'queryFlowSteps', parameters)"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.FLOW_NAME" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.FLOW_DESC" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.EXEC_TIME)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.COMP_TIME)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'FLOW_EXECMODE', info.EXEC_MODE)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'FLOW_EXECSTATUS', info.EXEC_STATUS)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'FLOW_EXECRESULT', info.EXEC_RESULT)" raw="false" class="ognl:info.EXEC_RESULT == @com.linkage.appframework.flow.FlowFactory@FLOW_RESULT_FAIL ? 'wordr' : 'wordg'"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'COMMON_NEEDNOTIFY', info.NEED_NOTIFY)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'COMMON_NOTIFYMODE', info.NOTIFY_MODE)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.IN_STAFF_ID)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.IN_TIME)" raw="false"/></td>
+					</tr>				
+				</tbody>
+			</table>
+		</div></div></div>		
+		<!-- 控制区 -->
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						
+					</ul>
+				</div>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryFlows" refreshParts="FlowPart"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+				
+</form>	
+</div></div>
+</body>
+</html>

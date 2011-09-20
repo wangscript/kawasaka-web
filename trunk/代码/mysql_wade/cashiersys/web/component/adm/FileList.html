@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>File List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div id="FilePart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('files')"/></li>
+						<li><a jwcid="@wade:PageSubmit" value="删除" listener="ognl:listeners.deleteFiles" desc="上传文件" class="e_bLinkDelete" onclick="return queryBox(this, 'files');"/></li>
+					</ul>
+				</div>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryFiles" refreshParts="FilePart"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+		  				<th><input type="checkbox" id="files_ctrl" name="files_ctrl" onclick="checkedAll('files', checked)"/></th>
+						<th>文件名称</th>
+						<th>文件大小</th>
+						<th>上传员工</th>
+						<th>上传时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><input type="checkbox" id="files" name="files" jwcid="@Any" value="ognl:info.FILE_ID"/></td>
+						<td><a jwcid="@Any" href="ognl:'attach?file_id=' + info.FILE_ID"><span jwcid="@Insert" value="ognl:info.FILE_NAME" raw="false"/></a></td>
+						<td><span jwcid="@Insert" value="ognl:info.FILE_SIZE / 1000" raw="false"/>k</td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.CREA_STAFF)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.CREA_TIME)" raw="false"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<div class="fctBottom e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('files')"/></li>
+						<li><a jwcid="@wade:PageSubmit" value="删除" listener="ognl:listeners.deleteFiles" desc="上传文件" class="e_bLinkDelete" onclick="return queryBox(this, 'files');"/></li>
+					</ul>
+				</div>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryFiles" refreshParts="FilePart"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+</form>	
+</div></div>
+</body>
+</html>

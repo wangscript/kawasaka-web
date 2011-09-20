@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC 
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+	
+<component-specification class="com.linkage.common.components.Graph" allow-body="no">
+	<description>Graph Input</description>
+    
+    <parameter name="value" direction="form" type="java.lang.String" required="yes"/>
+    <!--
+	<parameter name="model" direction="in" type="java.lang.Object" required="yes"/>
+	-->
+    <parameter name="disabled" direction="in" type="boolean" required="no"/>
+    <parameter name="style" direction="in" type="java.lang.String" required="no"/>
+         
+    <property-specification name="name" type="java.lang.String"/>
+	<property-specification name="form" type="org.apache.tapestry.IForm"/>
+</component-specification>

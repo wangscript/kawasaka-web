@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Templet List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+
+	
+	<!-- 查询区 -->
+	<div class="c_inputField">
+		<!-- 顶部区 -->
+		<div class="top"></div>
+		<!-- 条件区 -->
+		<div class="body"><div class="aclinicOn">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>归属地州：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_EPARCHY_CODE@PropertySelection" model="ognl:@com.linkage.component.util.DataUtil@getCitys(page, visit.provinceId)" value="ognl:condition.cond_EPARCHY_CODE" disabled="ognl:!visit.hasPriv('COM_DOC_PROVVIEW')" desc="归属地州" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>模板大类：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_TEMP_CLASS@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(queryParamClass(condition.cond_CONFIG))" value="ognl:condition.cond_TEMP_CLASS" disabled="ognl:pageData.getParameter('cond_FLAG') == null" desc="模板大类" class="e_select" onchange="ajaxdo('linkTempType','&cond_CONFIG=' + getElementValue('cond_CONFIG') + '&TEMP_CLASS=' + value)"/>
+								<a id="linkTempType" jwcid="@wade:AjaxDirectLink" listener="ognl:listeners.queryTypes" refreshParts="TempTypePart"></a>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>模板小类：</span></div>
+							<div class="inputArea"><div>
+								<div id="TempTypePart" jwcid="@wade:Part" optimize="true">			
+									<select jwcid="cond_TEMP_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(types)" value="ognl:condition.cond_TEMP_TYPE" desc="模板小类" class="e_select"/>
+								</div>
+							</div></div>
+						</div>
+					</td>					
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>录入时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_CREATE_TIME@wade:DateField" value="ognl:condition.cond_CREATE_TIME" desc="录入时间" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>模板状态：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_TEMP_STATUS@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'TEMPLET_TEMPSTATUS')" value="ognl:condition.cond_TEMP_STATUS" desc="模板状态" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>模板名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_TEMP_NAME@TextField" value="ognl:condition.cond_TEMP_NAME" desc="模板名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>				
+			</table>
+		</div></div>
+		<!-- 按钮区 -->
+		<div class="bottom e_rSet">
+			<input type="submit" class="e_button" jwcid="bquery@Submit" value=" 执行查询 " listener="ognl:listeners.queryTemplets" onclick="return queryAll(this);"/>
+		</div>
+	</div>
+			
+	
+	
+	<!-- 表格区 -->
+	<div jwcid="@wade:Part" id="refreshtable" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<!-- 控制区 -->
+		<div class="fctTop e_clear">
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryTemplets" refreshParts="refreshtable"/>
+			</div>
+		</div>
+		<!-- 数据区 -->
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+      				<th>模板名称</th>
+					<th>模板大类</th>
+					<th>模板小类</th>
+					<th>模板状态</th>
+					<th>归属地州</th>
+					<th>录入员工</th>
+					<th>录入时间</th>
+					<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><a jwcid="@wade:PageRedirect" source="ognl:{condition,info}" value="ognl:info.TEMP_NAME" onclick="redirectTo('component.doc.TempletEdit', 'queryTemplet', parameters)"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, getParamClass(condition.cond_CONFIG), info.TEMP_CLASS)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, getParamType(condition.cond_CONFIG), info.TEMP_TYPE)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TEMPLET_TEMPSTATUS', info.TEMP_STATUS)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_AREA', 'AREA_CODE', 'AREA_NAME', info.EPARCHY_CODE)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.CREATE_STAFF_ID)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.CREATE_TIME)" raw="false"/></td>
+						<td class="timemode"><a jwcid="@wade:PageRedirect" source="ognl:{condition,info}" value="预览" onclick="popupDialog('component.doc.TempletPreview', 'queryItemsByTemplet', parameters, '模板预览', '600', '400')"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<!-- 控制区 -->
+		<div class="fctBottom e_clear">
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryTemplets" refreshParts="refreshtable"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+	
+<input type="hidden" jwcid="cond_CONFIG@wade:Hidden" value="ognl:condition.cond_CONFIG" encode="false"/>
+<input type="hidden" jwcid="cond_FLAG@wade:Hidden" value="ognl:condition.cond_FLAG" encode="false"/>
+</form>
+
+</div></div>
+</body>
+</html>

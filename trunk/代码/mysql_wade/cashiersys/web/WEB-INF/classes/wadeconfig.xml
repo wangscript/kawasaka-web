@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="gb2312"?>
+<config>
+		
+	<!-- notify config -->
+	<notify frequency="15" default="message">
+		<message
+			desc="消息"
+			title="$(INFO_TOPIC)"
+			class="com.linkage.component.bean.info.NotifyMessage"
+			page="component.info.MessageEdit"
+			listener="queryInfo"
+			params="&amp;INST_ID=$(INST_ID)"
+			/>
+	</notify>
+	
+	<!--
+		wade ui config
+		layout: ECL or more...
+		skin: defaultSkin or more...,the default is defaultSkin
+		color: defaultColor or more...,the default is defaultColor
+	-->
+	<wadeui
+		layout="ECL"
+		navmenuStyle="common/styles/frame.css"
+		/>
+	
+</config>

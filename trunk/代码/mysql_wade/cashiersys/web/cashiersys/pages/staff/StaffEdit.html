@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>修改员工信息</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="HAIN/scripts/person/sundryquery/sundryquery.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">员工号：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_STAFF_ID@TextField" value="ognl:info.STAFF_ID" disabled="ognl:conditions.DISABLED" nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" desc="员工号" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">员工姓名：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_STAFF_NAME@TextField" value="ognl:info.STAFF_NAME" nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" desc="员工姓名" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">描述：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_STAFF_DESC@TextField" value="ognl:info.STAFF_DESC" nullable="yes" minsize="1" maxsize="100" datatype="text" maxLength="100" desc="员工描述" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">状态：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_FLAG@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'BUSI_ITEM_FLAGS')"
+									value="ognl:info.FLAG" desc="员工状态" class="e_select" nullable="no"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">部门：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_DEPART_CODE@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.DEPARTS, 'DEPART_CODE', 'DEPART_NAME')"
+									value="ognl:info.DEPART_CODE" desc="部门" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">业务区：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_AREA_CODE@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.AREAS, 'AREA_CODE', 'AREA_NAME')"
+									value="ognl:info.AREA_CODE" desc="业务区" class="e_select"
+									onchange="ajaxDirect('cashiersys.staff.StaffList','queryHotelsByArea','&AREA_CODE='+this.value,'refreshArea')"/>
+							</div></div>
+						</div>
+					</td>					
+
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">是否重置密码：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_RESET_PWD@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'YES_NO_FLAGS')"
+									value="ognl:info.RESET_PWD" desc="是否重置密码" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						
+					</td>
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_cSet">
+			<input type="submit" jwcid="bqsubmit@Submit" value="提交" listener="ognl:listeners.updateStaff" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>	
+</form>	
+</div></div>
+</body>
+</html>

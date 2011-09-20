@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.linkage.component.view.Navigation">
+    <property-specification name="title" type="java.lang.String"/>
+    <property-specification name="url" type="java.lang.String"/>
+    <property-specification name="notify" type="java.lang.String"/>
+</page-specification>

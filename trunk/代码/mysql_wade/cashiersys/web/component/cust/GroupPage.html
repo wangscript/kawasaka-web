@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Group List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/cust.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<div class="c_inputField">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn"><div class="char4">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>业务区：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_AREA_CODE@component:AreaField" value="ognl:condition.cond_AREA_CODE" deptName="cond_DEPART_ID" staffName="cond_CUST_MANAGER_ID" readOnly="ognl:'true'.equals(pageData.getParameter('relaflag'))" desc="归属业务区" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>归属部门：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_DEPART_ID@component:DeptField" value="ognl:condition.cond_DEPART_ID" areaName="cond_AREA_CODE" staffName="cond_CUST_MANAGER_ID" readOnly="ognl:'true'.equals(pageData.getParameter('relaflag'))" desc="归属部门" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>客户经理：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_CUST_MANAGER_ID@component:ManagerField" value="ognl:condition.cond_CUST_MANAGER_ID" areaName="cond_AREA_CODE" deptName="cond_DEPART_ID" desc="客户经理" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>集团属性：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_GROUP_ATTR@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'CUSTGROUP_GROUPATTR')" value="ognl:condition.cond_GROUP_ATTR" desc="集团属性" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>集团类型：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_GROUP_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'CUSTGROUP_GROUPTYPE')" value="ognl:condition.cond_GROUP_TYPE" desc="集团类型" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>集团状态：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_GROUP_STATUS@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'CUSTGROUP_GROUPSTATUS')" value="ognl:condition.cond_GROUP_STATUS" desc="集团状态" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>集团编码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_GROUP_ID@TextField" value="ognl:condition.cond_GROUP_ID" desc="集团编码" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>集团名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_CUST_NAME@TextField" value="ognl:condition.cond_CUST_NAME" desc="集团名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>联系电话：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_GROUP_CONTACT_PHONE@TextField" value="ognl:condition.cond_GROUP_CONTACT_PHONE" desc="联系电话" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div></div>
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value=" 执行查询 " listener="ognl:listeners.queryCustsByGroup" class="e_button" onclick="return queryAll(this)"/>
+		</div>
+	</div>
+
+	<div id="GroupPart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryCustsByGroup" refreshParts="GroupPart" checkboxName="custs"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:190px;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+	      				<span jwcid="@Conditional" condition="ognl:pageData.getParameter('multi') == 'true'">
+	      					<th><input type="checkbox" id="custs_ctrl" name="custs_ctrl" onclick="checkedAll('custs', checked)"/></th>
+	      				</span>
+	      				<th>集团编码</th>
+						<th>集团名称</th>
+						<th>客户经理</th>
+						<th>联系电话</th>
+						<th>集团属性</th>
+						<th>集团类型</th>
+						<th>集团状态</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<span jwcid="@Conditional" condition="ognl:pageData.getParameter('multi') == 'true'">
+							<td><input type="checkbox" id="custs" name="custs" jwcid="@wade:Checkbox" value="ognl:info.CUST_ID + ';' + info.GROUP_ID + ';' + info.CUST_MANAGER_ID + ';' + info.CUST_NAME"/></td>
+						</span>
+						<td><a jwcid="@wade:PageRedirect" value="ognl:info.GROUP_ID" cust_id="ognl:info.CUST_ID" cust_code="ognl:info.GROUP_ID" cust_name="ognl:info.CUST_NAME" cust_manager_id="ognl:info.CUST_MANAGER_ID" onclick="Wade.dialog.setReturnValue(cust_id, cust_name, ['USER_ID','CUST_CODE','CUST_MANAGER_ID'], [getAttribute('cust_id'),getAttribute('cust_code'),getAttribute('cust_manager_id')])"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.CUST_NAME" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.CUST_MANAGER_ID)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.GROUP_CONTACT_PHONE" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'CUSTGROUP_GROUPATTR', info.GROUP_ATTR)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'CUSTGROUP_GROUPTYPE', info.GROUP_TYPE)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'CUSTGROUP_GROUPSTATUS', info.GROUP_STATUS)" raw="false"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+	</div></div>
+	</div>
+	
+	<div class="c_submit l_mt">
+		<div class="bottom e_cSet">
+			<span jwcid="@Conditional" condition="ognl:pageData.getParameter('multi') == 'true'">
+				<input type="button" id="bselect" name="bselect" value="选择" class="e_button" onclick="Wade.cust.selectGroups()"/>
+			</span>
+			<input type="button" id="bclean" name="bclean" value="清除" class="e_button" onclick="Wade.dialog.setReturnValue('', '', ['CUST_CODE'], [''])"/>
+			<input type="button" id="bcancel" name="bcancel" value="返回" class="e_button" onclick="Wade.page.cancel(true)"/>
+		</div>
+	</div>
+</form>	
+	
+</div></div>
+</body>
+</html>

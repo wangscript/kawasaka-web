@@ -1,0 +1,1 @@
+wcw_diy 文件夹放到相应的数据库下如：C:\Program Files\MySQL\MySQL Server 5.0\data

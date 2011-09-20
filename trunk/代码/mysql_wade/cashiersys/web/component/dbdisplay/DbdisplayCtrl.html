@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>DoubleDisplay</title>
+<link href="component/styles/dbdisplay.css" rel="stylesheet" type="text/css" />
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/dbdisplay.js"></script>
+</head>
+<body oncontextmenu="window.event.returnValue=false">
+<div class="f_screenChange">
+	<h1>页面双屏控制(请设置浏览器保证窗口能够正常弹出)</h1>
+	<dl class="e_clear">
+		<dt><label for="define"><input name="switchMode" type="radio" value="define"/>自定义：</label></dt>
+		<dd id="disctrl">
+			<label for="width">宽度：<input class="e_input" id="width" type="text" value="800" desc="宽度" nullable="no" datatype="pinteger" onclick="Wade.dbdisplay.switchMode('define');"/></label>
+			<label for="height">高度：<input class="e_input" id="height" type="text" value="600" desc="高度" nullable="no" datatype="pinteger" onclick="Wade.dbdisplay.switchMode('define');"/></label>
+		</dd>
+		<dt><label for="select"><input name="switchMode" type="radio" value="select" checked/>选择分辨率：</label></dt>
+		<dd><select id="selectSize" onclick="switchMode('select');"><option value="800*600">800×600</option><option value="1024*768" selected>1024×768</option><option value="1280*1024">1280×1024</option></select>像素</dd>
+	</dl>
+	<div class="submit">
+		<input class="e_button" type="button" value="开启外屏窗口" onclick="return Wade.dbdisplay.openDbdisplay(this);"/>
+		<input class="e_button" type="button" value="关闭双屏控制" onclick="if (!window.confirm('确定关闭双屏控制及外屏窗口吗？')) return false;if (Wade.dbdisplay.dboutwin != null) Wade.dbdisplay.dboutwin.close();window.close();"/>
+	</div>
+	<input type="hidden" jwcid="@Any" id="INITURL" name="INITURL" value="ognl:pageData.getParameter('INITURL')"/>
+</div>
+<script language="javascript"><!--
+Wade.onLoad(function(){
+	Wade.dbdisplay.initDbdisplayCtrl();
+});
+// --></script>
+</body>
+</html>

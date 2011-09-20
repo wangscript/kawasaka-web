@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>员工管理</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="cashiersys/scripts/staff/staff.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col4">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							&nbsp;
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">操作类型：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="@Any" id="cond_OPER_TYPE" name="cond_OPER_TYPE" onchange="changeDisplay(this.value);" class="e_select">
+									<option value="A">---修改---</option>
+									<option value="B">---重置---</option>
+								</select>
+							</div></div>
+						</div>
+						<div class="wrapper" id="oldStaffDiv">
+							<div class="label"><span class="e_required">原密码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_OLD_STAFF_PWD@TextField" hidden="true" nullable="no" minsize="1" maxsize="12" datatype="text" maxLength="12" value="ognl:conditions.STAFF_ID"  desc="原密码" class="e_input"/>
+							</div></div>
+						</div>
+						<div class="wrapper" id="newStaff1Div">
+							<div class="label"><span class="e_required">新密码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_NEW_STAFF_PWD1@TextField" hidden="true" nullable="no" minsize="1" maxsize="12" datatype="text" maxLength="12" value="ognl:conditions.STAFF_ID" desc="新密码" class="e_input"/>
+							</div></div>
+						</div>
+						<div class="wrapper" id="newStaff2Div">
+							<div class="label"><span class="e_required">新密码确认：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_NEW_STAFF_PWD2@TextField" hidden="true" nullable="no" minsize="1" maxsize="12" datatype="text" maxLength="12" value="ognl:conditions.STAFF_ID" desc="新密码确认" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							&nbsp;
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_cSet">
+			<input type="submit" jwcid="bquery@Submit" value="提交" listener="ognl:listeners.updateStaffPasswd" onclick="if(!checkBeforeSubmit()){return false;} return queryAll(this);" class="e_button"/>
+			<input type="submit" jwcid="breset@Submit" value="提交" listener="ognl:listeners.updateStaffPasswd" style="display:none;" class="e_button"/>
+		</div>
+	</div>
+	
+</form>	
+</div></div>
+</body>
+</html>

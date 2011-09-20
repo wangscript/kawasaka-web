@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Nav Menu</title>
+<link jwcid="@wade:Style" href="ognl:@com.linkage.component.util.Utility@getConfig('wadeui/navmenuStyle', 'component/ecl/skin/defaultSkin/defaultColor/color.css')" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/navmenu.js"></script>
+</head>
+<body jwcid="@Body" oncontextmenu="window.event.returnValue = false" onselectstart="return false;" ondrag="return false">   
+<form jwcid="@Form">
+<div class="c_tabNav"><div class="tabNavWrapper">
+	<div class="tabTurner e_clear">
+		<ul>
+			<li><a id="turnLeft" href="javascript:void(0)" onfocus="this.blur();" onmousedown="Wade.navMenu.Controler.turnLeftMouseDown();" title="左移标签组" class="left"></a></li>
+			<li><a id="turnRight" href="javascript:void(0)" onfocus="this.blur();" onmousedown="Wade.navMenu.Controler.turnRightMouseDown();" title="右移标签组" class="right"></a></li>
+			<li><a href="javascript:void(0)" onfocus="this.blur();" onclick="Wade.navMenu.Controler.resetNavMenus();" title="复位标签组" class="default"></a></li>
+		</ul>
+	</div>
+	<div id="navnotify" style="display:none">
+		<div class="placard" jwcid="@wade:Part" id="NotifysPart" optimize="true">
+			<span jwcid="@Conditional" condition="ognl:needNotify && visit.hasPriv('COM_TIME_NOTIFY')">
+			<span jwcid="@Conditional" condition="ognl:notifys != null && notifys.size() > 0">		
+				<marquee direction="left" scrollamount="4" onmouseover="stop();" onmouseout="start();">
+				<div>
+					<p id="navmsgarea">
+						<div jwcid="@Foreach" source="ognl:notifys" value="ognl:notify"><span jwcid="@Any" id="ognl:notify.ID" tag="notify" notifytype="ognl:notify.NOTIFYTYPE"><span style="color: #ff0000;">[<span jwcid="@Insert" value="ognl:notify.DESC" raw="false"/>]</span><a jwcid="@wade:PageRedirect" value="ognl:notify.TITLE" page="ognl:notify.PAGE" listener="ognl:notify.LISTENER" params="ognl:notify.PARAMS" subsys="ognl:notify.SUBSYS" onclick="Wade.redirect.redirectTo(getAttribute('page'), getAttribute('listener'), getAttribute('params'), 'contentframe')"/></span>&nbsp;&nbsp;</div>
+					</p>
+				</div>
+				</marquee>
+				<a class="close" href="javascript:void(0)" title="关闭提醒" onclick="if (!window.confirm('确定关闭提醒窗口吗？')) return false;Wade.dom.getElement('navnotify').removeNode(true);"></a>
+				<div id="popupNotifyContent" style="display:none;"></div>
+			</span>
+			<input type="hidden" id="notifyFrequency" name="notifyFrequency" jwcid="@Any" value="ognl:notifyFrequency"/>
+			<input type="hidden" id="notify" name="notify" jwcid="@Any" value="ognl:needNotify"/>
+			</span>
+		</div>
+	</div>
+	<div class="tabArea"><div class="tab e_clear"><div class="maxWidth">
+		<ul id="navmenus" class="e_clear"></ul>
+	</div></div></div>
+</div>
+
+<script language="javascript"><!--
+System.onLoad(function(){
+	parent.Wade.navigation.openFirstFrame();
+});
+//--></script>
+</form>
+</body>
+</html>

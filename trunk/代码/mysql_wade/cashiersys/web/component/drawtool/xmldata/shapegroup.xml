@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shapegroups>
+  <group id="1">
+    <name>流程图</name>
+    <profile><![CDATA[workflow_shapes.xml]]></profile>
+  </group>
+  <group id="2">
+    <name>UML图</name>
+    <profile><![CDATA[uml_shapes.xml]]></profile>
+  </group>
+  <group id="3">
+    <name>实体对象模型图</name>
+    <profile><![CDATA[er_shapes.xml]]></profile>
+  </group>
+</shapegroups>
