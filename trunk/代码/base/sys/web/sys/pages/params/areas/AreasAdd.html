@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>新增业务区参数</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="sys/scripts/params/params.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<!-- 修改项目信息  开始-->
+			<table class="col4">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">业务区名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="add_AREA_NAME@TextField" value="ognl:info.AREA_NAME" nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" desc="业务区名称" class="e_input"/>
+							</div></div>
+						</div>
+						<div class="wrapper">
+							<div class="label"><span>描述：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="add_AREA_DESC@TextField" value="ognl:info.AREA_DESC" nullable="yes" minsize="1" maxsize="100" datatype="text" maxLength="100" desc="描述" class="e_input"/>
+							</div></div>
+						</div>
+						<div class="wrapper">
+							<div class="label"><span class="e_required">状态：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="add_ITEM_FLAG@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'BUSI_ITEM_FLAGS')"
+									value="ognl:info.ITEM_FLAG" desc="部门状态" class="e_select" nullable="no"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<!-- 修改项目信息  结束-->
+		</div></div>
+		<div class="bottom e_cSet">
+			<input type="submit" jwcid="bqsubmit@Submit" value="提交" listener="ognl:listeners.saveAreas" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>
+</form>	
+<script language="javascript"><!--
+	
+// --></script>
+</div></div>
+</body>
+</html>

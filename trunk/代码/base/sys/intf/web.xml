@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+  <display-name>resmanm</display-name>
+
+  <servlet>
+    <servlet-name>httptran</servlet-name>
+    <servlet-class>com.linkage.wtrans.httptran.HttpServletTran</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>httptran</servlet-name>
+    <url-pattern>/httptran/CrmService</url-pattern>
+  </servlet-mapping>
+   
+  <servlet>
+    <servlet-name>wstran</servlet-name>
+    <servlet-class>org.codehaus.xfire.transport.http.XFireConfigurableServlet</servlet-class>
+ 	<init-param>
+   	  <param-name>config</param-name>
+   	  <param-value>xfire/services.xml</param-value>
+ 	</init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>wstran</servlet-name>
+    <url-pattern>/wstran/*</url-pattern>
+  </servlet-mapping>
+
+</web-app>

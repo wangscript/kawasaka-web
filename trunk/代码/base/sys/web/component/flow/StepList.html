@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Step List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+	/** add tabset */
+	function addTabset() {
+		var tabset = new TabSet("tabset");
+		tabset.addTab("流程执行图表", getElement("flowChart"));
+		tabset.addTab("流程执行进度", getElement("stepList"));
+		tabset.draw();
+	}
+-->
+</script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<!-- 标签区 -->
+	<div class="l_pt l_pb">
+	<div id="tabset">
+		<div id="tabset_tabs"></div>
+		<div id="tabset_content">
+			<div id="flowChart">
+				<div>
+					<div jwcid="@wade:Chart" pageName="component.flow.StepList" listener="getFlowChart" parameters="ognl:'&FLOW_FILE=' + pageData.getParameter('FLOW_FILE')" width="ognl:chartWidth" height="ognl:chartHeight" />
+				</div>
+			</div>
+			<div id="stepList">
+				<!--stepList start -->
+				<div class="c_table l_mt"><div class="nowrapOn">
+				<!-- 控制区 -->
+				<div class="fctTop e_clear">
+					<div class="fctLeft">
+						<div class="button">
+							<ul>
+								
+							</ul>
+						</div>
+					</div>
+					<div class="fctRight">
+						
+					</div>
+				</div>
+				<!-- 数据区 -->
+		      	<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+		      		<table>
+		      			<thead>
+		      			<tr>
+		      				<th>步骤标识</th>
+		      				<th>步骤名称</th>
+							<th>步骤描述</th>
+							<th>接续步骤</th>
+							<th>执行时间</th>
+							<th>完成时间</th>
+							<th>执行状态</th>
+							<th>执行结果</th>
+							<th>登记员工</th>
+							<th>登记时间</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+								<td><span jwcid="@Insert" value="ognl:info.STEP_ID" raw="false"/></td>
+								<td><span jwcid="@Insert" value="ognl:info.STEP_NAME" raw="false"/></td>
+								<td><span jwcid="@Insert" value="ognl:info.STEP_DESC" raw="false"/></td>
+								<td><span jwcid="@Insert" value="ognl:info.NEXT_STEP_NAME" raw="false"/></td>
+								<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.EXEC_TIME)" raw="false"/></td>
+								<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.COMP_TIME)" raw="false"/></td>
+								<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'FLOWSTEP_EXECSTATUS', info.EXEC_STATUS)" raw="false" class="ognl:info.EXEC_STATUS == @com.linkage.appframework.flow.FlowFactory@STEP_STATUS_EXECUTE ? 'wordb' : 'wordg'"/></td>
+								<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'FLOWSTEP_EXECRESULT', info.EXEC_RESULT)" raw="false" class="ognl:info.EXEC_RESULT == @com.linkage.appframework.flow.FlowFactory@STEP_RESULT_FAIL ? 'wordr' : 'wordg'"/></td>
+								<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.IN_STAFF_ID)" raw="false"/></td>
+								<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.IN_TIME)" raw="false"/></td>
+							</tr>
+						</tbody>
+					</table>
+				</div></div></div>
+				<!-- 控制区 -->
+				<div class="fctTop e_clear">
+					<div class="fctLeft">
+						<div class="button">
+							<ul>
+								
+							</ul>
+						</div>
+					</div>
+					<div class="fctRight">
+						
+					</div>
+				</div>				
+			 </div></div>
+			 <!-- step list end -->
+			
+		</div>
+	</div>
+</div>	
+
+</form>
+<script>
+Wade.onLoad(function(){
+	addTabset();
+});
+</script>
+
+</div></div>
+</body>
+</html>

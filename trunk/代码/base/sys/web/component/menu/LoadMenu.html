@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head" reduce="true">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>Load Menu</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/menu.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 菜单树 -->
+	<div jwcid="@component:RawTreeMenu" subsys="ognl:subsys" rootId="ognl:rootId == '' || rootId == 'null' ? null : rootId" rootName="ognl:rootName" defaultActionNode="ognl:defaultActionNode" test="ognl:test"/>
+
+</form>
+<script language="javascript">
+<!--
+Wade.onLoad(function(){
+	Wade.menu.loadMenu_Init();
+});
+//-->
+</script>
+</div></div>
+</body>
+</html>

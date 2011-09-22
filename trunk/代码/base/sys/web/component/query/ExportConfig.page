@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.linkage.component.view.query.ExportConfig">
+	<property-specification name="info" type="com.linkage.appframework.data.IData"/>
+	<property-specification name="sheets" type="com.linkage.appframework.data.IDataset[]"/>
+    <property-specification name="cells" type="com.linkage.appframework.data.IDataset"/>
+	<property-specification name="cellset" type="com.linkage.appframework.data.IDataset"/>
+	<property-specification name="cell" type="com.linkage.appframework.data.IData"/>
+	<property-specification name="rowIndex" type="int"/>
+    <property-specification name="execTimes" type="com.linkage.appframework.data.IDataset"/>
+    <property-specification name="exportTypes" type="com.linkage.appframework.data.IDataset"/>
+</page-specification>

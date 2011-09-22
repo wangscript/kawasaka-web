@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Export List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script language="javascript">
+<!--
+System.onReady(function(){
+
+});
+//-->
+</script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+
+	<div class="c_inputField l_mt">
+		<!-- 顶部区 -->
+		<div class="top"></div>
+		<!-- 条件区 -->
+		<div class="body"><div class="aclinicOn">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>方案分类:</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_CRIT_CLASS@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'TD_S_QRY_CLASS', 'CRIT_CLASS', 'PARAM1')" value="ognl:condition.cond_CRIT_CLASS" desc="方案分类" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>执行状态:</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_EXEC_STATUS@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'CRITERIALEXEC_EXECSTATUS')" value="ognl:condition.cond_EXEC_STATUS" desc="执行状态" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>执行结果:</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_EXEC_RESULT@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'CRITERIALEXEC_EXECRESULT')" value="ognl:condition.cond_EXEC_RESULT" desc="执行结果" class="e_input"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>需要提醒:</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_NEED_NOTIFY@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'COMMON_NEEDNOTIFY')" value="ognl:condition.cond_NEED_NOTIFY" desc="需要提醒" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>提醒方式:</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_NOTIFY_MODE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'COMMON_NOTIFYMODE')" value="ognl:condition.cond_NOTIFY_MODE" desc="提醒方式" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>文件名称:</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_FILE_NAME@TextField" value="ognl:condition.cond_FILE_NAME" desc="文件名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>				
+			</table>
+		</div></div>
+		<!-- 按钮区 -->
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" class="e_button" listener="ognl:listeners.queryCriteriaExecs" onclick="return queryAll(this)"/>
+		</div>
+	</div>
+	
+	<!-- 表格区 -->
+	<div id="CriteriaPart" jwcid="@wade:Part" optimize="true">	
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<!-- 控制区 -->
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('crits')"/></li>
+						<li><a jwcid="@wade:PageSubmit" value="删除" listener="ognl:listeners.deleteCriteriaExecs" desc="定制导出" class="e_bLinkDelete" onclick="return queryBox(this, 'crits');"/></li>
+					</ul>
+				</div>
+			</div>
+			<!--分页区-->
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryCriteriaExecs" refreshParts="CriteriaPart"/>
+			</div>
+		</div>	
+		<!-- 数据区 -->
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+      				<th><input type="checkbox" id="crits_ctrl" name="crits_ctrl" onclick="checkedAll('crits', checked)"/></th>
+					<th>文件名称</th>
+					<th>文件大小</th>
+					<th>方案分类</th>
+					<th>执行时间</th>
+					<th>完成时间</th>
+					<th>执行状态</th>
+					<th>执行结果</th>
+					<th>需要提醒</th>
+					<th>提醒方式</th>
+					<th>登记员工</th>
+					<th>登记时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td class="signbj"><input type="checkbox" id="crits" name="crits" jwcid="@Any" value="ognl:info.CRIT_ID"/></td>
+						<td><a jwcid="@Any" href="ognl:info.FILE_ID == null ? 'javascript:' : 'attach?file_id=' + info.FILE_ID"><span jwcid="@Insert" value="ognl:info.FILE_NAME" raw="false"/></a></td>
+						<td><span jwcid="@Insert" value="ognl:info.FILE_ID == null ? null : info.FILE_SIZE / 1000 + 'k'" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.CRIT_CLASSNAME" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.EXEC_TIME)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.COMP_TIME)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'CRITERIALEXEC_EXECSTATUS', info.EXEC_STATUS)" raw="false" class="ognl:info.EXEC_STATUS == 1 ? 'wordb' : 'wordg'"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'CRITERIALEXEC_EXECRESULT', info.EXEC_RESULT)" raw="false" class="ognl:info.EXEC_RESULT == 0 ? 'wordr' : 'wordg'"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'COMMON_NEEDNOTIFY', info.NEED_NOTITY)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'COMMON_NOTIFYMODE', info.NOTIFY_MODE)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.IN_STAFF_ID)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.IN_TIME)" raw="false"/></td>
+					</tr>				
+				</tbody>
+			</table>
+		</div></div></div>	
+		<!-- 控制区 -->
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('crits')"/></li>
+						<li><a jwcid="@wade:PageSubmit" value="删除" listener="ognl:listeners.deleteCriteriaExecs" desc="定制导出" class="e_bLinkDelete" onclick="return queryBox(this, 'crits');"/></li>
+					</ul>
+				</div>
+			</div>
+			<!--分页区-->
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryCriteriaExecs" refreshParts="CriteriaPart"/>
+			</div>
+		</div>				
+	</div></div>
+	</div>
+		
+</form>
+
+</div></div>
+</body>
+</html>

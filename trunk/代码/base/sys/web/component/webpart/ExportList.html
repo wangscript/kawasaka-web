@@ -1,0 +1,17 @@
+<div class="l_padding">
+		<!-- 列表 开始 -->
+		<div class="c_list">
+			<table>
+				<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" >
+						<td class="title"><div><a jwcid="@Any" href="ognl:info.FILE_ID == null ? 'javascript:' : 'attach?file_id=' + info.FILE_ID"><span jwcid="@Insert" value="ognl:info.FILE_NAME" raw="false"/></a></div></td>
+						<td><span jwcid="@Insert" value="ognl:info.FILE_ID == null ? null : info.FILE_SIZE / 1000 + 'k'" raw="false"/></td>
+				</tr>	
+			</table>
+		</div>
+		<!-- 列表 结束 -->
+		<div class="l_mt e_rSet">
+			<a class="e_bLinkNextNB l_mot l_mob" href="javascript:void(0);" caption="我的定制导出" onclick="redirectTo('component.query.ExportList', 'queryCriteriaExecs', '')"><span>更多</span></a>
+		</div>
+	</div>
+
+

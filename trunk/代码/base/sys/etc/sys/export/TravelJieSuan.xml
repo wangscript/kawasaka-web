@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="GB2312"?>
+<workbook>
+
+	<sheet desc="收入统计报表">
+		<header isshow="true" height="300">
+			<cell
+				name="IBSYSID"
+				desc="签单编号"
+				type="1"
+				align="1"
+				width="6000"
+			/>
+			<cell
+				name="TRAVEL_NAME"
+				desc="旅行社"
+				type="1"
+				align="1"
+				width="6000"
+			/>
+			<cell
+				name="ORDER_TIME"
+				desc="签单日期"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="CAR_NUM"
+				desc="车号"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="TEAM_NUM"
+				desc="来团人数"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="BUSI_FEE"
+				desc="金额"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="REMARK"
+				desc="备注"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="SALER_FEE"
+				desc="销售费用"
+				type="1"
+				align="1"
+				width="4000"
+			/>
+			<cell
+				name="CLOSE_TIME"
+				desc="结算日期"
+				type="1"
+				align="1"
+				width="4000"
+			/>																					
+		</header>
+	</sheet>
+	
+</workbook>

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Cust Manager Grant</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/org.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOff">
+			<table class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">对象类型：</span></div>
+							<div class="inputArea"><div>
+								<table>
+									<tr>
+										<td class="input">
+											<select jwcid="GRANT_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'CUSTMANAGER_GRANTTYPE')" value="ognl:info.GRANT_TYPE"/>
+											<a jwcid="@wade:PageRedirect" class="e_bLinkAdd" title="新增" grant_type="GRANT_TYPE" grant_target="GRANT_FROMS" onclick="Wade.org.addGrantObj(this)" value="新增"/>
+											<a jwcid="@wade:PageRedirect" class="e_bLinkDelete" title="删除" grant_type="GRANT_TYPE" grant_target="GRANT_FROMS" onclick="Wade.org.delGrantObj(this)" value="删除"/>
+										</td>
+									</tr>
+								</table>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">员工类型：</span></div>
+							<div class="inputArea"><div>
+								<table>
+									<tr>
+										<td class="input">
+											<select jwcid="GRANT_OBJ_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'CUSTMANAGER_GRANTOPTION')" value="ognl:info.GRANT_OBJ_TYPE" class="e_input"/>
+											<a jwcid="@wade:PageRedirect" class="e_bLinkAdd" title="新增" grant_type="GRANT_OBJ_TYPE" grant_target="GRANT_TOS" onclick="Wade.org.addGrantStaff(this)" value="新增"/>
+											<a jwcid="@wade:PageRedirect" class="e_bLinkDelete" title="删除" grant_type="GRANT_OBJ_TYPE" grant_target="GRANT_TOS" onclick="Wade.org.delGrantStaff(this)" value="删除"/>
+										</td>
+									</tr>
+								</table>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">授权对象：</span></div>
+							<div class="inputArea"><div>
+								<select id="GRANT_FROMS" name="GRANT_FROMS" jwcid="@wade:FlipSelect" model="ognl:@com.linkage.component.util.Utility@getSelection(objModel, 'OBJ_VALUE', 'OBJ_ID', true)" style="height:200px;"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">授予员工：</span></div>
+							<div class="inputArea"><div>
+								<select id="GRANT_TOS" name="GRANT_TOS" jwcid="@wade:FlipSelect" model="ognl:@com.linkage.component.util.Utility@getSelection(staffModel, 'STAFF_VALUE', 'STAFF_ID', true)" style="height:200px;"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">生效时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="EFF_DATE@wade:DateField" desc="生效时间" value="ognl:info.EFF_DATE" min="ognl:@com.linkage.component.util.Utility@getSysTime()" nullable="no" datatype="date" format="yyyy-MM-dd HH:mm" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">失效时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="EXP_DATE@wade:DateField" desc="失效时间" value="ognl:info.EXP_DATE" minName="EFF_DATE" nullable="no" datatype="text" format="yyyy-MM-dd HH:mm" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<table class="col1">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>备注：</span></div>
+							<div class="inputArea"><div>
+								<table>
+									<tr>
+										<td class="input">
+											<input type="text" jwcid="REMARK@TextArea" desc="备注" value="ognl:info.REMARK" rows="3" datatype="text" maxsize="200" class="e_textarea"/>
+										</td>
+									</tr>
+								</table>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_cSet">
+			<input type="button" jwcid="bgrant@Submit" value="授 权" listener="ognl:listeners.grantCustManager" class="e_button" onclick="return Wade.org.confirmGrant(this);"/>
+		</div>
+		<div style="display:none">
+			<input type="text" jwcid="SELECT_STAFF_ID@component:StaffField" afterAction="Wade.org.afterSelectStaff(this);" mult="false" editable="false" value="ognl:info.SELECT_STAFF_ID" blank="true" />
+			<input type="text" jwcid="SELECT_DEPART_ID@component:DeptField" afterAction="Wade.org.afterSelectDepart(this);" mult="false" editable="false" value="ognl:info.SELECT_DEPART_ID" blank="true"/>
+			<input type="text" jwcid="SELECT_MANAGER_ID@component:ManagerField" afterAction="Wade.org.afterSelectManager(this);" mult="false" editable="false" value="ognl:info.SELECT_MANAGER_ID" blank="true"/>
+			<input type="text" jwcid="SELECT_AREA_CODE@component:AreaField" afterAction="Wade.org.afterSelectArea(this);" mult="false" editable="false" value="ognl:info.SELECT_AREA_CODE" blank="true"/>
+		</div>
+	</div>
+
+</form>
+
+</div></div>
+</body>
+</html>

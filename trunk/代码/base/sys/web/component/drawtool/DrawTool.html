@@ -1,0 +1,102 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+<head jwcid="@wade:Head">
+    <title>在线绘图工具</title>
+	<link jwcid="@wade:Style" href="component/styles/styles_drawtool.css" rel="stylesheet" type="text/css" media="screen"/>
+	<script jwcid="@wade:Script" language="javascript" src="component/scripts/module/drawtool.js"></script>
+</head>
+<body>
+    <!--<div id="debugmsg" style="position:absolute;width:200px;height:200px;right:0;top:0;border:solid 1px black;z-index:999;background-color:White;"></div>-->
+    <form id="form1">
+    <table id="t_body" cellspacing="0" cellpadding="0" >
+    <tr>
+     <td class="td_top">
+         <table id="t_top" cellspacing="0" cellpadding="0" >
+         <tr>
+         <td class="toolbar_left"><img src="component/images/drawtool/toolbar/icon_left.gif" border="0" /></td>
+         <td class="toolbar">
+             <div id="toolbar_menu">
+                <ul>
+					<li><a id="toolbar_itemSave" group="save" href="javascript:void(0);" title="保存"><img src="component/images/drawtool/toolbar/icon_save.gif" border="0" height="14" width="14" /></a></li>
+					<!--<li><a href="javascript:void(0);"><img src="component/images/drawtool/toolbar/icon_saveall.gif" border="0" height="14" width="14" /></a></li> -->
+					<li><a href="javascript:void(0);" title="新建"><img src="component/images/drawtool/toolbar/icon_createnew.gif" border="0" height="14" width="14" /></a></li>
+					<li><a id="toolbar_itemOpen" href="javascript:void(0);" title="打开"><img src="component/images/drawtool/toolbar/icon_open.gif"  border="0" height="14" width="16" /></a></li>
+					<li><img src="component/images/drawtool/toolbar/icon_seperator.gif" border="0" height="14" width="2" /></li>
+					<li><a id="toolbar_itemArrow" group="drawmode" href="javascript:void(0);" title="指针工具"><img src="component/images/drawtool/toolbar/icon_select.gif" border="0" height="14" width="15" /></a></li>
+					<li><a id="toolbar_itemPolyLine" group="drawmode" href="javascript:void(0);" title="连接线工具"><img src="component/images/drawtool/toolbar/icon_linedraw.gif" border="0" height="14" width="14" /></a></li>
+					<!-- <li><a id="toolbar_itemArcLine" group="drawmode" href="javascript:void(0);"><img src="component/images/drawtool/toolbar/icon_dotlinedraw.gif" border="0" height="14" width="14" /></a></li> -->
+				    <li><a id="toolbar_buildLogicConfig" href="javascript:void(0);" style="width:100px" onclick="javascript:System.DrawTool.windowManager.showLogicConfig(this);"><span><label>生成事件流配置</label></span></a></li>
+				</ul>
+             </div>
+         </td>
+         <td class="toolbar_right"><img src="component/images/drawtool/toolbar/icon_right.gif" border="0" /></td>
+         </tr>
+         </table>
+     </td>
+    </tr>
+    <tr>
+    <td>
+     <table id="t_main" cellspacing="0" cellpadding="0" >
+     <tr>
+     <td id="td_left">
+      <table id="t_leftPanel" cellspacing="0" cellpadding="0">
+      <tr>
+      <td class="shapeListPanel" >
+      <table id="shapeListPanel" cellspacing="0" cellpadding="0">
+      <tbody>
+       </tbody>
+      </table>
+      </td>
+      </tr>
+      <tr>
+      <td class="propertyPanel">
+        <div id="propertyPanel">
+            <div id="propertyPanel_Header" class="topbar">
+             <div class="topbar_left"></div>
+             <div class="topbar_title">属性</div>
+             <div class="topbar_right"></div>
+            </div>
+            <div id="property_Content">
+                <dl></dl>
+            </div>
+        </div>
+      </td>
+      </tr>
+      </table>
+     </td>
+     <td id="td_middle">
+     <div id="middle_bar"><a id="middlebar_button" title="关闭左栏" href="javascript:void(0);"><img src="component/images/drawtool/middlebar/icon_close.gif" width="8" height="140" border="0" /></a></div>
+     </td>
+     <td id="td_right">
+     <table id="t_right" cellspacing="0" cellpadding="0" >
+        <tr>
+        <td class="help_bar" >&nbsp;</td>
+        </tr>
+        <tr>
+        <td  class="td_drawPanel" >
+         <div id="draw_panelContainer" class="draw_panelContainer" >
+          <div id="ruler-side" class="ruler-side"></div>
+          <div id="ruler-horiz" class="ruler-horiz"></div>
+          <div id="ruler-verti" class="ruler-verti"></div>
+          <div id="draw_panel" class="draw_panel" >         
+               
+          </div>
+         </div>
+        </td>
+        </tr>
+     </table>
+     </td>
+     </tr>
+     </table>
+    </td>
+    </tr>
+    </table>
+ </form>
+    
+<div id="outputpanel_dlg" style="display:none;position:absolute;">
+<div class="x-dlg-hd">输出面板</div>
+<div class="x-dlg-bd" style="border:solid 1px #04448A;overflow-y:hidden;overflow-x:hidden;">    
+<textarea id="outputpanel_content" style="font-size:12px;border:none;width:100%;height:100%;overflow-x:hidden;"></textarea>
+</div>
+</div>
+</body>
+</html>

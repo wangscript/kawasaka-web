@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Static Param Manager List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/adm.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	
+<div class="c_inputField l_mt">
+	<!-- 顶部区 -->
+	<div class="top"></div>	
+	<!-- 控件区 -->
+	<div class="body"><div class="aclinicOn">
+			<table id="TYPE" class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>参数标识：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="TYPE_ID@TextField" value="ognl:type.TYPE_ID" desc="参数标识" nullable="no" maxsize="30" datatype="text" class="e_input" />
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>参数名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="TYPE_DESC@TextField" value="ognl:type.TYPE_DESC" desc="参数名称" nullable="no" maxsize="50" datatype="text" class="e_input"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>				
+			</table>
+	</div></div>
+	<div class="bottom"></div>
+</div>
+	
+<div class="c_table l_mt"><div class="nowrapOn">	
+<!-- 数据区 -->
+<div id="ParamPart" jwcid="@wade:Part" optimize="true">
+	<!-- 控制区 -->
+	<div class="fctTop e_clear">
+		<div class="fctLeft">
+			<div class="button">
+				<ul>
+					<li><a href="javascript:void(0)" jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('datas');" /></li>
+					<li><a href="javascript:void(0)" class="e_bLinkDelete" jwcid="@wade:AjaxSubmitLink" beforeAction="if(!verifyField(getElement('TYPE_ID'))||!verifyField(getElement('TYPE_DESC'))){return false;}if(!confirmBox(this, 'datas'))return false;" afterAction="init();treeNodeRefresh(getElementValue('SUBSYS_CODE'), 'parent')"  listener="ognl:listeners.deleteParams" value="删除" desc="参数"  refreshParts="ParamPart" /></li>
+				</ul>
+			</div>
+		</div>
+		<div class="fctRight">
+		</div>
+	</div>
+	<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+  	<table id="ParamTable" onclick="tableedit.clickRow()">
+  		<thead>
+  		<tr>
+  		    <th id="col_CHECK_BOX" class="sign"><input type="checkbox" id="params_ctrl" name="params_ctrl" onclick="checkedAll('datas', checked);"/></th>
+  			<th id="col_X_TAG" style="display:none">TAG</th>
+  			<th id="col_DATA_ID">参数值</th>
+  			<th id="col_DATA_NAME">参数描述</th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr">
+				<td class="signbj"><input type="checkbox" id="datas" name="datas" jwcid="@wade:Checkbox" value="ognl:info.DATA_ID"/></td>		
+				<td style="display:none"></td>
+				<td><span jwcid="@Insert" value="ognl:info.DATA_ID" raw="false"/></td>
+				<td><span jwcid="@Insert" value="ognl:info.DATA_NAME" raw="false"/></td>
+			</tr>
+		</tbody>
+	</table>
+	</div></div></div>		
+</div>
+</div></div>
+		
+
+<div class="c_inputField l_mt">
+	<!-- 顶部区 -->
+	<div class="top"></div>	
+	<!-- 控件区 -->
+	<div class="body"><div class="aclinicOn">
+			<table id="TYPE" class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>参数值：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="DATA_ID@TextField" value="ognl:param.DATA_ID" desc="参数值" nullable="no" maxsize="50" datatype="text" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>参数描述：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="DATA_NAME@TextField" value="ognl:param.DATA_NAME" desc="参数描述" nullable="no" maxsize="100" datatype="text" class="e_input"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>				
+			</table>
+	</div></div>
+	<div class="bottom">
+			<input type="button" id="bcreate" name="bcreate" value="新 增" class="e_button" onclick="return Wade.adm.staticParam_List_CreateParam(this);"/>
+			<input type="button" id="bupdate" name="bupdate" value="修 改" class="e_button" onclick="return Wade.adm.staticParam_List_UpdateParam(this);"/>
+			<input type="button" id="bdelete" name="bdelete" value="删 除" class="e_button" onclick="return Wade.adm.staticParam_List_DeleteParam(this)"/>
+			<input type="button" id="bsubmit" name="bsubmit" value="提 交" class="e_button" onclick="return Wade.adm.staticParam_List_SubmitParams(this);"/>
+			<a id="bsubmitLink" style="display:none" jwcid="@wade:AjaxSubmitLink" afterAction="init();treeNodeRefresh(getElementValue('SUBSYS_CODE'), 'parent')" listener="ognl:listeners.submitParams" refreshParts="ParamPart">提交</a>
+	</div>
+</div>
+	
+
+<input type="hidden" id="X_CODING_STR" name="X_CODING_STR"/>
+<input type="hidden" jwcid="SUBSYS_CODE@Hidden" value="ognl:type.SUBSYS_CODE" encode="false"/>
+</form>
+<script language="javascript">
+<!--
+Wade.onLoad(function()[
+	Wade.adm.staticParam_List_Init();
+});
+//--></script>
+</div></div>
+</body>
+</html>

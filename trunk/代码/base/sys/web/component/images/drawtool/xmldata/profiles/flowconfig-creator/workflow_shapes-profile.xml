@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <properties>
+  <propertiesgroup>
+    
+  <properties shapeid="0">
+    <property name="name">
+      <description>进程名称</description>
+      <defaultvalue></defaultvalue>
+    </property>
+
+    <property name="class">
+      <description>接口类</description>
+      <defaultvalue></defaultvalue>
+    </property>
+
+    <property name="method">
+      <description>调用方法</description>
+      <defaultvalue></defaultvalue>
+    </property>
+
+    <property name="script">
+      <description>script</description>
+      <defaultvalue></defaultvalue>
+    </property>
+    
+  </properties>
+
+
+    <properties shapeid="1">  
+      <property name="name">
+        <description>进程名称</description>
+        <defaultvalue></defaultvalue>
+      </property>
+
+      <property name="class">
+        <description>接口类</description>
+        <defaultvalue></defaultvalue>
+      </property>
+
+      <property name="method">
+        <description>调用方法</description>
+        <defaultvalue></defaultvalue>
+      </property>
+
+      <property name="s-name">
+        <description>分支选择器名称</description>
+        <defaultvalue></defaultvalue>
+      </property>
+
+      <property name="s-default">
+        <description>分支选择器默认走向</description>
+        <defaultvalue></defaultvalue>
+      </property>
+
+      <property name="s-desc">
+        <description>分支选择器备注</description>
+        <defaultvalue></defaultvalue>
+      </property>
+      
+    </properties>
+
+
+    <properties shapeid="2">
+      <property name="name">
+        <description>进程名称</description>
+        <defaultvalue></defaultvalue>
+      </property>
+
+      <property name="class">
+        <description>接口类</description>
+        <defaultvalue></defaultvalue>
+      </property>
+
+      <property name="method">
+        <description>调用方法</description>
+        <defaultvalue></defaultvalue>
+      </property>
+    </properties>
+
+
+    <properties shapeid="3">
+      <property name="name">
+        <description>进程名称</description>
+        <defaultvalue></defaultvalue>
+      </property>
+    </properties>
+    
+  </propertiesgroup>
+
+  <lineproperties>
+    
+    <property name="name">
+      <description>进程名称</description>
+      <defaultvalue></defaultvalue>
+    </property>
+
+    <property name="class">
+      <description>接口类</description>
+      <defaultvalue></defaultvalue>
+    </property>
+
+    <property name="method">
+      <description>调用方法</description>
+      <defaultvalue></defaultvalue>
+    </property>
+    
+  </lineproperties>
+  </properties>
+
+  <templates>
+      <template shapeid="0">
+        <shapetemplate>
+          <![CDATA[<step {name:getPropAttrbuteString('name')} {desc:getPropAttrbuteString('desc')} 
+                    {class:getPropAttrbuteString('class')} {method:getPropAttrbuteString('method')}
+                    {line-resolverString:getPropAttrbuteString('nextstep')}
+		           /> ]]>        
+        </shapetemplate>
+        <linetemplate>
+          <![CDATA[{endshapeid:getShapePropValueByShapeID('name')}]]>
+        </linetemplate>
+      </template>
+
+      <template shapeid="1">
+        <shapetemplate>
+          <![CDATA[	<step  
+                    {name:getPropAttrbuteString('name')} {desc:getPropAttrbuteString('desc')} 
+                    {class:getPropAttrbuteString('class')} {method:getPropAttrbuteString('method')}>
+		                <switch {s-name:getPropAttrbuteString('name')} 
+                      {s-default:getPropAttrbuteString('default')}
+                      {s-desc:getPropAttrbuteString('desc')} >
+			                {line-resolverString}
+		                </switch>
+	                  </step> ]]>
+        </shapetemplate>
+        <linetemplate>
+          <![CDATA[<case name="{name}" nextstep="{endshapeid:getShapePropValueByShapeID('name')}" desc="{description}"/>]]>
+        </linetemplate>
+      </template>
+    
+      <template shapeid="2">
+        <shapetemplate>
+          <![CDATA[<step
+		                {name:getPropAttrbuteString('name')} {desc:getPropAttrbuteString('desc')} 
+                    {class:getPropAttrbuteString('class')} {method:getPropAttrbuteString('method')}
+                    {line-resolverString:getPropAttrbuteString('nextstep')
+		             /> ]]>
+        </shapetemplate>
+        <linetemplate>
+          <![CDATA[{endshapeid:getShapePropValueByShapeID('name')}]]>
+        </linetemplate>
+      </template>
+
+      <template shapeid="3">
+        <shapetemplate>
+          <![CDATA[<step
+		                  {name:getPropAttrbuteString('name')} {desc:getPropAttrbuteString('desc')} 
+                      {line-resolverString:getPropAttrbuteString('nextstep')}
+		               /> ]]>
+        </shapetemplate>
+        <linetemplate>
+          <![CDATA[{endshapeid:getShapePropValueByShapeID('name')}]]>
+        </linetemplate>
+      </template>
+    
+      <template shapeid="4">
+        <shapetemplate>
+          <![CDATA[<step
+		                    {name:getPropAttrbuteString('name')} {desc:getPropAttrbuteString('desc')} 
+                        {line-resolverString:getPropAttrbuteString('nextstep')}
+		                 /> ]]>
+        </shapetemplate>
+        <linetemplate>
+          <![CDATA[{endshapeid:getShapePropValueByShapeID('name')}]]>
+        </linetemplate>
+      </template>
+    
+  </templates>
+</root>

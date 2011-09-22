@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head" reduce="true">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>Flow Submit</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/flow.js"></script>
+</head>
+<body oncontextmenu="window.event.returnValue = false" onselectstart="return false;" ondrag="return false">
+<div class="c_submit e_cSet"><div id="buttonarea">
+	<a id="bback" class="e_bLinkPre" jwcid="@wade:PageRedirect" value="上一步(P)" onclick="if (className.endsWith('Dis')) return false;getFrame(['flowtab', parent]).fireMouseEvent('bback','click');"/>
+	<a id="bnext" class="e_bLinkNext" jwcid="@wade:PageRedirect" value="下一步(N)" onclick="if (className.endsWith('Dis')) return false;getFrame(['flowtab', parent]).fireMouseEvent('bnext','click');"/><a id="bfinish" class="e_bLinkFinish" jwcid="@wade:PageRedirect" value="完  成(I)" onclick="if (className.endsWith('Dis')) return false;getFrame(['flowtab', parent]).fireMouseEvent('bfinish','click');"/>
+	<a id="bcancel" class="e_bLinkCancel" jwcid="@wade:PageRedirect" value="取  消(C)" onclick="if (className.endsWith('Dis')) return false;getFrame(['flowtab', parent]).fireMouseEvent('bcancel','click');"/>
+</div></div>
+</body>
+</html>

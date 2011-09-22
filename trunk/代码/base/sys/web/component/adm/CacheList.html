@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Cache Monitor</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<span jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('caches')"/></li>
+						<li><a jwcid="@wade:PageSubmit" value="清空" listener="ognl:listeners.cleanupElements" desc="缓存" class="e_bLinkClear" onclick="return queryBox(this, 'caches');"/></li>
+						<li><a jwcid="@wade:PageSubmit" value="刷新" listener="ognl:listeners.queryElements" desc="缓存" class="e_bLinkRefresh" onclick="return queryOper(this);"/></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+		  				<th><input type="checkbox" id="caches_ctrl" name="caches_ctrl" onclick="checkedAll('caches', checked)"/></th>
+						<th>名称</th>
+						<th>类型</th>
+						<th>值</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:caches" value="ognl:cache" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><input type="checkbox" id="caches" name="caches" jwcid="@Any" value="ognl:cache.NAME"/></td>
+						<td><span jwcid="@Insert" value="ognl:cache.NAME" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:cache.CLASS" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:cache.VALUE" raw="false"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<div class="fctBottom e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('caches')"/></li>
+						<li><a jwcid="@wade:PageSubmit" value="清空" listener="ognl:listeners.cleanupElements" desc="缓存" class="e_bLinkClear" onclick="return queryBox(this, 'caches');"/></li>
+						<li><a jwcid="@wade:PageSubmit" value="刷新" listener="ognl:listeners.queryElements" desc="缓存" class="e_bLinkRefresh" onclick="return queryOper(this);"/></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div></div>
+	<input type="hidden" jwcid="@Any" name="CACHE_NAME" id="CACHE_NAME" value="ognl:pageData.getData().CACHE_NAME" />
+</form>	
+</div></div>
+</body>
+</html>

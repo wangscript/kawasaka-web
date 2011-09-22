@@ -1,0 +1,83 @@
+	<!-- This file is segement of tapestry application specification -->
+	<page name="component.AppPage" specification-path="/component/AppPage.page"/>
+	<page name="component.Excedesc" specification-path="/component/Excedesc.page"/>
+	<page name="component.Timeout" specification-path="/component/Timeout.page"/>
+	<page name="component.Message" specification-path="/component/Message.page"/>
+	<page name="component.Agent" specification-path="/component/Agent.page"/>
+	<page name="component.Navigation" specification-path="/component/Navigation.page"/>
+	<page name="component.NavMenu" specification-path="/component/NavMenu.page"/>
+	<page name="component.Login" specification-path="/component/Login.page"/>
+	<page name="component.Logout" specification-path="/component/Logout.page"/>
+	<page name="component.Proxy" specification-path="/component/Proxy.page"/>
+	<page name="component.adm.CacheMonitor" specification-path="/component/adm/CacheMonitor.page"/>
+	<page name="component.adm.CacheManager" specification-path="/component/adm/CacheManager.page"/>
+	<page name="component.adm.CacheList" specification-path="/component/adm/CacheList.page"/>
+	<page name="component.adm.FileList" specification-path="/component/adm/FileList.page"/>
+	<page name="component.adm.PasswordModify" specification-path="/component/adm/PasswordModify.page"/>
+	<page name="component.adm.StaticParamManagerList" specification-path="/component/adm/StaticParamManagerList.page"/>
+	<page name="component.adm.StaticParamManager" specification-path="/component/adm/StaticParamManager.page"/>
+	<page name="component.menu.MenuImport" specification-path="/component/menu/MenuImport.page"/>
+	<page name="component.menu.LoadMenu" specification-path="/component/menu/LoadMenu.page"/>
+	<page name="component.org.AreaTree" specification-path="/component/org/AreaTree.page"/>
+	<page name="component.org.DeptTree" specification-path="/component/org/DeptTree.page"/>
+	<page name="component.org.StaffSelect" specification-path="/component/org/StaffSelect.page"/>
+	<page name="component.org.ManagerSelect" specification-path="/component/org/ManagerSelect.page"/>
+	<page name="component.org.CustManagerGrant" specification-path="/component/org/CustManagerGrant.page"/>
+	<page name="component.org.GrantList" specification-path="/component/org/GrantList.page"/>
+	<page name="component.cust.GroupPage" specification-path="/component/cust/GroupPage.page"/>
+	<page name="component.cust.VipCustPage" specification-path="/component/cust/VipCustPage.page"/>
+	<page name="component.cust.GroupMemberPage" specification-path="/component/cust/GroupMemberPage.page"/>
+	<page name="component.cust.PersonCustPage" specification-path="/component/cust/PersonCustPage.page"/>
+	<page name="component.doc.TempletList" specification-path="/component/doc/TempletList.page"/>
+	<page name="component.doc.TempletEdit" specification-path="/component/doc/TempletEdit.page"/>
+	<page name="component.doc.TempletPreview" specification-path="/component/doc/TempletPreview.page"/>
+	<page name="component.doc.ItemList" specification-path="/component/doc/ItemList.page"/>
+	<page name="component.doc.ItemEdit" specification-path="/component/doc/ItemEdit.page"/>
+	<page name="component.info.MessageList" specification-path="/component/info/MessageList.page"/>
+	<page name="component.info.MessageEdit" specification-path="/component/info/MessageEdit.page"/>
+	<page name="component.info.BulletinList" specification-path="/component/info/BulletinList.page"/>
+	<page name="component.info.BulletinEdit" specification-path="/component/info/BulletinEdit.page"/>
+	<page name="component.info.AddressList" specification-path="/component/info/AddressList.page"/>
+	<page name="component.info.SendStaffMsg" specification-path="/component/info/SendStaffMsg.page"/>
+	<page name="component.cata.CatalogFrame" specification-path="/component/cata/CatalogFrame.page"/>
+	<page name="component.cata.CatalogTree" specification-path="/component/cata/CatalogTree.page"/>
+	<page name="component.cata.CatalogList" specification-path="/component/cata/CatalogList.page"/>
+	<page name="component.know.KnowledgeFrame" specification-path="/component/know/KnowledgeFrame.page"/>
+	<page name="component.know.KnowledgeList" specification-path="/component/know/KnowledgeList.page"/>
+	<page name="component.know.KnowledgeEdit" specification-path="/component/know/KnowledgeEdit.page"/>
+	<page name="component.favo.FavoriteList" specification-path="/component/favo/FavoriteList.page"/>
+	
+	<page name="component.query.QueryPage" specification-path="/component/query/QueryPage.page"/>
+	<page name="component.query.ExportConfig" specification-path="/component/query/ExportConfig.page"/>
+	<page name="component.query.ExportList" specification-path="/component/query/ExportList.page"/>
+	<page name="component.flow.FlowList" specification-path="/component/flow/FlowList.page"/>
+	<page name="component.flow.StepList" specification-path="/component/flow/StepList.page"/>
+	<page name="component.flow.pageflow.FlowChart" specification-path="/component/flow/pageflow/FlowChart.page"/>
+	<page name="component.flow.pageflow.FlowFrame" specification-path="/component/flow/pageflow/FlowFrame.page"/>
+	<page name="component.flow.pageflow.FlowTab" specification-path="/component/flow/pageflow/FlowTab.page"/>
+	<page name="component.flow.pageflow.FlowSubmit" specification-path="/component/flow/pageflow/FlowSubmit.page"/>
+	<page name="component.flow.logicflow.FlowList" specification-path="/component/flow/logicflow/FlowList.page"/>
+	<page name="component.flow.logicflow.FlowView" specification-path="/component/flow/logicflow/FlowView.page"/>
+
+	<page name="component.dbdisplay.DbdisplayCtrl" specification-path="/component/dbdisplay/DbdisplayCtrl.page"/>
+
+	<page name="component.draglayout.adm.PageLayoutConfigMain" specification-path="/component/draglayout/adm/PageLayoutConfigMain.page"/>
+	<page name="component.draglayout.adm.PageLayoutConfigPageAdd" specification-path="/component/draglayout/adm/PageLayoutConfigPageAdd.page"/>
+	<page name="component.draglayout.PageLayout" specification-path="/component/draglayout/PageLayout.page"/>
+
+	<page name="component.drawtool.DrawTool" specification-path="/component/drawtool/DrawTool.page"/>
+	
+	<page name="component.popups.editor.upload_image" specification-path="/component/popups/editor/upload_image.page"/>
+	<page name="component.popups.editor.upload_file" specification-path="/component/popups/editor/upload_file.page"/>
+	<page name="component.popups.editor.upload_attach" specification-path="/component/popups/editor/upload_attach.page"/>
+	
+	<page name="component.webpart.BulletinList" specification-path="/component/webpart/BulletinList.page"/>
+	<page name="component.webpart.MessageList" specification-path="/component/webpart/MessageList.page"/>
+	<page name="component.webpart.ExportList" specification-path="/component/webpart/ExportList.page"/>
+	<page name="component.webpart.StaffInfo" specification-path="/component/webpart/StaffInfo.page"/>
+	
+	
+	<library id="wade" specification-path="/com/linkage/webframework/tapestry/components/framework.library"/>
+	<library id="component" specification-path="/com/linkage/component/jwcs/component.library"/>
+	<library id="contrib" specification-path="/org/apache/tapestry/contrib/Contrib.library"/>
+    <library id="cashiersys" specification-path="/com/linkage/common/components/cashiersyscomp.library"/>

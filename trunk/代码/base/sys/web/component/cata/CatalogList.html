@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Catalog List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/cata.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div class="c_table l_mt"><div class="nowrapOn">	
+	<!-- 数据区 -->
+	<div id="CatalogPart" jwcid="@wade:Part" optimize="true">
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+      	<table id="Cata" onclick="tableedit.clickRow()">
+      		<thead>
+      		<tr>
+      			<th id="col_X_TAG" style="display:none">TAG</th>
+      			<th id="col_CATA_ID" style="display:none">目录标识</th>
+      			<th id="col_CATA_NAME">目录名称</th>
+      			<th id="col_CATA_DESC">目录描述</th>
+      			<th id="col_CATA_IDX">目录排序</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr">
+					<td style="display:none"></td>
+					<td style="display:none"><span jwcid="@Insert" value="ognl:info.CATA_ID" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.CATA_NAME" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.CATA_DESC" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.CATA_IDX" raw="false"/></td>
+				</tr>
+			</tbody>
+		</table>
+		</div></div></div>		
+	</div>
+	</div></div>
+
+	<div class="c_inputField l_mt">
+		<!-- 顶部区 -->
+		<div class="top"></div>
+		<!-- 控件区 -->
+		<div class="body"><div class="aclinicOn">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">目录名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="CATA_NAME@TextField" value="ognl:catalog.CATA_NAME" desc="目录名称" nullable="no" maxsize="100" datatype="text" class="e_input" onblur="return Wade.cata.catalogList_FillCatalog();"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">目录描述：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="CATA_DESC@TextField" value="ognl:catalog.CATA_DESC" desc="目录描述" nullable="no" maxsize="512" datatype="text" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">目录排序: </span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="CATA_IDX@TextField" value="ognl:catalog.CATA_IDX" desc="目录排序" nullable="no" maxsize="3" datatype="nature" class="e_input"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>			
+			</table>
+		</div></div>
+		
+	    <!-- 按钮区 -->
+		<div class="bottom e_cSet">
+			<input type="button" id="bcreate" name="bcreate" value="新 增" class="e_button" onclick="return Wade.cata.catalogList_CreateCatalog(this);"/><input type="button" id="bupdate" name="bupdate" value="修 改" class="e_button" onclick="return Wade.cata.catalogList_UpdateCatalog(this);"/><input type="button" id="bdelete" name="bdelete" value="删 除" class="e_button" onclick="return Wade.cata.catalogList_DeleteCatalog(this)"/><input type="button" id="bsubmit" name="bsubmit" value="提 交" class="e_button" onclick="return Wade.cata.catalogList_SubmitCatalogs(this);"/>
+		</div>
+	</div>
+	
+	<input type="hidden" id="CATA_ID" name="CATA_ID"/>
+	<input type="hidden" id="X_CODING_STR" name="X_CODING_STR"/>
+</form>
+<script language="javascript">
+<!--
+Wade.onLoad(function(){
+	Wade.cata.catalogList_Init();
+});
+//--></script>
+</div></div>
+</body>
+</html>

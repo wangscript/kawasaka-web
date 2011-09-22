@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Grant List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>授权对象类型：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="condition_GRANT_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'CUSTMANAGER_GRANTTYPE')" value="ognl:condition.condition_GRANT_TYPE" desc="授权对象类型" class="e_select" />
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>授权对象编码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="condition_GRANT_FROM@TextField" value="ognl:condition.condition_GRANT_FROM" desc="授权对象编码" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>授权状态：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="condition_STATE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'CUSTMANAGER_GRANTSTATE')" value="ognl:condition.condition_STATE" desc="授权状态" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>授予员工类型：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="condition_GRANT_OBJ_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'CUSTMANAGER_GRANTOPTION')" value="ognl:condition.condition_GRANT_OBJ_TYPE"  desc="授予员工类型" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>生效开始时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="condition_START_EFF_DATE@wade:DateField" value="ognl:condition.condition_START_EFF_DATE" desc="生效开始时间" datatype="date" format="yyyy-MM-dd HH:mm" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>失效开始时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="condition_START_EXP_DATE@wade:DateField" value="ognl:condition.condition_START_EXP_DATE" desc="失效开始时间" datatype="date" format="yyyy-MM-dd HH:mm" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>授予员工编码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="condition_GRANT_TO@TextField" value="ognl:condition.condition_GRANT_TO" desc="授予员工编码" datatype="text" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>生效结束时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="condition_END_EFF_DATE@wade:DateField" value="ognl:condition.condition_END_EFF_DATE" desc="生效结束时间" minName="condition_START_EFF_DATE" datatype="date" format="yyyy-MM-dd HH:mm" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>失效结束时间：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="condition_END_EXP_DATE@wade:DateField" value="ognl:condition.condition_END_EXP_DATE" desc="失效结束时间" minName="condition_START_EXP_DATE" datatype="date" format="yyyy-MM-dd HH:mm" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" listener="ognl:listeners.queryGrants" class="e_button" onclick="queryAll(this)"/>
+		</div>
+	</div>
+	
+	<div id="refreshtable" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('grants')"/></li>
+						<li><a jwcid="@wade:PageSubmit" value="撤消" listener="ognl:listeners.revoke" desc="授权" class="e_bLinkDelete" onclick="return confirmBox(this, 'grants');"/></li>
+						<li><a jwcid="@wade:PageRedirect" value="授权" caption="新增授权" class="e_bLinkAdd" onclick="redirectTo('component.org.CustManagerGrant', 'initGrant', parameters)"/></li>
+					</ul>
+				</div>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryGrants" refreshParts="refreshtable"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+  						<th><input type="checkbox" id="grants_ctrl" name="grants_ctrl" onclick="checkedAll('grants', checked)"/></th>
+						<th>授权对象编码</th>
+						<th>授权对象名称</th>
+						<th>授权对象类型</th>
+						<th>授权对象归属部门</th>
+						<th>授权对象归属业务区</th>
+						<th>授权员工类型</th>
+						<th>授权员工编码</th>
+						<th>授权员工名称</th>
+						<th>生效日期</th>
+						<th>失效日期</th>
+	      				<th>状态</th>
+						<th>更新员工</th>
+						<th>更新部门</th>
+						<th>更新时间</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td class="signbj"><input type="checkbox" id="grants" name="grants" jwcid="@Any" value="ognl:info.GRANT_ID"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.GRANT_FROM" raw="false"/></td>							
+						<td>
+							<span jwcid="@Conditional" condition="ognl:info.GRANT_TYPE == @com.linkage.component.bean.org.OrgFactory@GRANT_TYPE_PERSON">
+								<span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.GRANT_FROM)" raw="false"/>
+							</span>
+							<span jwcid="@Conditional" condition="ognl:info.GRANT_TYPE == @com.linkage.component.bean.org.OrgFactory@GRANT_TYPE_DEPART">
+								<span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_DEPART', 'DEPART_ID', 'DEPART_NAME', info.GRANT_FROM)" raw="false"/>
+							</span>
+							<span jwcid="@Conditional" condition="ognl:info.GRANT_TYPE == @com.linkage.component.bean.org.OrgFactory@GRANT_TYPE_AREA">
+								<span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_AREA', 'AREA_CODE', 'AREA_NAME', info.GRANT_FROM)" raw="false"/>
+							</span>
+						</td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'CUSTMANAGER_GRANTTYPE', info.GRANT_TYPE)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_DEPART', 'DEPART_ID', 'DEPART_NAME', info.GRANT_FROM_DEPART_ID)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_AREA', 'AREA_CODE', 'AREA_NAME', info.GRANT_FROM_CITY_CODE)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'CUSTMANAGER_GRANTOPTION', info.GRANT_OBJ_TYPE)" raw="false"/></td>
+						
+						<td><span jwcid="@Insert" value="ognl:info.GRANT_TO" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.GRANT_TO)" raw="false"/></td>
+						<td class="timemode"><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.EFF_DATE)" raw="false"/></td>
+						<td class="timemode"><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.EXP_DATE)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'CUSTMANAGER_GRANTSTATE', info.STATE)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.UPDATE_STAFF_ID)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_DEPART','DEPART_ID','DEPART_NAME', info.UPDATE_DEPART_ID)" raw="false"/></td>
+						<td class="timemode"><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.UPDATE_TIME)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.REMARK" raw="false"/></td>
+						</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<div class="fctBottom e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li><a jwcid="@wade:PageRedirect" value="反选" class="e_bLinkSelect" onclick="checkedOther('grants')"/></li>
+						<li><a jwcid="@wade:PageSubmit" value="撤消" listener="ognl:listeners.revoke" desc="授权" class="e_bLinkDelete" onclick="return confirmBox(this, 'grants');"/></li>
+						<li><a jwcid="@wade:PageRedirect" value="授权" caption="新增授权" class="e_bLinkAdd" onclick="redirectTo('component.org.CustManagerGrant', 'initGrant', parameters)"/></li>
+					</ul>
+				</div>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryGrants" refreshParts="refreshtable"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+
+</form>
+
+</div></div>
+</body>
+</html>
