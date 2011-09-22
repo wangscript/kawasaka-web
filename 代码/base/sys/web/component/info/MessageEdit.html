@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Message Edit</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/info.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body" style="position:relative; z-index:1;"><div class="aclinicOn">
+			<table class="col1">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">消息主题：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="INFO_TOPIC@TextField" value="ognl:info.INFO_TOPIC" desc="消息主题" nullable="no" maxsize="100" datatype="text" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr id="ReceArea">
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">接收人员：</span></div>
+							<div class="inputArea"><div>
+								<table>
+									<tr>
+										<td class="input">
+											<input type="text" jwcid="RECE_OBJS@TextField" value="ognl:info.INFO_AUTH" style="display:none"/>
+											<textarea jwcid="POP_RECE_OBJS@TextArea" value="ognl:info.INFO_AUTH_NAME" rows="3" readOnly="true" desc="接收人员" nullable="no" datatype="text" class="e_textarea"/>
+										</td>
+										<td class="fct">
+											<a jwcid="@wade:PageRedirect" class="e_buttonSearch" title="地址簿选择" fieldName="RECE_OBJS" textName="POP_RECE_OBJS" onclick="popupPage('component.info.AddressList', 'init', null, '消息地址簿', '800', '600')"/>
+											<a jwcid="@wade:PageRedirect" class="e_buttonUser" title="员工选择" fieldName="RECE_OBJS" textName="POP_RECE_OBJS" onclick="popupPage('component.org.StaffSelect', 'queryStaffs', '&action=input&multi=true&isopen=true', '员工选择', '600', '400')"/>
+										</td>
+									</tr>
+								</table>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>消息内容：</span></div>
+							<div class="inputArea"><div>
+								<textarea jwcid="INFO_CONTENT@wade:Editor" value="ognl:info.INFO_CONTENT" disabled="ognl:info.INST_ID != null" rows="20" desc="消息内容" maxsize="4000" datatype="text" class="e_textarea"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_cSet">
+			<input type="button" jwcid="bcreate@Submit" value="发 送" listener="ognl:listeners.createInfo" desc="消息" class="e_button" onclick="return Wade.validate.confirmForm(this);"/>
+			<input type="button" id="breply" name="breply" value="回 复" desc="消息" class="e_button" onclick="if (!Wade.validate.confirmForm(this)) return false;Wade.info.replyInfo();"/>
+			<input type="button" id="bforward" name="bforward" value="转 发" desc="消息" class="e_button" onclick="if (!Wade.validate.confirmInfo(this)) return false;Wade.info.forwardInfo();"/>
+			<input type="button" jwcid="bdelete@Submit" value="删 除" listener="ognl:listeners.deleteInfo" desc="消息" class="e_button" onclick="return Wade.validate.confirmInfo(this);"/>
+		</div>
+	</div>
+	
+<input type="hidden" jwcid="INST_ID@Hidden" value="ognl:info.INST_ID" encode="false"/>
+</form>
+<script language="javascript"><!--
+Wade.onLoad(function(){
+	Wade.info.initMessageEdit();
+});
+// --></script>
+	
+</div></div>
+</body>
+</html>

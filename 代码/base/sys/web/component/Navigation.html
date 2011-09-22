@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head" reduce="true">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title><span jwcid="@Insert" value="ognl:title" raw="false"/></title>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/navigation.js"></script>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/popupmessage.js"></script>
+<style type="text/css">
+.popupContent{
+	font-size:12px; font-family:simsun; position:relative;  color:#333;
+}
+.popupContent a { 
+	text-decoration:none; color:#0066ff; cursor:pointer;
+}
+.popupContent a:hover { 
+	text-decoration:none; color:#f60;
+}
+</style>
+</head>
+<frameset style="overflow:hidden" onscroll="return false;" scrolling="no" rows="26,*,0,0,0,0,0" framespacing="0" frameborder="no" border="0" onload="Wade.navigation.initNavigation();">
+	<frame id="menuframe" name="menuframe" scrolling="no" noresize="noresize"/>
+	<frameset id="navframeset" cols="*,0,0,0,0,0,0,0,0,0" framespacing="0" frameborder="no" border="0">
+		<frame id="navframe_0" name="navframe_0" scrolling="auto" noresize="noresize"/>
+		<frame id="navframe_1" name="navframe_1" scrolling="auto" noresize="noresize"/>
+		<frame id="navframe_2" name="navframe_2" scrolling="auto" noresize="noresize"/>
+		<frame id="navframe_3" name="navframe_3" scrolling="auto" noresize="noresize"/>
+		<frame id="navframe_4" name="navframe_4" scrolling="auto" noresize="noresize"/>
+		<frame id="navframe_5" name="navframe_5" scrolling="auto" noresize="noresize"/>
+		<frame id="navframe_6" name="navframe_6" scrolling="auto" noresize="noresize"/>
+		<frame id="navframe_7" name="navframe_7" scrolling="auto" noresize="noresize"/>
+		<frame id="navframe_8" name="navframe_8" scrolling="auto" noresize="noresize"/>
+		<frame id="navframe_9" name="navframe_9" scrolling="auto" noresize="noresize"/>
+	</frameset>
+	<frame id="printframe" name="printframe" scrolling="no"/>
+	<frame id="customframe" name="customframe" scrolling="no"/>
+	<frame id="title" name="title" jwcid="title@Any" value="ognl:title" encode="false"/>
+	<frame id="url" name="url" jwcid="url@Any" value="ognl:url" encode="false"/>
+	<frame id="notify" name="notify" jwcid="notify@Any" value="ognl:notify" encode="false"/>
+</frameset>
+<noframes>
+	<body></body>
+</noframes>
+</html>

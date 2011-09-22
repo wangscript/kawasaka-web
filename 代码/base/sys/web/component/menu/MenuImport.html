@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Menu Import</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form" enctype="multipart/form-data">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+
+	<!-- 详情区 -->
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<!-- 控件区 -->
+		<div class="body"><div class="aclinicOn l_padding">
+			<table class="col1">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>选择导入文件：</span></div>
+							<div class="inputArea"><div>
+								<span class="wordr"><img src="component/images/answers.gif" alt="info" width="13" height="14" class="imgtop_2"/>上传前请查看模板格式：</span><a href="attach?file_name=菜单批量导入模板.xls&file_path=/component/templet/menu/MenuTemplet.xls" target="printframe">批量导入模板.xls</a>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span></span></div>
+							<div class="inputArea"><div>
+								<input type="file" id="FILE_PATH" name="FILE_PATH" nullable="no" desc="导入文件" class="e_input"/>
+							</div></div>
+						</div>
+					</td>	
+				</tr>				
+			</table>
+			<table class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>应用主机：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="PROJECT_PATH@TextField" value="ognl:info.MENU_PATH" class="e_input" nullable="no" desc="应用主机"/>
+							</div></div>
+						</div>
+					</td>	
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>代理路径：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="PROXY_PATH@TextField" value="ognl:info.MENU_PATH + 'app'" class="e_input" nullable="no" desc="代理路径"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>	
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>菜单类型：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="MENU_TYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(modTypes, true)" value="ognl:info.MENU_TYPE" desc="菜单类型" nullable="no" class="e_input"/>
+							</div></div>
+						</div>
+					</td>	
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>子系统编码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="SUBSYS_CODE@TextField" value="ognl:info.SUBSYS_CODE" class="e_input" nullable="no" equsize="3" desc="子系统编码"/>
+							</div></div>
+						</div>
+					</td>					
+				</tr>								
+			</table>	
+		</div></div>
+		
+		<!-- 按钮区 -->
+		<div class="bottom e_cSet">
+			<input type="submit" class="e_button" jwcid="bimport@Submit" value=" 导 入 " listener="ognl:listeners.importMenus" desc="菜单文件" onclick="return confirmForm(this)"/>
+		</div>
+	</div>
+	
+</form>
+
+</div></div>
+</body>
+</html>

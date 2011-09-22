@@ -1,0 +1,18 @@
+<PUBLIC:COMPONENT>
+<PUBLIC:ATTACH EVENT="ondocumentready" ONEVENT="select_ready()"/>
+<PUBLIC:ATTACH EVENT="onmousedown" ONEVENT="mouseDown()"/>
+<PUBLIC:ATTACH EVENT="onmouseup" ONEVENT="mouseUp()"/>
+<PUBLIC:ATTACH EVENT="onmouseover" ONEVENT="mouseOver()"/>
+<PUBLIC:ATTACH EVENT="onfocus" ONEVENT="onFocus()"/>
+<PUBLIC:ATTACH EVENT="onblur" ONEVENT="onBlur()"/>
+<SCRIPT language="javascript">
+function select_ready() {  }
+function onFocus()
+{ style.backgroundColor='#FEFECE';style.color='#0000CC';}
+function onBlur()
+{ style.backgroundColor='';style.color='';}
+function mouseOver(){ }
+function mouseUp() {}
+function mouseDown() {}
+</SCRIPT>
+</PUBLIC:COMPONENT>

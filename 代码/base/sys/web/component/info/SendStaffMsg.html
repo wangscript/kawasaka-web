@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Message Edit</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top">短信发送</div>
+		<div class="body"><div class="aclinicOn"><div class="char18">
+			<table class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>客户经理类型：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_CUST_MANAGER_FLAG@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(custManagers, 'CUST_MANAGER_FLAG', 'CUST_MANAGER_DESC')" value="ognl:info.CUST_MANAGER_FLAG" desc="客户经理类型" nullable="yes" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>收银类型：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_RECEIVE_TYPE_CODE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(receiveTypes, 'RECEIVE_TYPE_CODE', 'RECEIVE_TYPE')" value="ognl:info.RECEIVE_TYPE_CODE" desc="收银类型" nullable="yes" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>员工班组：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_STAFF_GROUP_ID@TextField" value="ognl:info.STAFF_GROUP_ID" desc="员工班组" nullable="yes" maxsize="100" datatype="text" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>上级员工：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_MANAGER_STAFF_ID@component:StaffField" blank="true" value="ognl:info.MANAGER_STAFF_ID" desc="上级员工" nullable="yes" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<table class="col1">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">短信内容：</span></div>
+							<div class="inputArea"><div>
+								<textarea jwcid="cond_CONTENT@TextArea" value="ognl:info.CONTENT" rows="20" desc="短信内容" maxsize="4000" nullable="no" datatype="text" class="e_textarea"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div></div>
+		<div class="bottom e_cSet">
+			<input type="button" jwcid="bcreate@Submit" value="发 送" listener="ognl:listeners.sendSms" desc="短信" class="e_button" onclick="return Wade.validate.confirmForm(this);"/>
+		</div>
+	</div>
+</form>
+</div></div>
+</body>
+</html>

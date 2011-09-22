@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Bulletin Edit</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/info.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+
+	<!-- 详情区 -->
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<!-- 控件区 -->
+		<div class="body"><div class="aclinicOn">
+			<table class="col1">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">公告主题：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="INFO_TOPIC@TextField" value="ognl:info.INFO_TOPIC" desc="公告主题" nullable="no" maxsize="100" datatype="text" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>发布区域：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="RECE_OBJS@component:AreaField" value="ognl:info.RECE_OBJS" root="ognl:visit.hasPriv('COM_INFO_PROVRELE') ? visit.provinceId : visit.cityId" open="true" desc="发布区域" nullable="no" datatype="text" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<div jwcid="@Conditional" condition="ognl:pageData.getParameter('Action')=='add'">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>消息主题：</span></div>
+							<div class="inputArea"><div>
+								 <textarea jwcid="INFO_CONTENT@wade:Editor" value="ognl:info.INFO_CONTENT" disabled="ognl:info.INST_ID != null" rows="20" desc="公告内容" maxsize="4000" datatype="text" class="e_textarea"/> 
+							</div></div>
+						</div>
+					</td>
+				</tr> 
+				</div>
+				<div jwcid="@Conditional" condition="ognl:pageData.getParameter('Action')=='view'">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>消息主题：</span></div>
+							<div class="inputArea"><div>
+								<div class="l_padding" style="height:100px">
+									<div jwcid="INFO_CONTENT_DISP@wade:Viewer" value="ognl:info.INFO_CONTENT" raw="true"/>
+								</div>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				</div>
+			</table>
+		</div></div>
+		
+		<!-- 按钮区 -->
+		<div class="bottom e_cSet">
+			<input type="button" jwcid="bcreate@Submit" value="发 布" listener="ognl:listeners.createInfo" desc="公告" class="e_button" onclick="return confirmForm(this);"/>
+			<input type="button" jwcid="bdelete@Submit" value="删 除" listener="ognl:listeners.deleteInfo" desc="公告" class="e_button" onclick="return confirmInfo(this);"/>
+		</div>
+	</div>
+ 
+<input type="hidden" jwcid="INST_ID@Hidden" value="ognl:info.INST_ID" encode="false"/>
+</form>
+<script language="JavaScript" type="text/JavaScript"><!--
+Wade.onLoad(function(){
+	Wade.info.initBulletinEdit();
+});
+//--></script>
+
+</div></div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>员工管理</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="HAIN/scripts/person/sundryquery/sundryquery.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col3">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>员工号：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_STAFF_ID@TextField" value="ognl:conditions.STAFF_ID" desc="员工号" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>员工姓名：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_STAFF_NAME@TextField" value="ognl:conditions.STAFF_NAME" desc="员工姓名" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>更新日期：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_UPDATE_TIME@wade:DateField" value="ognl:conditions.UPDATE_TIME" 
+								desc="录入日期" format="yyyy-MM-dd" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">部门：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_DEPART_CODE@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.DEPARTS, 'DEPART_CODE', 'DEPART_NAME')"
+									value="ognl:conditions.DEPART_CODE" desc="部门" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="">业务区：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_AREA_CODE@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.AREAS, 'AREA_CODE', 'AREA_NAME')"
+									value="ognl:conditions.AREA_CODE" desc="业务区" class="e_select"
+									onchange="ajaxDirect('sys.staff.StaffList','queryHotelsByArea','&AREA_CODE='+this.value,'refreshArea')"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<!-- 
+						<div class="wrapper">
+							<div class="label"><span class="">酒店：</span></div>
+							<div class="inputArea"><div>
+								<div jwcid="@wade:Part" id="refreshArea" optimize="true">
+								<select jwcid="cond_HOTEL_CODE@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getSelection(hotels, 'HOTEL_CODE', 'HOTEL_NAME')"
+									value="ognl:conditions.HOTEL_CODE" desc="酒店" class="e_select"/>
+								</div>
+							</div></div>
+						</div>
+						 -->
+					</td>
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" listener="ognl:listeners.queryStaffs" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>
+	
+	<div id="ResultDataPart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<ul>
+					<li><a jwcid="@wade:PageRedirect" value="新增" onclick="popupDialog('sys.staff.StaffAdd', 'init', '&refresh=true&operType=add', '新增员工信息', '500', '300')" desc="新增" class="e_bLinkAdd"/></li>
+				</ul>
+			</div>
+			<div class="fctRight">
+			 	<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryStaffs" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table id="printTable">
+      			<thead>
+		  			<tr>
+						<th>员工号</th>
+						<th>员工姓名</th>
+						<th>员工描述</th>
+						<th>部门</th>
+						<th>业务区</th>
+						<th>员工状态</th>
+						<th>更新员工</th>
+						<th>更新时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.STAFF_ID" onclick="popupDialog('sys.staff.StaffEdit', 'init', '&refresh=true&STAFF_ID='+ this.value, '修改员工信息', '500', '300')" raw="false" /></td>
+						<td><span jwcid="@Insert" value="ognl:info.STAFF_NAME"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.STAFF_DESC"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util. Utility@getStaticValue(page, 'TD_M_DEPART_CONFIG', 'DEPART_CODE', 'DEPART_NAME', info.DEPART_CODE)"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util. Utility@getStaticValue(page, 'TD_M_AREA_CONFIG', 'AREA_CODE', 'AREA_NAME', info.AREA_CODE)"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'BUSI_ITEM_FLAGS', info.FLAG)"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.UPDATE_STAFF_ID"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.UPDATE_TIME"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<div class="fctBottom e_clear">
+			<div class="fctLeft">
+				<ul>
+					<li><a jwcid="@wade:PageRedirect" value="新增" onclick="popupDialog('sys.staff.StaffAdd', 'init', '&refresh=true&operType=add', '新增业员工信息', '500', '300')" desc="新增" class="e_bLinkAdd"/></li>
+				</ul>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryStaffs" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+	
+</form>	
+</div></div>
+</body>
+</html>

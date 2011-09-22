@@ -1,0 +1,293 @@
+<public:property name="defineGridBgColor">
+<public:property name="defineFirstRowBgColor">
+<public:property name="defineFirstColBgColor">
+<public:property name="defineCurRowBgColor">
+<public:property name="defineCurColBgColor">
+<public:property name="defineCurEditBgColor">
+<public:attach event=oncontentready onevent="initGrid()">
+<script>
+//常量[可以设置为属性]
+var rgbGridBgColor="#E1E4EC";//表格背景
+var rgbFirstRowBgColor="#6699CC";//头行背景
+var rgbFirstColBgColor="#6699CC";//头列背景
+var rgbCurRowBgColor="#BBCCDD";//当前选择行背景
+var rgbCurColBgColor="#BBCCDD";//当前选择列背景
+var rgbCurEditBgColor="#FFFFFF";//当前选择编辑单元格背景
+
+//表格列数
+var iColCount=0;
+//表格行数
+var iRowCount=0;
+//当前选择行
+var iCurRowIndex=0;
+//当前选择列
+var iCurColIndex=0;
+
+var bIsDragRow=false;//行是否拖动状态
+var bIsDragCol=false;//列是否拖动状态
+var iDragHistoryRowIndex=0;//拖动前原始行位置索引
+var iDragCurrentRowIndex=0;//拖动后目的行位置索引
+var iDragHistoryColIndex=0;//拖动前原始列位置索引
+var iDragCurrentColIndex=0;//拖动后目的列位置索引
+
+function initGrid()
+{
+ //属性获取
+ if(defineGridBgColor)
+ {rgbGridBgColor=defineGridBgColor;}else{rgbGridBgColor="#E1E4EC";}
+ if(defineFirstRowBgColor)
+ {rgbFirstRowBgColor=defineFirstRowBgColor;}else{rgbFirstRowBgColor="#6699CC";}
+ if(defineFirstColBgColor)
+ {rgbFirstColBgColor=defineFirstColBgColor;}else{rgbFirstColBgColor="#6699CC";}
+ if(defineCurRowBgColor)
+ {rgbCurRowBgColor=defineCurRowBgColor;}else{rgbCurRowBgColor="#BBCCDD";}
+ if(defineCurColBgColor)
+ {rgbCurColBgColor=defineCurColBgColor;}else{rgbCurColBgColor="#BBCCDD";}
+ if(defineCurEditBgColor)
+ {rgbCurEditBgColor=defineCurEditBgColor;}else{rgbCurEditBgColor="#FFFFFF";}
+ //初始化常量
+ iColCount=element.rows(0).cells.length;
+ iRowCount=element.rows.length;
+ //设置表格样式
+ element.style.backgroundColor=rgbGridBgColor;
+ element.border="0";
+ element.cellSpacing="1";
+ element.cellPadding="0";
+ element.width="80%";
+ element.style.borderLeft="1px solid #000000";
+ element.style.borderBottom="1px solid #000000";
+ //设置单元格样式
+ for(iRow=0;iRow<iRowCount;iRow++)
+ {
+  for(iCol=0;iCol<iColCount;iCol++)
+  {
+   element.rows(iRow).cells(iCol).style.borderTop="1px solid #000000";
+   element.rows(iRow).cells(iCol).style.borderRight="1px solid #000000";
+  }
+ }
+ //设置头行样式
+ for(iCol=0;iCol<iColCount;iCol++)
+ {
+  element.rows(0).cells(iCol).style.backgroundColor=rgbFirstRowBgColor;
+ }
+ //设置头列样式
+ for(iRow=1;iRow<iRowCount;iRow++)
+ {
+  element.rows(iRow).cells(0).style.backgroundColor=rgbFirstColBgColor;
+ }
+ 
+ //设置编辑单元格
+ for(mIndex=1;mIndex<iRowCount;mIndex++)
+ {
+  for(nIndex=1;nIndex<iColCount;nIndex++)
+  {
+   var vText=element.rows(mIndex).cells(nIndex).innerHTML;
+   element.rows(mIndex).cells(nIndex).innerHTML="<div contentEditable=false>"+vText+"</div>";
+   element.rows(mIndex).cells(nIndex).children[0].attachEvent("onclick",onEditTrue);
+   element.rows(mIndex).cells(nIndex).children[0].attachEvent("onblur",onEditFalse);
+  }
+ }
+ 
+ //绑定列事件
+ for(iCol=1;iCol<iColCount;iCol++)
+ {
+  element.rows(0).cells(iCol).attachEvent("onmouseup",onColHeaderMouseDown);
+ }
+ //绑定行事件
+ for(iRow=1;iRow<iRowCount;iRow++)
+ {
+  element.rows(iRow).attachEvent("onmouseup",onRowHeaderMouseDown);
+ }
+ 
+ //绑定事件方法
+ element.attachEvent("onmousedown",onMouseDown);
+ element.attachEvent("onmousemove",onMouseMove);
+ element.attachEvent("onmouseup",onMouseUp);
+ element.attachEvent("onselectstart",onSelectStart);
+}
+
+//按下列
+function onColHeaderMouseDown()
+{
+ iCurColIndex=window.event.srcElement.cellIndex;
+ onColHeaderMouseDownColor(iCurColIndex);
+}
+//按下行
+function onRowHeaderMouseDown()
+{
+ iCurRowIndex=window.event.srcElement.parentNode.rowIndex;
+ onRowHeaderMouseDownColor(iCurRowIndex);
+}
+//启动编辑单元格
+function onEditTrue()
+{
+ var vEditObject=window.event.srcElement;
+ vEditObject.contentEditable=true;
+ vEditObject.runtimeStyle.backgroundColor=rgbCurEditBgColor;
+}
+//禁止编辑单元格
+function onEditFalse()
+{
+ var vEditObject=window.event.srcElement;
+ vEditObject.contentEditable=false;
+ vEditObject.runtimeStyle.backgroundColor="transparent";
+}
+//Grid鼠标按下
+function onMouseDown()
+{
+ if(window.event.srcElement.tagName.toUpperCase()=="TD")
+ {
+  if(window.event.srcElement.cellIndex==0)
+  {
+   bIsDragRow=true;
+   iDragHistoryRowIndex=window.event.srcElement.parentNode.rowIndex;
+  }
+  if(window.event.srcElement.parentNode.rowIndex==0)
+  {
+   bIsDragCol=true;
+   iDragHistoryColIndex=window.event.srcElement.cellIndex;
+  }
+ }
+}
+//Grid鼠标移动
+function onMouseMove()
+{
+ if(bIsDragRow==true)
+ {
+  //拖动行模拟层处理.
+ }
+ if(bIsDragCol==true)
+ {
+  //拖动列模拟层处理.
+ }
+}
+//Grid鼠标抬起
+function onMouseUp()
+{
+ if(bIsDragRow==true)
+ {
+  if(window.event.srcElement.tagName.toUpperCase()=="TD")
+  {
+   if(window.event.srcElement.cellIndex==0)
+   {
+    iDragCurrentRowIndex=window.event.srcElement.parentNode.rowIndex;
+    if(iDragHistoryRowIndex!=0&&iDragCurrentRowIndex!=0)
+    {
+     moveRow(iDragHistoryRowIndex,iDragCurrentRowIndex);
+    }
+   }
+  }  
+ }
+ if(bIsDragCol==true)
+ {
+  if(window.event.srcElement.tagName.toUpperCase()=="TD")
+  {
+   if(window.event.srcElement.parentNode.rowIndex==0)
+   {
+    iDragCurrentColIndex=window.event.srcElement.cellIndex;
+    if(iDragHistoryColIndex!=0&&iDragCurrentColIndex!=0)
+    {
+     moveCol(iDragHistoryColIndex,iDragCurrentColIndex);
+    }
+   }
+  }  
+ }
+ bIsDragRow=false;
+ bIsDragCol=false;
+}
+//Grid鼠标移出
+function onMouseOut()
+{
+ if(bIsDragRow==true)
+ {
+  bIsDragRow=false;
+ }
+ if(bIsDragCol==true)
+ {
+  bIsDragCol=false;
+ }
+}
+//Grid选择开始
+function onSelectStart()
+{
+ return false;
+}
+//库
+//移动行
+function moveRow(iFromIndex,iToIndex)
+{
+ var strFromArray=new Array(iColCount);
+ var strToArray=new Array(iColCount);
+ for(mIndex=0;mIndex<iColCount;mIndex++)
+ {
+  strFromArray[mIndex]=element.rows(iFromIndex).cells(mIndex).innerHTML;
+  strToArray[mIndex]=element.rows(iToIndex).cells(mIndex).innerHTML;
+ }
+ for(nIndex=0;nIndex<iColCount;nIndex++)
+ {
+  element.rows(iFromIndex).cells(nIndex).innerHTML=strToArray[nIndex];
+  element.rows(iToIndex).cells(nIndex).innerHTML=strFromArray[nIndex];
+ }
+ onRowHeaderMouseDownColor(iToIndex);
+ cellAttachEvent();
+}
+//移动列
+function moveCol(iFromIndex,iToIndex)
+{
+ var strFromArray=new Array(iRowCount);
+ var strToArray=new Array(iRowCount);
+ for(mIndex=0;mIndex<iRowCount;mIndex++)
+ {
+  strFromArray[mIndex]=element.rows(mIndex).cells(iFromIndex).innerHTML;
+  strToArray[mIndex]=element.rows(mIndex).cells(iToIndex).innerHTML;
+ }
+ for(nIndex=0;nIndex<iRowCount;nIndex++)
+ {
+  element.rows(nIndex).cells(iFromIndex).innerHTML=strToArray[nIndex];
+  element.rows(nIndex).cells(iToIndex).innerHTML=strFromArray[nIndex];
+ }
+ onColHeaderMouseDownColor(iToIndex);
+ cellAttachEvent();
+}
+//行按下变化
+function onRowHeaderMouseDownColor(pCurRowIndex)
+{
+ clearClient();
+ for(kIndex=1;kIndex<iColCount;kIndex++)
+ {
+  element.rows(pCurRowIndex).cells(kIndex).bgColor=rgbCurRowBgColor;
+ }
+}
+//列按下变化
+function onColHeaderMouseDownColor(pCurColIndex)
+{
+ clearClient();
+ for(kIndex=1;kIndex<iRowCount;kIndex++)
+ {
+  element.rows(kIndex).cells(pCurColIndex).bgColor=rgbCurColBgColor;
+ }
+}
+//清除客户区
+function clearClient()
+{
+ for(mIndex=1;mIndex<iRowCount;mIndex++)
+ {
+  for(nIndex=1;nIndex<iColCount;nIndex++)
+  {
+   element.rows(mIndex).cells(nIndex).bgColor="transparent";
+  }
+ }
+}
+//单元格事件绑定
+function cellAttachEvent()
+{
+ for(mIndex=1;mIndex<iRowCount;mIndex++)
+ {
+  for(nIndex=1;nIndex<iColCount;nIndex++)
+  {
+   element.rows(mIndex).cells(nIndex).children[0].attachEvent("onclick",onEditTrue);
+   element.rows(mIndex).cells(nIndex).children[0].attachEvent("onblur",onEditFalse);
+  }
+ }
+}
+</script>

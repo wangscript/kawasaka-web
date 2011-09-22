@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+<profile>
+  <![CDATA[profiles/flowconfig-creator/workflow_shapes-profile.xml]]>
+</profile>
+<shapes>
+  <shape id="0">
+    <name>进程</name>
+    <listwidth>60</listwidth>
+    <listheight>40</listheight>
+    <width>100</width>
+    <height>60</height>
+    <points><![CDATA[100,0|200,100|100,200|0,100]]></points>
+    <vmldata>
+      <![CDATA[<v:Rect name="shapeElement" style="position:absolute;width:200;height:200;" >
+      <v:fill name="shapeFill" type="gradient" rotate='t' angle="0" focus="100%" color="#A6BED0" />
+      </v:Rect>  ]]></vmldata>
+  </shape>
+  <shape id="1">
+    <name>判定</name>
+    <listwidth>60</listwidth>
+    <listheight>40</listheight>
+    <width>100</width>
+    <height>60</height>
+    <points><![CDATA[100,0|200,100|100,200|0,100]]></points>
+    <vmldata>
+      <![CDATA[<v:shape name="shapeElement" style="width:200;height:200;"  path="m 0,100 l 100,200,200,100,100,0,0,100 x e"> 
+      <v:fill name="shapeFill" type="gradient" rotate='t' angle="0" focus="100%" color="#A6BED0" />
+</v:shape>]]></vmldata>
+  </shape>
+  <shape id="2">
+    <name>准备</name>
+    <listwidth>60</listwidth>
+    <listheight>40</listheight>
+    <width>100</width>
+    <height>60</height>
+    <points><![CDATA[100,0|200,100|100,200|0,100]]></points>
+    <vmldata>
+      <![CDATA[<v:shape name="shapeElement" style="position:absolute;width:200;height:200;" path="m 0,100 l 50,200,150,200,200,100,150,0,50,0,0,100 x e" >
+        <v:fill name="shapeFill" type="gradient" rotate='t' angle="0" focus="100%" color="#A6BED0" />
+        </v:shape>]]></vmldata>
+  </shape>
+  <shape id="3">
+    <name>开始/结束</name>
+    <listwidth>45</listwidth>
+    <listheight>45</listheight>
+    <width>60</width>
+    <height>60</height>
+    <points><![CDATA[100,0|200,100|100,200|0,100]]></points>
+    <vmldata>
+      <![CDATA[<v:oval name="shapeElement" style="position:absolute;width:200;height:200;" >
+      <v:fill name="shapeFill" type="gradient" rotate='t' angle="0" focus="100%" color="#A6BED0" />
+      </v:oval>]]>
+    </vmldata>
+  </shape>
+  <shape id="4">
+    <name>文档</name>
+    <listwidth>60</listwidth>
+    <listheight>40</listheight>
+    <width>100</width>
+    <height>60</height>
+    <points><![CDATA[100,0|200,100|100,200|0,100]]></points>
+    <vmldata>
+      <![CDATA[<v:shape name="shapeElement" style="position:absolute;width:200;height:200;" path="m 0,0 l 0,180 c 0,180,50,200,100,200 c 100,200,150,163,200,200 l 200,0 x e" >
+      <v:fill name="shapeFill" type="gradient" rotate='t' angle="0" focus="100%" color="#A6BED0" />
+      </v:shape>]]></vmldata>
+  </shape>
+
+</shapes>
+<line>
+  
+</line>
+</root>

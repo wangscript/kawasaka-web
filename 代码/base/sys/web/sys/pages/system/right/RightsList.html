@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>查询权限</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="sys/scripts/params/params.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col4">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>权限编码：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_RIGHT_CODE@TextField" value="ognl:conditions.RIGHT_CODE" desc="权限编码" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>权限名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_RIGHT_NAME@TextField" value="ognl:conditions.RIGHT_NAME" desc="权限名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>权限描述：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_RIGHT_DESC@TextField" value="ognl:conditions.RIGHT_DESC" desc="权限描述" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>状态：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_FLAG@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'BUSI_ITEM_FLAGS')"
+									value="ognl:conditions.FLAG" desc="状态" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" listener="ognl:listeners.queryRights" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>
+	
+	<div id="ResultDataPart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<ul>
+					<li><a jwcid="@wade:PageRedirect" value="新增" onclick="popupDialog('sys.system.RightsAdd', 'init', '&refresh=true&operType=add', '新增权限信息', '500', '300')" desc="新增" class="e_bLinkAdd"/></li>
+				</ul>
+			</div>
+			<div class="fctRight">
+			 	<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryRights" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table id="printTable">
+      			<thead>
+		  			<tr>
+						<th>权限编码</th>
+						<th>权限名称</th>
+						<th>权限描述</th>
+						<th>状态</th>
+						<th>更新员工</th>
+						<th>更新时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.RIGHT_CODE" onclick="popupDialog('sys.system.RightsEdit', 'init', '&operType=edit&refresh=true&RIGHT_CODE='+ this.value, '修改权限信息', '600', '400')" raw="false" /></td>
+						<td><span jwcid="@Insert" value="ognl:info.RIGHT_NAME"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.RIGHT_DESC"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'BUSI_ITEM_FLAGS', info.FLAG)"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.UPDATE_STAFF_ID"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.UPDATE_TIME"/></td>
+						<td><a jwcid="@wade:PageRedirect"  value="ognl:'编辑'" code="ognl:info.RIGHT_CODE" onclick="popupDialog('sys.system.MenusRightsEdit', 'init', '&operType=edit&refresh=true&RIGHT_CODE='+ this.code, '修改菜单权限信息', '600', '300')" raw="false" /></td>						
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<div class="fctBottom e_clear">
+			<div class="fctLeft">
+				<ul>
+					<li><a jwcid="@wade:PageRedirect" value="新增" onclick="popupDialog('sys.system.RightsAdd', 'init', '&refresh=true&operType=add', '新增权限信息', '500', '300')" desc="新增" class="e_bLinkAdd"/></li>
+				</ul>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryRights" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+	
+</form>	
+</div></div>
+</body>
+</html>

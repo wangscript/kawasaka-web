@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head" privs="COM_KNOWLEDGE_KNOWADM">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Knowledge List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper">
+<form jwcid="@Form">
+
+<div id="KnowledgePart" jwcid="@wade:Part" optimize="true">
+<div class="c_table l_mt"><div class="nowrapOn">
+		<!-- 控制区 -->
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li>
+							<a jwcid="@wade:PageRedirect" value="新增" caption="新增知识" class="e_bLinkAdd" display="ognl:pageData.getParameter('cond_CATA_ID', '') == '' || !visit.hasPriv('COM_KNOWLEDGE_KNOWADM')" cata_id="ognl:pageData.getParameter('cond_CATA_ID')" onclick="redirectTo('component.know.KnowledgeEdit', 'queryKnowledge', '&CATA_ID=' + cata_id, 'contentframe')"/>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryKnowledges" refreshParts="KnowledgePart"/>
+			</div>
+		</div>
+
+    <!-- 数据区 -->
+    <div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+      	<table>
+      		<thead>
+      		<tr>
+      			<th>知识标题</th>
+      			<th>知识类型</th>
+      			<th>文号</th>
+      			<th>关键字</th>
+      			<th>生效时间</th>
+      			<th>失效时间</th>
+      			<th>所属目录</th>
+				<th>创建员工</th>
+				<th>创建时间</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+					<td><a jwcid="@wade:PageRedirect" source="ognl:info" columns="ognl:'KNOW_ID,CATA_ID'" value="ognl:info.KNOW_TITLE" onclick="redirectTo('component.know.KnowledgeEdit', 'queryKnowledge', parameters, 'contentframe')"/></td>
+					<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'KNOWLEDGE_KNOWTYPE', info.KNOW_TYPE)" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.KNOW_VERSION" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.KNOW_KEYWORD" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd', info.EFFECT_TIME)" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd', info.EXPIRE_TIME)" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.CATA_NAME" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.CREATE_STAFF_ID)" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.CREATE_TIME)" raw="false"/></td>
+				</tr>
+			</tbody>
+		</table>
+		</div></div></div>
+		<!-- 控制区 -->
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<div class="button">
+					<ul>
+						<li>
+							<a jwcid="@wade:PageRedirect" value="新增" caption="新增知识" class="e_bLinkAdd" display="ognl:pageData.getParameter('cond_CATA_ID', '') == '' || !visit.hasPriv('COM_KNOWLEDGE_KNOWADM')" cata_id="ognl:pageData.getParameter('cond_CATA_ID')" onclick="redirectTo('component.know.KnowledgeEdit', 'queryKnowledge', '&CATA_ID=' + cata_id, 'contentframe')"/>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryKnowledges" refreshParts="KnowledgePart"/>
+			</div>
+		</div>
+
+</div></div>
+
+</div>
+</form>
+
+</div>
+</body>
+</html>

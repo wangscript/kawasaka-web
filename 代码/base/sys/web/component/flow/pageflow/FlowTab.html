@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>Flow Tab</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/pageflow.js"></script>
+<script jwcid="@wade:ConfigScript" flowFile="ognl:pageData.getParameter('FLOW_FILE') == null ? null : ('pageflow/' + pageData.getParameter('FLOW_FILE'))"/>
+<script language="javascript">
+<!--
+	/** page flow */
+	var pageflow = new Wade.component.PageFlow(flow);
+	System.EventManager.on(window,"unload",function(){
+		delete flow;flow= null;
+		delete pageflow;pageflow = null;
+	});
+//-->
+</script>
+</head>
+<body oncontextmenu="window.event.returnValue = false" onselectstart="return false;" ondrag="return false"> 
+<form jwcid="@Form">
+<div class="c_topTabPageAutoOff"><div class="c_topTabPage"><div class="c_topTabPageWrapper">
+	<div class="c_topTabPageFlowOn">
+		<div class="c_topTabPageTab"><div class="wrapper"><div class="wrapper2"><div class="wrapper3">
+			<ul id="pagetabs">
+				<li id="starttab" class="start">
+					<span title="开始" class="button">
+						<span class="top"></span><span class="text">开始</span><span class="bottom"></span>
+					</span>
+				</li>
+				<li id="nexttab" class="nextStep">
+					<span id="bnextstep" title="点击执行下一个步骤" class="button" onclick="pageflow.nextPageStep();">
+						<span class="top"></span><span class="text">执行下一步</span><span class="bottom"></span>
+					</span>
+				</li>
+				<li id="overtab" class="over">
+					<span title="结束" class="button">
+						<span class="top"></span><span class="text">结束</span><span class="bottom"></span>
+					</span>
+				</li>
+			</ul>
+		</div></div></div></div>
+		<div class="c_topTabPageTurner" id="flownav" name="flownav">
+			<ul>
+				<li><a id="turnLeft" href="javascript:void(0)" onfocus="this.blur();" onclick="Wade.component.PageFlowControler.turnLeft();" title="左移标签组" class="pre"></a></li>
+				<li><a id="turnRight" href="javascript:void(0)" onfocus="this.blur();" onclick="Wade.component.PageFlowControler.turnRight();" title="右移标签组" class="next"></a></li>
+				<li><a id="turnReset" href="javascript:void(0)" onfocus="this.blur();" onclick="Wade.component.PageFlowControler.reset();" title="复位标签组" class="default"></a></li>
+			</ul>
+		</div>
+		<div class="showFlowPic">
+			<a id="viewFlow" class="button" href="javascript:void(0)" jwcid="@Any" flow_file="ognl:'pageflow/' + pageData.getParameter('FLOW_FILE')" onclick="winPopupDialog('component.flow.pageflow.FlowChart', 'initFlowChart', '&FLOW_FILE=' + getAttribute('flow_file'), '流程图-' + pageflow.getFlowAttribute('desc'), 800, 600)">
+				<span class="top"></span><span class="text"><span>流程图</span></span><span class="bottom"></span>
+			</a>
+		</div>
+	</div>
+</div></div></div>
+<input style="display:none" type="text" id="bback" onclick="pageflow.backPageStep();"/>
+<input style="display:none" type="text" id="bnext" onclick="pageflow.nextPageStep();"/>
+<input style="display:none" type="text" id="bfinish" onclick="pageflow.finishPageFlow();"/>
+<input style="display:none" type="text" id="bcancel" onclick="pageflow.cancelPageFlow();"/>
+</form>
+<script language="javascript"><!--
+System.onLoad(function(){
+	pageflow.initPageFlow();
+	hidden('flownav', (flow && flow.neednav == 'false'));
+});
+//--></script>
+</body>
+</html>

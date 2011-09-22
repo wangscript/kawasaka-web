@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>页面生成配置</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="javascript" type="text/javascript" src="component/scripts/module/draglayoutAdm.js"></script>
+</head>
+<body jwcid="@wade:Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@wade:Form">
+<input jwcid="currentEditTypeIDValue@Hidden" type="hidden" value="ognl:null"   encode="false"/>
+<input jwcid="currentEditTypeNameValue@Hidden" type="hidden" value="ognl:null"   encode="false"/>
+<input jwcid="currentEditTypeCodeValue@Hidden" type="hidden" value="ognl:null"  encode="false"/>
+
+<script language="javascript" type="text/javascript">
+<!--
+System.onLoad(DraglayoutAdm.PageTypeManager.init,DraglayoutAdm.PageTypeManager);
+//-->
+</script>
+<div class="l_height">
+	<div class="l_heightRow" style="height:33px; top:0;">
+			<div class="c_box">
+				<div class="c_inputField"><div class="aclinicOn">
+					<table class="col3">
+						<tr>
+							<td class="li">
+								<div class="wrapper">
+									<div class="label"><span class="">页面类型：</span></div>
+									<div class="inputArea">
+										<table>
+											<tr>
+												<td class="input"><input jwcid="PAGETYPE_NAME@wade:TextField" value="ognl:info.PAGETYPE_NAME" class="e_input" type="text" /></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</td>
+							<td class="li">
+								<div class="wrapper">
+									<div class="label"><span class="">类型编号：</span></div>
+									<div class="inputArea">
+										<table>
+											<tr>
+												<td class="input"><input jwcid="PAGETYPE_CODE@wade:TextField" value="ognl:info.PAGETYPE_CODE" class="e_input" type="text" /></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</td>
+							<td class="li">
+								<a id="btnAddType" jwcid="@Any"  href="javascript:void(0);" caption="新增布局页面" class="ognl:'e_bLink e_bLinkAdd' + (param.UPDATEMODE<0?'Dis':'')" onclick="ognl:'javascript:' + (param.UPDATEMODE<0?'return false;':'DraglayoutAdm.PageTypeManager.addPageType();')"><span>新增</span></a>
+								<a id="btnRefresh" onfocus="javascript:this.blur();" href="javascript:void(0);" onclick="javascript:window.location.reload();" class="e_bLinkRefresh"><span>刷新</span></a>
+							</td>
+						</tr>
+					</table>
+				</div></div>
+			</div>
+	</div>
+	
+	<div class="l_heightAutoY">
+			<!-- 循环开始 -->
+			<div jwcid="@ListEdit" source="ognl:infos" value="ognl:info" element="div" index="ognl:rowIndex" class="l_manual e_clear">
+			<fieldset class="l_padding l_mt" style="border:solid 1px #A3B6D0;">
+			<legend><span jwcid="@Insert" value="ognl:info.TYPE_NAME" raw="false"/></legend>	
+				<div class="l_manualColAuto">
+					<div style="padding-left:240px">
+						<div class="l_mt l_ml">
+							<div class="c_table"><div class="nowrapOn">
+								<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+									<table>
+										<thead>
+											<tr>
+												<th><span class="orderDown">页面名称</span></th>
+												<th><span>操作</span></th>
+												<th><span>关联类型</span></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr jwcid="@Foreach" source="ognl:info.pages" value="ognl:pageinfo" element="tr">
+												<td><span><span jwcid="@Insert" value="ognl:pageinfo.PAGE_DESC" /></span></td>
+												<td><span>
+													<div class="c_fct">
+														<ul>
+															<li><a jwcid="@Any" name="btnPageDelete" pageid="ognl:pageinfo.PAGE_ID" href="javascript:void(0);" class="e_bLinkDeleteNB" onclick="javascript:DraglayoutAdm.PageTypeManager.deletePage({target:this});">删除</a></li>
+															<li><a jwcid="@Any" name="btnPageEdit" href="javascript:void(0);" caption="ognl:'编辑布局页面-' + pageinfo.PAGE_DESC" parameters="ognl:'Page_ID=' + pageinfo.PAGE_ID + '&UpdateMode='+ param.UPDATEMODE + '&RelationType=' + param.RELATIONTYPE" class="e_bLinkEditNB" onclick="javascript:redirectTo('component.draglayout.adm.PageLayoutConfigPageAdd','loadPage',parameters);">编辑</a></li>
+															<li><a jwcid="@Any" name="btnPageView" href="javascript:void(0);" caption="ognl:'预览布局页面-' + pageinfo.PAGE_DESC" parameters="ognl:'Page_ID=' + pageinfo.PAGE_ID + '&Cache_Data=0'" class="e_bLinkPreViewNB" onclick="javascript:redirectTo('component.draglayout.PageLayout', 'loadPage', parameters, 'contentframe')">预览</a></li>
+														</ul>
+													</div>
+												</span></td>
+												<td><select jwcid="RELATIONTYPE@PropertySelection" model="ognl:@com.linkage.component.util.Utility@getSelection(operatorKinds,'OPERATOR_KIND_CODE', 'OPERATOR_KIND_NAME')" value="ognl:pageinfo.RELATIONTYPE" onchange="return DraglayoutAdm.PageTypeManager.updatePageRelationType(this);" disabled="ognl:(param.UPDATEMODE<0?'true':'false')" pageid="ognl:pageinfo.PAGE_ID" desc="关联类型"  class="输入框长度_标准" /></td>
+											</tr>
+										</tbody>
+									</table>
+								</div></div></div>
+							</div></div>
+						</div>
+					</div>
+				</div>
+				<div class="l_manualColLeft">
+					<div class="l_manualCol" style="width:240px;">
+						<div class="c_inputField l_margin"><div class="aclinicOn">
+							<table class="col1">
+								<tr>
+									<td class="li">
+										<div class="wrapper">
+											<div class="label"><span class="">页面类型：</span></div>
+											<div class="inputArea">
+												<table>
+													<tr>
+														<td class="input"><input jwcid="TB_PAGETYPE_NAME@wade:TextField" class="e_input" type="text" value="ognl:info.TYPE_NAME" /></td>
+													</tr>
+												</table>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="li">
+										<div class="wrapper">
+											<div class="label"><span class="">类型编号：</span></div>
+											<div class="inputArea">
+												<table>
+													<tr>
+														<td class="input"><input jwcid="TB_PAGETYPE_CODE@wade:TextField" class="e_input" type="text" value="ognl:info.TYPE_CODE" /></td>
+													</tr>
+												</table>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div></div>
+						<div class="c_submit e_cSet l_mr">
+							<ul>
+								<li><a jwcid="@Any" name="btnAddPage" pagetypeid="ognl:info.TYPE_ID" href="javascript:void(0);" class="e_bLinkAdd" parameters="ognl:'PageType_ID=' + info.TYPE_ID + '&UpdateMode='+ param.UPDATEMODE + '&RelationType=' + param.RELATIONTYPE" onclick="javascript:redirectTo('component.draglayout.adm.PageLayoutConfigPageAdd','loadPage',parameters);"><span>新增页面</span></a></li>
+								<li><a jwcid="@Any" name="btnTypeUpdate" index="ognl:rowIndex" pagetypeid="ognl:info.TYPE_ID"  title="更新"  href="javascript:void(0);" class="ognl:'e_bLinkRefresh' + (param.UPDATEMODE<0?'Dis':'')" onclick="ognl:'javascript:' + (param.UPDATEMODE<0?'return false;':'DraglayoutAdm.PageTypeManager.updatePageType({target:this});')"><span>更新</span></a></li>
+								<li><a jwcid="@Any" name="btnTypeDelete" pagecount="ognl:info.PAGECOUNT" index="ognl:rowIndex" pagetypeid="ognl:info.TYPE_ID"  title="删除"  href="javascript:void(0);" class="ognl:'e_bLinkDelete' + ((param.UPDATEMODE<0 || info.PAGECOUNT>0)?'Dis':'')" onclick="ognl:'javascript:' + ((param.UPDATEMODE<0 || info.PAGECOUNT>0)?'return false;':'DraglayoutAdm.PageTypeManager.deletePageType({target:this});')"><span>删除</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			</div>
+			<!-- 循环结束 -->
+	</div>
+</div>
+
+<div id="loadingMask" class="c_tipPopup">
+	<iframe frameborder="0"></iframe>
+	<div class="tipPopup" style="width:140px;margin-left:-70px;">
+		<div class="c_filletDeep">
+			<div class="c_filletTop">
+				<div class="c_fillet11"></div>
+				<div class="c_fillet12"></div>
+			</div>
+			<div class="body"><div class="wrapper">
+				<div class="content"><div class="loading">载入中...</div></div>
+			</div></div>
+			<div class="c_filletBottom">
+				<div class="c_fillet21"></div>
+				<div class="c_fillet22"></div>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+</div></div>
+</body>
+</html>

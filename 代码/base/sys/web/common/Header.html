@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Header</title>
+<link jwcid="@wade:Style" href="common/styles/frame.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="common/scripts/frame.js"></script>
+</head>
+<body>
+<div class="f_header" laytype="4">
+	<div class="fct" id="fct">
+		<ul>
+			<li id="SELECTED_LAYOUT" class="on"><a href="javascript:void(0)" title="普通视图" class="layout1" onclick="selectedLayout(this, '1')"></a></li>
+			<li><a href="javascript:void(0)" title="全屏视图" class="layout4" onclick="selectedLayout(this, '4')"></a></li>
+			<li><a class="exit" href="javascript:void(0)" target="_top" title="退出" onclick="if (!window.confirm('确定要退出吗?')) return false;redirectTo('Home', 'logout');"><span>退出</span></a></li>
+		</ul>
+	</div>
+	<div class="user">
+		<a href="javascript:void(0)" class="name" onclick="hidden('userDetail', false)"><span jwcid="@Insert" value="ognl:page.visit.staffName" raw="true"/></a>
+	</div>
+	<div class="user2" id="userDetail" style="display:none;">
+		<a href="javascript:void(0)"class="name"><span jwcid="@Insert" value="ognl:page.visit.staffName" raw="true"/></a>
+		<div class="prama">
+			<div class="level"></div>
+			<div class="fct2">
+				<ul>
+					<!-- <li><a href="javascript:void(0)" onclick="hidden('userDetail', true)">[修改密码]</a></li> -->
+					<!-- <li><a href="javascript:void(0)" onclick="hidden('userDetail', true)">[更改资料]</a></li> -->
+					<li><a href="javascript:void(0)" onclick="hidden('userDetail', true)">[隐藏]</a></li>
+					<li><a href="javascript:void(0)" target="_top" title="退出" onclick="if (!window.confirm('确定要退出吗?')) return false;redirectTo('Home', 'logout');">[退出登录]</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

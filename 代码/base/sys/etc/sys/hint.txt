@@ -1,0 +1,11 @@
+cashiersys.busisheet.QueryBusiItemForAll=明细营业收入报表，点【关闭】回到主界面~！
+cashiersys.busisheet.CountBusiItemByItem=明细营业收入报表（按项目统计），点【关闭】回到主界面~！
+cashiersys.busisheet.TotelBusiItem=收入报表（日报表，月报表，年报表），点【关闭】回到主界面~！
+cashiersys.busisheet.TravelQianDan=旅行社签单统计表，点【关闭】回到主界面~！
+cashiersys.busisheet.TravelJieSuan=旅行社签单结算统计表，点【关闭】回到主界面~！
+cashiersys.busisheet.CountQianTai=前台来团统计报表，点【关闭】回到主界面~！
+cashiersys.busisheet.QueryBusiItemByDay=员工营业报表，点【关闭】回到主界面~！
+cashiersys.member.UnusedCardList=选取未使用的卡，点【关闭】回到主界面~！
+cashiersys.member.MemberList=会员管理，点【关闭】回到主界面~！
+cashiersys.member.CardList=会员卡管理，点【关闭】回到主界面~！
+cashiersys.member.BillList=查询卡消费详细记录，点【关闭】回到主界面~！

@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Address List</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/info.js"></script>
+<style type="text/css">
+<!--
+	.previewbox { float:left; width:25%; }
+	.modifibox { float:left; width:75%; }
+}
+-->
+</style>
+</head>
+<body jwcid="@Body">
+<div id="PageArea" class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+	<!-- 提示区 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo" />
+	
+	<!-- 目录区 -->
+	<div class="previewbox">
+		<fieldset class="l_padding l_mt">
+		<legend>组列表区</legend>
+			<!-- 表格区 -->
+			<div jwcid="@wade:Part" id="GroupListPart" optimize="true">
+			<div class="c_table l_mt"><div class="nowrapOn">
+				<!-- 数据区 -->
+				<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+					<table>
+		      			<thead>
+				  			<tr>
+								<th>组名</th>
+								<th width="20%">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+								<tr>
+									<td><a jwcid="@wade:PageRedirect" value="全部" title="全部" onclick="ajaxDirect('component.info.AddressList', 'queryAddresss', null, 'AddressListPart,AddressPaginPart,AddressCtrlPart')"/></td>
+									<td><a jwcid="@wade:PageRedirect" class="e_bLinkEdit" title="修改" disabled="true"/><a jwcid="@wade:PageRedirect" class="e_bLinkDelete" title="删除" group_id="ognl:addressGroup.GROUP_ID" disabled="true"/></td>
+								</tr>
+								<tr jwcid="@Foreach" source="ognl:addressGroups" value="ognl:addressGroup" element="tr">
+									<td><a jwcid="@wade:PageRedirect" value="ognl:addressGroup.GROUP_NAME" title="ognl:addressGroup.GROUP_DESC" group_id="ognl:addressGroup.GROUP_ID" onclick="ajaxDirect('component.info.AddressList', 'queryAddresss', '&cond_GROUP_ID=' + getAttribute('group_id'), 'AddressListPart,AddressPaginPart,AddressCtrlPart')"/></td>
+									<td><a jwcid="@wade:PageRedirect" class="e_bLinkEditNB" title="修改" group_id="ognl:addressGroup.GROUP_ID" group_name="ognl:addressGroup.GROUP_NAME" group_desc="ognl:addressGroup.GROUP_DESC" onclick="getElement('GROUP_ID').value = getAttribute('group_id');getElement('GROUP_NAME').value = getAttribute('group_name');getElement('GROUP_DESC').value = getAttribute('group_desc');hidden(getElement('bupdate'), false);"/><a jwcid="@wade:PageRedirect" class="e_bLinkDeleteNB" title="删除" group_id="ognl:addressGroup.GROUP_ID" onclick="return Wade.info.deleteAddressGroup(this);"/></td>
+								</tr>						
+						</tbody>
+					</table>
+				</div></div></div>			
+			</div></div>
+			</div>
+		</fieldset>
+		<fieldset class="l_padding l_mt">
+		<legend>组编辑区</legend>
+		<div id="GroupEditArea" class="c_inputField" style="zoom:1;">
+			<!-- 顶部区 -->
+			<div class="top"></div>
+			<!-- 条件区 -->
+			<div class="body"><div class="aclinicOff">
+				<table class="col1">
+				<table>
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>组名：</span></div>
+								<div class="inputArea"><div>
+									<input type="hidden" id="GROUP_ID" name="GROUP_ID"/>
+									<input type="text" id="GROUP_NAME" name="GROUP_NAME" desc="组名" nullable="no" maxsize="100" datatype="text" class="e_input"/>
+								</div></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>描述：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" id="GROUP_DESC" name="GROUP_DESC" desc="描述" maxsize="200" datatype="text" class="e_input"/>
+								</div></div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div></div>
+			<!-- 按钮区 -->
+			<div class="bottom e_rSet">
+				<input type="button" id="bcreate" name="bcreate" value=" 新增 " desc="组" class="e_button" onclick="return Wade.info.createAddressGroup();"/>
+				<input type="button" id="bupdate" name="bupdate" value=" 修改 " desc="组" class="e_button" onclick="return Wade.info.updateAddressGroup();"/>
+			</div>				
+		</div>
+		</fieldset>
+	</div>
+
+	<div class="modifibox">
+	
+		<fieldset class="l_padding l_mt l_ml">
+		<legend>地址簿查询区</legend>
+		<!-- 查询区 -->
+		<div id="AddrQueryArea" class="c_inputField" style="zoom:1;">
+			<!-- 顶部区 -->
+			<div class="top"></div>
+			<!-- 条件区 -->
+			<div class="body"><div class="aclinicOn">
+				<table class="col3">
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>业务区编码：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="cond_AREA_CODE@TextField" value="ognl:condition.cond_AREA_CODE" desc="业务区编码" class="e_input"/>
+								</div></div>
+							</div>
+						</td>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>部门编码：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="cond_DEPART_ID@TextField" value="ognl:condition.cond_DEPART_ID" desc="部门编码" class="e_input"/>
+								</div></div>
+							</div>
+						</td>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>员工编码：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="cond_STAFF_ID@TextField" value="ognl:condition.cond_STAFF_ID" desc="员工编码" class="e_input"/>
+								</div></div>
+							</div>
+						</td>					
+					</tr>
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>业务区名称：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="cond_AREA_NAME@TextField" value="ognl:condition.cond_AREA_NAME" desc="业务区名称" class="e_input"/>
+								</div></div>
+							</div>
+						</td>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>部门名称：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="cond_DEPART_NAME@TextField" value="ognl:condition.cond_DEPART_NAME" desc="部门名称" class="e_input"/>
+								</div></div>
+							</div>
+						</td>
+						<td class="li">
+							<div class="wrapper">
+								<div class="label"><span>员工名称：</span></div>
+								<div class="inputArea"><div>
+									<input type="text" jwcid="cond_STAFF_NAME@TextField" value="ognl:condition.cond_STAFF_NAME" desc="员工名称" class="e_input"/>
+								</div></div>
+							</div>
+						</td>					
+					</tr>					
+				</table>
+			</div></div>
+			<!-- 按钮区 -->
+			<div class="bottom e_rSet">
+				<input type="button" id="bquery" name="bquery" value=" 执行查询 " class="e_button" onclick="if (!verifyAll('AddrQueryArea')) return false;ajaxSubmit('component.info.AddressList', 'queryAddresss', null, 'AddressListPart,AddressPaginPart');"/>
+			</div>
+		</div>
+		</fieldset>
+		
+		<fieldset class="l_padding l_mt l_ml">
+		<legend>地址簿列表区</legend>
+		<div class="c_table"><div class="nowrapOn">
+		<!-- 控制区 -->
+		<div class="fctTop e_clear">
+			<div id="AddressCtrlPart" jwcid="@wade:Part" optimize="true">
+				<div class="fctLeft">
+					<div class="button">
+						<ul>
+							<li><a jwcid="@wade:PageRedirect" value="新增" class="e_bLinkAdd" display="ognl:condition.cond_GROUP_ID == null" onclick="Wade.info.addressListSelectStaffs();"/></li>
+							<li><a jwcid="@wade:PageRedirect" value="删除" class="e_bLinkDelete" desc="地址簿" onclick="if (!confirmBox(this, 'addrs')) return false;ajaxSubmit('component.info.AddressList', 'deleteAddresss', '&ADDRS=' + getCheckedBoxStr('addrs'), 'AddressListPart,AddressPaginPart');"/></li>
+							<li><a jwcid="@wade:PageRedirect" value="转移" class="e_bLinkGeneration" display="ognl:condition.cond_GROUP_ID == null" desc="地址簿" onclick="if (!verifyBox(this, 'addrs')) return false;hidden(getElement('GroupSelectPane'), false);"/></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="AddressPaginPart" jwcid="@wade:Part" optimize="true">
+				<div class="fctRight">
+					<div jwcid="@wade:NavBar" source="ognl:addresss" listener="ognl:listeners.queryAddresss" pageSize="100" refreshParts="AddressListPart" checkboxName="addrs"/>
+				</div>
+			</div>
+		</div>
+				
+		<div class="find">
+			<div id="GroupSelectPart" jwcid="@wade:Part" optimize="true">
+			<div id="GroupSelectPane" style="display:none" class="newmyinputbox">
+				<div class="newmyinput">
+					<div>
+						<div align="right"><a href="javascript:void(0)" onclick="hidden(getElement('GroupSelectPane'), true);"><img src="component/images/close.jpg" alt="关闭" width="9" height="9" border="0"/></a></div>
+					</div>
+					<div style="height:100">
+						<table width="100%" border="0">
+							<tr jwcid="@Foreach" source="ognl:addressGroups" value="ognl:addressGroup" element="tr">
+								<td width="90%"><span jwcid="@Insert" value="ognl:addressGroup.GROUP_NAME" raw="false"/></td>
+								<td width="10%"><a jwcid="@wade:PageRedirect" title="转移" class="e_bLinkGeneration" group_id="ognl:addressGroup.GROUP_ID" onclick="return Wade.info.moveAddresss(this);"/></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			</div>
+
+		</div>
+      	<!-- 数据区 -->
+  		<div id="AddressListPart" jwcid="@wade:Part" optimize="true">
+	 		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+				<table>
+	      			<thead>
+			  			<tr>
+	      				<th class="sign"><input type="checkbox" name="addrs_ctrl" onclick="checkedAll('addrs', checked)"/></th>
+	      				<th>工号</th>
+						<th>员工名称</th>
+						<th>分组</th>
+						<th>服务号码</th>
+						<th>性别</th>
+						<th>归属部门</th>
+						<th>归属业务区</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr jwcid="@Foreach" source="ognl:addresss" value="ognl:address" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+							<td class="signbj"><input type="checkbox" name="addrs" jwcid="@Any" value="ognl:address.GROUP_ID + ';' + address.STAFF_ID + ';' + address.STAFF_NAME"/></td>
+							<td><span jwcid="@Insert" value="ognl:address.STAFF_ID" raw="false"/></td>
+							<td><span jwcid="@Insert" value="ognl:address.STAFF_NAME" raw="false"/></td>
+							<td><span jwcid="@Insert" value="ognl:address.GROUP_NAME" raw="false"/></td>
+							<td><span jwcid="@Insert" value="ognl:address.SERIAL_NUMBER" raw="false"/></td>
+							<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'STAFF_SEX', address.SEX)" raw="false"/></td>
+							<td><span jwcid="@Insert" value="ognl:address.DEPART_NAME" raw="false"/></td>
+							<td><span jwcid="@Insert" value="ognl:address.AREA_NAME" raw="false"/></td>
+						</tr>
+					</tbody>
+				</table>
+			</div></div></div>
+			<span style="display:none">
+				<input type="text" jwcid="cond_GROUP_ID@TextField" value="ognl:condition.cond_GROUP_ID"/>
+				<input type="text" jwcid="STAFF_ID@component:StaffField" value="ognl:info.STAFF_ID" blank="true" multi="true" open="true"/>	
+			</span>
+		</div>
+		
+
+		<div class="nolin_refer_box">
+			<div class="rightbn">
+				<input type="button" id="bsubmit" name="bsubmit" value=" 提交 " desc="员工" class="e_button" onclick="if (!confirmInfo(this)) return false;ajaxSubmit('component.info.AddressList', 'createAddresss', null, 'AddressListPart,AddressPaginPart');"/>
+				<input type="button" id="bselect" name="bselect" value=" 选择 " class="e_button" onclick="Wade.info.addressListCheckedStaffs();"/>
+				<input type="button" id="bcancel" name="bcancel" value=" 返回 " class="e_button" onclick="cancel(true)"/>
+			</div>
+		</div>
+		
+		</div></div>
+		</fieldset>
+	</div>
+	
+</form>
+<script language="javascript">
+<!--
+Wade.onLoad(function(){
+	Wade.info.initAddressList();
+});
+//-->
+</script>
+	
+</div></div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head  jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>Proxy</title>
+<script language="javascript">
+    function openServ(){
+		redirectTo(getElement('servPage').value, 
+    		getElement('servListener').value, 
+    		'&SERIAL_NUMBER='+getElement('SERIAL_NUMBER').value+
+    		'&NET_TYPE_CODE='+getElement('NET_TYPE_CODE').value+
+    		'&RIGHT_CODE='+getElement('RIGHT_CODE').value+
+    		'&inModeCode='+getElement('inModeCode').value+
+		    '&IsCustServ=TRUE'+
+    		'&cond_SERIAL_NUMBER='+getElement('SERIAL_NUMBER').value+
+    		'&cond_NUMBER='+getElement('SERIAL_NUMBER').value+   
+		    '&cond_PARA_CODE1='+getElement('SERIAL_NUMBER').value+
+    		'&cond_NET_TYPE_CODE='+getElement('NET_TYPE_CODE').value+
+    		'&cond_QRY_TYPE=1&cond_REMOVE_TAG=0'+
+    		'&cond_ROUTE_EPARCHY_CODE='+getElement('eparchyCode').value+
+    		'&ROUTE_EPARCHY_CODE='+getElement('eparchyCode').value+    
+    		'&staffId='+getElement('staffId').value+
+    		'&password='+getElement('password').value+
+    		'&eparchyCode='+getElement('eparchyCode').value+
+		    '&subSysCode=CRM'
+    	    , 'cframe',true);
+    }
+
+	function setFrameTitle(t) {
+		document.title = t;
+	}
+
+	window.setFrameTitle = setFrameTitle;
+
+</script>
+</head>
+<form jwcid="@Form">
+    <input type="hidden" jwcid="servPage@Hidden"  value="ognl:servPage"  encode="false"/>
+    <input type="hidden" jwcid="servListener@Hidden"  value="ognl:servListener"  encode="false"/>
+    <input type="hidden" jwcid="SERIAL_NUMBER@Hidden"  value="ognl:data.SERIAL_NUMBER"  encode="false"/>
+    <input type="hidden" jwcid="NET_TYPE_CODE@Hidden"  value="ognl:data.NET_TYPE_CODE"  encode="false"/>    
+    <input type="hidden" jwcid="staffId@Hidden"  value="ognl:data.staffId"  encode="false"/>    
+    <input type="hidden" jwcid="password@Hidden"  value="ognl:data.password"  encode="false"/>    
+    <input type="hidden" jwcid="eparchyCode@Hidden"  value="ognl:data.eparchyCode"  encode="false"/>
+    <input type="hidden" jwcid="@Any" id="RIGHT_CODE" name="RIGHT_CODE" value="ognl:pageData.getParameter('RIGHT_CODE')"/>
+    <input type="hidden" jwcid="@Any" id="inModeCode" name="inModeCode" value="ognl:pageData.getParameter('inModeCode')"/>                
+</form>
+<frameset name="frameset" cols="*,0" framespacing="4" frameborder="no" border="0" onload="	openServ();">
+	<frame name="cframe" scrolling="auto"/>
+	<frame name="printframe"   scrolling="no"/>
+</frameset>
+
+<noframes><body>
+</body></noframes>
+<body jwcid="@Body">
+
+</body>
+
+</html>

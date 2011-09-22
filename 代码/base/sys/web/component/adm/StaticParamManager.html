@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Static Param Manager</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="component/scripts/module/adm.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+
+<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo" />
+
+<div class="l_widthMarginOn l_mt">
+	<table class="l_widthBody">
+		<tr>
+			<td class="l_widthCol" style="width:200px;">
+				<div class="c_edge"><div class="c_overflow" style="height:400px;"><div class="l_padding">
+					<div jwcid="@wade:LoadTree" root="ognl:root" nodes="ognl:nodes" param="ognl:param" listener="ognl:listeners.loadTree"/>
+				</div></div></div>
+			</td>
+			<td class="l_widthCol">
+				<div class="c_edge">
+					<iframe id="params" name="params" jwcid="@wade:PageRedirect" type="iframe" class="myframe" width="100%" height="400px" frameborder="no" />
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<script language="javascript">
+<!--
+Wade.onLoad(function(){
+	Wade.adm.staticParam_QueryParams();
+});
+//-->
+</script>
+</form>
+</div></div>
+</body>
+</html>

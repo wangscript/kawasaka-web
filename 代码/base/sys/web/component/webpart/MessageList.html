@@ -1,0 +1,23 @@
+<div class="l_padding">
+	<!-- 列表 开始 -->
+	<div class="c_list"><div class="ellipsisOn">
+		<table>
+  			<tr>
+  				<th class="title">消息主题</th>
+  				<th>消息状态</th>
+				<!-- <th class="stat">发送人</th>
+				<th class="date">发送时间</th> -->
+			</tr>
+			<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex">
+				<td class="title"><div><a jwcid="@wade:PageRedirect" source="ognl:{info}" cols="25" title="ognl:info.INFO_TOPIC" value="ognl:info.INFO_TOPIC" onclick="redirectTo('component.info.MessageEdit', 'queryInfo', parameters)"/></div></td>
+				<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'INFOINSTANCE_INSTSTATUS', info.INST_STATUS)" raw="false" class="ognl:info.INST_STATUS == @com.linkage.component.bean.info.InfoFactory@INFO_STATUS_NOREAD ? 'e_strong' : 'e_strong2'"/></td>
+				<!-- <td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.INFO_AUTH)" raw="false"/></td>
+				<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@decodeTimestamp('yyyy/MM/dd', info.SEND_TIME)" raw="false"/></td> -->
+			</tr>		
+		</table>
+	</div></div>
+	<!-- 列表 结束 -->
+	<div class="l_mt e_rSet">
+		<a class="e_bLinkNextNB l_mot l_mob" href="javascript:void(0);" caption="我的系统消息" onclick="redirectTo('component.info.MessageList', 'queryInfos', '')"><span>更多</span></a>
+	</div>
+</div>

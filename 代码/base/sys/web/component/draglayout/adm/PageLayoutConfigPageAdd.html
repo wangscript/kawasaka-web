@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>页面生成配置</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="javascript" type="text/javascript" src="component/scripts/module/draglayoutAdm.js"></script>
+<script language="javascript">
+<!--
+System.onLoad(DraglayoutAdm.init,DraglayoutAdm);
+System.onLoad(DraglayoutAdm.addPartDialog.init,DraglayoutAdm.addPartDialog);
+//-->
+</script>
+</head>
+<body jwcid="@wade:Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@wade:Form">
+<input id="PAGETYPE_ID" jwcid="PAGETYPE_ID@Hidden" type="hidden" value="ognl:info.PAGETYPE_ID" encode="false"/>
+<input id="PAGE_ID" jwcid="PAGE_ID@Hidden" type="hidden" value="ognl:info.PAGE_ID"  encode="false"/>
+<input id="RELATIONTYPE" jwcid="RELATIONTYPE@Hidden" type="hidden" value="ognl:info.RELATIONTYPE"  encode="false"/>
+<input id="UPDATEMODE" jwcid="UPDATEMODE@Hidden" type="hidden" value="ognl:info.UPDATEMODE"  encode="false"/>
+
+<fieldset class="l_padding" style="border:solid 1px #A3B6D0;">
+	<legend>页面基本信息</legend>
+	<div class="c_inputField l_mt"><div class="aclinicOn">
+		<table class="col2">
+			<tr>
+				<td class="li">
+					<div class="wrapper">
+						<div class="label"><span class="">页面描述：</span></div>
+						<div class="inputArea">
+							<table>
+								<tr>
+									<td class="input"><input id="page_Desc" class="e_input" type="text" /></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</td>
+				<td class="li"></td>
+			</tr>
+		</table>
+	</div></div>
+</fieldset>
+<fieldset class="l_padding l_mt l_mb" style="border:solid 1px #A3B6D0;">
+	<legend>列布局配置</legend>
+	<!--
+	<div class="l_mt">
+		<span>操作：</span>
+				
+		 <a id="btn_ColumnLayoutApply" onfocus="javascript:this.blur();" href="javascript:void(0);" onclick="javascript:DraglayoutAdm.updateColumnInfo();" class="e_bLinkRefresh"><span>应用更改</span></a>
+	</div>
+	-->
+	<div class="l_manual e_clear">
+		<div class="l_left" style="width:140px;">
+			<div class="c_inputField"><div class="aclinicOn">
+				<table class="col1">
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<input id="ckb_cl2"  onfocus="javascript:this.blur();" onclick="javascript:if(this.checked)DraglayoutAdm.createColumnData(2);" name="ckb_ColumnLayout" type="radio"  />两列布局
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<input id="ckb_cl3"  onfocus="javascript:this.blur();" onclick="javascript:if(this.checked)DraglayoutAdm.createColumnData(3);" name="ckb_ColumnLayout" type="radio" />三列布局
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="li">
+							<div class="wrapper">
+								<input id="ckb_cl4" onfocus="javascript:this.blur();" onclick="javascript:if(this.checked)DraglayoutAdm.createColumnData(4);" name="ckb_ColumnLayout" type="radio"  />四列布局
+							</div>
+						</td>
+					</tr>
+					<!-- <tr>
+						<td class="li">
+							<div class="wrapper">
+								<a id="btn_ColumnLayoutSel" onfocus="javascript:this.blur();" href="javascript:void(0);" onclick="javascript:DraglayoutAdm.completeColumnLayoutSelect();" class="e_bLinkOK"><span>完成选择</span></a>	
+							</div>
+						</td>
+					</tr> -->
+				</table>
+			</div></div>
+		</div>
+		<div class="e_clear" style="margin-left:140px;"><div class="e_wFix">
+			<div class="c_table l_ml"><div class="nowrapOn">
+				<div class="table"><div class="wrapper"><div class="wrapper2">
+					<table>
+						<thead>
+							<tr>
+								<th>列名称</th>
+								<th>列宽度(单位：像素)</th>
+								<th>列序号</th>
+							</tr>
+						</thead>
+						<tbody id="columnList">
+						
+						</tbody>
+					</table>
+				</div></div></div>
+			</div></div>
+		</div></div>
+	</div>
+</fieldset>
+<div class="l_mt">
+	<span>操作：</span>
+	<a id="btn_ColumnLayoutSel" href="javascript:void(0);" onclick="javascript:DraglayoutAdm.completeColumnLayoutSelect();" class="e_bLinkOK"><span>完成列布局选择</span></a>	
+	<a id="btn_addPart" href="javascript:void(0);" class="e_bLinkAddDis"><span>新增部件</span></a>
+	<a id="btn_Save" href="javascript:void(0);" class="e_bLinkSave"><span>保存全部</span></a>
+	<!-- <a id="btn_Back" href="javascript:void(0);" class="e_bLinkPagePre" onclick="redirectTo('component.draglayout.adm.PageLayoutConfigMain','queryPageTypes','');"><span>返回到页面列表</span></a> -->
+</div>
+<fieldset id="fsPartDesign" class="l_padding l_mt" style="display:none;border:solid 1px #A3B6D0;">
+	<legend>部件配置</legend>
+		<div class="l_colMarginOn"><div>
+			<table id="partDesignContainerTable" cellspacing="3" width="100%">
+	        <tr><td style="height:300px;"></td></tr>
+			</table>
+		</div></div>
+</fieldset>
+</form>
+</div></div>
+
+
+
+
+<div id="draglayout_addpart_dlg" style="display:none;position:absolute;">
+<div class="x-dlg-hd">部件编辑</div>
+<div class="x-dlg-bd">
+<div id="draglayout_addpart_tabset" >
+	<!-- 标签头，id名称必须和标签页名称匹配，即必须加上_tabs -->
+	<div id="draglayout_addpart_tabset_tabs"></div>
+	<!-- 标签内容，id名称必须和标签页名称匹配，即必须加上_content -->
+	<div id="draglayout_addpart_tabset_content">
+		<!-- 标签子页1 -->
+		<div id="draglayout_addpart_tabset_page1">
+		<div class="l_padding">
+		<!-- 查询区 -->
+	<div class="c_inputField">
+		<!-- 顶部区 -->
+		<div class="top"></div>
+		<!-- 条件区 -->
+		<div class="body"><div class="aclinicOn">
+			<table class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>部件编号：</span></div>
+							<div class="inputArea"><div>
+								<input id="q_PartID" maxlength="10" class="e_input" type="text" /> 
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>部件名称：</span></div>
+							<div class="inputArea"><div>
+								<input id="q_PartName" maxlength="20" class="e_input" type="text" />
+							</div></div>
+						</div>
+					</td>				
+				</tr>
+			</table>
+		</div></div>
+		<!-- 按钮区 -->
+		<div class="bottom e_rSet">
+			<a id="btn_partQuery" href="javascript:void(0);" class="e_bLink e_bLinkSearch"><span>查询</span></a>
+		</div>
+	</div>
+	
+	<!--列表开始-->	
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<!-- 数据区 -->
+		<div class="table"><div class="wrapper"><div class="wrapper2">
+			<table>
+      			<thead>
+		  			<tr>
+						<th>选择</th>
+						<th>部件编号</th>
+						<th>部件名称</th>
+						<th>部件描述</th>
+					</tr>
+				</thead>
+				<tbody id="itemListContainer">
+					<tr>
+						<td colspan="4"><span>载入中...</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+	</div></div>						
+    </div>
+	</div>
+		<!-- 标签子页 -->
+		<div id="draglayout_addpart_tabset_page2" >	
+			<div class="l_padding">
+			<!--开始-->
+			<!-- 详情区 -->
+			<div class="c_inputField">
+				<div class="top"></div>
+				<!-- 控件区 -->
+				<div class="body"><div class="aclinicOn">
+					<table class="col1">
+						<tr>
+							<td class="li">
+								<div class="wrapper">
+									<div class="label"><span class="e_required">部件名称：</span></div>
+									<div class="inputArea"><div>
+										<input id="tb_PartEdit_Name" maxlength="50" class="e_input" type="text" />
+									</div></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="li">
+								<div class="wrapper">
+									<div class="label"><span>数据源地址：</span></div>
+									<div class="inputArea"><div>
+										<input id="tb_PartEdit_Addr" maxlength="300" class="e_input" type="text" />
+									</div></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="li">
+								<div class="wrapper">
+									<div class="label"><span>标识编码：</span></div>
+									<div class="inputArea"><div>
+										<input id="tb_PartEdit_RelationType" maxlength="100" class="e_input" type="text" style="width:100px;" />
+									</div></div>
+								</div>
+							</td>
+						</tr>						
+						<tr>
+							<td class="li">
+								<div class="wrapper">
+									<div class="label"><span>部件描述：</span></div>
+									<div class="inputArea"><div>
+										<textarea id="tb_PartEdit_Desc" maxlength="500" class="e_textarea" style="height:60px;"></textarea>
+									</div></div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div></div>
+				<!-- 按钮区 -->
+				<div class="bottom e_cSet">
+					<input id="btn_AddPartOk" class="e_button" type="button" value="保存" />
+					<input id="btn_AddPartCanel" class="e_button" type="button" value="取消" />
+				</div>
+			</div>
+			<!--结束-->
+		</div>
+	</div>
+</div>
+</div>
+
+<div id="loadingMask" class="c_tipPopup">
+	<iframe frameborder="0"></iframe>
+	<div class="tipPopup" style="width:140px;margin-left:-70px;">
+		<div class="c_filletDeep">
+			<div class="c_filletTop">
+				<div class="c_fillet11"></div>
+				<div class="c_fillet12"></div>
+			</div>
+			<div class="body"><div class="wrapper">
+				<div class="content"><div class="loading">载入中...</div></div>
+			</div></div>
+			<div class="c_filletBottom">
+				<div class="c_fillet21"></div>
+				<div class="c_fillet22"></div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

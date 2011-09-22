@@ -1,0 +1,125 @@
+/*
+描述:排序表格控件
+备注:排序内容仅包含TBODY标签里面的[支持多TBODY],THEAD,HFOOT标签不包含在内
+            事件仅仅加载在THEAD标签内.
+            如果不指定THEAD里面的type类型,那么将以字符排序
+            现在可以指定的类型有String,CaseInsensitiveString,Number,Date
+实例:
+<thead>
+	<tr>
+    	<td type="String">String</td>
+        <td type="CaseInsensitiveString">String</td>
+        <td type="Number">Number</td>
+        <td type="Date">Date</td>
+	</tr>
+</thead>
+*/
+<public:component>
+<public:attach event="oncontentready" onevent="fnInit()" />
+<public:attach event="onpropertychange" onevent="fnPropertychange()" />
+<script language="JScript" type="Text/JScript"><!--
+var TrArray=new Array();
+function fnInit() {
+    var o=element;
+    var oTHEAD,oTBODY,oTDTitle,oTR,i,j,L1,L2;
+
+    oTHEAD=o.all.tags("THEAD")[0].childNodes[0];
+    oTBODY=o.tBodies;
+    oTDTitle=oTHEAD.cells;
+    
+    arrow=document.createElement("SPAN");
+    
+    arrow.style.position="relative";
+    arrow.style.top="-2px";
+    arrow.style.fontFamily="webdings, Arial";
+    arrow.style.fontSize="14px";
+    arrow.style.height="18px";
+	arrow.style.color="#007BF1";
+    arrow.style.overflow="hidden";
+
+    L1=oTBODY.length;
+    for (i=0;i<L1;i++) {//复制所有TBODY内所有TR到数组
+        oTR=oTBODY[i].rows;
+        L2=oTR.length;
+        for(j=0;j<L2;j++){
+            TrArray[TrArray.length]=oTR[j];
+        }
+    }
+    L1=oTDTitle.length;
+    for (i=0;i<L1;i++) {
+        oTDTitle[i].htc_SortOrder=false;
+        oTDTitle[i].htc_TDIndex=i;
+        
+        var nodes = oTDTitle[i].childNodes;
+        if (nodes.length > 0 && nodes[0].tagName == "INPUT") continue;
+        
+        oTDTitle[i].attachEvent("onclick",function(){sortTable()});
+    }
+    //oTHEAD.attachEvent("onclick",function(){sortTable()});
+}
+function sortTable(SortNode){
+    var o=element,k=0,time=new Date(),SortNode=getParent(event.srcElement,"TH");
+    var oTDIndex,oTDType,orders,oTBODY,oTR,tempa,tempb,i,j,L1,L2,fTypeCast;
+
+    oTDIndex=SortNode.htc_TDIndex;
+    oTDType=SortNode.type;
+    orders=SortNode.htc_SortOrder=!SortNode.htc_SortOrder;
+    oTBODY=o.tBodies;
+
+    //内部函数
+    function getParent(el,pTagName){//返回指定的父对象
+        if(el==null)return null;
+        else if(el.nodeType==1&&el.tagName.toLowerCase()==pTagName.toLowerCase())
+            return el;
+        else
+            return getParent(el.parentNode,pTagName);
+	};
+    function CaseInsensitiveString(s){//转换为大写
+        return String(s).toUpperCase();
+	};
+    function parseDate(s){//转换为毫秒的时间
+        return Date.parse(s.replace(/\-/g,"/"));
+	};
+    //箭头
+    if(orders)
+        arrow.innerText="5";
+    else
+        arrow.innerText="6";
+    SortNode.appendChild(arrow);
+    //转换
+    fTypeCast=String;//未指定的时候的方式
+    switch(oTDType){
+        case "Number"://数字的处理方式
+            fTypeCast=Number;
+            break;
+        case "Date"://时间的处理方式
+            fTypeCast=parseDate;
+            break;
+        case "CaseInsensitiveString"://大小写不区分
+            fTypeCast=CaseInsensitiveString;
+            break;
+    };
+    window.status="开始排序";
+    TrArray.sort(
+        function (a,b){
+            if(fTypeCast(a.cells[oTDIndex].innerText)<fTypeCast(b.cells[oTDIndex].innerText))
+                return orders?-1:+1;
+            if(fTypeCast(a.cells[oTDIndex].innerText)>fTypeCast(b.cells[oTDIndex].innerText))
+                return orders?+1:-1;
+            return 0;
+        });
+    window.status="排序完成";
+    //显示排序后结果
+    L1=oTBODY.length;
+    for(i=0;i<L1;i++){
+        oTR=oTBODY[i].rows;
+        L2=oTR.length;
+        for(j=0;j<L2;j++){
+            oTR[j].swapNode(TrArray[k++]);
+            window.status="更新 "+k+"行 使用时间:"+(new Date()-time)+"毫秒";
+            }
+    }
+}
+function fnPropertychange(){
+}
+// --></script>

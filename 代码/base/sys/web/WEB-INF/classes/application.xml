@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="gb2312"?>
+<application>
+	
+	<!--
+		product config
+		productmode="true"|"false" true for production mode, false for development mode
+		version="BSS10"|"BOSS15"|"BOSS20"
+		logintype="WEB"|"BOSS_GUI"
+	-->
+	<project
+		name="Sys"
+		productmode="false"
+		uploadpath="upload"
+		version="sys1.0"
+		province="0898"
+		logintype="WEB"
+		title="后台管理系统"
+		/>
+
+	<!-- globar setting -->
+	<globar>
+		<navbar
+			pagesize="20"
+			maxpagesize="500"
+			/>
+	</globar>
+	<tuxconn type="JNI"/>
+
+	<!--
+		database config
+		jetty: jndi = "java:comp/env/jdbc/framework"
+		default: connname|eparchy
+	-->
+	<database default="sdmysql" type="5">
+	<!--  -->
+		<sdcen1
+			type="jndi"
+			jndi="java:comp/env/jdbc/sdcends"
+			/>
+		<sdcrm1
+			type="jndi"
+			jndi="java:comp/env/jdbc/sdcrm1ds"
+			/>
+		<sdmysql
+			type="jndi"
+			jndi="java:comp/env/jdbc/sdcrm1ds"
+			/>			
+		<!-- 
+		<sdcrm1
+			type="jndi"
+			jndi="sdcrm1ds"
+			/>
+		<sdcen1
+			type="jndi"
+			jndi="sdcen1ds"
+			/>
+		 -->
+		<!--  
+		<sdcrm1
+			type="jdbc"
+			driver="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://localhost:3306/wcw_diy"
+			user="root"
+			passwd=""
+			/>		
+		<sdcen1
+			type="jdbc"
+			driver="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://localhost:3306/wcw_diy"
+			user="root"
+			passwd=""
+			/>
+		<sdorcl
+			type="jdbc"
+			driver="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://localhost:3306/wcw_diy"
+			user="root"
+			passwd=""
+			/>	
+		--> 		 
+		 <!-- 
+		<sdcrm1
+			type="jdbc"
+			driver="oracle.jdbc.driver.OracleDriver"
+			url="jdbc:oracle:thin:@127.0.0.1:1521:orcl"
+			user="wcw_diy"
+			passwd="wcw_diy"
+			/>		
+		<sdcen1
+			type="jdbc"
+			driver="oracle.jdbc.driver.OracleDriver"
+			url="jdbc:oracle:thin:@127.0.0.1:1521:orcl"
+			user="wcw_diy"
+			passwd="wcw_diy"
+			/>
+		<sdorcl
+			type="jdbc"
+			driver="oracle.jdbc.driver.OracleDriver"
+			url="jdbc:oracle:thin:@127.0.0.1:1521:orcl"
+			user="wcw_diy"
+			passwd="wcw_diy"
+			/>
+		 -->	
+		<!-- 
+		<sdcrm1
+			type="jdbc"
+			driver="oracle.jdbc.driver.OracleDriver"
+			url="jdbc:oracle:thin:@127.0.0.1:1521:wuwl"
+			user="test"
+			passwd="test"
+			/>		
+		<sdcen1
+			type="jdbc"
+			driver="oracle.jdbc.driver.OracleDriver"
+			url="jdbc:oracle:thin:@127.0.0.1:1521:wuwl"
+			user="test"
+			passwd="test"
+			/>
+		<sdwuwl
+			type="jdbc"
+			driver="oracle.jdbc.driver.OracleDriver"
+			url="jdbc:oracle:thin:@127.0.0.1:1521:wuwl"
+			user="test"
+			passwd="test"
+			/>
+		 --> 	
+		<!--  
+		<eparchy
+			default="sdcrm1"
+            conncen="sdcen1"
+            />		  	--> 		
+	</database>
+	<url-redirect default="wade">
+		<adm
+			addr="/app?service=page/Admin"
+			/>
+	</url-redirect>
+	
+</application>

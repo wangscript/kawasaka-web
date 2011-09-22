@@ -1,0 +1,40 @@
+<page name="Home" specification-path="/home/Index.page"/>
+<page name="Admin" specification-path="/common/Home.page"/>
+<page name="Main" specification-path="/common/Main.page"/>  
+<page name="Header" specification-path="/common/Header.page"/>	
+<page name="Bottom" specification-path="/common/Bottom.page"/>
+<page name="Sliptop" specification-path="/common/Sliptop.page"/>
+<page name="Slipleft" specification-path="/common/Slipleft.page"/>
+<page name="Sidebar" specification-path="/common/Sidebar.page"/>
+
+<!-- chenzg begin-->
+<page name="sys.staff.StaffList" specification-path="/sys/pages/staff/StaffList.page"/>
+<page name="sys.staff.StaffAdd" specification-path="/sys/pages/staff/StaffAdd.page"/>
+<page name="sys.staff.StaffEdit" specification-path="/sys/pages/staff/StaffEdit.page"/>
+<page name="sys.staff.StaffPasswd" specification-path="/sys/pages/staff/StaffPasswd.page"/>
+
+<page name="sys.system.MenusList" specification-path="/sys/pages/system/menu/MenusList.page"/>
+<page name="sys.system.MenusAdd" specification-path="/sys/pages/system/menu/MenusAdd.page"/>
+<page name="sys.system.MenusEdit" specification-path="/sys/pages/system/menu/MenusEdit.page"/>
+<page name="sys.system.RightsList" specification-path="/sys/pages/system/right/RightsList.page"/>
+<page name="sys.system.RightsAdd" specification-path="/sys/pages/system/right/RightsAdd.page"/>
+<page name="sys.system.RightsEdit" specification-path="/sys/pages/system/right/RightsEdit.page"/>
+<page name="sys.system.StaffMenuList" specification-path="/sys/pages/system/staffmenu/StaffMenuList.page"/>
+<page name="sys.system.StaffMenuEdit" specification-path="/sys/pages/system/staffmenu/StaffMenuEdit.page"/>
+<page name="sys.system.StaffMenuAdd" specification-path="/sys/pages/system/staffmenu/StaffMenuAdd.page"/>
+<page name="sys.system.StaffRightList" specification-path="/sys/pages/system/staffright/StaffRightList.page"/>
+<page name="sys.system.StaffRightEdit" specification-path="/sys/pages/system/staffright/StaffRightEdit.page"/>
+<page name="sys.system.StaffRightAdd" specification-path="/sys/pages/system/staffright/StaffRightAdd.page"/>
+<page name="sys.system.MenusRightsEdit" specification-path="/sys/pages/system/right/MenusRightsEdit.page"/>
+
+
+<page name="sys.params.DepartsList" specification-path="/sys/pages/params/departs/DepartsList.page"/>
+<page name="sys.params.DepartsEdit" specification-path="/sys/pages/params/departs/DepartsEdit.page"/>
+<page name="sys.params.DepartsAdd" specification-path="/sys/pages/params/departs/DepartsAdd.page"/>
+<page name="sys.params.HotelsItemsAdd" specification-path="/sys/pages/params/hotelsitems/HotelsItemsAdd.page"/>
+<page name="sys.params.AreasList" specification-path="/sys/pages/params/areas/AreasList.page"/>
+<page name="sys.params.AreasEdit" specification-path="/sys/pages/params/areas/AreasEdit.page"/>
+<page name="sys.params.AreasAdd" specification-path="/sys/pages/params/areas/AreasAdd.page"/>
+<!-- chenzg end-->
+
+
