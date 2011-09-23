@@ -48,44 +48,7 @@ TEXTAREA {
 #nav {
 	BACKGROUND-POSITION: 50% bottom; FLOAT: left; BACKGROUND-IMAGE: url(nav_bg.gif); WIDTH: 990px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 39px
 }
-#nav UL {
-	LIST-STYLE-TYPE: none
-}
-LI{
-   padding-bottom: 0px;
-    margin: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
-}
 
-LI{
-   list-style-type: none;
-    list-style-image: none;
-}
-LI{
-   line-height: 1px;
-}
-
-UL{
-   padding-bottom: 0px;
-    margin: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
-}
-
-UL{
-   list-style-type: none;
-    list-style-image: none;
-}
-
-#nav UL {
-	LIST-STYLE-TYPE: none
-}
-#nav LI {
-	DISPLAY: block; FLOAT: left
-}
 
 #nav A {
 	PADDING-LEFT: 3px; BACKGROUND: url(l3.jpg) no-repeat left top; FLOAT: left; MARGIN-LEFT: 58px
@@ -316,20 +279,31 @@ UL{
 	BORDER-BOTTOM: #e3e3e3 1px solid
 }
 #di2 {
-	FLOAT: left; WIDTH: 988px
+	FLOAT: left; WIDTH: 988px;background:url(../images/banner.jpg) top repeat-x;
 }
 #di3 {
 	FLOAT: left; PADDING-BOTTOM: 4px; WIDTH: 988px; PADDING-TOP: 4px
 }
 #di3a {
-	PADDING-RIGHT: 20px; PADDING-LEFT: 16px; FLOAT: left; WIDTH: 180px
+	PADDING-RIGHT: 20px; PADDING-LEFT: 16px; FLOAT: left; WIDTH: 180px£»
 }
+
+
+
 .di3anm {
 	FONT-WEIGHT: bold; COLOR: #041e57; PADDING-TOP: 10px
+}
+
+.di3anmm {
+	FONT-WEIGHT: bold; COLOR: RED; PADDING-TOP: 40px
 }
 .di3anr {
 	PADDING-LEFT: 1px; PADDING-TOP: 10px
 }
+#di3anrr {
+	PADDING-LEFT: 1px; MARGIN-TOP: 30px
+}
+
 .di3anr H1 {
 	BACKGROUND-POSITION: 0px 4px; MARGIN-TOP: 10px; PADDING-LEFT: 18px; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(sy_fk.gif); MARGIN-BOTTOM: 2px; BACKGROUND-REPEAT: no-repeat
 }
@@ -343,7 +317,7 @@ UL{
 	PADDING-TOP: 10px; TEXT-ALIGN: right
 }
 #di3a P {
-	PADDING-BOTTOM: 15px; PADDING-TOP: 15px
+	PADDING-BOTTOM: 15px; PADDING-TOP: 15px£»
 }
 #di3b {
 	BORDER-RIGHT: #59669a 1px solid; PADDING-RIGHT: 38px; PADDING-LEFT: 38px; FLOAT: left; BORDER-LEFT: #59669a 1px solid; WIDTH: 468px; HEIGHT: 510px
@@ -413,6 +387,9 @@ UL{
 }
 .sy_en {
 	COLOR: #081d58; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+#sy_enn {
+	COLOR: #RED; FONT-FAMILY: Arial, Helvetica, sans-serif
 }
 .fgsjs {
 	BACKGROUND-POSITION: 40px 22px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 75px; BACKGROUND-IMAGE: url(jt_fgs.gif); LINE-HEIGHT: 140%; PADDING-TOP: 20px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 136px
@@ -749,3 +726,5 @@ a:hover{color:#FF3300; text-decoration:underline;}
 .nav-bot{width:1000px;float:left; height:20px;overflow:hidden; line-height:20px; padding-top:12px; padding-bottom:10px;}
 .nav-botinfo{width:680px;background:url(http://www.codefans.net/jscss/demoimg/201108/ico01.jpg) no-repeat left;text-align:left;padding-left:20px;margin-left:10px; display:inline;color:#9F9F9F;}
 
+}
+#rollText{font:12px /20px verdana;}
