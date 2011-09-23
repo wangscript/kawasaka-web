@@ -15,16 +15,16 @@
 				<div id="top">
 					<div id="top_l">
 						<a jwcid="@Any" href="/"><img jwcid="@Any"
-								src="./home/images/logo.jpg" border="0" alt="川荣重工" /> </a>
+								src="./home/images/logo2.jpg" border="0" alt="川荣重工" /> </a>
 					</div>
 					<div id="top_r">
 						<form name="searchForm" id="searchForm" method="post">
 							<input type=hidden value=Title name=Field />
 							<span id="first"> <a jwcid="@Any" name="m66428"
-								href="http://www.zoomlion.com"> <img jwcid="@Any"
+								href="http://www.KAVASAKA.com"> <img jwcid="@Any"
 										src="./home/images/maps.gif" align=top border=0 /> <strong>中国</strong><font
 									color="#006699">[选择]</font> </a> </span>
-							<a jwcid="@Any" href="/sitemap.html" target="_blank">站点地图</a>
+							<a jwcid="@Any" href="/" target="_blank">站点地图</a>
 							&nbsp;&nbsp;搜索
 							<input value="" name="Keywords" id="keywords" class="input2"
 								style="width: 114px" />
@@ -108,22 +108,7 @@
 </script>
 				<div id="mainbody">
 					<div id="di2" style="width: 988px; height: 214px">
-						<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
-							codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
-							width="988" height="214" id="__banner" align="middle"
-							style="float: middle">
-							<param name="allowScriptAccess" value="sameDomain" />
-							<param name="allowFullScreen" value="false" />
-							<param name="movie" value="./home/play/banner.swf" />
-							<param name="quality" value="High" />
-							<param name="wmode" value="transparent" />
-							<embed src="./home/play/banner.swf" quality="High" width="988"
-								height="214" name="__banner" align="middle"
-								allowScriptAccess="sameDomain" allowFullScreen="false"
-								type="application/x-shockwave-flash"
-								pluginspage="http://www.macromedia.com/go/getflashplayer"
-								wmode="transparent" />
-						</object>
+						
 					</div>
 					<div id="di3">
 						<div id="di3a">
@@ -159,9 +144,27 @@
 								</DD>
 							</DIV>
 
-							<!-- p中间放置一张图片-->
-							<p></p>
+							<!-- 公司公告 -->
+							<div class="di3anmm">
+								公司公告
+								<SPAN class=sy_enn>ANNOUNCEMENT </SPAN>
+							</DIV>
+						<div id="di3anrr">
+							<div id="rollAD" style="height:160px; position:relative; overflow:hidden; WIDTH:180px;">
+			<div id="rollText" style="font-size:12px; line-height:30px;">
+			<a href="/" title=""><font color="#0000FF">◇ 安理会改革拟新增七理事国</font></a><br />
+			<a href="/" title=""><font color="#0000FF">◇ 国务院领导工作分工确定</font></a><br />
+			<a href="/" title=""><font color="#0000FF">◇ 安理会改革拟新增七理事国</font></a><br />
+			<a href="/" title=""><font color="#0000FF">◇ 国务院领导工作分工确定</font></a><br />
+			<a href="/" title=""><font color="#0000FF">◇ 安理会改革拟新增七理事国</font></a><br />
+			<a href="/" title=""><font color="#0000FF">◇ 国务院领导工作分工确定</font></a><br />
+			<a href="/" title=""><font color="#0000FF">◇ 国务院领导工作分工确定</font></a><br />
+	        </div>
+</div>
 						</div>
+					</div>
+						
+						
 						<div id="di3b">
 							<div id="di3b1">
 								<div class="di3anm">
@@ -489,11 +492,7 @@
 											src="./home/images/zoom-map.gif" width="150" height="90"
 											border=0 /> </a>
 								</p>
-								<p style="margin-top: 10px;">
-									<a jwcid="@Any" href="/join/delivery_resume.html"><img
-											jwcid="@Any" src="./home/images/sy_qq3.jpg" width="151"
-											height="40" border="0" /> </a>
-								</p>
+
 
 								<div class="di3anm" style="padding-top: 18px;">
 									服务热线
@@ -571,5 +570,38 @@
 					language="JavaScript"></script>
 			</div>
 			<!--<script src="./home/js/popup.js" type="text/javascript"></script>-->
+
+	<script type="text/javascript">
+
+var textDiv = document.getElementById("rollText");
+var textList = textDiv.getElementsByTagName("a");
+if(textList.length > 2){
+	var textDat = textDiv.innerHTML;
+	var br = textDat.toLowerCase().indexOf("<br",textDat.toLowerCase().indexOf("<br")+3);
+	//var textUp2 = textDat.substr(0,br);
+	textDiv.innerHTML = textDat+textDat+textDat.substr(0,br);
+	textDiv.style.cssText = "position:absolute; top:0";
+	var textDatH = textDiv.offsetHeight;MaxRoll();
+}
+var minTime,maxTime,divTop,newTop=0;
+function MinRoll(){
+	newTop++;
+	if(newTop<=divTop+40){
+		textDiv.style.top = "-" + newTop + "px";
+	}else{
+		clearInterval(minTime);
+		maxTime = setTimeout(MaxRoll,5000);
+	}
+}
+function MaxRoll(){
+	divTop = Math.abs(parseInt(textDiv.style.top));
+	if(divTop>=0 && divTop<textDatH-40){
+		minTime = setInterval(MinRoll,1);
+	}else{
+		textDiv.style.top = 0;divTop = 0;newTop=0;MaxRoll();
+	}
+}
+
+</script>
 	</body>
 </html>
