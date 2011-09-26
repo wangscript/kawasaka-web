@@ -9,3 +9,5 @@ cashiersys.member.UnusedCardList=选取未使用的卡，点【关闭】回到主界面~！
 cashiersys.member.MemberList=会员管理，点【关闭】回到主界面~！
 cashiersys.member.CardList=会员卡管理，点【关闭】回到主界面~！
 cashiersys.member.BillList=查询卡消费详细记录，点【关闭】回到主界面~！
+sys.system.FilesList=上传文件管理，点【关闭】回到主界面~！
+sys.system.NewsList=新闻发布管理，点【关闭】回到主界面~！
