@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>Static Tree</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<!-- 提示组件可以在hint.txt中设置，也可以通过页面类中有setHintInfo,setAlertInfo,setErrorInfo来动态设置 -->
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+
+	<!-- 单独样式设置顶部间隔  -->
+	<div class="l_mt"></div>
+
+	<!-- 等宽布局 -->
+	<div class="l_widthMarginOn">
+		<table class="l_widthBody">
+			<tr>
+				<td class="l_widthCol" style="width:auto;">
+						<div class="c_edge">
+						<h4><span class="text">栏目列表</span></h4>
+						<div id="grpTrees" class="c_overflow" style="height:300px;"><div class="l_padding">
+								<span
+								jwcid="@wade:Tree"
+								treeData="ognl:treeData"
+								checkbox="true"
+								expandAll="false"/>
+						</div></div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="c_submit e_cSet">
+		<input type="button" class="e_button" value="清除" onclick="setReturnValue('','');"/>
+		<input type="button" class="e_button" value="返回" onclick="cancel(true);"/>
+	</div>
+</form>
+</div></div>
+</body>
+</html>

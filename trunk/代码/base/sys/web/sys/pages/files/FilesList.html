@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>查询新闻</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="sys/scripts/params/params.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col4">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>附件编号：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_FILE_ID@TextField" value="ognl:conditions.FILE_ID" desc="附件编号" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>附件名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_FILE_NAME@TextField" value="ognl:conditions.FILE_NAME" desc="附件名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>附件类型：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_FILE_TYPE@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'FILE_TYPES')"
+									value="ognl:conditions.FILE_TYPE" desc="附件类型" class="e_select"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" listener="ognl:listeners.queryFiles" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>
+	
+	<div id="ResultDataPart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctRight">
+			 	<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryFiles" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table id="printTable">
+      			<thead>
+		  			<tr>
+						<th>附件编号</th>
+						<th>附件名称</th>
+						<th>文件路径</th>
+						<th>文件大小</th>
+						<th>上传员工</th>
+						<th>上传时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td>
+							<div jwcid="@Conditional" condition="ognl:info.FILE_TYPE == 1">
+								<a jwcid="@Any" href="ognl:'./attach?file_id=' + info.FILE_ID" value="ognl:info.FILE_ID" target="_blank">
+									<span jwcid="@Insert" value="ognl:info.FILE_ID"/>
+								</a>
+							</div>
+							<div jwcid="@Conditional" condition="ognl:info.FILE_TYPE == 2">
+								<a jwcid="@Any" href="ognl:'./image?file_id=' + info.FILE_ID" value="ognl:info.FILE_ID" target="_blank">
+									<span jwcid="@Insert" value="ognl:info.FILE_ID"/>
+								</a>
+							</div>
+						</td>
+						<td><span jwcid="@Insert" value="ognl:info.FILE_NAME"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.FILE_PATH"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.FILE_SIZE"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.CREA_STAFF"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.CREA_TIME"/></td>
+						<td><a jwcid="@Any" href="javascript:void(0)" onclick="ajaxSubmit(this,'deleteFiles','&file_id='+this.value,'ResultDataPart','Form0',null,null);" value="ognl:info.FILE_ID">删除</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<div class="fctBottom e_clear">
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryFiles" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+	
+</form>	
+</div></div>
+</body>
+</html>
