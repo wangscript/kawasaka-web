@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>编辑新闻</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="sys/scripts/params/params.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<!-- 修改新闻信息  开始-->
+			<table class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">新闻标题：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="edit_NEW_TITLE@TextField" value="ognl:info.NEW_TITLE" nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" desc="新闻标题" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td><div class="wrapper"></div></td>
+				<tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">新闻类型：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="edit_NEW_TYPE@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'NEW_TYPE')"
+									value="ognl:info.NEW_TYPE" desc="新闻类型" class="e_select" nullable="no"/>
+							</div></div>
+						</div>
+					</td>
+					<td><div class="wrapper"></div></td>
+				<tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">新闻所在栏目：</span></div>
+							<div class="inputArea"><div>
+								 <input type="text" jwcid="edit_NEW_CID@wade:PopupField" text="ognl:info.NEW_CID_NAME" value="ognl:info.NEW_CID" action="popupPage('CategorysList', 'init', null, '栏目选择', 450, 450);" desc="栏目选择" class="e_input" nullable="no"/>
+							</div></div>
+						</div>
+					</td>
+					<td><div class="wrapper"></div></td>
+				<tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>新闻缩略图：</span></div>
+							<div class="inputArea"><div>
+								<span jwcid="edit_NEW_THUMB@wade:UploadField" value="ognl:info.NEW_THUMB" className="e_input" readOnly="false" disabled="false" fileTotal="1"/>	
+							</div></div>
+						</div>
+					</td>
+					<td><div class="wrapper"></div></td>
+				<tr>											
+				<tr>	
+					<td class="li">	
+						<div class="wrapper">
+							<div class="label"><span>新闻简要：</span></div>
+							<div class="inputArea"><div>
+								<textarea jwcid="edit_NEW_DESCRIPTION@TextArea" value="ognl:info.NEW_DESCRIPTION" nullable="yes" minsize="1" maxsize="100" datatype="text" maxLength="100" desc="新闻简要" class="e_TextArea"/>
+							</div></div>
+						</div>
+					</td>
+					<td></td>
+				<tr>
+				<tr>	
+					<td class="li">							
+						<div class="wrapper">
+							<div class="label"><span class="e_required">新闻内容：</span></div>
+							<div class="inputArea"><div>
+								<textarea jwcid="edit_NEW_BODY@wade:Editor" desc="新闻内容" nullable="no" datatype="string" value="ognl:info.NEW_BODY"  cols="60" rows="10"></textarea> 
+							</div></div>
+						</div>	
+					</td>
+					<td></td>
+				<tr>
+				<tr>	
+					<td class="li">												
+						<div class="wrapper">
+							<div class="label"><span class="e_required">新闻状态：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="edit_NEW_FLAG@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'BUSI_ITEM_FLAGS')"
+									value="ognl:info.NEW_FLAG" desc="新闻状态" class="e_select" nullable="no"/>
+							</div></div>
+						</div>
+					</td>
+					<td></td>
+				</tr>
+				<tr>	
+					<td class="li">												
+						<div class="wrapper">
+							<div class="label"><span class="e_required">作者：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="edit_NEW_WRITER@TextField" value="ognl:info.NEW_WRITER==null? pageData.getContext().getStaffId() :info.NEW_WRITER" nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" desc="作者" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td></td>
+				</tr>				
+			</table>
+			<!-- 修改项目信息  结束-->
+		</div></div>
+		<div class="bottom e_cSet">
+			<input jwcid="edit_NEW_ID@Hidden" value="ognl:info.NEW_ID" encode="false"/>
+			<input type="submit" jwcid="bqsubmit@Submit" value="提交" listener="ognl:listeners.saveNews" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>
+</form>	
+<script language="javascript"><!--
+	
+// --></script>
+</div></div>
+</body>
+</html>
