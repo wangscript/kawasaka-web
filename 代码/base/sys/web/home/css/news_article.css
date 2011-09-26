@@ -87,7 +87,7 @@ TEXTAREA {
 	MARGIN-TOP: 10px; FLOAT: left; PADDING-BOTTOM: 15px
 }
 #l {
-	FLOAT: left; MARGIN-LEFT: 8px; WIDTH: 157px
+	FLOAT: left; MARGIN-LEFT: 8px; WIDTH: 157px; 
 }
 .l1s {
 	FLOAT: left; OVERFLOW: hidden; WIDTH: 157px; HEIGHT: 3px
@@ -102,10 +102,10 @@ TEXTAREA {
 	VERTICAL-ALIGN: top
 }
 #l1 {
-	BORDER-RIGHT: #cbc7c4 1px solid; FLOAT: left; BORDER-LEFT: #cbc7c4 1px solid; WIDTH: 155px
+	BORDER-RIGHT: #cbc7c4 1px solid; FLOAT: left; BORDER-LEFT: #cbc7c4 1px solid; WIDTH: 155px; HEIGHT: 465px ;
 }
 .l1 {
-	BACKGROUND-COLOR: #e5e5e5
+	BACKGROUND-COLOR: #e5e5e5;  HEIGHT: 30px
 }
 #l1 H1 {
 	BACKGROUND-POSITION: 0px 12px; PADDING-LEFT: 14px; FONT-SIZE: 13px; MIN-HEIGHT: 24px; BACKGROUND-IMAGE: url(fk.gif); MARGIN-LEFT: 14px; OVERFLOW: auto; COLOR: #646464; PADDING-TOP: 6px; BACKGROUND-REPEAT: no-repeat
@@ -122,8 +122,8 @@ TEXTAREA {
 #l1 A:hover {
 	TEXT-DECORATION: none
 }
-#l2 {
-	BACKGROUND-POSITION: center 50%; MARGIN-TOP: 8px; FLOAT: left; BACKGROUND-IMAGE: url(jtgscy.jpg); WIDTH: 157px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 65px
+.l2 {
+	 HEIGHT: 30px
 }
 #l2 P {
 	PADDING-LEFT: 7px; PADDING-TOP: 38px
