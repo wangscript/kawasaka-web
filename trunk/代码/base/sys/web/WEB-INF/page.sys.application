@@ -6,6 +6,7 @@
 <page name="Sliptop" specification-path="/common/Sliptop.page"/>
 <page name="Slipleft" specification-path="/common/Slipleft.page"/>
 <page name="Sidebar" specification-path="/common/Sidebar.page"/>
+<page name="CategorysList" specification-path="/sys/pages/categorys/CategorysList.page"/>
 
 <!-- chenzg begin-->
 <page name="sys.staff.StaffList" specification-path="/sys/pages/staff/StaffList.page"/>
@@ -36,5 +37,9 @@
 <page name="sys.params.AreasEdit" specification-path="/sys/pages/params/areas/AreasEdit.page"/>
 <page name="sys.params.AreasAdd" specification-path="/sys/pages/params/areas/AreasAdd.page"/>
 <!-- chenzg end-->
+<page name="sys.system.NewsList" specification-path="/sys/pages/news/NewsList.page"/>
+<page name="sys.system.NewsEdit" specification-path="/sys/pages/news/NewsEdit.page"/>
+<page name="sys.system.NewsAdd" specification-path="/sys/pages/news/NewsAdd.page"/>
+<page name="sys.system.FilesList" specification-path="/sys/pages/files/FilesList.page"/>
 
 
