@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>新增产品小类信息</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col1">
+			<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">产品名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PRODUCT_NAME@TextField" value="ognl:conditions.PRODUCT_NAME" desc="产品名称"  nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					
+					
+					
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span >产品型号：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PRODUCT_MODEL@TextField" value="ognl:conditions.PRODUCT_MODEL" desc="产品型号" maxsize="50" datatype="text" maxLength="50"  class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span >生产厂商：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PRODUCT_FACTORY@TextField" value="ognl:conditions.PRODUCT_FACTORY" desc="生产厂商" maxsize="50" datatype="text" maxLength="50"  class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					
+			
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">产品大类：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_PRODUCT_CLASS@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.PRODUCTCLASS, 'PRODUCT_CLASS', 'PRODUCT_CLASS')"
+									value="ognl:conditions.PRODUCT_CLASS" desc="产品大类" class="e_select"
+									nullable="no" onchange="ajaxDirect(this, 'queryProductTypes', '&PRODUCT_CLASS='+value, 'ProductTypePart')"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">产品小类：</span></div>
+							<div class="inputArea"><div>
+							<div id="ProductTypePart" jwcid="@wade:Part" optimize="true">
+							<select jwcid="cond_PRODUCT_TYPE@PropertySelection"
+									
+									model="ognl:@com.linkage.component.util.Utility@getSelection(types.PRODUCTTYPE, 'PRODUCT_TYPE', 'PRODUCT_TYPE')"
+									value="ognl:conditions.PRODUCT_TYPE" desc="产品小类" class="e_select"
+									nullable="no" />
+							</div>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>图片：</span></div>
+							<div class="inputArea"><div>
+								<span jwcid="cond_PRODUCT_PICTURE@wade:UploadField" value="ognl:conditions.PRODUCT_PICTURE" className="e_input" readOnly="false" disabled="false" fileTotal="1"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+					
+					
+					<tr>
+					<td class="li">							
+						<div class="wrapper">
+							<div class="label"><span >详细介绍：</span></div>
+							<div class="inputArea"><div>
+								<textarea jwcid="cond_PRODUCT_INTRODUCE@wade:Editor" desc="详细介绍" nullable="yes" datatype="string" value="ognl:info.PRODUCT_INTRODUCE"  cols="60" rows="10"></textarea> 
+							</div></div>
+						</div>	
+					</td>
+					
+					</tr>
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">精品：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_PRODUCT_GOOD@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'PRODUCT_GOOD')"
+									value="ognl:conditions.PRODUCT_GOOD" desc="精品" class="e_select" nullable="no"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+					
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">推荐到首页：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_HOME_SHOW@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page, 'PRODUCT_HOME_SHOW')"
+									value="ognl:conditions.HOME_SHOW" desc="推荐到首页" class="e_select" nullable="no"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>优惠价：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PRIVILEGE_PRICE@TextField" value="ognl:conditions.PRIVILEGE_PRICE"  nullable="yes" minsize="1" maxsize="50" datatype="numeric" maxLength="50" desc="优惠价" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span >零售价：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_RETAIL_PRICE@TextField" value="ognl:conditions.RETAIL_PRICE" nullable="yes" minsize="1" maxsize="50" datatype="numeric" maxLength="50" desc="零售价" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span >会员价：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_VIP_PRICE@TextField" value="ognl:conditions.VIP_PRICE" nullable="yes" minsize="1" maxsize="50" datatype="numeric" maxLength="50" desc="会员价" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>	
+					
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>备注：</span></div>
+							<div class="inputArea"><div>
+								<textarea jwcid="cond_REMARK@TextField" value="ognl:conditions.REMARK"  cols="60" rows="5" desc="备注" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					
+					
+					
+					
+				
+			</table>
+		</div></div>
+		<div class="bottom e_cSet">
+			<input type="submit" jwcid="bsubmit@Submit" value="新增" listener="ognl:listeners.addProduct" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>	
+</form>	
+</div></div>
+</body>
+</html>

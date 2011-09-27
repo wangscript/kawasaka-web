@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>产品小类管理</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col3">
+				<tr>
+				
+				<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>产品名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PRODUCT_NAME@TextField" value="ognl:conditions.PRODUCT_NAME" desc="产品名称" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>产品大类：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_PRODUCT_CLASS@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.PRODUCTCLASS, 'PRODUCT_CLASS', 'PRODUCT_CLASS')"
+									value="ognl:conditions.PRODUCT_CLASS" desc="产品大类" class="e_select" onchange="ajaxDirect(this, 'queryProductTypes', '&PRODUCT_CLASS='+value, 'ProductTypePart')"
+									/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>产品小类：</span></div>
+							<div class="inputArea"><div>
+							<div id="ProductTypePart" jwcid="@wade:Part" optimize="true">
+								<select jwcid="cond_PRODUCT_TYPE@PropertySelection"
+								model="ognl:@com.linkage.component.util.Utility@getSelection(types.PRODUCTTYPE, 'PRODUCT_TYPE', 'PRODUCT_TYPE')"
+									value="ognl:conditions.PRODUCT_TYPE" desc="产品小类" class="e_select"
+									/>
+							</div>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>产品型号：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PRODUCT_MODEL@TextField" value="ognl:conditions.PRODUCT_MODEL" desc="产品型号" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>生产厂商：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PRODUCT_FACTORY@TextField" value="ognl:conditions.PRODUCT_FACTORY" desc="生产厂商" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					
+					
+					
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" listener="ognl:listeners.queryProductList" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>
+	
+	<div id="ResultDataPart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<ul>
+					<li><a jwcid="@wade:PageRedirect" value="新增" onclick="redirectTo('sys.product.ProductAdd', 'init', '&refresh=true&operType=add', 'contentframe');" desc="新增" class="e_bLinkAdd"/></li>
+				</ul>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryProductList" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table id="printTable">
+      			<thead>
+		  			<tr>
+		  				<th>产品名称</th>
+						<th>产品大类</th>
+						<th>产品小类</th>
+						<th>型号</th>
+						<th>厂商</th>
+						<th>是否精品</th>
+						<th>首页显示</th>
+						<th>优惠价</th>
+						<th>零售价</th>
+						<th>会员价</th>
+						<th>更新员工</th>
+						<th>更新时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.PRODUCT_NAME" productId="ognl:info.PRODUCT_ID" onclick="redirectTo('sys.product.ProductEdit', 'queryProduct', '&operType=edit&refresh=true&productId='+ productId, 'contentframe');" raw="false" /></td>
+						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_CLASS"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_TYPE"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_MODEL"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_FACTORY"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'PRODUCT_GOOD', info.PRODUCT_GOOD)"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'PRODUCT_HOME_SHOW', info.HOME_SHOW)"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.PRIVILEGE_PRICE"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.RETAIL_PRICE"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.VIP_PRICE"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.UPDATE_STAFF_ID"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.UPDATE_TIME"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<div class="fctBottom e_clear">
+			<div class="fctLeft">
+				<ul>
+					<li><a jwcid="@wade:PageRedirect" value="新增" onclick="redirectTo('sys.product.ProductAdd', 'init', '&refresh=true&operType=add', 'contentframe');" desc="新增" class="e_bLinkAdd"/></li>
+				</ul>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryProductList" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+	
+</form>	
+</div></div>
+</body>
+</html>

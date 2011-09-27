@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>产品大类管理</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+<script jwcid="@wade:Script" language="JavaScript" src="HAIN/scripts/person/sundryquery/sundryquery.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col2">
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>产品大类：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PRODUCT_CLASS@TextField" value="ognl:conditions.PRODUCT_CLASS" desc="产品大类" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>排序：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_CLASSORDER@TextField" value="ognl:conditions.CLASSORDER" desc="排序" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					
+				</tr>
+			</table>
+		</div></div>
+		<div class="bottom e_rSet">
+			<input type="submit" jwcid="bquery@Submit" value="执行查询" listener="ognl:listeners.queryProductClassList" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>
+	
+	<div id="ResultDataPart" jwcid="@wade:Part" optimize="true">
+	<div class="c_table l_mt"><div class="nowrapOn">
+		<div class="fctTop e_clear">
+			<div class="fctLeft">
+				<ul>
+					<li><a jwcid="@wade:PageRedirect" value="新增" onclick="popupDialog('sys.product.ProductClassAdd', 'init', '&refresh=true&operType=add', '新增产品大类', '500', '300')" desc="新增" class="e_bLinkAdd"/></li>
+				</ul>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryProductClassList" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+		<div class="table"><div class="wrapper" style="height:auto;"><div class="wrapper2">
+			<table id="printTable">
+      			<thead>
+		  			<tr>
+						<th>产品大类</th>
+						<th>顺序</th>
+						<th>小类管理</th>
+						<th>更新员工</th>
+						<th>更新时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.PRODUCT_CLASS" classId="ognl:info.ID" onclick="popupDialog('sys.product.ProductClassEdit', 'queryProductClassList', '&refresh=true&classId='+ classId, '修改产品大类信息', '500', '300')" raw="false" /></td>
+						<td><span jwcid="@Insert" value="ognl:info.CLASSORDER"/></td>
+						<td><a jwcid="@wade:PageRedirect" source="ognl:info" columns="PRODUCT_CLASS" value="编辑小类"  onclick="redirectTo('sys.product.ProductTypeList', 'init', parameters)"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.UPDATE_STAFF_ID"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.UPDATE_TIME"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div></div>
+		<div class="fctBottom e_clear">
+			<div class="fctLeft">
+				<ul>
+					<li><a jwcid="@wade:PageRedirect" value="新增" onclick="popupDialog('sys.product.ProductClassAdd', 'init', '&refresh=true&operType=add', '新增产品大类', '500', '300')" desc="新增" class="e_bLinkAdd"/></li>
+				</ul>
+			</div>
+			<div class="fctRight">
+				<div jwcid="@wade:NavBar" source="ognl:infos" listener="ognl:listeners.queryProductClassList" refreshParts="ResultDataPart"/>
+			</div>
+		</div>
+	</div></div>
+	</div>
+	
+</form>	
+</div></div>
+</body>
+</html>
