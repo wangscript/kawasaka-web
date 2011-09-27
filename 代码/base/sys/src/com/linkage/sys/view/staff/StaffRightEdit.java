@@ -3,7 +3,7 @@
  * @author:chenzg
  * @date:2010-5-12
  */
-package com.linkage.sys.view.system;
+package com.linkage.sys.view.staff;
 
 import org.apache.tapestry.IRequestCycle;
 
@@ -14,24 +14,23 @@ import com.linkage.appframework.data.IDataset;
 import com.linkage.common.bean.util.DualMgr;
 import com.linkage.component.PageData;
 import com.linkage.sys.bean.staff.StaffBean;
-import com.linkage.sys.bean.system.MenuBean;
+import com.linkage.sys.bean.system.RightsBean;
 import com.linkage.sys.view.common.CashierBasePage;
 
 /**
  * @author chenzg
  *
  */
-public abstract class StaffMenuEdit extends CashierBasePage{
+public abstract class StaffRightEdit extends CashierBasePage{
 	public abstract void setInfo(IData info);
 	public abstract void setInfos(IDataset infos);
 	public abstract void setConditions(IData conditions);
-	public abstract void setMenus(IDataset menus);
 	
 	/**
 	 * 负责项目参数管理这块的业务操作Bean
 	 */
 	private StaffBean staffBean = new StaffBean();
-	private MenuBean menuBean = new MenuBean();
+	private RightsBean rightsBean = new RightsBean();
 	/**
 	 * 页面初始化参数
 	 * @param cycle
@@ -44,49 +43,45 @@ public abstract class StaffMenuEdit extends CashierBasePage{
 		IData conditions = new DataMap();
 		String operType = pd.getParameter("operType", "");
 		if("edit".equals(operType)){
-			this.queryStaffMenu(cycle);
+			this.queryStaffRight(cycle);
 			conditions.put("DISABLED", "true");
 		}else if("add".equals(operType)){
 			conditions.put("DISABLED", "false");
 		}
 		IData data = new DataMap();
-		data.put("MENU_TYPE", "0");
 		data.put("ITEM_FLAG", "1");
-		
-		IDataset parentMenus = this.menuBean.queryParentMenus(pd, null);
 		IDataset staffs = this.staffBean.queryStaff(pd, data, null);
-		IDataset menus = this.menuBean.queryMenus(pd, data, null);
-		conditions.put("PARENT_MENUS", parentMenus);
+		IDataset rights = this.rightsBean.queryRights(pd, data, null);
 		conditions.put("STAFFS", staffs);
-		conditions.put("MENUS", menus);
+		conditions.put("RIGHTS", rights);
 		this.setConditions(conditions);
 		pd.setTransferData(pd.getData());
 	}
 	/**
-	 * 查询员工菜单信息
+	 * 查询员工权限信息
 	 * @param cycle
 	 * @throws Exception
 	 * @author:chenzg
 	 * @date:2010-5-20
 	 */
-	public void queryStaffMenu(IRequestCycle cycle) throws Exception {
+	public void queryStaffRight(IRequestCycle cycle) throws Exception {
 		PageData pd = this.getPageData();
 		IData params = pd.getData();
-		IDataset staffMenus = staffBean.queryStaffMenu(pd, params, null);
-		if(staffMenus!=null && staffMenus.size() == 1){
-			this.setInfo(staffMenus.getData(0));
+		IDataset staffRigths = staffBean.queryStaffRight(pd, params, null);
+		if(staffRigths!=null && staffRigths.size() == 1){
+			this.setInfo(staffRigths.getData(0));
 		}else{
-			common.error("获取员工菜单信息失败！");
+			common.error("获取员工权限信息失败！");
 		}
 	}
 	/**
-	 * 新增、修改员工菜单信息
+	 * 新增、修改员工权限信息
 	 * @param cycle
 	 * @throws Exception
 	 * @author:chenzg
 	 * @date:2010-5-17
 	 */
-	public void saveStaffMenu(IRequestCycle cycle) throws Exception {
+	public void saveStaffRight(IRequestCycle cycle) throws Exception {
 		PageData pd = this.getPageData();
 		IData conditions = new DataMap();
 		String msg = "";
@@ -97,8 +92,8 @@ public abstract class StaffMenuEdit extends CashierBasePage{
 			IData params = pd.getData("edit", true);
 			params.put("UPDATE_STAFF_ID", pd.getContext().getStaffId());
 			params.put("UPDATE_TIME", DualMgr.getSysDate(pd));
-			this.staffBean.updateStaffMenu(pd, params);
-			msg = "修改员工菜单信息成功！";
+			this.staffBean.updateStaffRight(pd, params);
+			msg = "修改员工权限信息成功！";
 		}
 		//新增
 		else if("add".equals(operType)){
@@ -107,30 +102,12 @@ public abstract class StaffMenuEdit extends CashierBasePage{
 			params.put("UPDATE_TIME", DualMgr.getSysDate(pd));
 			IDataset dataset = new DatasetList();
 			dataset.add(params);
-			this.staffBean.addStaffMenu(pd, dataset);
-			msg = "新增员工菜单信息成功！";
+			this.staffBean.addStaffRight(pd, dataset);
+			msg = "新增员工权限信息成功！";
 		}
 		//返回项目参数查询界面
 		StringBuilder  strScript = new StringBuilder("");
 		strScript.append("parent.document.getElementById('bquery').click();");
 		redirectToMsgByScript(msg, strScript.toString());
-	}
-	
-	/**
-	 * 查询父菜单的子菜单
-	 * @param cycle
-	 * @throws Exception
-	 * @author:chenzg
-	 * @date:2010-5-22
-	 */
-	public void queryMenuByParent(IRequestCycle cycle) throws Exception {
-		PageData pd = this.getPageData();
-		
-		IData params = new DataMap();
-		params.put("PARENT_MENU_CODE", pd.getParameter("PARENT_MENU_CODE", ""));
-		params.put("FLAG", "1");
-		
-		IDataset menus = menuBean.queryMenus(pd, params, null);
-		this.setMenus(menus);
 	}
 }
