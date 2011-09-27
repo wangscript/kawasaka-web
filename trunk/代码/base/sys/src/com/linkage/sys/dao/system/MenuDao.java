@@ -42,10 +42,10 @@ public class MenuDao extends CashierAppEntity{
     	SQLParser parser = new SQLParser(data);
 		parser.addSQL("select * from TD_S_MENU t  where (1 = 1) ");
 		parser.addSQL(" and MENU_CODE=:MENU_CODE ");
-		parser.addSQL(" and MENU_NAME like '%' ||:MENU_NAME||'%' ");
+		parser.addSQL(" and MENU_NAME like concat('%', :MENU_NAME,'%') ");
 		parser.addSQL(" and PARENT_MENU_CODE=:PARENT_MENU_CODE ");
-		parser.addSQL(" and MENU_URL like '%' ||:MENU_URL||'%' ");
-		parser.addSQL(" and MENU_DESC like '%' ||:MENU_DESC||'%' ");
+		parser.addSQL(" and MENU_URL like concat('%' ,:MENU_URL,'%') ");
+		parser.addSQL(" and MENU_DESC like concat('%', :MENU_DESC,'%') ");
 		parser.addSQL(" and MENU_TYPE=:MENU_TYPE ");
 		parser.addSQL(" and FLAG=:FLAG ");
 		parser.addSQL(" and UPDATE_STAFF_ID=:UPDATE_STAFF_ID ");
