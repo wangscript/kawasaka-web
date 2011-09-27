@@ -3,7 +3,7 @@
  * @author:chenzg
  * @date:2010-5-12
  */
-package com.linkage.sys.view.system;
+package com.linkage.sys.view.staff;
 
 import org.apache.tapestry.IRequestCycle;
 
