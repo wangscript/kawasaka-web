@@ -1,9 +1,8 @@
 /**
  * 
- * @author:chenzg
- * @date:2010-5-12
+ * @author:wull
  */
-package com.linkage.sys.view.staff;
+package com.linkage.sys.view.product;
 
 import org.apache.tapestry.IRequestCycle;
 
@@ -14,76 +13,74 @@ import com.linkage.appframework.data.IDataset;
 import com.linkage.common.bean.util.DualMgr;
 import com.linkage.component.PageData;
 import com.linkage.sys.bean.params.ParamsBean;
+import com.linkage.sys.bean.product.ProductBean;
 import com.linkage.sys.bean.staff.StaffBean;
 import com.linkage.sys.view.common.CashierBasePage;
 
 /**
- * @author chenzg
+ * @author wull
  *
  */
-public abstract class StaffAdd extends CashierBasePage{
+public abstract class ProductTypeAdd extends CashierBasePage{
 	public abstract void setInfo(IData info);
 	public abstract void setInfos(IDataset infos);
 	public abstract void setConditions(IData conditions);
-	public abstract void setHotels(IDataset hotels);
 	
 	/**
-	 * 负责员工管理这块的业务操作Bean
+	 * 负责产品大类的业务操作Bean
 	 */
-	private StaffBean staffBean = new StaffBean();
-	private ParamsBean paramsBean = new ParamsBean();
+	private ProductBean productBean = new ProductBean();
 	/**
 	 * 页面初始化参数
 	 * @param cycle
 	 * @throws Exception
-	 * @author:chenzg
-	 * @date:2010-5-12
+	 * @author:wull
 	 */
 	public void init(IRequestCycle cycle) throws Exception {
 		PageData pd = getPageData();
 		IData conditions = pd.getData("cond", true);
-		
+		conditions.put("ITEM_FLAG", "1");
 		IData data = new DataMap();
 		data.put("ITEM_FLAG", "1");
-		IDataset departs = paramsBean.queryDeparts(pd, data, null);
-		IDataset areas = paramsBean.queryAreas(pd, data, null);
-		//IDataset hotels = paramsBean.queryHotels(pd, data, null);
-		
-		conditions.put("DEPARTS", departs);
-		conditions.put("AREAS", areas);
-		//conditions.put("HOTELS", hotels);
-		
+		IDataset productclass = productBean.queryProductClassLists(pd, data, null);
+		conditions.put("PRODUCTCLASS", productclass);
+		if(null!=pd.getParameter("productClass")&&!"".equals(pd.getParameter("productClass","")))
+			conditions.put("PRODUCT_CLASS", pd.getParameter("productClass",""));
 		this.setConditions(conditions);
 	}
 	/**
 	 * 查询用户信息
 	 * @param cycle
 	 * @throws Exception
-	 * @author:chenzg
-	 * @date:2010-5-12
+	 * @author:wull
 	 */
-	public void addStaff(IRequestCycle cycle) throws Exception {
+	public void addProductType(IRequestCycle cycle) throws Exception {
 		PageData pd = this.getPageData();
-		String msg = "新增员工信息成功，初始化密码默认为:123456";
+		String msg = "新增产品小类成功！";
 		IData params = pd.getData("cond", true);
-		String staffId = params.getString("STAFF_ID");
+		String productclass = params.getString("PRODUCT_CLASS");
+		String producttype = params.getString("PRODUCT_TYPE");
 		IData param = new DataMap();
-		param.put("STAFF_ID", staffId);
-		IDataset staffDs = this.staffBean.queryStaff(pd, param, null);
-		if(staffDs!=null && staffDs.size()>0){
-			common.error("该员工号【"+staffId+"】已存在，请重新输入！");
+		param.put("PRODUCT_CLASS", productclass);
+		param.put("PRODUCT_TYPE", producttype);
+		Boolean exist = this.productBean.existsProductType(pd, param, null);
+		if(exist){
+			common.error("产品大类【"+productclass+"】中已经存在产品小类【"+producttype+"】,请重新输入！");
+			return;
 		}		
-		
-		params.put("STAFF_PWD", "123456");
+		params.put("ITEM_FLAG", "1");
 		params.put("UPDATE_STAFF_ID", pd.getContext().getStaffId());
 		params.put("UPDATE_TIME", DualMgr.getSysDate(pd));
+		params.put("CLASSORDER", "".equals(params.getString("CLASSORDER", ""))?"0":params.getString("CLASSORDER"));
+
 		IDataset dataset = new DatasetList();
 		dataset.add(params);
-		this.staffBean.addStaffs(pd, dataset);
-		
+		this.productBean.addProductType(pd, dataset);
 		//返回项目参数查询界面
 		StringBuilder  strScript = new StringBuilder("");
 		strScript.append("parent.document.getElementById('bquery').click();");
-		redirectToMsgByScript(msg, strScript.toString());
+		redirectToMsgByScript(msg, strScript.toString()); 
 	}
+	
+	
 }
