@@ -1,483 +1,54 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- $Id: Sidebar.html,v 1.1 2009/10/27 13:37:03 wangmo Exp $ -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head jwcid="@wade:Head">
 <meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
 <title>Sidebar</title>
 <link jwcid="@wade:Style" href="common/styles/frame.css" rel="stylesheet" type="text/css" media="screen"/>
 <script jwcid="@wade:Script" language="JavaScript" src="common/scripts/frame.js"></script>
+<script jwcid="@wade:Script" language="JavaScript" src="common/scripts/sidebar.js"></script>
 </head>
 <body>
-<div class="f_side">
-	<h4 id="SELECTED_MENU" class="unfold"><a href="javascript:void(0)">我的工作台</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="我的上传文件" onclick="redirectToNav('component.adm.FileList', 'queryFiles', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="我的定制导出" onclick="redirectToNav('component.query.ExportList', 'queryCriteriaExecs', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="我的系统消息" onclick="redirectToNav('component.info.MessageList', 'queryInfos', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="我的公告信息" onclick="redirectToNav('component.info.BulletinList', 'queryInfos', '&cond_QUERY_MODE=recv', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="我的地址簿" onclick="redirectToNav('component.info.AddressList', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="我的授权管理" onclick="redirectToNav('component.org.GrantList', 'queryGrants', '', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="个人密码重设" onclick="redirectToNav('component.adm.PasswordModify', '', '', 'contentframe')"/></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">后台管理</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="缓存监控" onclick="redirectToNav('component.adm.CacheMonitor', 'queryCaches', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="静态参数管理" onclick="redirectToNav('component.adm.StaticParamManager', 'loadTree', '&root_id=1', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="流程进度监控" onclick="redirectToNav('component.flow.logicflow.FlowList', 'queryFlows', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量菜单导入" onclick="redirectToNav('component.menu.MenuImport', 'initImport', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="公告信息管理" onclick="redirectToNav('component.info.BulletinList', 'queryInfos', '&cond_QUERY_MODE=send', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="动态布局管理" onclick="redirectToNav('component.draglayout.adm.PageLayoutConfigMain', 'queryPageTypes', null, 'contentframe')"/></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">公共功能</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="知识库管理" onclick="redirectToNav('component.know.KnowledgeFrame', 'loadTree', '&root_id=1&cond_CATA_ID=1', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="知识目录管理" onclick="redirectToNav('component.cata.CatalogFrame', 'loadTree', '&root_id=1', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="模板查询" onclick="redirectToNav('component.doc.TempletList', 'setQueryCondition', '&cond_FLAG=all', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="模板录入" onclick="redirectToNav('component.doc.TempletEdit', 'inputTemplet', '&cond_FLAG=all', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="项目查询" onclick="redirectToNav('component.doc.ItemList', 'setQueryCondition', '&cond_FLAG=all', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="项目录入" onclick="redirectToNav('component.doc.ItemEdit', 'inputItem', '&cond_FLAG=all', 'contentframe')"/></li>
-	</ul>
+<div id="menuDiv" class="f_side">
 
-	<h4 class="fold"><a href="javascript:void(0)">共用方法测试</a></h4>
+	<h4 id="menu_300" class="unfold" style="display:none;"><a href="javascript:void(0)">发布管理</a></h4>
 	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="肖志平方法测试" onclick="redirectToNav('test.Test', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="罗颖方法测试1" onclick="redirectToNav('commontest.CustList', null, null, 'contentframe')"/></li>
+ 		<li id="menu_301"><a jwcid="@wade:PageRedirect" value="新闻管理" onclick="redirectToNav('sys.system.NewsList', 'init', null, 'contentframe')"/></li>	    
+ 		<li id="menu_302"><a jwcid="@wade:PageRedirect" value="附件管理" onclick="redirectToNav('sys.system.FilesList', 'init', null, 'contentframe')"/></li>
 	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">功能示例</a></h4>
+	
+	<h4 id="menu_400" class="unfold" style="display:none;"><a href="javascript:void(0)">报表管理</a></h4>
 	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="基本功能示例" onclick="redirectToNav('examples.basic.VipcustList', 'queryVipcusts', null, 'contentframe')"/></li>
-    	<li><a jwcid="@wade:PageRedirect" value="页面流/事件流示例" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=examples/VipcustCreate.xml', 'contentframe');"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="页面生成示例" onclick="redirectToNav('examples.basic.pagebuilder.BuilderVipcustList', 'queryVipcusts', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="页面布局示例" onclick="redirectToNav('component.draglayout.PageLayout', 'loadPage', '&Page_ID=134', 'contentframe')"/></li>
-
-    </ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">DEMO开发</a></h4>
+ 		<li id="menu_401"><a jwcid="@wade:PageRedirect" value="明细营业报表" onclick="redirectToNav('sys.busisheet.QueryBusiItemForAll', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_402"><a jwcid="@wade:PageRedirect" value="收入报表" onclick="redirectToNav('sys.busisheet.TotelBusiItem', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_403"><a jwcid="@wade:PageRedirect" value="旅行社签单统计表" onclick="redirectToNav('sys.busisheet.TravelQianDan', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_404"><a jwcid="@wade:PageRedirect" value="旅行社签单结算统计表" onclick="redirectToNav('sys.busisheet.TravelJieSuan', 'init', null, 'contentframe')"/></li>
+ 		<li id="menu_405"><a jwcid="@wade:PageRedirect" value="前台来团统计报表" onclick="redirectToNav('sys.busisheet.CountQianTai', 'init', null, 'contentframe')"/></li>
+		<li id="menu_406"><a jwcid="@wade:PageRedirect" value="营业日报表" onclick="redirectToNav('sys.busisheet.QueryBusiItemByDay', 'init', null, 'contentframe')"/></li>
+	</ul>	
+    <h4 id="menu_000" class="fold" style="display:none;"><a href="javascript:void(0)">员工信息管理</a></h4>
 	<ul style="display:none;">
-	<li><a jwcid="@wade:PageRedirect" value="预约取消" onclick="redirectToNav('person.booktrade.CancelBookTrade', 'onInitTrade', null, 'contentframe')"/></li>
-    <li><a jwcid="@wade:PageRedirect" value="返销" onclick="redirectToNav('person.canceltrade.CancelTrade', 'onInitTrade', null, 'contentframe')"/></li>
-	<li><a jwcid="@wade:PageRedirect" value="押金业务" onclick="redirectToNav('person.foregiftmgr.ForeGift', 'onInitTrade', null, 'contentframe')"/></li>
-
+		<li id="menu_001"><a jwcid="@wade:PageRedirect" value="员工管理" onclick="redirectToNav('sys.staff.StaffList', 'init', null, 'contentframe')"/></li>
+		<li id="menu_002"><a jwcid="@wade:PageRedirect" value="员工密码管理" onclick="redirectToNav('sys.staff.StaffPasswd', 'init', null, 'contentframe')"/></li>
+	</ul>  
+	
+	<h4 id="menu_100" class="unfold" style="display:none;"><a href="javascript:void(0)">参数管理</a></h4>
+	<ul style="display:none;">
+		<li id="menu_102"><a jwcid="@wade:PageRedirect" value="部门参数管理" onclick="redirectToNav('sys.params.DepartsList', 'init', null, 'contentframe')"/></li>
+	    <li id="menu_106"><a jwcid="@wade:PageRedirect" value="业务区参数管理" onclick="redirectToNav('sys.params.AreasList', 'init', null, 'contentframe')"/></li>
 	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">产品变更</a></h4>
+	
+	<h4 id="menu_200" class="unfold" style="display:none;"><a href="javascript:void(0)">系统管理</a></h4>
 	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="产品变更" onclick="redirectToNav('person.changeproduct.ChangeProduct', 'onInitTrade', null, 'contentframe')" /></li>
-	    <li><a jwcid="@wade:PageRedirect" value="IP直通车" onclick="redirectToNav('person.ipexpress.IpExpress', 'onInitTrade', null, 'contentframe')" /></li>
-		<li><a jwcid="@wade:PageRedirect" value="IP直通车无绑定" onclick="redirectToNav('person.ipexpress.IpExpressNoBind', 'onInitTrade', null, 'contentframe')" /></li>
-		<li><a jwcid="@wade:PageRedirect" value="*亲情业务" onclick="redirectToNav('person.familytrade.FamilyTrade', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="*亲情VPCN业务" onclick="redirectToNav('person.familytrade.FamilyVpcnTrade', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="*亲情关爱宝业务" onclick="redirectToNav('person.familytrade.FamilyGABTrade', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">代理商业务</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="产品变更" onclick="redirectToNav('cust.op.ptch', 'initPage', null, 'contentframe')" /></li>
-	    <li><a jwcid="@wade:PageRedirect" value="服务变更" onclick="redirectToNav('cust.op.svchmg', 'initPage', null, 'contentframe')" /></li>
-		<li><a jwcid="@wade:PageRedirect" value="资费变更" onclick="redirectToNav('cust.op.distchmg', 'initPage', null, 'contentframe')"/></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">规则配置</a></h4>
-	<ul style="display:none;">
-    <li><a jwcid="@wade:PageRedirect" value="规则脚本配置管理"onclick="redirectToNav('common.rule.RuleList', 'queryRules', null, 'contentframe')"/></li>
-    <li><a jwcid="@wade:PageRedirect" value="规则流程配置管理"onclick="redirectToNav('common.rule.CommparaList', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="WRE规则流程测试"onclick="redirectToNav('common.rule.RuleFlow', 'init', '&RULE_TYPE_CODE=TradeCheckBefore&STRING_BUNCH=X_CHOICE_TAG=0~ROUTE_EPARCHY_CODE=0872~TRADE_EPARCHY_CODE=0872~TRADE_TYPE_CODE=110~PROVINCE_CODE=YUNN~ID=7206051502710017~ID_TYPE=1~TRADE_STAFF_ID=SUPERUSR~TRADE_CITY_CODE=L0DA~BRAND_CODE=G001~PRODUCT_ID=20000202', 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">组件示例</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="常用表单" onclick="redirectToNav('examples.component.FormElement', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="标签页" onclick="redirectToNav('examples.component.Tabset', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="静态树" onclick="redirectToNav('examples.component.StaticTree', 'loadTree', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="动态树" onclick="redirectToNav('examples.component.DynamicTree', 'loadSimpleTree', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="动态表格" onclick="redirectToNav('examples.component.TableEdit', 'queryDepts', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="统计图表" onclick="redirectToNav('examples.component.Chart', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="定制查询" onclick="redirectToNav('examples.component.Query', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="消息框提示" onclick="redirectToNav('examples.component.MessageBox', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="模拟弹出窗" onclick="redirectToNav('examples.component.Dialog', null, null, 'contentframe')"/></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">集团业务</a></h4>
-	<ul style="display:none;">
-        <li><a jwcid="@wade:PageRedirect" value="集团产品受理" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=group/CreateGroupUser.xml', 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团产品变更" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=group/ChangeUserElement.xml', 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团产品付费关系变更" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=group/ModifyUserData.xml', 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团产品注销" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=group/DestroyGroupUser.xml', 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团成员新增" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=group/CreateGroupMember.xml', 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团成员优惠变更" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=group/ChangeMemElement.xml', 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团成员资料修改" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=group/ModifyMemData.xml', 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团成员退定" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=group/DestoryGroupMember.xml', 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团账户管理" onclick="redirectToNav('group.creategroupacct.CreateGroupAcct',  null, null, 'contentframe');"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="集团成员开户" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=group/OpenGroupMember.xml', 'contentframe');"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="集团费用收取" onclick="redirectToNav('group.grouptradefee.GroupTradeFee', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="黑白名单" onclick="redirectToNav('group.blackwhiteuser.BlackWhiteUser', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="集团高级付费" onclick="redirectToNav('group.modifypayrelation.PayrelaAdvChg', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="集团异网计费号码变更" onclick="redirectToNav('group.changeoutnetsn.ChangeOutNetSn', null, null, 'contentframe')"/></li>
-	  	<li><a jwcid="@wade:PageRedirect" value="子VPMN集团新增" onclick="redirectToNav('group.subgrptrade.AddSubGrpTrade', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="子VPMN集团注销" onclick="redirectToNav('group.subgrptrade.DelSubGrpTrade', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="VPMN网外号码新增" onclick="redirectToNav('group.vpmnoutnet.AddVpmnOutNet', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="VPMN网外号码注销" onclick="redirectToNav('group.vpmnoutnet.DelVpmnOutNet', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="母VPMN网外号码新增" onclick="redirectToNav('group.vpmnoutnet.AddParentVpmnOutNet', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="母VPMN网外号码注销" onclick="redirectToNav('group.vpmnoutnet.DelParentVpmnOutNet', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="来电拒接短信提醒功能" onclick="redirectToNav('group.filtecomephone.FilteComeHponeTrade', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="VPN特殊优惠变更" onclick="redirectToNav('group.vpnspecialdistmodi.VpnSpecialDistModi', null, null, 'contentframe')"/></li>
-	</ul>
-
-    <h4 class="fold"><a href="javascript:void(0)">集团批量业务</a></h4>
-    <ul style="display:none;">
-        <li><a jwcid="@wade:PageRedirect" value="集团批量业务" onclick="redirectToNav('group.bat.batdeal.GrpBatTradeDeal', 'initalDeal', null, 'contentframe');"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量集团成员开户" onclick="redirectToNav('group.bat.batopengroupmember.BatOpenGroupMember', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="VPMN集团变更SCP" onclick="redirectToNav('group.bat.batchangevpmnscpcode.BatChangeVPMNScpCode', null, null, 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">集团相关查询</a></h4>
-    <ul style="display:none;">
-        <li><a jwcid="@wade:PageRedirect" value="集团VPMN查询" onclick="redirectToNav('group.querygroupinfo.QueryVPMN', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团专网查询" onclick="redirectToNav('group.querygroupinfo.GroupNetworkQuery', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="移动总机号码查询" onclick="redirectToNav('group.querygroupinfo.MobilePhoneCodeQuery', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="ADC个人订购查询" onclick="redirectToNav('group.querygroupinfo.ADCPersonalOrderQuery', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="手机代付客利发查询" onclick="redirectToNav('group.querygroupinfo.PhoneAndKlfQuery', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团彩铃查询" onclick="redirectToNav('group.querygroupinfo.GroupPRBTQuery', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团LBS查询" onclick="redirectToNav('group.querygroupinfo.GroupLBSQuery', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团E网用户查询" onclick="redirectToNav('group.querygroupinfo.GroupENetUserQuery', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="IP后付费固定电话号码查询" onclick="redirectToNav('group.querygroupinfo.IPLaterPayQuery', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="用户订购关系查询" onclick="redirectToNav('group.querygroupinfo.UserOrderRelationQuery', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="母VPMN集团资料查询" onclick="redirectToNav('group.querygroupinfo.ParentVpmnQuery', 'initial', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="集团产品个人订购查询" onclick="redirectToNav('group.groupbookquery.GroupPersonBookQuery', '', null, 'contentframe');"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">销户类</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="特殊销户不发指令" onclick="redirectToNav('person.destroyuser.DestroyUserNow', 'onInitTrade' , '&RIGHT_CODE=csSpecDestroyUserNow', 'contentframe')"/></li>
-
-		<li><a jwcid="@wade:PageRedirect" value="立即销户" onclick="redirectToNav('person.destroyuser.DestroyUserNow', 'onInitTrade' , '', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="复机" onclick="redirectToNav('person.restoreuser.RestoreUser', 'onInitTrade' , null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="省内机场服务" onclick="redirectToNav('person.vipserver.VipServer','onInitTrade' , null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="票据修改" onclick="redirectToNav('person.changeticket.ChangeTicket', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="离网关怀" onclick="redirectToNav('person.destroyuser.CareBeforeDestroy', 'onInitTrade' , null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="特殊省内机场服务" onclick="redirectToNav('person.vipserver.VipServerSpecial','onInitTrade' , null, 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">过户类</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="过户" onclick="redirectToNav('person.changecustowner.ChangeCustOwner', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">开户类</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="个人用户开户" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=person/CreatePersonUser.xml', 'contentframe');"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="账户开户" onclick="redirectToNav('person.createaccttrade.CreateAcct', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="客户开户" onclick="redirectToNav('person.createcusttrade.CreateCust', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="选号开户" onclick="redirectToNav('person.choosephonetrade.AgentChoosePhone', 'initChoosePhone', null, 'contentframe')"/></li>
-	</ul>
-
-  <h4 class="fold"><a href="javascript:void(0)">世博会门票销售</a></h4>
-	<ul style="display:none;">
-	    <li><a jwcid="@wade:PageRedirect" value="门票预定销售" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=person/WorldExpo.xml', 'contentframe');"/></li>
-	    <li><a jwcid="@wade:PageRedirect" value="订单查询及修改" onclick="redirectToNav('person.interboss.worldexpo.QueryOrder', 'initInfo', null, 'contentframe')"/></li>
-	    <li><a jwcid="@wade:PageRedirect" value="余票查询" onclick="redirectToNav('person.interboss.worldexpo.QueryLeaveTicket', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="订单配送信息变更" onclick="redirectToNav('person.interboss.worldexpo.ChangeInfo', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="二维码变更" onclick="redirectToNav('person.interboss.worldexpo.ChangeActiveCode', null, null, 'contentframe')"/></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">查询类</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="IP直通车工作记录查询" onclick="redirectToNav('person.ipexpress.IpExpressTradeLog', '', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="短信查询" onclick="redirectToNav('person.sundryquery.QuerySMS', '', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="真情回报客户清单查询" onclick="redirectToNav('person.sundryquery.QueryRepay', 'initParams', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="用户预约产品查询" onclick="redirectToNav('person.sundryquery.QueryUserReserveCombo', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="联通转接查询" onclick="redirectToNav('person.sundryquery.QueryUnionTrans', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="欠费拆机用户押金清单查询" onclick="redirectToNav('person.sundryquery.QueryOweDestroyForegift', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="移动电话欠费销号清单查询" onclick="redirectToNav('person.sundryquery.QueryOweWriteOff', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="营业过户用户清单查询" onclick="redirectToNav('person.sundryquery.QueryChgCustOwnerInfo', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="欠费停拆机用户查询" onclick="redirectToNav('person.sundryquery.QueryUserOweStop', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="营业员特殊补卡业务清单" onclick="redirectToNav('person.sundryquery.QuerySpeCompCardInfo', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="营业新开户用户清单" onclick="redirectToNav('person.sundryquery.QueryOpenUserInfo', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="改号业务查询" onclick="redirectToNav('person.sundryquery.QueryChangeSnInfo', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="特殊号码处理查询" onclick="redirectToNav('person.sundryquery.QuerySpecProNumber', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="新业务产品资料查询" onclick="redirectToNav('person.sundryquery.QuerySpServiceTrade', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="手机缴费通定制信息查询" onclick="redirectToNav('person.sundryquery.QueryUserBankInfoTrade', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="邮寄信息查询" onclick="redirectToNav('person.sundryquery.QueryUserPostInfo', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="用户HI服务信息查询" onclick="redirectToNav('person.sundryquery.lottery.QueryHIService', '', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="营销活动综合查询" onclick="redirectToNav('person.sundryquery.saleactive.QuerySaleActive', 'initSaleActive', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="新业务产品资料查询" onclick="redirectToNav('person.sundryquery.other.QuerySpService', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="用户状态查询" onclick="redirectToNav('person.sundryquery.userinfo.QueryUserState', 'init', null, 'contentframe')"/></li>
-	  	<li><a jwcid="@wade:PageRedirect" value="手机号码归属地查询" onclick="redirectToNav('person.sundryquery.other.QueryMpAreaCode', '', null, 'contentframe')"/></li>
-	    <li><a jwcid="@wade:PageRedirect" value="普通付费关系查询" onclick="redirectToNav('person.sundryquery.payrela.QueryNormalPayRelation', '', null, 'contentframe')"/></li>
-	    <li><a jwcid="@wade:PageRedirect" value="高级付费关系查询" onclick="redirectToNav('person.sundryquery.payrela.QueryAdvPayRelation', '', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="信息服务开关查询" onclick="redirectToNav('person.sundryquery.infoservswitch.QueryInfoServSwitch', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="定购关系历史信息查询" onclick="redirectToNav('person.sundryquery.other.QueryOrderRelaHistory', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="抽奖活动查询" onclick="redirectToNav('person.sundryquery.lottery.QueryLottery', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="用户中奖查询" onclick="redirectToNav('person.sundryquery.lottery.QueryUserWinPrize', '', null, 'contentframe')"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="接触信息维护日志查询" onclick="redirectToNav('person.sundryquery.other.QueryContactLog', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="用户品牌查询" onclick="redirectToNav('person.sundryquery.other.QueryBrandInfo', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="爱心保险用户资料查询" onclick="redirectToNav('person.sundryquery.userinfo.QueryLoveInsuranceUserInfo', '', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="未完工工单查询" onclick="redirectToNav('person.sundryquery.other.QueryUnfinishTrade', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="员工信息查询" onclick="redirectToNav('person.sundryquery.other.QueryStaffInfo',null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="手机号码连带查询" onclick="redirectToNav('person.sundryquery.other.QueryRelateCust', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="全省移动局号段查询" onclick="redirectToNav('person.sundryquery.other.QueryMoffice', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="用户资料模糊查询" onclick="redirectToNav('person.sundryquery.userinfo.QuerySnByUsrpid', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="小额支付查询" onclick="redirectToNav('person.sundryquery.other.QueryPayPlat', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="长途漫游积分查询" onclick="redirectToNav('person.sundryquery.other.QueryDonateScore', 'qryInit', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="系统短信查询" onclick="redirectToNav('person.sundryquery.other.QuerySysMsg', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="短信营业厅查询" onclick="redirectToNav('person.sundryquery.other.QueryOtherSms', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="IP信息查询" onclick="redirectToNav('person.sundryquery.other.QueryIPExpress', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="客户接触综合查询" onclick="redirectToNav('person.sundryquery.custcontact.QueryIntegrateCustContact', 'qryInit', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="亲情用户资料查询" onclick="redirectToNav('person.sundryquery.family.QueryFamily', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="客户资料综合查询" onclick="redirectToNav('person.sundryquery.integrateinfo.QueryIntegrateInfo', null, null, 'contentframe')"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="客户资费优选推荐查询" onclick="redirectToNav('person.sundryquery.other.QueryDMPMInfo', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="操作工单查询" onclick="redirectToNav('person.sundryquery.other.QueryTransf', 'init', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="代理商报开报表" onclick="redirectToNav('person.choosephonetrade.QueryOpenDetail', 'initOpenDetail', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="SIM卡漏账查询" onclick="redirectToNav('person.sundryquery.QuerySimMissbill.QuerySimcardMissbill', 'init', null, 'contentframe')"/></li>
-	    <li><a jwcid="@wade:PageRedirect" value="投诉查询" onclick="redirectToNav('person.sundryquery.other.QueryComplain', 'qryInit', null, 'contentframe')"/></li>
-	    <li><a jwcid="@wade:PageRedirect" value="垃圾短信查询" onclick="redirectToNav('person.sundryquery.other.QueryProsecution', 'qryInit', null, 'contentframe')"/></li>
-	    <li><a jwcid="@wade:PageRedirect" value="用户押金发票号码查询" onclick="redirectToNav('person.foregiftmgr.QueryDepositInvoiceNo', 'qryInit', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="未发送提醒短信原因查询" onclick="redirectToNav('person.sundryquery.nosendsms.QueryNoSendSms', 'qryInit', null, 'contentframe')"/></li>
-	</ul>
-
-
-
-	<h4 class="fold"><a href="javascript:void(0)">积分类</a></h4>
-	<ul style="display:none;">
-	    <li><a jwcid="@wade:PageRedirect" value="积分兑换" onclick="redirectToNav('person.scoremgr.ScoreExchange', 'onInitTrade', null, 'contentframe')"/></li><!--
-	    <li><a jwcid="@wade:PageRedirect" value="预存兑换积分" onclick="redirectToNav('person.scoremgr.ReserveExchangeScore', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="员工部门积分兑奖统计" onclick="redirectToNav('person.scoremgr.QueryStaffScore', 'initPage', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="部门类别积分兑奖统计" onclick="redirectToNav('person.scoremgr.QueryDepartScore', 'initPage', null, 'contentframe')"/></li>-->
-		<li><a jwcid="@wade:PageRedirect" value="积分转赠" onclick="redirectToNav('person.scoremgr.ScoreDonate', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="积分里程查询" onclick="redirectToNav('person.scoremgr.ScoreQueryTrade', '', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="积分兑换明细查询" onclick="redirectToNav('person.scoremgr.UserTradeScore', 'initPage', null, 'contentframe')"/></li><!--
-		<li><a jwcid="@wade:PageRedirect" value="积分冻结" onclick="redirectToNav('person.scoremgr.ScoreFreeze', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="积分解冻" onclick="redirectToNav('person.scoremgr.ScoreFreezeCancel', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="积分兑换规则配置" onclick="redirectToNav('person.scoremgr.ScoreRuleConfigureList', '', null, 'contentframe')"/></li>-->
-		<li><a jwcid="@wade:PageRedirect" value="积分调整" onclick="redirectToNav('person.scoremgr.ScoreAdjust', 'onInitTrade', null, 'contentframe')"/></li><!--
-		<li><a jwcid="@wade:PageRedirect" value="统一积分管理-显示修改订单状态" onclick="redirectToNav('person.scoremgr.UnifiedPointManagementList', '', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="统一积分管理-异常订单查询" onclick="redirectToNav('person.scoremgr.UpmsExpOrderList', '', null, 'contentframe')"/></li>-->
-		<li><a jwcid="@wade:PageRedirect" value="用户M值查询" onclick="redirectToNav('person.scoremgr.QueryUserMvalue', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="积分转赠查询" onclick="redirectToNav('person.scoremgr.QueryPresentScore', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="积分调整查询" onclick="redirectToNav('person.scoremgr.QueryAdjustScore', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="积分兑奖汇总小计" onclick="redirectToNav('person.scoremgr.QueryScoreRewardSum', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="达标门限客户积分门限清单" onclick="redirectToNav('person.scoremgr.QueryReachScoreTrade', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="达标门限客户积分门限查询" onclick="redirectToNav('person.scoremgr.QueryReachScoreTrade2', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="积分兑奖保险打印报表" onclick="redirectToNav('person.scoremgr.UserPrintQuery', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="平安保险凭证打印" onclick="redirectToNav('person.scoremgr.PrintUserInfo', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value=" 全球通积分助学计划礼品领取" onclick="redirectToNav('person.scoremgr.GetGiftOfStudyImbursement', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-
-
-
-<h4 class="fold"><a href="javascript:void(0)">号卡类</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="换卡" onclick="redirectToNav('person.simcardmgr.ChangeCard', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="写卡(远程写卡)" onclick="redirectToNav('person.simcardmgr.RemoteCard', 'onInitTrade', null, 'contentframe')" /></li>
-		<li><a jwcid="@wade:PageRedirect" value="SIM卡再利用" onclick="redirectToNav('person.simcardmgr.ReuseCard', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="改号" onclick="redirectToNav('person.modifymphonecodetrade.ModifyMphonecodeTrade', 'onInitTrade', '&TRADE_TYPE_CODE=143', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="一卡双号补换卡（远程写卡）" onclick="redirectToNav('person.onecardncodesremote.OneCardNCodesChangeCardRemote', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="有价卡销售" onclick="redirectToNav('person.valuecard.SellValueCard', 'onInitTrade', '&TRADE_TYPE_CODE=416', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="未充值换卡业务" onclick="redirectToNav('person.valuecard.UntappedCardChange', 'onInitTrade', '&TRADE_TYPE_CODE=571', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="充值卡激活业务" onclick="redirectToNav('person.valuecardmgr.PayingCardActivation', 'onInitTrade', '&TRADE_TYPE_CODE=574', 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">特殊业务</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="客户经理短信停开机" onclick="redirectToNav('person.custmanagermaintain.CustManagerMaintain', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="高尔夫收年费" onclick="redirectToNav('person.golffee.GolfFee', 'onInitTrade', null, 'contentframe')" /></li>
-		<li><a jwcid="@wade:PageRedirect" value="短信息拒收过滤" onclick="redirectToNav('person.rejectmessage.RejectMessage', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="特殊补偿卡业务" onclick="redirectToNav('person.specompensatecard.SpeCompensateCard', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="村通工程特殊号码维护" onclick="redirectToNav('person.villagework.VillageWork', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">资料变更类</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="递送资料变更" onclick="redirectToNav('person.changepostinfo.ModifyPostInfo', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="客户资料变更" onclick="redirectToNav('person.changecustinfo.ModifyCustInfo', 'onInitTrade', null, 'contentframe')"/></li>
-	  	<li><a jwcid="@wade:PageRedirect" value="用户资料变更" onclick="redirectToNav('person.changeuserinfo.ModifyUserInfo', 'onInitTrade', null, 'contentframe')"/></li>
-	  	<li><a jwcid="@wade:PageRedirect" value="账户资料变更" onclick="redirectToNav('person.changeacctinfo.ModifyAcctInfo', 'onInitTrade', null, 'contentframe')"/></li>
-     	<li><a jwcid="@wade:PageRedirect" value="客户实名制预受理" onclick="redirectToNav('person.realnamemgr.RealNameReg', 'onInitTrade', null, 'contentframe')"/></li>
-      	<li><a jwcid="@wade:PageRedirect" value="改号通知" onclick="redirectToNav('person.modifysnnotify.ModifySnNotify', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="取消改号通知" onclick="redirectToNav('person.cancelmodifysnnotify.CancelModifySnNotify', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="用户优惠时间变更" onclick="redirectToNav('person.changediscntdate.ChangeDiscntDate', 'onInitTrade', null, 'contentframe')"/></li>
-      	<li><a jwcid="@wade:PageRedirect" value="用户密码变更" onclick="redirectToNav('person.changepasswd.ModifyUserPswInfo', 'onInitTrade', null, 'contentframe')"/></li>
-     	<li><a jwcid="@wade:PageRedirect" value="用户购机资料变更" onclick="redirectToNav('person.purchasemobiletrade.SpecUserPuchaseAdd', 'onInitTrade', null, 'contentframe')"/></li>
-     	<li><a jwcid="@wade:PageRedirect" value="预约购机资料处理" onclick="redirectToNav('person.purchasemobiletrade.PurchaseTradePreDeal', 'onInitTrade', null, 'contentframe')"/></li>
-     	<li><a jwcid="@wade:PageRedirect" value="改名" onclick="redirectToNav('person.changecustnameinfo.ModifyCustNameInfo', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-    <h4 class="fold"><a href="javascript:void(0)">DSMP局数据管理</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="SP服务信息录入" onclick="redirectToNav('plat.SPBizSingle', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="SP企业信息录入" onclick="redirectToNav('plat.SPInfoSingle', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="SP服务信息导入" onclick="redirectToNav('plat.SPBizBat', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="SP企业信息导入" onclick="redirectToNav('plat.SPInfoBat', null, null, 'contentframe')"/></li>
-	</ul>
-    <h4 class="fold"><a href="javascript:void(0)">12580业务数据管理</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="代理商信息维护" onclick="redirectToNav('person.trade12580.AgentInfo', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="商户信息维护" onclick="redirectToNav('person.trade12580.MerchantInfo', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="商户业务状态变更" onclick="redirectToNav('person.trade12580.MerchantStateChange', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="代理商操作权限维护" onclick="redirectToNav('person.trade12580.AgentOperationChange', null, null, 'contentframe')"/></li>
-	</ul>
-    <h4 class="fold"><a href="javascript:void(0)">跨区业务</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="省内异地再入网预受理" onclick="redirectToNav('person.crossnet.provincein.CrossNetPIReg', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="省内异地再入网受理" onclick="redirectToNav('component.flow.pageflow.FlowFrame', 'init', '&FLOW_FILE=person/CrossNetPIConfirm.xml', 'contentframe');"/></li>
-</ul>
- <h4 class="fold"><a href="javascript:void(0)">DM业务</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="固件升级处理" onclick="redirectToNav('dm.firmwareupgrade.FirmwareUpgrade', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="固件回退处理" onclick="redirectToNav('dm.firmwarereturn.FirmwareReturn', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="应用软件下载" onclick="redirectToNav('dm.applicationsoftware.ApplicationSoftware', 'onInitTrade', null,'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="四元素采集请求" onclick="redirectToNav('dm.elmentgather.ElmentGather', 'onInitTrade', null,'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="信息收集请求" onclick="redirectToNav('dm.infogather.InfoGather', 'onInitTrade', null,'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="参数配置请求" onclick="redirectToNav('dm.paramrequest.ParamRequest', 'onInitTrade', null,'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="DM业务查询、操作取消" onclick="redirectToNav('dm.dmbusisel.DMBusiSel', null, null,'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="DM机卡配对关系查询" onclick="redirectToNav('dm.dmbusisel.DMBusiCardSel', null, null,'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="DM业务开通" onclick="redirectToNav('person.interboss.dmtradeopen.DMTradeOpen', 'onInitTrade', null,'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="DM业务变更IMEI号" onclick="redirectToNav('person.interboss.dmtradeopen.DMTradeUpd', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="DM业务修改手机号码" onclick="redirectToNav('person.interboss.dmtrademodify.DMTradeUpdByImei', 'onInitTrade', null,'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="DM业务注销" onclick="redirectToNav('person.interboss.dmtradecancel.DMTradeCancel', '', null,'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="DM锁定|解锁|数据清除" onclick="redirectToNav('person.interboss.dmtradelock.DMTradeLock', 'onInitTrade', null,'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="历史机卡配对关系查询" onclick="redirectToNav('person.interboss.dmbusisel.DMBusiHCardQury', '', null,'contentframe')"/></li>
-</ul>
-	<h4 class="fold"><a href="javascript:void(0)">平台业务</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="平台业务办理" onclick="redirectToNav('plat.PlatTrade', 'onInitTrade', null, 'contentframe')"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="用户订购交互行为日志查询" onclick="redirectToNav('plat.UserActionQry', '', null, 'contentframe')"/></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">其他业务</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="客户称谓管理" onclick="redirectToNav('person.infomanage.CustomerTitle', 'onInitTrade', null, 'contentframe')" /></li>
-		<li><a jwcid="@wade:PageRedirect" value="信息管理" onclick="redirectToNav('person.infomanage.InformationManage', 'onInitTrade', null, 'contentframe')" /></li>
-		<li><a jwcid="@wade:PageRedirect" value="GPRS开启" onclick="redirectToNav('person.changesvcstate.ReopenGPRS', 'onInitTrade', null, 'contentframe')"/></li>
-	    <li><a jwcid="@wade:PageRedirect" value="实物赠送" onclick="redirectToNav('person.goodsgift.GoodsGift', 'onInitTrade', null, 'contentframe')" /></li>
-	    <li><a jwcid="@wade:PageRedirect" value="关爱一线通" onclick="redirectToNav('person.specservicetrade.SpecServiceTrade', 'onInitTrade', null, 'contentframe')" /></li>
-	    <li><a jwcid="@wade:PageRedirect" value="手机缴费通定制" onclick="redirectToNav('person.bankbankcard.BankBankCardTrade', 'onInitTrade', null, 'contentframe')" /></li>
-		<li><a jwcid="@wade:PageRedirect" value="联通转接业务" onclick="redirectToNav('person.VPMNFilteIncomePhone.UnicomTransfer', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="租机业务" onclick="redirectToNav('person.rentmobile.RentMobileTrade', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="租金结算" onclick="redirectToNav('person.rentmobile.RentBalance', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">个人批量业务</a></h4>
-	<ul style="display:none;">
-        <li><a jwcid="@wade:PageRedirect" value="批量任务创建" onclick="redirectToNav('person.bat.batdeal.BatDealInput', 'initBatDealInput', null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="批量数据导入" onclick="redirectToNav('person.bat.batdeal.DataImport', null, null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="批量任务启动" onclick="redirectToNav('person.bat.batdeal.BatTradeList', null, null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="批量任务审核" onclick="redirectToNav('person.bat.batdeal.BatApprove', null, null, 'contentframe');"/></li>
-        <li><a jwcid="@wade:PageRedirect" value="批量任务删除" onclick="redirectToNav('person.bat.batdeal.BatTradeDelList', null, null, 'contentframe');"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="个人业务返销" onclick="redirectToNav('person.canceltrade.CancelTrade', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量任务查询" onclick="redirectToNav('person.bat.BatTaskQuery', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量信息查询" onclick="redirectToNav('person.bat.BatBatchQuery', 'onInitTrade', null,
-		'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="返销页面" onclick="redirectToNav('person.bat.BatCancelPage', 'onInitTrade', null,
-		'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="预约业务取消" onclick="redirectToNav('person.canceltrade.CancelTrade', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量业务批次号查询" onclick="redirectToNav('person.bat.BatOrderQuery', 'onInitTrade', '', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量业务结果查询" onclick="redirectToNav('person.bat.BatDealResultQuery', 'onInitTrade', '', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量业务处理状态查询" onclick="redirectToNav('person.bat.BatDealQuery', 'onInitTrade', '', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量预开户" onclick="redirectToNav('person.bat.BatOpenUser', 'onInitTrade', '', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量产品变更" onclick="redirectToNav('person.bat.BatDeal', 'onInitTrade', '&BATCH_OPER_TYPE=PRODUCTCHG', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量优惠变更" onclick="redirectToNav('person.bat.BatDeal', 'onInitTrade', '&BATCH_OPER_TYPE=DISCNTCHG', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量服务变更" onclick="redirectToNav('person.bat.BatDeal', 'onInitTrade', '&BATCH_OPER_TYPE=SERVICECHG', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量特殊资料修改" onclick="redirectToNav('person.bat.BatDeal', 'onInitTrade', '&BATCH_OPER_TYPE=SPECIALDATACHG', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量用户提示信息管理" onclick="redirectToNav('person.bat.BatDeal', 'onInitTrade', '&BATCH_OPER_TYPE=BATHINTMESSAGE', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量导入号码OCS处理" onclick="redirectToNav('person.bat.OCSManager', 'onInitTrade', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量导入不需监控的OCS用户" onclick="redirectToNav('person.bat.NOListennerOCSUser', 'onInitTrade', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量导入号码HWOCS处理" onclick="redirectToNav('person.bat.HWOCSUserManager', 'onInitTrade', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量直销管理" onclick="redirectToNav('person.bat.BatDeal', 'onInitTrade', '&BATCH_OPER_TYPE=DIRECTSELLING', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="批量保险单录入" onclick="redirectToNav('person.bat.BatDeal', 'onInitTrade', '&BATCH_OPER_TYPE=INSUREIMPORT', 'contentframe')"/></li>
-
-		<li><a jwcid="@wade:PageRedirect" value="省公司批量发卡" onclick="redirectToNav('person.interboss.electronicsvipcard.VipcardUserList', null, null, 'contentframe')"/></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">垃圾短信业务</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="垃圾短信黑白名单查询" onclick="redirectToNav('person.trashmessagemgr.query.QueryTrashMsgUser', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="垃圾短信黑白名单维护" onclick="redirectToNav('person.trashmessagemgr.BatDealTrashUsePara', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="解除黑名单" onclick="redirectToNav('person.changesvcstate.SpecOpenMobile', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="不良短信人工仲裁" onclick="redirectToNav('person.trashmessagemgr.TrashManualCheck', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="不良短信违规处理查询" onclick="redirectToNav('person.trashmessagemgr.query.QueryKeyWordDeal', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="人工仲裁统计查询" onclick="redirectToNav('person.trashmessagemgr.query.QueryManualStat', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="其他不良短信违规处理查询" onclick="redirectToNav('person.trashmessagemgr.QueryOtherMO', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="不良短信处理方式切换" onclick="redirectToNav('person.trashmessagemgr.TrashManualControl', 'queryTrashLog', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="垃圾短信处理统计查询" onclick="redirectToNav('person.trashmessagemgr.query.QueryManualStatNew', null, null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="其他不良短信人工仲裁" onclick="redirectToNav('person.trashmessagemgr.OtherMOCheck', 'onInitTrade', null, 'contentframe')"/></li>
-	    <li><a jwcid="@wade:PageRedirect" value="垃圾短信举报受理" onclick="redirectToNav('person.prosecutiontrade.ProsecutionTrade', 'onInitTrade', null, 'contentframe')" /></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">停开机类</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="报停" onclick="redirectToNav('person.changesvcstate.StopMobile', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="报开" onclick="redirectToNav('person.changesvcstate.OpenMobile', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="挂失" onclick="redirectToNav('person.changesvcstate.LoseMobile', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="局方停机" onclick="redirectToNav('person.changesvcstate.OfficeStopMobile', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="局方开机" onclick="redirectToNav('person.changesvcstate.OfficeOpenMobile', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">大客户担保停开机</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="大客户担保欠费开机" onclick="redirectToNav('person.changesvcstate.VipAssureChg', 'onInitTrade', '&TRADE_TYPE_CODE=491', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="大客户担保开机" onclick="redirectToNav('person.changesvcstate.VipAssureChg', 'onInitTrade',  '&TRADE_TYPE_CODE=492', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="大客户担保停机" onclick="redirectToNav('person.changesvcstate.VipAssureChg', 'onInitTrade',  '&TRADE_TYPE_CODE=493', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="VIP客户特权报开" onclick="redirectToNav('person.changesvcstate.VipPrivilegeOpenMobile', 'onInitTrade',  null , 'contentframe')"/></li>
-	</ul>
-
-	 <h4 class="fold"><a href="javascript:void(0)">预约业务</a></h4>
-	<ul style="display:none;">
-
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">预存营销</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="营销活动受理" onclick="redirectToNav('person.saleactive.SaleActiveTrade', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="营销活动预约受理" onclick="redirectToNav('person.saleactive.SaleActiveTrade', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="营销活动业务取消" onclick="redirectToNav('person.saleactive.SaleActiveStop', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">个人业务接口</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="异地客户资料查询" onclick="redirectToNav('person.interboss.mobileoperation.RemoteQueryCustInfo', 'onInitTrade',null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地停机" onclick="redirectToNav('person.interboss.mobileoperation.StopMobile', 'onInitTrade',null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地复机" onclick="redirectToNav('person.interboss.mobileoperation.OpenMobile', 'onInitTrade',null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="VIP备卡激活" onclick="redirectToNav('person.interboss.mobileoperation.VIPCardRestore', 'onInitTrade',null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="操作工单传递" onclick="redirectToNav('person.interboss.mobileoperation.BillTransfer', 'onInitTrade',null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="机场VIP服务" onclick="redirectToNav('person.interboss.mobileoperation.AirportVIPService','onInitTrade',null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="跨区入网服务" onclick="redirectToNav('person.interboss.mobileoperation.CrossRegService','onInitTrade',null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="短信模版导入" onclick="redirectToNav('person.interboss.mobileoperation.SMSInfoImport','onInitTrade',null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地写卡【单号卡】"    onclick="redirectToNav('person.interboss.remotewritecard.RemoteWriteCard', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地SIM卡激活【单号卡】"    onclick="redirectToNav('person.interboss.remotewritecard.RemoteWriteCardActive', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地写卡【一卡多号】"  onclick="redirectToNav('person.interboss.remotewritecard.RemoteWriteCardM', 'onInitTrade', 'onInitTrade', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地SIM卡激活【一卡多号】"  onclick="redirectToNav('person.interboss.remotewritecard.RemoteWriteCardActiveM', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="国内一卡多号业务受理"  onclick="redirectToNav('person.interboss.multisninonechina.MultiSNInOneChina', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="国内一卡多号补换卡业务"  onclick="redirectToNav('person.interboss.multisninonechina.MultiSNInOneChangeChina', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="国漫及一卡多号业务受理" onclick="redirectToNav('person.interboss.multisnonecard.MultiSNOneCard', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="国漫及一卡多号补换卡" onclick="redirectToNav('person.interboss.multisninoneinter.RemedyCard', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="国漫及一卡多号网络优选" onclick="redirectToNav('person.interboss.multisnonecard.ChooseNetwork', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="资料补登通知" onclick="redirectToNav('person.interboss.mobilerealname.InfoRegisterAdvice', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地用户基本资料查询" onclick="redirectToNav('person.interboss.mobilerealname.QueryBasicInfo', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地客户账单资料查询" onclick="redirectToNav('person.interboss.mobilerealname.QueryCustBillInfo', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地大客户资料查询" onclick="redirectToNav('person.interboss.mobilerealname.QueryVIPCustInfo', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地租机查询" onclick="redirectToNav('person.interboss.olympicrentmobile.RemoteRentMobileQuery', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="异地退机查询" onclick="redirectToNav('person.interboss.olympicrentmobile.RemoteUnsubscribeMobileQuery', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">付费关系变更</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="普通付费关系变更" onclick="redirectToNav('person.modifypayrelation.PayrelaNorChg', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="高级付费关系变更" onclick="redirectToNav('person.modifypayrelation.PayrelaAdvChg', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="高级付费关系变更取消" onclick="redirectToNav('person.modifypayrelation.PayrelaAdvCancel', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">大客户备卡</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="大客户备卡申请" onclick="redirectToNav('person.vipsimbak.VipSimBakApp', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="大客户备卡激活" onclick="redirectToNav('person.vipsimbak.VipSimBakAct', 'onInitTrade', null, 'contentframe')"/></li>
-	    <li><a jwcid="@wade:PageRedirect" value="大客户备卡取消" onclick="redirectToNav('person.vipsimbak.VipSimBakCancel', 'onInitTrade', null, 'contentframe')"/></li>
-	</ul>
-
-	<h4 class="fold"><a href="javascript:void(0)">WLAN业务</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="WLAN开通" onclick="redirectToNav('person.wlan.WlanOpen', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="WLAN注销" onclick="redirectToNav('person.wlan.WlanDestroy', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="WLAN密码修改" onclick="redirectToNav('person.wlan.ChangeWlanPswd', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="WLAN资费变更" onclick="redirectToNav('person.wlan.WlanDiscntChange', 'onInitTrade', null, 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="WLAN锁定" onclick="redirectToNav('person.wlan.WlanLock', 'onInitTrade', '&TRADE_TYPE_CODE=623', 'contentframe')"/></li>
-		<li><a jwcid="@wade:PageRedirect" value="WLAN解锁" onclick="redirectToNav('person.wlan.WlanUnlock', 'onInitTrade', '&TRADE_TYPE_CODE=624', 'contentframe')"/></li>
-	</ul>
-	<h4 class="fold"><a href="javascript:void(0)">服务开通接口</a></h4>
-	<ul style="display:none;">
-		<li><a jwcid="@wade:PageRedirect" value="自动发指令参数赋值配置" onclick="redirectToNav('common.plat.callpf.autoselparamlist', 'init', null, 'contentframe')"/></li>
-	</ul>
+	    <li id="menu_201"><a jwcid="@wade:PageRedirect" value="菜单管理" onclick="redirectToNav('sys.system.MenusList', 'init', null, 'contentframe')"/></li>
+	    <li id="menu_202"><a jwcid="@wade:PageRedirect" value="员工菜单管理" onclick="redirectToNav('sys.system.StaffMenuList', 'init', null, 'contentframe')"/></li>
+	    <li id="menu_203"><a jwcid="@wade:PageRedirect" value="权限管理" onclick="redirectToNav('sys.system.RightsList', 'init', null, 'contentframe')"/></li>
+		<li id="menu_204"><a jwcid="@wade:PageRedirect" value="员工权限管理" onclick="redirectToNav('sys.system.StaffRightList', 'init', null, 'contentframe')"/></li>
+	</ul>  
+<script language="javascript"><!--
+	Wade.onLoad(function(){
+		initPage();
+	});
+// --></script>
 </div>
 </body>
 </html>
