@@ -43,3 +43,20 @@
 <page name="sys.system.FilesList" specification-path="/sys/pages/files/FilesList.page"/>
 
 
+<!--wull begin-->
+<page name="sys.product.ProductClassList" specification-path="/sys/pages/product/ProductClassList.page"/>
+<page name="sys.product.ProductClassAdd" specification-path="/sys/pages/product/ProductClassAdd.page"/>
+<page name="sys.product.ProductClassEdit" specification-path="/sys/pages/product/ProductClassEdit.page"/>
+
+<page name="sys.product.ProductTypeList" specification-path="/sys/pages/product/ProductTypeList.page"/>
+<page name="sys.product.ProductTypeAdd" specification-path="/sys/pages/product/ProductTypeAdd.page"/>
+<page name="sys.product.ProductTypeEdit" specification-path="/sys/pages/product/ProductTypeEdit.page"/>
+
+<page name="sys.product.ProductList" specification-path="/sys/pages/product/ProductList.page"/>
+<page name="sys.product.ProductAdd" specification-path="/sys/pages/product/ProductAdd.page"/>
+<page name="sys.product.ProductEdit" specification-path="/sys/pages/product/ProductEdit.page"/>
+
+
+
+<!--wull end-->
+
