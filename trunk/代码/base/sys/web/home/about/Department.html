@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<title>川荣重工</title>
+		<link href="../../home/css/news_article.css" rel="stylesheet"
+			type="text/css" />
+		<script type="text/javascript" src="../../home/js/prototype.js"></script>
+		<script type="text/javascript" src="../../home/js/effects.js"></script>
+	</head>
+	<body>
+		<div id="layout">
+
+			<div id="header">
+				<div id="top">
+					<div id="top_l">
+						<a jwcid="@Any" href="/"><img jwcid="@Any"
+								src="../../home/images/logo2.jpg" border="0" alt="川荣重工" /> </a>
+					</div>
+					<div id="top_r">
+						<form name="searchForm" id="searchForm" method="post">
+							<input type=hidden value=Title name=Field />
+							<span id="first"> <a jwcid="@Any" name="m66428"
+								href="http://www.KAVASAKA.com"> <img jwcid="@Any"
+										src="../../home/images/maps.gif" align=top border=0 /> <strong>中国</strong><font
+									color="#006699">[选择]</font> </a> </span>
+							<a jwcid="@Any" href="/" target="_blank">站点地图</a> &nbsp;&nbsp;搜索
+							<input value="" name="Keywords" id="keywords" class="input2"
+								style="width: 114px" />
+							<a jwcid="@Any"><img jwcid="@Any" style="cursor: pointer"
+									id="submit_search" src="../../home/images/ok.gif" border="0"
+									class="ok" /> </a>
+						</form>
+					</div>
+				</div>
+				<div id=menu_out>
+					<div id=menu_in>
+						<div id=menu>
+							<UL id=nav2>
+								<li>
+									<A class=nav_on id=mynav0 onmouseover=javascript:qiehuan(0)
+										href="../home/index.html"><SPAN>首页</SPAN> </A>
+								</li>
+								<li>
+									<a href="../../home/news/NewsList.html" onmouseover="javascript:qiehuan(1)" id="mynav1"
+										class="nav_off"><span>新闻资讯</span> </a>
+								</li>
+								<li>
+									<a href="../../home/about/about.html" onmouseover="javascript:qiehuan(2)" id="mynav2"
+										class="nav_off"><span>公司简介</span> </a>
+								</li>
+								<li>
+									<a href="/" onmouseover="javascript:qiehuan(3)" id="mynav3"
+										class="nav_off"><span>产品中心</span> </a>
+								</li>
+								<li>
+									<a href="/" onmouseover="javascript:qiehuan(4)" id="mynav4"
+										class="nav_off"><span>技术中心</span> </a>
+								</li>
+								<li>
+									<a href="/" onmouseover="javascript:qiehuan(5)" id="mynav5"
+										class="nav_off"><span>川荣软件</span> </a>
+								</li>
+								<li>
+									<a href="/" onmouseover="javascript:qiehuan(6)" id="mynav6"
+										class="nav_off"><span>人力资源</span> </a>
+								</li>
+								<li>
+									<a href="/" onmouseover="javascript:qiehuan(7)" id="mynav7"
+										class="nav_off"><span>联系我们</span> </a>
+								</li>
+							</UL>
+							<div id=menu_con>
+								<div id=qh_con0 style="DISPLAY: block"></div>
+								<div id=qh_con1 style="DISPLAY: none"></div>
+								<div id=qh_con2 style="DISPLAY: none"></div>
+								<div id=qh_con3 style="DISPLAY: none"></div>
+								<div id=qh_con4 style="DISPLAY: none"></div>
+								<div id=qh_con5 style="DISPLAY: none"></div>
+								<div id=qh_con6 style="DISPLAY: none"></div>
+								<div id=qh_con7 style="DISPLAY: none"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</DIV>
+			<script type="text/javascript">
+	$('submit_search').observe("click", function() {
+		if (document.searchForm.Keywords.value == '') {
+			alert("关键字不能为空");
+			return false;
+		}
+		$('searchForm').action = "/publish/search.php?o=search&TableID=1";
+		$('searchForm').submit();
+	})
+	document.body.onkeypress = function() {
+		if (event.keyCode == 13) {
+			if (document.searchForm.Keywords.value == '') {
+				alert("关键字不能为空");
+				return false;
+			}
+			$('searchForm').action = "/publish/search.php?o=search&TableID=1";
+			$('searchForm').submit();
+			return true;
+		}
+	}
+</script>
+			<div id="mainbody">
+				<div id="tt">
+					<img src="../../home/images/about.jpg" width="988" height="88">
+				</div>
+				<div id="di1">
+<div id="l">
+      <div class="l1s"><img src="../../home/images/l_top_bg.gif" border="0"></div>
+	  <div id="l1">
+	    <div class="l1">
+				 <h1><a href="../../home/about/about.html">公司介绍</a></h1>	 
+		         
+		</div>
+	    <div class="l2">
+		 		 <h1><a href="../../home/about/Culture.html">企业文化</a></h1>
+		 </div>
+		<div class="l1">
+		 		 <h1><a href="../../home/about/Department.html">部门介绍</a></h1>
+		</div>
+		<div class="l2">
+				<h1><a href="../../home/about/Yearbook.html">企业年鉴</a></h1>
+		</div>
+        		<div class="l1">
+		 		 <h1><a href="#">公司荣誉</a></h1>
+		</div>
+        
+	  </div>
+	  <div class="l1x"><img src="../../home/images/l_b_bg.gif" border="0"></div>
+	
+
+</div>
+					<script type="text/javascript">
+$('submit_search1').observe("click",function(){
+    if($('searchForm1').Keywords.value == '请输入关键字' || $('searchForm1').Keywords.value == ''){
+		alert("关键字不能为空");return false;
+	}
+	$('searchForm1').action = "/publish/search.php?o=search&TableID="+$('searchForm1').search1.value;
+	$('searchForm1').submit();	
+})
+$('cygs').observe("change",function(){
+	window.location.href = this.value;
+})
+
+$('keywords1').observe("focus",function(){
+
+        this.value=(this.value=='请输入关键字') ? '':this.value;
+        this.select();
+})
+$('keywords1').observe("blur",function(){
+       this.value=(this.value=='') ? '请输入关键字':this.value;
+})
+$$("#l li").each(function(item){
+	if(item.getAttribute("need") == "id-2") item.down().setStyle("color:#ff6600");
+})
+
+	
+	$$("#l h1").each(function(item) {
+		if (item.getAttribute("need") == "listen") {
+			item.observe("click", function() {
+				this.next().toggle();
+			});
+		}
+	})
+</script>
+
+					<div id="r">
+						<div id="r1">
+							<p>
+								<a href="/index.html">首页</a> >
+								<a href="/about/index.html">关于川荣</a> > 部门介绍
+							</p>
+						</div>
+
+						<div class="hzhbnm">
+							<img src="../../home/images/to.gif" width="12" height="12" class="hk" />
+							<span class="f14w"></span>部门介绍
+							<span class="events"></span>
+						</div>
+						<div class="hzhbnr" id="hzhbnr" style="padding-right: 40px">
+
+							<div class="fgsjs" style="border-top: none;">
+								<span class="fwb"><a href="/branch/zoomlion-hntjx.html"
+									style="color: #000066; font-weight: bold;"><img src="../../home/images/to.gif" width="12" height="12"/>&nbsp;&nbsp;工程机械事业部 </a> </span>
+								<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								川荣重工混凝土机械公司是川荣重工旗下主要事业部之一。主要从事混凝土机械产品的研发、制造和销售。目前，拥有总资产114亿元，员工6000余人，年生产销售规模超过150亿元，国内生产基地主要集中于川荣重工麓谷...
+								<p style="padding-top: 4px;">
+									<img src="../../home/images/fk_l.gif" width="9" height="9" />
+									<a href="/branch/zoomlion-hntjx.html">了解更多</a>
+								</p>
+							</div>
+
+							<div class="fgsjs">
+								<span class="fwb"><a href="/branch/zoomlion-gcqzj.html"
+									style="color: #000066; font-weight: bold;"><img src="../../home/images/to.gif" width="12" height="12"/>&nbsp;&nbsp;通讯软件事业部 </a> </span>
+								<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								川荣重工工程起重机分公司是川荣重工旗下主要事业部之一。公司集研究、开发、制造、试验为一体，地跨川荣重工泉塘工业园、灌溪工业园、麓谷工业园，拥有员工近5000人，年生产销售规模近120亿元，主要提供12吨到...
+								<p style="padding-top: 4px;">
+									<img src="../../home/images/fk_l.gif" width="9" height="9" />
+									<a href="/branch/zoomlion-gcqzj.html">了解更多</a>
+								</p>
+							</div>
+
+							<div class="fgsjs">
+								<span class="fwb"><a href="/branch//zoomlion-hwjx.html"
+									style="color: #000066; font-weight: bold;"><img src="../../home/images/to.gif" width="12" height="12"/>&nbsp;&nbsp;机械设计事业部 </a> </span>
+								<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								中联重工科技发展股份有限公司创建于1992年，2000年10月在深交所上市（简称“川荣重工”,股票代码000157），是中国工程机械装备制造领军企业，全国首批创新型企业之一。主要从事建筑工程、能源工程、交通工程等...
+								<p style="padding-top: 4px;">
+									<img src="../../home/images/fk_l.gif" width="9" height="9" />
+									<a href="/branch//zoomlion-hwjx.html">了解更多</a>
+								</p>
+							</div>
+
+							<div class="fgsjs">
+								<span class="fwb"><a href="/branch/zoomlion-jzqzj.html"
+									style="color: #000066; font-weight: bold;"><img src="../../home/images/to.gif" width="12" height="12"/>&nbsp;&nbsp;进出口贸易事业部 </a> </span>
+								<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								川荣重工建筑起重机械分公司为长沙中联重工科技发展有限公司下属分公司，于2006年6月正式挂牌成立，主要从事塔式起重机、施工升降机系列产品的设计开发、生产制造和销售服务。自成立以来，凭借雄厚的产品开发制...
+								<p style="padding-top: 4px;">
+									<img src="../../home/images/fk_l.gif" width="9" height="9" />
+									<a href="/branch/zoomlion-jzqzj.html">了解更多</a>
+								</p>
+							</div>
+
+							<div class="fgsjs">
+								<span class="fwb"><a href="/branch/zoomlion-lmjx.html"
+									style="color: #000066; font-weight: bold;"><img src="../../home/images/to.gif" width="12" height="12"/>&nbsp;&nbsp;矿产资源事业部 </a> </span>
+								<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								川荣重工路面机械分公司是川荣重工旗下事业部之一，拥有年产高等级路面机械产品1千台（套）、自制结构件1万吨的能力，产能规模达10亿元以上，系中国工程机械工业协会路面与压实机械理事长、秘书长单位。
+								公...
+								<p style="padding-top: 4px;">
+									<img src="../../home/images/fk_l.gif" width="9" height="9" />
+									<a href="/branch/zoomlion-lmjx.html">了解更多</a>
+								</p>
+							</div>
+
+
+
+						</div>
+						<div id="r4">
+							<div class="ftop">
+								<a href="#"><img src="../../home/images/top.jpg" width="38"
+										height="13" border="0" /> </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+					<img jwcid="@Any" src="../../home/images/foot_tu.gif" />
+					<p>
+						川荣重工版权所有|
+						<a jwcid="@Any" href="#" target="_blank">联系我们</a> |
+						<a jwcid="@Any" href="#" target="_blank">网站地图</a> |
+						<a jwcid="@Any" href="#" target="_blank">法律公告</a> |
+						<a jwcid="@Any" href="#" target="_blank">OA入口</a> |
+						<a jwcid="@Any" href="#" target="_blank">VPN人口</a> |
+						<a jwcid="@Any" href="#" target="_blank">ICP备案号：京ICP备09110329号</a>
+					</p>
+					Copyright &copy 2008 Kavasaka Heavy Industry Science&Technology
+					Development Co., Ltd. All rights reserved.
+				</div>
+				<div id="jia" style="display: none;">
+					<div id="jian">
+						<div id="printpage"></div>
+					</div>
+				</div>
+				<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl."
+			: "http://www.");
+	document
+			.write(unescape("%3Cscript src='"
+					+ gaJsHost
+					+ "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+				<script type="text/javascript">
+	try {
+		var pageTracker = _gat._getTracker("UA-8183656-2");
+		pageTracker._trackPageview();
+	} catch (err) {
+	}
+</script>
+				<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://"
+			: " http://");
+	document
+			.write(unescape("%3Cscript src='"
+					+ _bdhmProtocol
+					+ "hm.baidu.com/h.js%3F19e01941cf7c0d8354cb9711adb84aa8' type='text/javascript'%3E%3C/script%3E"));
+</script>
+				<script src="http://s14.cnzz.com/stat.php?id=2273985&web_id=2273985"
+					language="JavaScript"></script>
+			</div>
+			<!--<script src="./home/js/popup.js" type="text/javascript"></script>-->
+
+	<script type="text/javascript">
+
+var textDiv = document.getElementById("rollText");
+var textList = textDiv.getElementsByTagName("a");
+if(textList.length > 2){
+	var textDat = textDiv.innerHTML;
+	var br = textDat.toLowerCase().indexOf("<br",textDat.toLowerCase().indexOf("<br")+3);
+	//var textUp2 = textDat.substr(0,br);
+	textDiv.innerHTML = textDat+textDat+textDat.substr(0,br);
+	textDiv.style.cssText = "position:absolute; top:0";
+	var textDatH = textDiv.offsetHeight;MaxRoll();
+}
+var minTime,maxTime,divTop,newTop=0;
+function MinRoll(){
+	newTop++;
+	if(newTop<=divTop+40){
+		textDiv.style.top = "-" + newTop + "px";
+	}else{
+		clearInterval(minTime);
+		maxTime = setTimeout(MaxRoll,5000);
+	}
+}
+function MaxRoll(){
+	divTop = Math.abs(parseInt(textDiv.style.top));
+	if(divTop>=0 && divTop<textDatH-40){
+		minTime = setInterval(MinRoll,1);
+	}else{
+		textDiv.style.top = 0;divTop = 0;newTop=0;MaxRoll();
+	}
+}
+
+</script>
+	</body>
+</html>
