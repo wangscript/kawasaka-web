@@ -200,6 +200,8 @@ TEXTAREA {
 #r4 .fy A {
 	COLOR: #071d56; TEXT-DECORATION: underline
 }
+
+
 .fy P {
 	FLOAT: left; WIDTH: 200px
 }
@@ -225,7 +227,7 @@ TEXTAREA {
 	COLOR: #9d9d9d; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica
 }
 .hk {
-	MARGIN-BOTTOM: 3px
+	MARGIN-BOTTOM: 0px
 }
 .cplb_datu {
 	PADDING-TOP: 12px; TEXT-ALIGN: right
