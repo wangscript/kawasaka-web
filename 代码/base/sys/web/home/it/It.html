@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<title>川荣重工</title>
+		<link href="../../home/css/news_article.css" rel="stylesheet"
+			type="text/css" />
+		<script type="text/javascript" src="../../home/js/prototype.js"></script>
+		<script type="text/javascript" src="../../home/js/effects.js"></script>
+	</head>
+	<body>
+		<div id="layout">
+<!--将共用的页面，单独做作为一个页面引入  -->
+ <object style="border:0px" type="text/x-scriptlet" data="../top.htm" width=100% height=118></object> 
+
+			<script type="text/javascript">
+	$('submit_search').observe("click", function() {
+		if (document.searchForm.Keywords.value == '') {
+			alert("关键字不能为空");
+			return false;
+		}
+		$('searchForm').action = "/publish/search.php?o=search&TableID=1";
+		$('searchForm').submit();
+	})
+	document.body.onkeypress = function() {
+		if (event.keyCode == 13) {
+			if (document.searchForm.Keywords.value == '') {
+				alert("关键字不能为空");
+				return false;
+			}
+			$('searchForm').action = "/publish/search.php?o=search&TableID=1";
+			$('searchForm').submit();
+			return true;
+		}
+	}
+</script>
+  <div id="mainbody">
+    <div id="tt"><img src="../images/it.jpg" width="988" height="88" /></div>
+    <div id="di1">
+
+<div id="l">
+
+
+
+      <div class="l1s"><img src="../images/l_top_bg.gif" border="0" /></div>
+	  <div id="l1">
+	  	  	        <div class="l1">
+	  	  <h1 need="listen"><a style="cursor:pointer">IT公司分布</a></h1>
+				<ul style="display:none;">
+			              <li need="id-92"><a href="Itdetail.html" >川荣软件北京公司</a></li>
+	        <li need="id-93"><a href="/products/concrete/concretes-product.html" >软荣软件海南公司</a></li>
+	       </ul>
+		</div>
+   	        <div class="l2">
+	  	  <h1 need="listen"><a style="cursor:pointer">IT技术</a></h1>
+				<ul style="display:none;">
+			              <li need="id-99"><a href="/products/lifting/truck-crane-products.html" >web技术</a></li>
+	        <li need="id-100"><a href="/products/lifting/terrain-truck-products.html" >硬件技术</a></li>
+	        <li need="id-101"><a href="/products/lifting/crawler-crane-products.html" >测试技术</a></li>
+	  		 </ul>
+		</div>
+   	        <div class="l1">
+	  	  <h1 need="listen"><a style="cursor:pointer">产品介绍</a></h1>
+				<ul style="display:none;">
+			              <li need="id-102"><a href="/products/cranes/tower-crane-products.html" >企业信息管理软件</a></li>
+	  		<li need="id-102"><a href="/products/cranes/tower-crane-products.html" >气象软件</a></li>
+	  		<li need="id-102"><a href="/products/cranes/tower-crane-products.html" >铁路软件</a></li>
+	  		<li need="id-102"><a href="/products/cranes/tower-crane-products.html" >金融软件</a></li>
+	  	
+	  		 </ul>
+		</div>
+   	  </div>
+	  <div class="l1x"><img src="../images/l_b_bg.gif" border="0" /></div>
+
+ 
+</div>
+<script type="text/javascript">
+
+$$("#l h1").each(function(item){
+	if(item.getAttribute("need") == "listen"){
+		item.observe("click",function(){
+			$$("#l h1").each(function(item){
+				item.next().setStyle("display:none");
+			})
+			this.next().toggle();
+		});
+	}
+}) 
+
+$('submit_search1').observe("click",function(){
+    if($('searchForm1').Keywords.value == '请输入关键字' || $('searchForm1').Keywords.value == ''){
+		alert("关键字不能为空");return false;
+	}
+	$('searchForm1').action = "/publish/search.php?o=search&TableID="+$('searchForm1').search1.value;
+	$('searchForm1').submit();	
+})
+$('cygs').observe("change",function(){
+	window.location.href = this.value;
+})
+
+$('keywords1').observe("focus",function(){
+
+        this.value=(this.value=='请输入关键字') ? '':this.value;
+        this.select();
+})
+$('keywords1').observe("blur",function(){
+       this.value=(this.value=='') ? '请输入关键字':this.value;
+})
+$$("#l li").each(function(item){
+	if(item.getAttribute("need") == "id-5" || item.getAttribute("need") == "id-1") item.down().setStyle("color:#ff6600");
+})
+</script>
+    
+ 					<div id="r">
+						<div id="r1">
+							<p>
+								<a href="/index.html">首页</a> >
+								<a href="/about/index.html">关于川荣</a> > 川荣IT
+							</p>
+						</div>
+
+						<div class="hzhbnm">
+							<img src="../../home/images/to.gif" width="12" height="12" class="hk" />
+							<span class="f14w"></span>川荣IT
+							<span class="events"></span>
+						</div>
+						<div class="hzhbnr" id="hzhbnr" style="padding-right: 40px">
+
+							<div class="fgsjs" style="border-top: none;">
+								<span class="fwb"><img src="../../home/images/to.gif" width="12" height="12"/>&nbsp;&nbsp;<a href="Itdetail.html" >川荣北京软件公司 </a> </span>
+								<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								川荣重工混凝土机械公司是川荣重工旗下主要事业部之一。主要从事混凝土机械产品的研发、制造和销售。目前，拥有总资产114亿元，员工6000余人，年生产销售规模超过150亿元，国内生产基地主要集中于川荣重工麓谷...
+								<p style="padding-top: 4px;">
+								
+									
+								</p>
+							</div>
+
+							<div class="fgsjs">
+								<span class="fwb"><img src="../../home/images/to.gif" width="12" height="12"/>&nbsp;&nbsp;<a href="Itdetail.html" >川荣重工计算机科技（澄迈）有限公司</a>  </span>
+								<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								川荣重工工程起重机分公司是川荣重工旗下主要事业部之一。公司集研究、开发、制造、试验为一体，地跨川荣重工泉塘工业园、灌溪工业园、麓谷工业园，拥有员工近5000人，年生产销售规模近120亿元，主要提供12吨到...
+								<p style="padding-top: 4px;">
+									
+									
+								</p>
+							</div>
+						</div>
+						<div id="r4">
+							<div class="ftop">
+								<a href="#"><img src="../../home/images/top.jpg" width="38"
+										height="13" border="0" /> </a>
+							</div>
+						</div>
+					</div>
+						<!--将共用的页面，单独做作为一个页面引入  foot.htm -->
+		<div id="footer">
+		<img style="float:left" jwcid="@Any" src="/home/images/foot_tu.gif" />
+		    <div id="footer1">
+		   <object style="border:0px" type="text/x-scriptlet" data="../foot.htm" width=100%  height=60></object> 
+ 		   </div>
+       </div>			
+	<script type="text/javascript">
+
+var textDiv = document.getElementById("rollText");
+var textList = textDiv.getElementsByTagName("a");
+if(textList.length > 2){
+	var textDat = textDiv.innerHTML;
+	var br = textDat.toLowerCase().indexOf("<br",textDat.toLowerCase().indexOf("<br")+3);
+	//var textUp2 = textDat.substr(0,br);
+	textDiv.innerHTML = textDat+textDat+textDat.substr(0,br);
+	textDiv.style.cssText = "position:absolute; top:0";
+	var textDatH = textDiv.offsetHeight;MaxRoll();
+}
+var minTime,maxTime,divTop,newTop=0;
+function MinRoll(){
+	newTop++;
+	if(newTop<=divTop+40){
+		textDiv.style.top = "-" + newTop + "px";
+	}else{
+		clearInterval(minTime);
+		maxTime = setTimeout(MaxRoll,5000);
+	}
+}
+function MaxRoll(){
+	divTop = Math.abs(parseInt(textDiv.style.top));
+	if(divTop>=0 && divTop<textDatH-40){
+		minTime = setInterval(MinRoll,1);
+	}else{
+		textDiv.style.top = 0;divTop = 0;newTop=0;MaxRoll();
+	}
+}
+
+</script>
+	</body>
+</html>
