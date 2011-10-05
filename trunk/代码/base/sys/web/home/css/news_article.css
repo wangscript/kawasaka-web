@@ -105,31 +105,57 @@ TEXTAREA {
 	VERTICAL-ALIGN: top
 }
 #l1 {
-	BORDER-RIGHT: #cbc7c4 1px solid; FLOAT: left; BORDER-LEFT: #cbc7c4 1px solid; WIDTH: 155px; HEIGHT: 465px ;
+	float: left;
+	border-right: 1px solid #CBC7C4;
+	border-left: 1px solid #CBC7C4;
+	width: 155px;
 }
 .l1 {
-	BACKGROUND-COLOR: #e5e5e5;  HEIGHT: 30px
-}
-#l1 H1 {
-	BACKGROUND-POSITION: 0px 12px; PADDING-LEFT: 14px; FONT-SIZE: 13px; MIN-HEIGHT: 24px; BACKGROUND-IMAGE: url(fk.gif); MARGIN-LEFT: 14px; OVERFLOW: auto; COLOR: #646464; PADDING-TOP: 6px; BACKGROUND-REPEAT: no-repeat
-}
-#l1 H1 A {
-	FONT-SIZE: 13px
-}
-#l1 UL {
-	PADDING-LEFT: 20px; PADDING-TOP: 4px
-}
-#l1 LI {
-	MIN-HEIGHT: 25px; OVERFLOW: auto
-}
-#l1 A:hover {
-	TEXT-DECORATION: none
+	background-color: #E5E5E5;	highet:25px;
 }
 .l2 {
-	 HEIGHT: 30px
+	background-color: #E5E5E5;	highet:25px;
 }
-#l2 P {
-	PADDING-LEFT: 7px; PADDING-TOP: 38px
+#l1 h1 {
+	font-size: 13px;
+	color: #646464;
+	min-height: 24px;
+  	overflow:auto;
+	background-position: 0 12px;
+	padding-left: 14px;
+	background-repeat: no-repeat;
+	margin-left: 14px;
+	padding-top: 6px;
+}
+#l1 h1 a {
+	font-size: 13px;
+}
+
+#l1  ul {
+	padding-left: 20px;
+	padding-top: 4px;
+}
+#l1 li {
+	min-height: 25px;
+  	overflow:auto;
+}
+#l1  a:hover {
+	text-decoration: none;
+}
+
+#l2 {
+	height: 65px;
+	width: 157px;
+	float: left;
+	margin-top: 8px;
+	background-image: url(jtgscy.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#l2 p {
+	padding-top: 38px;
+	padding-left: 7px;
 }
 #l3 {
 	MARGIN-TOP: 8px; FLOAT: left; WIDTH: 157px
