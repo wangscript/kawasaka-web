@@ -9,30 +9,11 @@
 		<script type="text/javascript" src="./home/js/effects.js"></script>
 	</head>
 	<body>
+
 		<div id="layout">
 			<!--将共用的页面，单独做作为一个页面引入 bot.htm  -->
- <object style="border:0px" type="text/x-scriptlet" data="../home/top.htm" width=100% height=119px></object> 
-				<script type="text/javascript">
-	$('submit_search').observe("click", function() {
-		if (document.searchForm.Keywords.value == '') {
-			alert("关键字不能为空");
-			return false;
-		}
-		$('searchForm').action = "/publish/search.php?o=search&TableID=1";
-		$('searchForm').submit();
-	})
-	document.body.onkeypress = function() {
-		if (event.keyCode == 13) {
-			if (document.searchForm.Keywords.value == '') {
-				alert("关键字不能为空");
-				return false;
-			}
-			$('searchForm').action = "/publish/search.php?o=search&TableID=1";
-			$('searchForm').submit();
-			return true;
-		}
-	}
-</script>
+				<span jwcid="@home:header" nav="0"/>				
+
 				<div id="mainbody">
 					<div id="di2" style="width: 988px; height: 214px">
 						
@@ -45,28 +26,28 @@
 							</DIV>
 							<DIV class=di3anr>
 								<H1>
-									<IMG height=9 src="./home/images/fk_l.gif" width=9>
+									<IMG height=9 src="./home/images/fk_l.gif" width=9/>
 										<A href="http://www.zljt.com/branch/zoomlion-hntjx.html">工程机械事业部</A>
 								</H1>
 								<H1>
-									<IMG height=9 src="./home/images/fk_l.gif" width=9>
+									<IMG height=9 src="./home/images/fk_l.gif" width=9/>
 										<A href="http://www.zljt.com/branch/zoomlion-gcqzj.html">通讯软件事业部</A>
 								</H1>
 								<H1>
-									<IMG height=9 src="./home/images/fk_l.gif" width=9>
+									<IMG height=9 src="./home/images/fk_l.gif" width=9/>
 										<A href="http://www.zljt.com/branch//zoomlion-hwjx.html">机械设计事业部</A>
 								</H1>
 								<H1>
-									<IMG height=9 src="./home/images/fk_l.gif" width=9>
+									<IMG height=9 src="./home/images/fk_l.gif" width=9/>
 										<A href="http://www.zljt.com/branch/zoomlion-jzqzj.html">进出口贸易事业部</A>
 								</H1>
 								<H1>
-									<IMG height=9 src="./home/images/fk_l.gif" width=9>
+									<IMG height=9 src="./home/images/fk_l.gif" width=9/>
 										<A href="http://www.zljt.com/branch/zoomlion-lmjx.html">矿产资源事业部</A>
 								</H1>
 								<DD>
 									<A href=""><IMG height=13 src="./home/images/sy_more.jpg"
-											width=60 border=0>
+											width=60 border=0/>
 									</A>
 								</DD>
 							</DIV>
@@ -79,13 +60,14 @@
 						<div id="di3anrr">
 							<div id="rollAD" style="height:160px; position:relative; overflow:hidden; WIDTH:180px;">
 			<div id="rollText" style="font-size:12px; line-height:30px;">
-			<a href="/" title=""><font color="#0000FF">◇ 安理会改革拟新增七理事国</font></a><br />
-			<a href="/" title=""><font color="#0000FF">◇ 国务院领导工作分工确定</font></a><br />
-			<a href="/" title=""><font color="#0000FF">◇ 安理会改革拟新增七理事国</font></a><br />
-			<a href="/" title=""><font color="#0000FF">◇ 国务院领导工作分工确定</font></a><br />
-			<a href="/" title=""><font color="#0000FF">◇ 安理会改革拟新增七理事国</font></a><br />
-			<a href="/" title=""><font color="#0000FF">◇ 国务院领导工作分工确定</font></a><br />
-			<a href="/" title=""><font color="#0000FF">◇ 国务院领导工作分工确定</font></a><br />
+			<span jwcid="@Foreach" source="ognl:notes" value="ognl:info" element="span" index="ognl:rowIndex">
+				<a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsDetail', null, '&NEW_ID='+this.NEW_ID, '_blank');" NEW_ID="ognl:info.NEW_ID"  title="ognl:info.NEW_TITLE">
+					<font color="#0000FF">
+						◇ <span jwcid="@Insert" value="ognl:info.NEW_TITLE"/>
+					</font>
+				</a>
+				<br />
+			</span>			
 	        </div>
 </div>
 						</div>
@@ -402,7 +384,7 @@
 		<div id="footer">
 		<img style="float:left" jwcid="@Any" src="../home/images/foot_tu.gif" />
 		    <div id="footer1">
-		   <object style="border:0px" type="text/x-scriptlet" data="../home/foot.htm" width=100% height=60 ></object> 
+		   		<span jwcid="@home:footer" />
  		   </div>
        </div>
 

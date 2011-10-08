@@ -3,8 +3,8 @@
   "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
   "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
 
-<page-specification class="com.linkage.home.view.Index">
+<page-specification class="com.linkage.home.view.news.News">
     <property-specification name="notes" type="com.linkage.appframework.data.IDataset"/>
 	<property-specification name="info" type="com.linkage.appframework.data.IData"/>    
-	<property-specification name="rowIndex" type="int"/>    
+	<property-specification name="rowIndex" type="int"/>        
 </page-specification>

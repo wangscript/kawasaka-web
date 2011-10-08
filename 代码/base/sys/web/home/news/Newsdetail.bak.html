@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<title>川荣重工</title>
+		<link href="../../home/css/news_article.css" rel="stylesheet"
+			type="text/css" />
+		<script type="text/javascript" src="../../home/js/prototype.js"></script>
+		<script type="text/javascript" src="../../home/js/effects.js"></script>
+	</head>
+	<body>
+		<div id="layout">
+
+<!--将共用的页面，单独做作为一个页面引入  -->
+ <object style="border:0px" type="text/x-scriptlet" data="../top.htm" width=100% height=20%></object> 
+<!-- 结束 -->
+		<script type="text/javascript">
+	$('submit_search').observe("click", function() {
+		if (document.searchForm.Keywords.value == '') {
+			alert("关键字不能为空");
+			return false;
+		}
+		$('searchForm').action = "/publish/search.php?o=search&TableID=1";
+		$('searchForm').submit();
+	})
+	document.body.onkeypress = function() {
+		if (event.keyCode == 13) {
+			if (document.searchForm.Keywords.value == '') {
+				alert("关键字不能为空");
+				return false;
+			}
+			$('searchForm').action = "/publish/search.php?o=search&TableID=1";
+			$('searchForm').submit();
+			return true;
+		}
+	}
+</script>
+			<div id="mainbody">
+				<div id="tt"><img src="../../home/images/title_tu2.jpg" width="988" height="88"></div>
+    <div id="di1">
+
+<div id="l">
+      <div class="l1s"><img src="../../home/images/l_top_bg.gif" border="0"></div>
+	  <div id="l1">
+	    <div class="l1">
+				 <h1 need="listen"><a style="cursor:pointer">热点新闻</a></h1>	 
+		         
+		</div>
+	    <div class="l2">
+		 		 <h1><a href="#">川荣新闻</a></h1>
+		 </div>
+		<div class="l1">
+		 		 <h1><a href="#">行业动态</a></h1>
+		</div>
+		<div class="l2">
+				<h1><a href="#">公告信息</a></h1>
+		</div>
+
+	  </div>
+	  <div class="l1x"><img src="../../home/images/l_b_bg.gif" border="0"></div>
+	
+
+</div>
+					<script type="text/javascript">
+$('submit_search1').observe("click",function(){
+    if($('searchForm1').Keywords.value == '请输入关键字' || $('searchForm1').Keywords.value == ''){
+		alert("关键字不能为空");return false;
+	}
+	$('searchForm1').action = "/publish/search.php?o=search&TableID="+$('searchForm1').search1.value;
+	$('searchForm1').submit();	
+})
+$('cygs').observe("change",function(){
+	window.location.href = this.value;
+})
+
+$('keywords1').observe("focus",function(){
+
+        this.value=(this.value=='请输入关键字') ? '':this.value;
+        this.select();
+})
+$('keywords1').observe("blur",function(){
+       this.value=(this.value=='') ? '请输入关键字':this.value;
+})
+$$("#l li").each(function(item){
+	if(item.getAttribute("need") == "id-2") item.down().setStyle("color:#ff6600");
+})
+
+	$$("#l h1").each(function(item) {
+		if (item.getAttribute("need") == "listen") {
+			item.observe("click", function() {
+				this.next().toggle();
+			});
+		}
+	})
+</script>
+
+					<div id="r">
+						<div id="r1">
+							<p>
+								<a href="/index.html">首页</a> >
+								<a href="/NewsList.html">新闻资讯</a> >
+								热点新闻 
+							</p>
+							
+						</div>
+						<div id="r2">
+							<h2>
+								<img src="../../home/images/to.gif" border="0" />
+								中联重科30台泵车出口日本 实现中国零的突破
+							</h2>
+
+							<div class="zw" id="zw">
+								<h3>
+									作者: 中联 出处: 中联 2011-09-29
+								</h3>
+								<p>
+									<DIV>
+										<FONT size=2>&nbsp;&nbsp;&nbsp;&nbsp;9月29日上午，中联重科与日本金崛公司签订30台泵车采购意向书暨首台33米泵车发车仪式在长沙隆重举行。与此同时，中联重科宣布计划在2012年以独资或者合资的形式在日本建立生产制造基地。据介绍，中联重科能打入到以制造能力著称的日本，首开了中国工程机械产品批量出口日本的先河。可见其产品制造能力和水平已得到日方认可，在国内工程机械业具有里程碑意义。</FONT>
+									</DIV>
+									<DIV>
+										<FONT size=2>&nbsp;&nbsp;&nbsp;&nbsp;
+											此次签约出口日本的30台泵车，是中联重科透彻掌握了世界先进混凝土机械产品的设计理念、安全理念和工艺水平要求后，成功开发的一款符合发达国家技术标准的高科技产品，搭载在奔驰Actros
+											3341
+											6×4底盘上，整体结构设计科学，运用泵送柔性控制技术和独一无二的臂架柔性控制技术，经过严谨的实验和调试，整车的高配置确保了产品的高可靠性，已经达到世界一流水平。</FONT>
+									</DIV>
+									
+									
+									<DIV>
+										<FONT size=2></FONT>&nbsp;
+									</DIV>
+								</p>
+								<div class="fhlb">
+									<a href="/news/main-news.html"><img
+											src="../../home/images/fhlb.jpg" width="96" height="25"
+											border="0" />
+									</a>
+								</div>
+								<div class="other_titles">
+									其他文章
+									<p>
+										下一篇：
+										<a href=/news/2011-09/main-content-21423.html>中联重科创混凝土泵车吉尼斯世界新纪录</a>&nbsp;&nbsp;[2011-09-29
+										10:09:48]
+										<br>
+									</p>
+								</div>
+
+							</div>
+						</div>
+						<div id="r3">
+							<div id="r3nm">
+								<img src="../../home/images/hk.gif" width="12" height="6" class="hk" />
+								<span class="f14w">相关新闻</span>
+							</div>
+							<div id="r3nr">
+								<ul>
+									<!--Error:Please set the Keywords!-->
+								</ul>
+							</div>
+						</div>
+						<div id="r4">
+							<div class="ftop">
+								<a href="#"><img src="../../home/images/top.jpg" width="38"
+										height="13" border="0" />
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+					<!--将共用的页面，单独做作为一个页面引入  foot.htm -->
+		<div id="footer">
+		<img style="float:left" jwcid="@Any" src="/home/images/foot_tu.gif" />
+		    <div id="footer1">
+		   <object style="border:0px" type="text/x-scriptlet" data="../foot.htm" width=100%  height=60></object> 
+ 		   </div>
+       </div>
+
+	<script type="text/javascript">
+
+var textDiv = document.getElementById("rollText");
+var textList = textDiv.getElementsByTagName("a");
+if(textList.length > 2){
+	var textDat = textDiv.innerHTML;
+	var br = textDat.toLowerCase().indexOf("<br",textDat.toLowerCase().indexOf("<br")+3);
+	//var textUp2 = textDat.substr(0,br);
+	textDiv.innerHTML = textDat+textDat+textDat.substr(0,br);
+	textDiv.style.cssText = "position:absolute; top:0";
+	var textDatH = textDiv.offsetHeight;MaxRoll();
+}
+var minTime,maxTime,divTop,newTop=0;
+function MinRoll(){
+	newTop++;
+	if(newTop<=divTop+40){
+		textDiv.style.top = "-" + newTop + "px";
+	}else{
+		clearInterval(minTime);
+		maxTime = setTimeout(MaxRoll,5000);
+	}
+}
+function MaxRoll(){
+	divTop = Math.abs(parseInt(textDiv.style.top));
+	if(divTop>=0 && divTop<textDatH-40){
+		minTime = setInterval(MinRoll,1);
+	}else{
+		textDiv.style.top = 0;divTop = 0;newTop=0;MaxRoll();
+	}
+}
+
+</script>
+	</body>
+</html>
