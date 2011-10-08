@@ -65,3 +65,10 @@
 <page name="sys.group.GroupList" specification-path="/sys/pages/group/GroupList.page"/>
 <page name="sys.group.GroupAdd" specification-path="/sys/pages/group/GroupAdd.page"/>
 <page name="sys.group.GroupEdit" specification-path="/sys/pages/group/GroupEdit.page"/>
+
+<page name="sys.techno.TechnoList" specification-path="/sys/pages/techno/TechnoList.page"/>
+<page name="sys.techno.TechnoAdd" specification-path="/sys/pages/techno/TechnoAdd.page"/>
+<page name="sys.techno.TechnoEdit" specification-path="/sys/pages/techno/TechnoEdit.page"/>
+<page name="sys.techno.SolutionList" specification-path="/sys/pages/techno/SolutionList.page"/>
+<page name="sys.techno.SolutionAdd" specification-path="/sys/pages/techno/SolutionAdd.page"/>
+<page name="sys.techno.SolutionEdit" specification-path="/sys/pages/techno/SolutionEdit.page"/>
