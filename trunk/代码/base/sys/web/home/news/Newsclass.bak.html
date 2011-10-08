@@ -10,8 +10,31 @@
 	</head>
 	<body>
 		<div id="layout">
-			<!--将共用的页面，单独做作为一个页面引入  -->
-			<span jwcid="@home:header" nav="1"/>
+
+<!--将共用的页面，单独做作为一个页面引入  -->
+ <object style="border:0px" type="text/x-scriptlet" data="../top.htm" width=100% height=118></object> 
+<!-- 结束 -->
+			<script type="text/javascript">
+	$('submit_search').observe("click", function() {
+		if (document.searchForm.Keywords.value == '') {
+			alert("关键字不能为空");
+			return false;
+		}
+		$('searchForm').action = "/publish/search.php?o=search&TableID=1";
+		$('searchForm').submit();
+	})
+	document.body.onkeypress = function() {
+		if (event.keyCode == 13) {
+			if (document.searchForm.Keywords.value == '') {
+				alert("关键字不能为空");
+				return false;
+			}
+			$('searchForm').action = "/publish/search.php?o=search&TableID=1";
+			$('searchForm').submit();
+			return true;
+		}
+	}
+</script>
 			<div id="mainbody">
 				<div id="tt"><img src="../../home/images/title_tu2.jpg" width="988" height="88"></div>
     <div id="di1">
@@ -38,6 +61,38 @@
 	
 
 </div>
+					<script type="text/javascript">
+$('submit_search1').observe("click",function(){
+    if($('searchForm1').Keywords.value == '请输入关键字' || $('searchForm1').Keywords.value == ''){
+		alert("关键字不能为空");return false;
+	}
+	$('searchForm1').action = "/publish/search.php?o=search&TableID="+$('searchForm1').search1.value;
+	$('searchForm1').submit();	
+})
+$('cygs').observe("change",function(){
+	window.location.href = this.value;
+})
+
+$('keywords1').observe("focus",function(){
+
+        this.value=(this.value=='请输入关键字') ? '':this.value;
+        this.select();
+})
+$('keywords1').observe("blur",function(){
+       this.value=(this.value=='') ? '请输入关键字':this.value;
+})
+$$("#l li").each(function(item){
+	if(item.getAttribute("need") == "id-2") item.down().setStyle("color:#ff6600");
+})
+
+	$$("#l h1").each(function(item) {
+		if (item.getAttribute("need") == "listen") {
+			item.observe("click", function() {
+				this.next().toggle();
+			});
+		}
+	})
+</script>
 
    <div id="r">
       <div id="r3" style="border-top:none; margin-top:0;">
@@ -130,9 +185,9 @@
       <div id="r4">
 	    <div class="fy">
 		 <p>共有 <span class="tiaoshu">4388</span> 条信息</p>
-		 <dd>分页：[1]&nbsp;<a jwcid="@Any" href='news_1.html'>2</a>&nbsp;<a jwcid="@Any" href='news_2.html'>3</a>&nbsp;<a jwcid="@Any" href='news_3.html'>4</a>&nbsp;<a jwcid="@Any" href='news_4.html'>5</a>&nbsp;<a jwcid="@Any" href='news_5.html'>6</a>&nbsp;<a jwcid="@Any" href='news_6.html'>7</a>&nbsp;<a jwcid="@Any" href='news_7.html'>8</a>&nbsp;<a jwcid="@Any" href='news_8.html'>9</a>&nbsp;<a jwcid="@Any" href='news_9.html'>10</a>&nbsp;&nbsp;<b><a jwcid="@Any" href='news_1.html' >&#x4E0B;&#x4E00;&#x9875;</a></b>&nbsp;&nbsp;<b><a jwcid="@Any" href='news_10.html' >&#x4E0B;10&#x9875;</a></b></dd>
+		 <dd>分页：[1]&nbsp;<a href='news_1.html'>2</a>&nbsp;<a href='news_2.html'>3</a>&nbsp;<a href='news_3.html'>4</a>&nbsp;<a href='news_4.html'>5</a>&nbsp;<a href='news_5.html'>6</a>&nbsp;<a href='news_6.html'>7</a>&nbsp;<a href='news_7.html'>8</a>&nbsp;<a href='news_8.html'>9</a>&nbsp;<a href='news_9.html'>10</a>&nbsp;&nbsp;<b><a href='news_1.html' >&#x4E0B;&#x4E00;&#x9875;</a></b>&nbsp;&nbsp;<b><a href='news_10.html' >&#x4E0B;10&#x9875;</a></b></dd>
 		</div>
-        <div class="ftop" style="margin-top:0;"><a jwcid="@Any" href="#"><img src="../../home/images/top.jpg" width="38" height="13" border="0" /></a></div>
+        <div class="ftop" style="margin-top:0;"><a href="#"><img src="../../home/images/top.jpg" width="38" height="13" border="0" /></a></div>
       </div>
     </div>
 	</div>
@@ -144,5 +199,39 @@
 		   <object style="border:0px" type="text/x-scriptlet" data="../foot.htm" width=100%  height=60></object> 
  		   </div>
        </div>
+				
+
+	<script type="text/javascript">
+
+var textDiv = document.getElementById("rollText");
+var textList = textDiv.getElementsByTagName("a");
+if(textList.length > 2){
+	var textDat = textDiv.innerHTML;
+	var br = textDat.toLowerCase().indexOf("<br",textDat.toLowerCase().indexOf("<br")+3);
+	//var textUp2 = textDat.substr(0,br);
+	textDiv.innerHTML = textDat+textDat+textDat.substr(0,br);
+	textDiv.style.cssText = "position:absolute; top:0";
+	var textDatH = textDiv.offsetHeight;MaxRoll();
+}
+var minTime,maxTime,divTop,newTop=0;
+function MinRoll(){
+	newTop++;
+	if(newTop<=divTop+40){
+		textDiv.style.top = "-" + newTop + "px";
+	}else{
+		clearInterval(minTime);
+		maxTime = setTimeout(MaxRoll,5000);
+	}
+}
+function MaxRoll(){
+	divTop = Math.abs(parseInt(textDiv.style.top));
+	if(divTop>=0 && divTop<textDatH-40){
+		minTime = setInterval(MinRoll,1);
+	}else{
+		textDiv.style.top = 0;divTop = 0;newTop=0;MaxRoll();
+	}
+}
+
+</script>
 	</body>
 </html>

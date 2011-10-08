@@ -1138,3 +1138,34 @@ function qiehuan(num){
 		}
 	}
 };
+function redirectTo(page, listener, params){
+	var url = "/app?service=page/";
+	if(page){
+		url = url + page;
+	}
+	if(listener){
+		url = url + "&listener=" + listener;
+	}
+	if(params){
+		url = url + page;
+	}
+	document.location=url;
+}
+
+function redirectTo(page, listener, params, target){
+	var url = "/app?service=page/";
+	if(page){
+		url = url + page;
+	}
+	if(listener){
+		url = url + "&listener=" + listener;
+	}
+	if(params){
+		url = url + params;
+	}
+	if(target){
+		window.open(url,target);
+	}else{
+		document.location=url;
+	}
+}
