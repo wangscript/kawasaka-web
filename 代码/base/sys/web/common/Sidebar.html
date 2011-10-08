@@ -10,7 +10,7 @@
 <body>
 <div id="menuDiv" class="f_side">
 
-	<h4 id="menu_300" class="unfold" style="display:none;"><a href="javascript:void(0)">发布管理</a></h4>
+	<h4 id="menu_300" class="unfold" style="display:none;"><a href="javascript:void(0)">新闻管理</a></h4>
 	<ul style="display:none;">
  		<li id="menu_301"><a jwcid="@wade:PageRedirect" value="新闻管理" onclick="redirectToNav('sys.system.NewsList', 'init', null, 'contentframe')"/></li>	    
  		<li id="menu_302"><a jwcid="@wade:PageRedirect" value="附件管理" onclick="redirectToNav('sys.system.FilesList', 'init', null, 'contentframe')"/></li>
@@ -23,30 +23,39 @@
 		<li id="menu_603"><a jwcid="@wade:PageRedirect" value="产品管理" onclick="redirectToNav('sys.product.ProductList', 'init', null, 'contentframe')"/></li> 
 	
 	</ul>
-	
-	<h4 id="menu_400" class="unfold" style="display:none;"><a href="javascript:void(0)">部门/分公司管理</a></h4>
-	<ul style="display:none;">
- 		<li id="menu_401"><a jwcid="@wade:PageRedirect" value="部门/分公司管理" onclick="redirectToNav('sys.group.GroupList', 'init', null, 'contentframe')"/></li>
-	</ul>	
-    <h4 id="menu_000" class="fold" style="display:none;"><a href="javascript:void(0)">员工信息管理</a></h4>
-	<ul style="display:none;">
-		<li id="menu_001"><a jwcid="@wade:PageRedirect" value="员工管理" onclick="redirectToNav('sys.staff.StaffList', 'init', null, 'contentframe')"/></li>
-		<li id="menu_002"><a jwcid="@wade:PageRedirect" value="员工密码管理" onclick="redirectToNav('sys.staff.StaffPasswd', 'init', null, 'contentframe')"/></li>
-	</ul>  
-<!--  
+ <!--  
 	<h4 id="menu_100" class="unfold" style="display:none;"><a href="javascript:void(0)">参数管理</a></h4>
 	<ul style="display:none;">
 		<li id="menu_102"><a jwcid="@wade:PageRedirect" value="部门参数管理" onclick="redirectToNav('sys.params.DepartsList', 'init', null, 'contentframe')"/></li>
 	    <li id="menu_106"><a jwcid="@wade:PageRedirect" value="业务区参数管理" onclick="redirectToNav('sys.params.AreasList', 'init', null, 'contentframe')"/></li>
 	</ul>
 -->		
+
+    <h4 id="menu_500" class="fold" style="display:none;"><a href="javascript:void(0)"> 技术类别</a></h4>
+	<ul style="display:none;">
+		<li id="menu_501"><a jwcid="@wade:PageRedirect" value="技术分类" onclick="redirectToNav('sys.techno.TechnoList', 'init', null, 'contentframe')"/></li>
+	    <li id="menu_502"><a jwcid="@wade:PageRedirect" value="方案管理" onclick="redirectToNav('sys.techno.SolutionList', 'init', null, 'contentframe')"/></li>
+	
+	</ul>
+	
+	<h4 id="menu_400" class="unfold" style="display:none;"><a href="javascript:void(0)">部门/分公司管理</a></h4>
+	<ul style="display:none;">
+ 		<li id="menu_401"><a jwcid="@wade:PageRedirect" value="部门/分公司管理" onclick="redirectToNav('sys.group.GroupList', 'init', null, 'contentframe')"/></li>
+	</ul>	
+	
+	<h4 id="menu_000" class="fold" style="display:none;"><a href="javascript:void(0)">员工信息管理</a></h4>
+	<ul style="display:none;">
+		<li id="menu_001"><a jwcid="@wade:PageRedirect" value="员工管理" onclick="redirectToNav('sys.staff.StaffList', 'init', null, 'contentframe')"/></li>
+		<li id="menu_002"><a jwcid="@wade:PageRedirect" value="员工密码管理" onclick="redirectToNav('sys.staff.StaffPasswd', 'init', null, 'contentframe')"/></li>
+	</ul> 
+	<!-- 
 	<h4 id="menu_200" class="unfold" style="display:none;"><a href="javascript:void(0)">系统管理</a></h4>
 	<ul style="display:none;">
 	    <li id="menu_201"><a jwcid="@wade:PageRedirect" value="菜单管理" onclick="redirectToNav('sys.system.MenusList', 'init', null, 'contentframe')"/></li>
 	    <li id="menu_202"><a jwcid="@wade:PageRedirect" value="员工菜单管理" onclick="redirectToNav('sys.system.StaffMenuList', 'init', null, 'contentframe')"/></li>
 	    <li id="menu_203"><a jwcid="@wade:PageRedirect" value="权限管理" onclick="redirectToNav('sys.system.RightsList', 'init', null, 'contentframe')"/></li>
 		<li id="menu_204"><a jwcid="@wade:PageRedirect" value="员工权限管理" onclick="redirectToNav('sys.system.StaffRightList', 'init', null, 'contentframe')"/></li>
-	</ul>  
+	</ul>   -->
 <script language="javascript"><!--
 	Wade.onLoad(function(){
 		initPage();
