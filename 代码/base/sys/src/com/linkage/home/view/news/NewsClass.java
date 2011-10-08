@@ -1,4 +1,4 @@
-package com.linkage.home.view;
+package com.linkage.home.view.news;
 
 import org.apache.tapestry.event.PageEvent;
 
@@ -10,9 +10,9 @@ import com.linkage.component.PageData;
 import com.linkage.sys.bean.news.NewsBean;
 
 
-public abstract class Index extends AppSafePage {
+public abstract class NewsClass extends AppSafePage {
 	
-	public abstract void setNotes(IDataset notes);
+	public abstract void setInfos(IDataset infos);
 
 	public void pageBeginRender(PageEvent event)
 	{
@@ -21,8 +21,8 @@ public abstract class Index extends AppSafePage {
 			pd = getPageData();
 			NewsBean newsBean = new NewsBean();
 			IData params = new DataMap();
-			IDataset notes = newsBean.queryNews(pd, params, pd.getPagination());
-			setNotes(notes);
+			IDataset infos = newsBean.queryNews(pd, params, pd.getPagination());
+			setInfos(infos);
 		} catch (Exception e) {
 			log.error("初始化页面执行失败！错误情况:" + e);
 		}finally{

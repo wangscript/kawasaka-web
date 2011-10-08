@@ -1,4 +1,4 @@
-package com.linkage.home.view;
+package com.linkage.home.view.news;
 
 import org.apache.tapestry.event.PageEvent;
 
@@ -10,7 +10,7 @@ import com.linkage.component.PageData;
 import com.linkage.sys.bean.news.NewsBean;
 
 
-public abstract class Index extends AppSafePage {
+public abstract class News extends AppSafePage {
 	
 	public abstract void setNotes(IDataset notes);
 
