@@ -81,3 +81,4 @@
 	<library id="component" specification-path="/com/linkage/component/jwcs/component.library"/>
 	<library id="contrib" specification-path="/org/apache/tapestry/contrib/Contrib.library"/>
     <library id="cashiersys" specification-path="/com/linkage/common/components/cashiersyscomp.library"/>
+    <library id="home" specification-path="/com/linkage/home/components/homecomp.library"/>    
