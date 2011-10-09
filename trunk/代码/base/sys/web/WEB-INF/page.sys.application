@@ -5,6 +5,7 @@
 <page name="NewsDetail" specification-path="/home/news/NewsDetail.page"/>
 <page name="Group" specification-path="/home/group/Group.page"/>
 <page name="Gdetail" specification-path="/home/group/Gdetail.page"/>
+<page name="Contact" specification-path="/home/contact/Contact.page"/>
 <!-- Admin begin-->
 <page name="Admin" specification-path="/common/Home.page"/>
 <page name="Main" specification-path="/common/Main.page"/>  
