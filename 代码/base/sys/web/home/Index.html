@@ -82,89 +82,36 @@
 								</div>
 								<div class="di3bnr">
 									<div class="di3bnr1">
+										
+										<div id="ognl:'hotnews'+rowIndex" jwcid="@Foreach" source="ognl:thumbs" value="ognl:info" element="div" index="ognl:rowIndex" style="ognl:rowIndex==0?'':'display: none'">
+											<div class="di3bnr1a">
+												<a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsDetail', null, '&NEW_ID='+this.NEW_ID, '_blank');" NEW_ID="ognl:info.NEW_ID"  title="ognl:info.NEW_TITLE">
+													<img jwcid="@Any"
+														src="ognl:'image?file_id='+(info.NEW_THUMB).substring(0,12)"
+														width="149" height="96" border="0" /> </a>
+											</div>
+											<div class="di3bnr1b">
+												<h2>
+													<img jwcid="@Any" src="./home/images/jt_xia.jpg" width="10"
+														height="10" />
+													<span jwcid="@Insert" value="ognl:info.NEW_TITLE"/>
+												</h2>
+												<p>
+													<span jwcid="@Insert" value="ognl:info.NEW_DESCRIPTION"/>
+													<a jwcid="@Any"	href="javascript:void(0)" onclick="redirectTo('NewsDetail', null, '&NEW_ID='+this.NEW_ID, '_blank');" NEW_ID="ognl:info.NEW_ID"  title="ognl:info.NEW_TITLE"
+														class="fcb">[详细]</a>
+												</p>
+											</div>
+										</div>
+										
 
+										
 
+										
 
-										<div id="hotnews0">
-											<div class="di3bnr1a">
-												<a jwcid="@Any" href="/news/2011-09/1315901638d21345.html">
-													<img jwcid="@Any"
-														src="./home/images/ba7d0366d7fb5e4dac8a2f2b60b2e3dd.jpg"
-														width="149" height="96" border="0" /> </a>
-											</div>
-											<div class="di3bnr1b">
-												<h2>
-													<img jwcid="@Any" src="./home/images/jt_xia.jpg" width="10"
-														height="10" />
-													中国企业的国际化进程——普罗迪教授对话中联重科
-												</h2>
-												<p>
-													9月8日，意大利前总理、欧盟前主席罗马诺·普罗迪教授参观了中联重科，并于9日下...
-													<a jwcid="@Any" href="/news/2011-09/1315901638d21345.html"
-														class="fcb">[详细]</a>
-												</p>
-											</div>
-										</div>
-										<div id="hotnews1" style='display: none'>
-											<div class="di3bnr1a">
-												<a jwcid="@Any" href="/news/2011-02/1297085474d17285.html">
-													<img jwcid="@Any"
-														src="/./home/images/b6be2f7e4a887d232fa108dc3d5264a8.jpg"
-														width="149" height="96" border="0" /> </a>
-											</div>
-											<div class="di3bnr1b">
-												<h2>
-													<img jwcid="@Any" src="./home/images/jt_xia.jpg" width="10"
-														height="10" />
-													截至二零一一年一月三十一日止股份發行人的證券變動月報表
-												</h2>
-												<p>
-													点击下载：截至二零一一年一月三十一日止股份發行人的證券變動月報表
-													<a jwcid="@Any" href="/news/2011-02/1297085474d17285.html"
-														class="fcb">[详细]</a>
-												</p>
-											</div>
-										</div>
-										<div id="hotnews2" style='display: none'>
-											<div class="di3bnr1a">
-												<a jwcid="@Any" href="/news/2011-01/1296113963d17145.html">
-													<img jwcid="@Any"
-														src="./home/images/3d344fcb544edeee45650bed6b2c0a04.jpg"
-														width="149" height="96" border="0" /> </a>
-											</div>
-											<div class="di3bnr1b">
-												<h2>
-													<img jwcid="@Any" src="./home/images/jt_xia.jpg" width="10"
-														height="10" />
-													中联重科董事长詹纯新获“莱昂纳多国际奖”
-												</h2>
-												<p>
-													新华网罗马1月25日电（记者 王昀加 王星桥 宋建）“中央提出企业"走出去"是完全...
-													<a jwcid="@Any" href="/news/2011-01/1296113963d17145.html"
-														class="fcb">[详细]</a>
-												</p>
-											</div>
-										</div>
-										<div id="hotnews3" style='display: none'>
-											<div class="di3bnr1a">
-												<a jwcid="@Any" href="/news/2011-01/1294239116d16843.html">
-													<img jwcid="@Any"
-														src="/picThumb/cache/a/a3/a329bc25d01e09d21787192bc4483701.jpg"
-														width="149" height="96" border="0" /> </a>
-											</div>
-											<div class="di3bnr1b">
-												<h2>
-													<img jwcid="@Any" src="./home/images/jt_xia.jpg" width="10"
-														height="10" />
-													悉数行使超额配股权公告
-												</h2>
-												<p>
-													attach201101051448230.pdf
-													<a jwcid="@Any" href="/news/2011-01/1294239116d16843.html"
-														class="fcb">[详细]</a>
-												</p>
-											</div>
-										</div>
+										
+										
+										
 										<div class="di3bnr1c">
 											<img jwcid="@Any" src="./home/images/sy_gd.jpg" width="23"
 												height="65" border="0" usemap="#Map" />
@@ -175,6 +122,8 @@
 													style="CURSOR: pointer" href="#scroll" id="scrollDown" />
 											</map>
 										</div>
+										
+										
 									</div>
 									<script type="text/javascript" src="./home/js/s.js"></script>
 
@@ -194,56 +143,19 @@
 											
 
 											
+											<tr jwcid="@Foreach" source="ognl:lastnewss" value="ognl:info" element="tr" index="ognl:rowIndex">
 
+												<td>
+													<a jwcid="@Any"	href="javascript:void(0)" onclick="redirectTo('NewsDetail', null, '&NEW_ID='+this.NEW_ID, '_blank');" NEW_ID="ognl:info.NEW_ID"  title="ognl:info.NEW_TITLE"><span jwcid="@Insert" value="ognl:info.NEW_TITLE"/></a>&nbsp;
+													<img jwcid="@Any" src="./home/images/new1.gif" border=0
+														width="17" height="11" />
+												</td>
+												<td style="float: right">
+
+													[<span jwcid="@Insert" value="ognl:(info.UPDATE_TIME).substring(0,12)"/>]
+												</td>
+											</tr>	
 											
-
-											<tr>
-												<td>
-													<a jwcid="@Any"
-														href="/news/2011-09/main-content-21344.html">中国企业的国际化进程</a>&nbsp;
-													<img jwcid="@Any" src="./home/images/new1.gif" border=0
-														width="17" height="11" />
-												</td>
-												<td style="float: right">
-
-													[2011-09-13]
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<a jwcid="@Any"
-														href="/news/2011-09/main-content-21344.html">中国企业的国际化进程</a>&nbsp;
-													<img jwcid="@Any" src="./home/images/new1.gif" border=0
-														width="17" height="11" />
-												</td>
-												<td style="float: right">
-													[2011-09-13]
-											</tr>
-
-											<tr>
-												<td>
-													<a jwcid="@Any"
-														href="/news/2011-09/main-content-21344.html">中国企业的国际化进程</a>&nbsp;
-													<img jwcid="@Any" src="./home/images/new1.gif" border=0
-														width="17" height="11" />
-												</td>
-												<td style="float: right">
-													[2011-09-13]
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<a jwcid="@Any"
-														href="/news/2011-09/main-content-21344.html">中国企业的国际化进程</a>&nbsp;
-													<img jwcid="@Any" src="./home/images/new1.gif" border=0
-														width="17" height="11" />
-												</td>
-												<td style="float: right">
-													[2011-09-13]
-												</td>
-											</tr>
 										</table>
 									</div>
 								</div>
