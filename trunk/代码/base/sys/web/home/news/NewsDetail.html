@@ -20,17 +20,16 @@
       <div class="l1s"><img src="../../home/images/l_top_bg.gif" border="0"></div>
 	  <div id="l1">
 	    <div class="l1">
-				 <h1 need="listen"><a style="cursor:pointer">热点新闻</a></h1>	 
-		         
+				 <h1><a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsClass', null, '&C_ID=11');">热点新闻</a></h1>	 
 		</div>
 	    <div class="l2">
-		 		 <h1><a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsClass', null, null);">川荣新闻</a></h1>
+		 		 <h1><a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsClass', null, '&C_ID=12');">川荣新闻</a></h1>
 		 </div>
 		<div class="l1">
-		 		 <h1><a jwcid="@Any" href="#">行业动态</a></h1>
+		 		 <h1><a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsClass', null, '&C_ID=13');">行业动态</a></h1>
 		</div>
 		<div class="l2">
-				<h1><a jwcid="@Any" href="#">公告信息</a></h1>
+				<h1><a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsClass', null, '&C_ID=14');">公告信息</a></h1>
 		</div>
 
 	  </div>
@@ -45,7 +44,7 @@
 							<p>
 								<a jwcid="@Any" href="/">首页</a> >
 								<a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('News', null, null);">新闻资讯</a> >
-								热点新闻 
+								<span jwcid="@Insert" value="ognl:cidName"/>
 							</p>
 							
 						</div>
@@ -63,7 +62,7 @@
 									<span jwcid="@Insert" value="ognl:info.NEW_BODY" raw="true"/>
 								<p>
 								<div class="fhlb">
-									<a jwcid="@Any" href="/news/main-news.html"><img
+									<a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('News', null, null);"><img
 											src="../../home/images/fhlb.jpg" width="96" height="25"
 											border="0" />
 									</a>

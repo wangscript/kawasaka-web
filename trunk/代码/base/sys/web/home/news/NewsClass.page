@@ -6,5 +6,9 @@
 <page-specification class="com.linkage.home.view.news.NewsClass">
     	<property-specification name="infos" type="com.linkage.appframework.data.IDataset"/>
     	<property-specification name="info" type="com.linkage.appframework.data.IData"/>
-		<property-specification name="rowIndex" type="int"/>             
+		<property-specification name="rowIndex" type="int"/>
+		<property-specification name="p" type="int"/>
+ 		<property-specification name="pnum" type="int"/>       
+        <property-specification name="cid" type="java.lang.String"/>       
+        <property-specification name="cidName" type="java.lang.String"/>             
 </page-specification>
