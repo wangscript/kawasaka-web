@@ -5,6 +5,8 @@
 
 <page-specification class="com.linkage.home.view.Index">
     <property-specification name="notes" type="com.linkage.appframework.data.IDataset"/>
+    <property-specification name="thumbs" type="com.linkage.appframework.data.IDataset"/>
+    <property-specification name="lastnewss" type="com.linkage.appframework.data.IDataset"/>    
 	<property-specification name="info" type="com.linkage.appframework.data.IData"/>    
 	<property-specification name="rowIndex" type="int"/>    
 </page-specification>
