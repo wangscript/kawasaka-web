@@ -5,4 +5,5 @@
 
 <page-specification class="com.linkage.home.view.news.NewsDetail">
     	<property-specification name="info" type="com.linkage.appframework.data.IData"/>
+        <property-specification name="cidName" type="java.lang.String"/>        
 </page-specification>
