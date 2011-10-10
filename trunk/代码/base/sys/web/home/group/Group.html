@@ -98,8 +98,8 @@ $$("#l h1").each(function(item){
 						</div>
 						<div class="hzhbnr" id="hzhbnr" style="padding-right: 40px">
 
-							<div class="fgsjs" style="border-top: none;" jwcid="@Foreach" source="ognl:deps" value="ognl:dep" element="div" index="ognl:rowIndex">
-								<span class="fwb"><img src="../../home/images/to.gif" width="12" height="12"/>&nbsp;&nbsp;<a jwcid="@Any"	href="javascript:void(0)" onclick="redirectTo('Gdetail', null, '&GROUP_ID='+this.GROUP_ID, '_blank');" GROUP_ID="ognl:dep.GROUP_ID"  title="ognl:dep.GROUP_NAME"><span jwcid="@Insert" value="ognl:dep.GROUP_NAME"/></a> </span>
+							<div class="fgsjs" style="border-top: none;" jwcid="@Foreach" source="ognl:infos" value="ognl:ifno" element="div" index="ognl:rowIndex">
+								<span class="fwb"><img src="../../home/images/to.gif" width="12" height="12"/>&nbsp;&nbsp;<a jwcid="@Any"	href="javascript:void(0)" onclick="redirectTo('Gdetail', null, '&GROUP_ID='+this.GROUP_ID, '_blank');" GROUP_ID="ognl:ifno.GROUP_ID"  title="ognl:ifno.GROUP_NAME"><span jwcid="@Insert" value="ognl:info.GROUP_NAME"/></a> </span>
 								<br />
 								&nbsp;&nbsp;&nbsp;&nbsp;
 									<span jwcid="@Insert" value="ognl:dep.GROUP_DESC"/>...
