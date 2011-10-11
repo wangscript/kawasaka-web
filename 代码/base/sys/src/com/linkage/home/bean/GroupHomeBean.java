@@ -41,6 +41,10 @@ public class GroupHomeBean extends AppBean{
 	}
 	public IDataset queryGroupDetail(PageData pd,IData data, Pagination pagination) throws Exception {
 		GroupHomeDao dao = new GroupHomeDao(pd);
-		return dao.queryGroup2(pd, data, pagination);
+		return dao.queryGroupDetail(pd, data, pagination);
+	}
+	public IDataset queryGroupsIT(PageData pd,IData data, Pagination pagination) throws Exception {
+		GroupHomeDao dao = new GroupHomeDao(pd);
+		return dao.queryGroupIT(pd, data, pagination);
 	}
 }
