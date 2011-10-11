@@ -65,4 +65,14 @@ public class GroupHomeDao extends AppEntity{
 		IDataset dataset = dao.queryList(parser);
 		return dataset == null? new DatasetList() : dataset;
 	}
+	
+	public IDataset queryGroupIT(PageData pd, IData data, Pagination pagination) throws Exception {
+		CashierAppEntity dao = new CashierAppEntity(pd);
+    	SQLParser parser = new SQLParser(data);
+		parser.addSQL("select * from td_m_group t  where (1 = 1) and group_class='分公司' and group_name like '%软件%' or group_name like '%计算机%'");
+		IDataset dataset = dao.queryList(parser);
+		return dataset == null? new DatasetList() : dataset;
+	}
+	
+	
 }

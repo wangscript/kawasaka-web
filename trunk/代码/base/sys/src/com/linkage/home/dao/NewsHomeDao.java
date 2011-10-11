@@ -44,6 +44,7 @@ public class NewsHomeDao extends AppEntity{
     	SQLParser parser = new SQLParser(data);
 		parser.addSQL("select * from tf_f_news t  where (1 = 1) ");
 		parser.addSQL(" and NEW_ID=:NEW_ID ");
+		parser.addSQL(" and NEW_FLAG <> '0' ");
 		parser.addSQL(" and NEW_CID=:NEW_CID ");
 		parser.addSQL(" ORDER BY NEW_ID ");
 		parser.addSQL(" LIMIT :LIMIT");
@@ -56,6 +57,7 @@ public class NewsHomeDao extends AppEntity{
     	SQLParser parser = new SQLParser(data);
 		parser.addSQL("select * from tf_f_news t  where (1 = 1) ");
 		parser.addSQL(" and NEW_ID=:NEW_ID ");
+		parser.addSQL(" and NEW_FLAG <> '0' ");
 		parser.addSQL(" and NEW_CID=:NEW_CID ");
 		parser.addSQL(" ORDER BY NEW_ID ");
 		IDataset dataset = dao.queryList(parser, pagination);
@@ -66,7 +68,8 @@ public class NewsHomeDao extends AppEntity{
 		CashierAppEntity dao = new CashierAppEntity(pd);
     	SQLParser parser = new SQLParser(data);
 		parser.addSQL("select * from tf_f_news t  where (1 = 1) ");
-		parser.addSQL(" and NEW_TYPE=0 ");		
+		parser.addSQL(" and NEW_TYPE=0 ");	
+		parser.addSQL(" and NEW_FLAG <> '0' ");
 		parser.addSQL(" and (NEW_CID=11 or NEW_CID=12 or NEW_CID=13) ");
 		parser.addSQL(" ORDER BY NEW_ID ");
 		parser.addSQL(" LIMIT :LIMIT");
@@ -82,6 +85,7 @@ public class NewsHomeDao extends AppEntity{
 		parser.addSQL("select NEW_ID, NEW_TITLE, NEW_WRITER, NEW_DESCRIPTION, NEW_THUMB, UPDATE_TIME from tf_f_news t  where (1 = 1) ");
 		parser.addSQL(" and NEW_TYPE=1 ");		
 		parser.addSQL(" and (NEW_CID=11 or NEW_CID=12 or NEW_CID=13) ");
+		parser.addSQL(" and NEW_FLAG <> '0' ");
 		parser.addSQL(" ORDER BY NEW_ID ");
 		parser.addSQL(" LIMIT :LIMIT");
 
