@@ -43,6 +43,7 @@ public class NewsDao extends CashierAppEntity{
     	SQLParser parser = new SQLParser(data);
 		parser.addSQL("select * from tf_f_news t  where (1 = 1) ");
 		parser.addSQL(" and NEW_ID=:NEW_ID ");
+		parser.addSQL(" and NEW_FLAG=:NEW_FLAG ");
 		parser.addSQL(" and NEW_TITLE like '%' ||:NEW_TITLE||'%' ");
 		parser.addSQL(" and NEW_CID=:NEW_CID ");
 		parser.addSQL(" and UPDATE_STAFF_ID=:UPDATE_STAFF_ID ");
