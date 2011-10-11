@@ -54,30 +54,7 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td class="li">
-						<div class="wrapper">
-							<div class="label"><span class="">部门：</span></div>
-							<div class="inputArea"><div>
-								<select jwcid="cond_DEPART_CODE@PropertySelection"
-									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.DEPARTS, 'DEPART_CODE', 'DEPART_NAME')"
-									value="ognl:info.DEPART_CODE" desc="部门" class="e_select"/>
-							</div></div>
-						</div>
-					</td>
-					<td class="li">
-						<div class="wrapper">
-							<div class="label"><span class="">业务区：</span></div>
-							<div class="inputArea"><div>
-								<select jwcid="cond_AREA_CODE@PropertySelection"
-									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.AREAS, 'AREA_CODE', 'AREA_NAME')"
-									value="ognl:info.AREA_CODE" desc="业务区" class="e_select"
-									onchange="ajaxDirect('sys.staff.StaffList','queryHotelsByArea','&AREA_CODE='+this.value,'refreshArea')"/>
-							</div></div>
-						</div>
-					</td>					
 
-				</tr>
 				<tr>
 					<td class="li">
 						<div class="wrapper">
