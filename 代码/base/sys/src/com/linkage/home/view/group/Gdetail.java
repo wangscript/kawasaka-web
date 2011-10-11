@@ -23,18 +23,18 @@ public abstract class Gdetail extends AppSafePage {
 		PageData pd;
 		try {
 			pd = getPageData();
-			String new_id = pd.getData().getString("GROUP_ID","");
-			if("".equals(new_id)){
-				common.error("参数NEW_ID没有传入！");
+			String group_id = pd.getData().getString("GROUP_ID","");
+			if("".equals(group_id)){
+				common.error("参数GROUP_ID没有传入！");
 			}
 			GroupHomeBean groupBean = new GroupHomeBean();
 			IData params = new DataMap();
-			params.put("NEW_ID", new_id);
+			params.put("GROUP_ID", group_id);
 			IDataset groups = groupBean.queryGroupDetail(pd, params, pd.getPagination());
 			IData dept = groups.size()>0?groups.getData(0):null;
 			if(dept == null){
 				common.error("该部门不存在！");
-			}		
+			}		log.debug(pd.getData().getString("GROUP_ID",""));
 			setDept(dept);
 			
 			IData params2 = new DataMap();
