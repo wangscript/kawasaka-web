@@ -46,7 +46,7 @@
 						<div class="wrapper">
 							<div class="label"><span class="e_required">联系地址：</span></div>
 							<div class="inputArea"><div>
-								<input type="text" jwcid="edit_GROUP_ADDR@TextField" value="ognl:info.GROUP_ADDR" nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" desc="名称" class="e_input"/>
+								<input type="text" jwcid="edit_GROUP_ADDR@TextField" value="ognl:info.GROUP_ADDR" nullable="no" minsize="1" maxsize="500" datatype="text" maxLength="50" desc="名称" class="e_input"/>
 							</div></div>
 						</div>
 					</td>
@@ -57,7 +57,7 @@
 						<div class="wrapper">
 							<div class="label"><span>联系电话：</span></div>
 							<div class="inputArea"><div>
-								<input type="text" jwcid="edit_GROUP_NUM@TextField" value="ognl:info.GROUP_NUM" nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" desc="名称" class="e_input"/>
+								<input type="text" jwcid="edit_GROUP_NUM@TextField" value="ognl:info.GROUP_NUM" nullable="no" minsize="1" maxsize="500" datatype="text" maxLength="50" desc="名称" class="e_input"/>
 							</div></div>
 						</div>
 					</td>
@@ -68,7 +68,7 @@
 						<div class="wrapper">
 							<div class="label"><span>传       真：</span></div>
 							<div class="inputArea"><div>
-								<input type="text" jwcid="edit_GROUP_FAX@TextField" value="ognl:info.GROUP_FAX" nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" desc="名称" class="e_input"/>
+								<input type="text" jwcid="edit_GROUP_FAX@TextField" value="ognl:info.GROUP_FAX" nullable="no" minsize="1" maxsize="500" datatype="text" maxLength="500" desc="名称" class="e_input"/>
 							</div></div>
 						</div>
 					</td>
@@ -79,7 +79,7 @@
 						<div class="wrapper">
 							<div class="label"><span>公司简要：</span></div>
 							<div class="inputArea"><div>
-								<textarea jwcid="edit_GROUP_DESC@TextArea" value="ognl:info.GROUP_DESC" nullable="yes" minsize="1" maxsize="100" datatype="text" maxLength="100" desc="新闻简要" class="e_TextArea"/>
+								<textarea jwcid="edit_GROUP_DESC@TextArea" value="ognl:info.GROUP_DESC" nullable="yes" minsize="1" maxsize="1000" datatype="text" maxLength="1000" desc="新闻简要" class="e_TextArea"/>
 							</div></div>
 						</div>
 					</td>
@@ -112,7 +112,7 @@
 		</div></div>
 		<div class="bottom e_cSet">
 		<input jwcid="edit_GROUP_ID@Hidden" value="ognl:info.GROUP_ID" encode="false"/>
-			<input type="submit" jwcid="bqsubmit@Submit" value="提交" listener="ognl:listeners.upGroup" onclick="return queryAll(this);" class="e_button"/>
+			<input type="submit" jwcid="bqsubmit@Submit" value="修改" listener="ognl:listeners.upGroup" onclick="return queryAll(this);" class="e_button"/>
 	        <input type="button" jwcid="bdelete@Submit" value="删 除"  listener="ognl:listeners.DelGroup" onclick="return queryAll(this);" class="e_button"/>
 	
 		</div>
