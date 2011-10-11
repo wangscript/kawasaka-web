@@ -53,7 +53,7 @@ public abstract class GroupAdd extends CashierBasePage{
 		param.put("GROUP_NAME", group_name);
 		Boolean exist = this.groupBean.existsGroup(pd, param, null);
 		if(exist){
-			common.error("产品名称已经存在,请请重新输入！");
+			common.error("部门名称已经存在,请请重新输入！");
 			return;
 		}		
 		dao.insert("TD_M_GROUP", params);
