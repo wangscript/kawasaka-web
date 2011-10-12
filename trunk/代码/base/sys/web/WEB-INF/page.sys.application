@@ -7,6 +7,11 @@
 <page name="Gdetail" specification-path="/home/group/Gdetail.page"/>
 <page name="Contact" specification-path="/home/contact/Contact.page"/>
 <page name="It" specification-path="/home/it/It.page"/>
+<page name="About" specification-path="/home/about/about.page"/>
+<page name="AboutDetail" specification-path="/home/about/about.page"/>
+<page name="Culture" specification-path="/home/about/Culture.page"/>
+<page name="Honor" specification-path="/home/about/Honor.page"/>
+<page name="Yearbook" specification-path="/home/about/Yearbook.page"/>
 <!-- Admin begin-->
 <page name="Admin" specification-path="/common/Home.page"/>
 <page name="Main" specification-path="/common/Main.page"/>  
