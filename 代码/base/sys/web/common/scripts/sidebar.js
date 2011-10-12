@@ -1,4 +1,6 @@
 function initPage(){
+	displayAllMenu('menuDiv');
+	return true;
 	hiddenAllMenu('menuDiv');
 	var visit = Wade.context.getPageVisit();
 	var privMap = new Wade.DataMap(visit.epachyName);
