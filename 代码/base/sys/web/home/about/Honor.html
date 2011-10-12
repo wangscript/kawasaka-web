@@ -11,79 +11,18 @@
 	<body>
 		<div id="layout">
 
+		<div id="layout">
 <!--将共用的页面，单独做作为一个页面引入  -->
- <object style="border:0px" type="text/x-scriptlet" data="../top.htm" width=100% height=118></object> 
-<!-- 结束 -->
-			<script type="text/javascript">
-	$('submit_search').observe("click", function() {
-		if (document.searchForm.Keywords.value == '') {
-			alert("关键字不能为空");
-			return false;
-		}
-		$('searchForm').action = "/publish/search.php?o=search&TableID=1";
-		$('searchForm').submit();
-	})
-	document.body.onkeypress = function() {
-		if (event.keyCode == 13) {
-			if (document.searchForm.Keywords.value == '') {
-				alert("关键字不能为空");
-				return false;
-			}
-			$('searchForm').action = "/publish/search.php?o=search&TableID=1";
-			$('searchForm').submit();
-			return true;
-		}
-	}
-</script>
+			<span jwcid="@home:header" nav="2"/>
 			<div id="mainbody">
 				<div id="tt"><img src="../../home/images/about.jpg" width="988" height="88"></div>
     <div id="di1">
 
 <div id="l">
     <!--将公共部分搞成单独的htm文件引入-->
-		<span id=showImport></span> 
-		<IE:Download ID="oDownload" STYLE="behavior:url(#default#download)" /> 
-		<script> 
-		function onDownloadDone(downDate){ 
-		showImport.innerHTML=downDate 
-		} 
-		oDownload.startDownload('about_list.htm',onDownloadDone) 
-		</script> 
+		<span id=showImport></span>
+		 <span jwcid="@home:aboutSide"/>
 </div>
-<script type="text/javascript">
-$$("#l h1").each(function(item){
-
-	if(item.getAttribute("need") == "listen"){
-		item.observe("click",function(){
-			this.next().toggle();
-		});
-	}
-}) 
-
-$('submit_search1').observe("click",function(){
-    if($('searchForm1').Keywords.value == '请输入关键字' || $('searchForm1').Keywords.value == ''){
-		alert("关键字不能为空");return false;
-	}
-	$('searchForm1').action = "/publish/search.php?o=search&TableID="+$('searchForm1').search1.value;
-	$('searchForm1').submit();	
-})
-$('cygs').observe("change",function(){
-	window.location.href = this.value;
-})
-
-$('keywords1').observe("focus",function(){
-
-        this.value=(this.value=='请输入关键字') ? '':this.value;
-        this.select();
-})
-$('keywords1').observe("blur",function(){
-       this.value=(this.value=='') ? '请输入关键字':this.value;
-})
-$$("#l li").each(function(item){
-    alert("need");
-	if(item.getAttribute("need") == "id-188" || item.getAttribute("need") == "id-3" || item.getAttribute("need") == "id-") item.down().setStyle("color:#ff6600");
-})
-</script>
 
 
 <div id="r">
@@ -91,63 +30,26 @@ $$("#l li").each(function(item){
         <div id="r3nm" style="border-top:1px solid #E3E3E3; margin-top:15px;"><img src="../../home/images/to.gif" width="15" height="15" class="hk" /> <span class="f14w">公司荣誉</span></div>
         <div id="r3nr">
 		 <ul>
-		          
-		 <li>
-		  <h4><a href="/about/2008-09/1220951020d4956.html" title="川荣连续5年入选“中国企业500强">川荣连续5年入选“中国企业500强</a><span class="riqi">(2008-09-09)</span></h4>
-		  <p>排名从2004年的470位跃升至今年的315位    8月30日，从宁夏银川举行的“2008年中国500强企...</p>
-	     </li>
-          
-		 <li>
-		  <h4><a href="/about/2008-08/1219288645d4807.html" title="川荣位列中国制造业500强第193名">川荣位列中国制造业500强第193名</a><span class="riqi">(2008-08-21)</span></h4>
-		  <p>与2007年的第240名相比，提升了47名    日前国家统计局对全国制造业最新统计监测的结果显示，...</p>
-	     </li>
-          
-		 <li>
-		  <h4><a href="/about/2008-07/1217291843d4464.html" title="川荣跃升“中国机械500强”前50名">川荣跃升“中国机械500强”前50名</a><span class="riqi">(2008-07-29)</span></h4>
-		  <p>排名由上年的第58位上升至今年的第40位    7月18日，《中国机械500强研究报告》在北京发布，...</p>
-	     </li>
-          
-		 <li>
-		  <h4><a href="/about/2008-07/1216004024d4243.html" title="川荣重工捧回6项大奖">川荣重工捧回6项大奖</a><span class="riqi">(2008-07-14)</span></h4>
-		  <p>    7月4日，从美丽的海滨城市威海传来喜讯，在全国机械工业第二十七次质量信得过班组和质量...</p>
-	     </li>
-          
-		 <li>
-		  <h4><a href="/about/2008-04/1208919803d423.html" title="川荣重工被评为国安工作先进单位">川荣重工被评为国安工作先进单位</a><span class="riqi">(2008-04-23)</span></h4>
-		  <p>      2月28日，在长沙市国家安全局举行的总结表彰大会上，川荣重工国安工作小组被评为“2004...</p>
-	     </li>
-          
-		 <li>
-		  <h4><a href="/about/2008-04/1208919790d422.html" title="川荣重工入选长沙工业20强">川荣重工入选长沙工业20强</a><span class="riqi">(2008-04-23)</span></h4>
-		  <p>    2月22日，从长沙市委、市政府举行的全市工业经济工作会议上传来喜讯，川荣重工作为2004年...</p>
-	     </li>
-          
-		 <li>
-		  <h4><a href="/about/2008-04/1208919773d421.html" title="公司被评为长沙市劳 动保障诚信示范单位">公司被评为长沙市劳 动保障诚信示范单位</a><span class="riqi">(2008-04-23)</span></h4>
-		  <p>    1月28日，在市政府举行的“长沙市2004年度劳动保障诚信示范单位表彰大会”上，川荣重工与...</p>
-	     </li>
-          
-		 <li>
-		  <h4><a href="/about/2008-04/1208919756d420.html" title="公司被评为长沙市职 业卫生工作先进单位">公司被评为长沙市职 业卫生工作先进单位</a><span class="riqi">(2008-04-23)</span></h4>
-		  <p>    1月28日，市疾病预防控制中心举行“长沙市2004年度职业卫生、放射卫生工作先进单位、先进...</p>
-	     </li>
-          
-		 <li>
-		  <h4><a href="/about/2008-04/1208919739d419.html" title="川荣集团 创新技术闯市场">川荣集团 创新技术闯市场</a><span class="riqi">(2008-04-23)</span></h4>
-		  <p>先后开发出拥有自主知识产权、具有高科技含量的十大系列百余种产品、其中21种系国内首创    人...</p>
-	     </li>
-          
-		 <li>
-		  <h4><a href="/about/2008-04/1208919714d418.html" title="川荣重工入选“漂亮50”">川荣重工入选“漂亮50”</a><span class="riqi">(2008-04-23)</span></h4>
-		  <p>    日前，《新财经》杂志评选的未来10年中国最具成长性的50家蓝筹公司——“漂亮50”新鲜出炉...</p>
-	     </li>
-         		 </ul>
+		 	<li jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="li" index="ognl:rowIndex">
+		 		<h4>
+		 			<a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('AboutDetail', null, '&NEW_ID='+this.NEW_ID, '_blank');" NEW_ID="ognl:info.NEW_ID"  title="ognl:info.NEW_TITLE"><span jwcid="@Insert" value="ognl:info.NEW_TITLE"/></a><span class="riqi">(<span jwcid="@Insert" value="ognl:(info.UPDATE_TIME).substring(0,10)"/>)</span>
+		 		</h4>
+		 		<p>
+		 			<span jwcid="@Insert" value="ognl:info.NEW_DESCRIPTION"/>
+		 		</p>
+		    </li>          
+   		 </ul>
 		</div>
       </div>
       <div id="r4">
 	    <div class="fy">
-		 <p>共有 <span class="tiaoshu">18</span> 条信息</p>
-		 <dd>分页：[1]&nbsp;<a href='zoomlion-honor_1.html'>2</a>&nbsp;&nbsp;<b><a href='zoomlion-honor_1.html' >&#x4E0B;&#x4E00;&#x9875;</a></b></dd>
+		 <p>共有 <span class="tiaoshu"><span jwcid="@Insert" value="ognl:(infos.count())"/></span> 条信息</p>
+		 <dd>当前页数：<span jwcid="@Insert" value="ognl:p"/>
+		 &nbsp;&nbsp;<b><a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsClass', null, '&C_ID='+this.C_ID+'&page='+this.page);" C_ID="ognl:cid" page="1">首页</a></b>
+		 &nbsp;&nbsp;<b><a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsClass', null, '&C_ID='+this.C_ID+'&page='+this.page);" C_ID="ognl:cid" page="ognl:(p-1)>1?1:(p-1)">上一页</a></b>
+		 &nbsp;&nbsp;<b><a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsClass', null, '&C_ID='+this.C_ID+'&page='+this.page);" C_ID="ognl:cid" page="ognl:(p+1)>pnum?pnum:(p+1)">下一页</a></b>
+		 &nbsp;&nbsp;<b><a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('NewsClass', null, '&C_ID='+this.C_ID+'&page='+this.page);" C_ID="ognl:cid" page="ognl:pnum">末页</a></b>
+		 </dd>
 		</div>
         <div class="ftop" style="margin-top:0;"><a href="#"><img src="../../home/images/top.jpg" width="38" height="13" border="0" /></a></div>
       </div>
@@ -158,42 +60,8 @@ $$("#l li").each(function(item){
 		<div id="footer">
 		<img style="float:left" jwcid="@Any" src="/home/images/foot_tu.gif" />
 		    <div id="footer1">
-		   <object style="border:0px" type="text/x-scriptlet" data="../foot.htm" width=100%  height=60></object> 
+		   <span jwcid="@home:footer" />
  		   </div>
        </div>
-				
-
-	<script type="text/javascript">
-
-var textDiv = document.getElementById("rollText");
-var textList = textDiv.getElementsByTagName("a");
-if(textList.length > 2){
-	var textDat = textDiv.innerHTML;
-	var br = textDat.toLowerCase().indexOf("<br",textDat.toLowerCase().indexOf("<br")+3);
-	//var textUp2 = textDat.substr(0,br);
-	textDiv.innerHTML = textDat+textDat+textDat.substr(0,br);
-	textDiv.style.cssText = "position:absolute; top:0";
-	var textDatH = textDiv.offsetHeight;MaxRoll();
-}
-var minTime,maxTime,divTop,newTop=0;
-function MinRoll(){
-	newTop++;
-	if(newTop<=divTop+40){
-		textDiv.style.top = "-" + newTop + "px";
-	}else{
-		clearInterval(minTime);
-		maxTime = setTimeout(MaxRoll,5000);
-	}
-}
-function MaxRoll(){
-	divTop = Math.abs(parseInt(textDiv.style.top));
-	if(divTop>=0 && divTop<textDatH-40){
-		minTime = setInterval(MinRoll,1);
-	}else{
-		textDiv.style.top = 0;divTop = 0;newTop=0;MaxRoll();
-	}
-}
-
-</script>
 	</body>
 </html>
