@@ -6,4 +6,5 @@
 <library-specification>
 	<component-type type="header" specification-path="header.jwc"/>
     <component-type type="footer" specification-path="footer.jwc"/>
+    <component-type type="aboutSide" specification-path="aboutSide.jwc"/>    
 </library-specification>
