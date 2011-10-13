@@ -24,10 +24,15 @@
 								<input type="text" jwcid="cond_PRODUCT_CLASS@TextField" value="ognl:conditions.PRODUCT_CLASS" desc="产品大类" class="e_input"/>
 							 -->
 							<div class="inputArea"><div>
-								<select jwcid="cond_PRODUCT_CLASS@PropertySelection"
+								<!--  <select jwcid="cond_PRODUCT_CLASS@PropertySelection"
 									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.PRODUCTCLASS, 'PRODUCT_CLASS', 'PRODUCT_CLASS')"
 									value="ognl:conditions.PRODUCT_CLASS" desc="产品大类" class="e_select"
-									/>
+									/>-->
+									
+							<select jwcid="cond_PRODUCT_CLASS@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page,'TD_M_PRODUCT_CLASS','ID','PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG'}, new java.lang.String[]{'1'})"
+									value="ognl:conditions.PRODUCT_CLASS" desc="产品大类" class="e_select"
+									nullable="yes"/>
 							
 							</div></div>
 							
@@ -77,7 +82,7 @@
 				</thead>
 				<tbody>
 					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
-						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_CLASS"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',info.PRODUCT_CLASS})"/></td>
 						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.PRODUCT_TYPE" classTypeId="ognl:info.ID" onclick="popupDialog('sys.product.ProductTypeEdit', 'queryProductType', '&refresh=true&classTypeId='+ classTypeId, '修改产品小类信息', '500', '300')" raw="false" /></td>
 						<td><span jwcid="@Insert" value="ognl:info.CLASSORDER"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.UPDATE_STAFF_ID"/></td>

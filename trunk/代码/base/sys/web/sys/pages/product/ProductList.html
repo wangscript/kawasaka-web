@@ -31,7 +31,7 @@
 							<div class="label"><span>产品大类：</span></div>
 							<div class="inputArea"><div>
 								<select jwcid="cond_PRODUCT_CLASS@PropertySelection"
-									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.PRODUCTCLASS, 'PRODUCT_CLASS', 'PRODUCT_CLASS')"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page,'TD_M_PRODUCT_CLASS','ID','PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG'}, new java.lang.String[]{'1'})"
 									value="ognl:conditions.PRODUCT_CLASS" desc="产品大类" class="e_select" onchange="ajaxDirect(this, 'queryProductTypes', '&PRODUCT_CLASS='+value, 'ProductTypePart')"
 									/>
 							</div></div>
@@ -43,7 +43,7 @@
 							<div class="inputArea"><div>
 							<div id="ProductTypePart" jwcid="@wade:Part" optimize="true">
 								<select jwcid="cond_PRODUCT_TYPE@PropertySelection"
-								model="ognl:@com.linkage.component.util.Utility@getSelection(types.PRODUCTTYPE, 'PRODUCT_TYPE', 'PRODUCT_TYPE')"
+									model="ognl:@com.linkage.component.util.Utility@getSelection(types.PRODUCTTYPE, 'ID', 'PRODUCT_TYPE')"
 									value="ognl:conditions.PRODUCT_TYPE" desc="产品小类" class="e_select"
 									/>
 							</div>
@@ -112,8 +112,8 @@
 				<tbody>
 					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
 						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.PRODUCT_NAME" productId="ognl:info.PRODUCT_ID" onclick="redirectTo('sys.product.ProductEdit', 'queryProduct', '&operType=edit&refresh=true&productId='+ productId, 'contentframe');" raw="false" /></td>
-						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_CLASS"/></td>
-						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_TYPE"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',info.PRODUCT_CLASS})"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_TYPE',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_TYPE', new java.lang.String[]{'1',info.PRODUCT_TYPE})"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_MODEL"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_FACTORY"/></td>
 						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'PRODUCT_GOOD', info.PRODUCT_GOOD)"/></td>

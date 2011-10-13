@@ -57,9 +57,10 @@
 							<div class="label"><span class="e_required">产品大类：</span></div>
 							<div class="inputArea"><div>
 								<select jwcid="cond_PRODUCT_CLASS@PropertySelection"
-									model="ognl:@com.linkage.component.util.Utility@getSelection(conditions.PRODUCTCLASS, 'PRODUCT_CLASS', 'PRODUCT_CLASS')"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page,'TD_M_PRODUCT_CLASS','ID','PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG'}, new java.lang.String[]{'1'})"
 									value="ognl:conditions.PRODUCT_CLASS" desc="产品大类" class="e_select"
 									nullable="no" onchange="ajaxDirect(this, 'queryProductTypes', '&PRODUCT_CLASS='+value, 'ProductTypePart')"/>
+									
 							</div></div>
 						</div>
 					</td>
@@ -72,7 +73,7 @@
 							<div id="ProductTypePart" jwcid="@wade:Part" optimize="true">
 							<select jwcid="cond_PRODUCT_TYPE@PropertySelection"
 									
-									model="ognl:@com.linkage.component.util.Utility@getSelection(types.PRODUCTTYPE, 'PRODUCT_TYPE', 'PRODUCT_TYPE')"
+									model="ognl:@com.linkage.component.util.Utility@getSelection(types.PRODUCTTYPE, 'ID', 'PRODUCT_TYPE')"
 									value="ognl:conditions.PRODUCT_TYPE" desc="产品小类" class="e_select"
 									nullable="no" />
 							</div>

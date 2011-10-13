@@ -63,15 +63,18 @@
 						<th>小类管理</th>
 						<th>更新员工</th>
 						<th>更新时间</th>
+						<th>test</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
 						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.PRODUCT_CLASS" classId="ognl:info.ID" onclick="popupDialog('sys.product.ProductClassEdit', 'queryProductClassList', '&refresh=true&classId='+ classId, '修改产品大类信息', '500', '300')" raw="false" /></td>
 						<td><span jwcid="@Insert" value="ognl:info.CLASSORDER"/></td>
-						<td><a jwcid="@wade:PageRedirect" source="ognl:info" columns="PRODUCT_CLASS" value="编辑小类"  onclick="redirectTo('sys.product.ProductTypeList', 'init', parameters)"/></td>
+						<td><a jwcid="@wade:PageRedirect" source="ognl:info" columns="ID" value="编辑小类"  onclick="redirectTo('sys.product.ProductTypeList', 'init', parameters)"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.UPDATE_STAFF_ID"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.UPDATE_TIME"/></td>
+						
+						<td><span jwcid="@Insert" value="ognl:info.TEST" raw="true" /></td>
 					</tr>
 				</tbody>
 			</table>
