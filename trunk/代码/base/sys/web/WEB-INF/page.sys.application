@@ -12,6 +12,7 @@
 <page name="Culture" specification-path="/home/about/Culture.page"/>
 <page name="Honor" specification-path="/home/about/Honor.page"/>
 <page name="Yearbook" specification-path="/home/about/Yearbook.page"/>
+
 <!-- Admin begin-->
 <page name="Admin" specification-path="/common/Home.page"/>
 <page name="Main" specification-path="/common/Main.page"/>  
@@ -69,6 +70,15 @@
 <page name="sys.product.ProductList" specification-path="/sys/pages/product/ProductList.page"/>
 <page name="sys.product.ProductAdd" specification-path="/sys/pages/product/ProductAdd.page"/>
 <page name="sys.product.ProductEdit" specification-path="/sys/pages/product/ProductEdit.page"/>
+
+<page name="Techno" specification-path="/home/techno/Techno.page"/>
+<page name="TechnoDetail" specification-path="/home/techno/TechnoDetail.page"/>
+<page name="TechnoClass" specification-path="/home/techno/TechnoClass.page"/>
+<page name="Product" specification-path="/home/products/Product.page"/>
+<page name="ProductDetail" specification-path="/home/products/ProductDetail.page"/>
+<page name="ProductClass" specification-path="/home/products/ProductClass.page"/>
+
+
 <!--wull end-->
 <!-- mujx begin -->
 <page name="sys.group.GroupList" specification-path="/sys/pages/group/GroupList.page"/>
