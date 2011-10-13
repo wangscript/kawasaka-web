@@ -67,22 +67,37 @@ $$("#l h1").each(function(item){
 					<div id="r1"><p>
 								<a jwcid="@Any" href="/">首页</a> >
 								<a jwcid="@Any" href="javascript:void(0)"
-									onclick="redirectTo('Product', null, null);">产品中心</a>
+									onclick="redirectTo('Product', null, null);">产品中心</a>>
+								<span jwcid="@Conditional" condition="ognl:productType!=null&&!productType.equals('0')">
+									
+							   		<a jwcid="@Any" href="javascript:void(0)"
+									onclick="redirectTo('ProductClass', null, '&PRODUCT_CLASS='+this.PRODUCT_CLASS, '_blank');"
+											PRODUCT_CLASS="ognl:productClass"
+											title="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',productClass})"><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',productClass})"/></a>>
+									<span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_TYPE',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_TYPE', new java.lang.String[]{'1',productType})" />
+									</span>	
+									<span jwcid="@Conditional" condition="ognl:productType==null||productType.equals('0')">
+							   <span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',productClass})"/>
+									</span>	
+									
+									
 							</p></div>
 <div id="r2">
 <h2><img src="../../home/images/to.gif" border="0" />
-<span class="f14w">产品列表</span></h2>
-<div class="cplb_nr" id="cplb_nr">
+<span class="f14w">
+<span jwcid="@Conditional" condition="ognl:productType==null||productType.equals('0')">
+ <span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',productClass})"/></span>
+ <span jwcid="@Conditional" condition="ognl:productType!=null&&!productType.equals('0')">
+	<span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_TYPE',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_TYPE', new java.lang.String[]{'1',productType})"/>
+ </span>
+ </span>
+ </h2>
+	   <div class="cplb_nr" id="cplb_nr">
+	  
 	 <table border=0 cellSpacing=2 cellPadding=3 width="100%"><tbody>
 <tr jwcid="@Foreach" source="ognl:infosProducts" value="ognl:infoProducts" element="tr" index="ognl:rowIndex">
 <td jwcid="@Foreach" source="ognl:infoProducts.infos" value="ognl:infoEach" element="td" index="ognl:rowIndex">
-<div align=center><a jwcid="@Any" href="javascript:void(0)"
-											onclick="redirectTo('ProductDetail', null, '&PRODUCT_ID='+this.PRODUCT_ID, '_blank');"
-											PRODUCT_ID="ognl:infoEach.PRODUCT_ID" title="ognl:infoEach.PRODUCT_NAME"><font color=#000000><img jwcid="@Any" border=0 src="ognl:(null==infoEach.PRODUCT_PICTURE||''.equals(infoEach.PRODUCT_PICTURE))?'image?file_id=':'image?file_id='+(infoEach.PRODUCT_PICTURE).substring(0,12)" width=110 height=110 /></font></a><br>
-											<a jwcid="@Any" href="javascript:void(0)"
-											onclick="redirectTo('ProductDetail', null, '&PRODUCT_ID='+this.PRODUCT_ID, '_blank');"
-											PRODUCT_ID="ognl:infoEach.PRODUCT_ID" title="ognl:infoEach.PRODUCT_NAME"><font color=#000000><span jwcid="@Insert"
-													value="ognl:infoEach.PRODUCT_NAME" /></font></a></div></td>
+<div align=center><a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('ProductDetail', null, '&amp;PRODUCT_ID='+this.PRODUCT_ID, '_blank');" product_id="ognl:infoEach.PRODUCT_ID" title="ognl:infoEach.PRODUCT_NAME"><font color="#000000"><img height="110" width="110" border="0" jwcid="@Any" src="ognl:(null==infoEach.PRODUCT_PICTURE||''.equals(infoEach.PRODUCT_PICTURE))?'image?file_id=':'image?file_id='+(infoEach.PRODUCT_PICTURE).substring(0,12)" /></font></a></div></td>
 
 </tr>
 </tbody></table>

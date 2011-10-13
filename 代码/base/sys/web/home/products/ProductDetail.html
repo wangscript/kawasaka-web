@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<title>川荣重工</title>
+		<link href="../../home/css/news_article.css" rel="stylesheet"
+			type="text/css" />
+		<script type="text/javascript" src="../../home/js/prototype.js"></script>
+		<script type="text/javascript" src="../../home/js/effects.js"></script>
+	</head>
+	<body>
+		<div id="layout">
+			<!--将共用的页面，单独做作为一个页面引入  -->
+			<span jwcid="@home:header" nav="1" />
+
+			<div id="mainbody">
+				<div id="tt">
+					<img src="../../home/images/product.jpg" width="988" height="88" />
+				</div>
+				<div id="di1">
+
+					<div id="l">
+						<div class="l1s"><img src="../../home/images/l_top_bg.gif" border="0" /></div>
+						<div id="l1">
+							<span jwcid="@Foreach" source="ognl:infosProductClass"
+								value="ognl:infoProductClass" element="span"
+								index="ognl:rowIndex">
+								<div class="l1">
+									<h1 need="listen">
+										<a style="cursor: pointer"> <span jwcid="@Insert"
+											value="ognl:infoProductClass.PRODUCT_CLASS" /> </a>
+									</h1>
+									<ul style="display: none;">
+										<span jwcid="@Foreach" source="ognl:infoProductClass.infos"
+											value="ognl:infoEach" element="span" index="ognl:rowIndex">
+											<a jwcid="@Any" href="javascript:void(0)"
+											onclick="redirectTo('ProductClass', null, '&PRODUCT_CLASS='+this.PRODUCT_CLASS+'&PRODUCT_TYPE='+this.PRODUCT_TYPE, '_blank');"
+									PRODUCT_CLASS="ognl:infoEach.PRODUCT_CLASS"		PRODUCT_TYPE="ognl:infoEach.ID" title="ognl:infoEach.PRODUCT_TYPE">
+												<font color="black"> &nbsp; <span jwcid="@Insert"
+													value="ognl:infoEach.PRODUCT_TYPE" /> </font> </a> <br /> </span>
+									</ul>
+
+								</div> </span>
+
+
+
+
+						</div>
+						<div class="l1x"><img src="../../home/images/l_b_bg.gif" border="0" /></div>
+
+
+					</div>
+					<script type="text/javascript">
+
+$$("#l h1").each(function(item){
+	if(item.getAttribute("need") == "listen"){
+		item.observe("click",function(){
+			$$("#l h1").each(function(item){
+				item.next().setStyle("display:none");
+			})
+			this.next().toggle();
+		});
+	}
+}) </script>
+
+					<div id="r">
+					<div id="r1"><p>
+								<a jwcid="@Any" href="/">首页</a> >
+								<a jwcid="@Any" href="javascript:void(0)"
+									onclick="redirectTo('Product', null, null);">产品中心</a>>
+								<a jwcid="@Any" href="javascript:void(0)"
+									onclick="redirectTo('ProductClass', null, '&PRODUCT_CLASS='+this.PRODUCT_CLASS, '_blank');"
+											PRODUCT_CLASS="ognl:info.PRODUCT_CLASS"
+											title="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',info.PRODUCT_CLASS})"><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',info.PRODUCT_CLASS})"/></a>>
+									<span jwcid="@Conditional" condition="ognl:info.PRODUCT_TYPE!=null&&!info.PRODUCT_TYPE.equals('0')">
+											
+									<a jwcid="@Any" href="javascript:void(0)"
+									onclick="redirectTo('ProductClass', null, '&PRODUCT_CLASS='+this.PRODUCT_CLASS+'&PRODUCT_TYPE='+this.PRODUCT_TYPE, '_blank');"
+										PRODUCT_CLASS="ognl:info.PRODUCT_CLASS"	PRODUCT_TYPE="ognl:info.PRODUCT_TYPE"
+											title="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_TYPE',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_TYPE', new java.lang.String[]{'1',info.PRODUCT_TYPE})"><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_TYPE',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_TYPE', new java.lang.String[]{'1',info.PRODUCT_TYPE})"/></a>>
+									</span>	
+									<span jwcid="@Insert" value="ognl:info.PRODUCT_NAME"/>
+							</p></div>
+<div id="r2">
+<h2>
+								<img src="../../home/images/to.gif" border="0" />
+								<span jwcid="@Insert" value="ognl:info.PRODUCT_NAME"/>
+							</h2>
+	   <div class="cplb_nr" id="cplb_nr">
+								<TABLE border=0 cellSpacing=1 cellPadding=3 width="100%">
+									<TBODY>
+										<TR bgColor=#ffffff>
+											<TD bgColor=#ffffff rowSpan=6 width=180 align=right>
+												<A jwcid="@Any" href="ognl:(null==info.PRODUCT_PICTURE||''.equals(info.PRODUCT_PICTURE))?'image?file_id=':'image?file_id='+(info.PRODUCT_PICTURE).substring(0,12)"><IMG
+														jwcid="@Any" border=0 src="ognl:(null==info.PRODUCT_PICTURE||''.equals(info.PRODUCT_PICTURE))?'image?file_id=':'image?file_id='+(info.PRODUCT_PICTURE).substring(0,12)"
+														width=150/>
+												</A>
+											</TD>
+											<TD width=60>
+												<STRONG>产品名称</STRONG>
+											</TD>
+											<TD width=420>
+												<span jwcid="@Insert" value="ognl:info.PRODUCT_NAME" />
+											</TD>
+										</TR>
+										<TR bgColor=#ffffff>
+											<TD>
+												<STRONG>厂商来源</STRONG>
+											</TD>
+											<TD>
+												<span jwcid="@Insert" value="ognl:info.PRODUCT_FACTORY" />
+											</TD>
+										</TR>
+										<TR bgColor=#ffffff>
+											<TD>
+												<STRONG>产品型号</STRONG>
+											</TD>
+											<TD>
+												<span jwcid="@Insert" value="ognl:info.PRODUCT_MODEL" />
+											</TD>
+										</TR>
+										<TR bgColor=#ffffff>
+											<TD>
+												<STRONG>零售价</STRONG>
+											</TD>
+											<TD>
+												<FONT color=blue><span jwcid="@Insert"
+													value="ognl:info.RETAIL_PRICE" />
+												</FONT>
+											</TD>
+										</TR>
+										<TR bgColor=#ffffff>
+											<TD>
+												<STRONG>优惠价</STRONG>
+											</TD>
+											<TD>
+												<FONT color=blue><span jwcid="@Insert"
+													value="ognl:info.PRIVILEGE_PRICE" />
+												</FONT>
+											</TD>
+										</TR>
+										<TR bgColor=#ffffff>
+											<TD>
+												<STRONG>会员价</STRONG>
+											</TD>
+											<TD>
+												<FONT color=blue><span jwcid="@Insert"
+													value="ognl:info.VIP_PRICE" />
+												</FONT>
+											</TD>
+										</TR>
+
+										<TR>
+											<td height=3 background="../../home/images/dot.gif" colSpan=3></td>
+										</TR>
+										<TR bgColor=#ffffff>
+											<TD colSpan=3>
+												<FONT color=#333333>
+													<TABLE border=0 cellSpacing=2 cellPadding=3 width="90%">
+														<TBODY>
+															<span jwcid="@Insert" value="ognl:info.PRODUCT_INTRODUCE"
+																raw="true" />
+
+														</TBODY>
+													</TABLE>
+												</FONT>
+											</TD>
+										</TR>
+									</TBODY>
+								</TABLE>
+
+
+
+							</div></div>
+
+						<div id="r4" style="clear: left;">
+
+							<div class="ftop" style="margin-top: 0;">
+								<a jwcid="@Any" href="#"><img
+										src="../../home/images/top.jpg" width="38" height="13"
+										border="0">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--将共用的页面，单独做作为一个页面引入  foot.htm -->
+			<div id="footer">
+				<img style="float: left" jwcid="@Any" src="/home/images/foot_tu.gif" />
+				<div id="footer1">
+					<p></p>
+					<span jwcid="@home:footer" />
+				</div>
+			</div>
+		</div>
+		<img height="12" width="12" src="../../home/images/to.gif" class="hk" />
+	</body>
+</html>
