@@ -6,7 +6,8 @@
 <page-specification class="com.linkage.home.view.Index">
     <property-specification name="notes" type="com.linkage.appframework.data.IDataset"/>
     <property-specification name="thumbs" type="com.linkage.appframework.data.IDataset"/>
-    <property-specification name="lastnewss" type="com.linkage.appframework.data.IDataset"/>    
+    <property-specification name="lastnewss" type="com.linkage.appframework.data.IDataset"/> 
+     <property-specification name="products" type="com.linkage.appframework.data.IDataset"/>     
 	<property-specification name="info" type="com.linkage.appframework.data.IData"/> 
     <property-specification name="deps" type="com.linkage.appframework.data.IDataset"/>     
     <property-specification name="dep" type="com.linkage.appframework.data.IData"/>  
