@@ -37,9 +37,9 @@
 	  	  <h1 need="listen"><a style="cursor:pointer">≤ø√≈ΩÈ…‹</a></h1>
 				<ul style="display:none;">
 			<span jwcid="@Foreach" source="ognl:deps" value="ognl:dep" element="span" index="ognl:rowIndex">
-				<a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('Gdetail', null, '&GROUP_ID='+this.GROUP_ID, '_blank');" GROUP_ID="ognl:info.GROUP_ID"  title="ognl:info.GROUP_NAME">
+				<a jwcid="@Any" href="javascript:void(0)" onclick="redirectTo('Gdetail', null, '&GROUP_ID='+this.GROUP_ID, '_blank');" GROUP_ID="ognl:dep.GROUP_ID"  title="ognl:dep.GROUP_NAME">
 					<font color="black">
-						&nbsp; <span  jwcid="@Insert" value="ognl:info.GROUP_NAME"/>
+						&nbsp; <span  jwcid="@Insert" value="ognl:dep.GROUP_NAME"/>
 					</font>
 				</a>
 				<br />
