@@ -56,23 +56,29 @@
 								</li>
 								<li>
 									<div jwcid="@Conditional" condition="ognl:nav == 3">
-									<a jwcid="@Any" href="/home/products/Product.html" onmouseover="javascript:qiehuan(3)" id="mynav3"
-										class="nav_on"><span>产品中心</span> </a>
+									<a jwcid="@Any" href="javascript:void(0)" onmouseover="javascript:qiehuan(3)" id="mynav3"
+										class="nav_on" onclick="redirectTo('Product', null, null);"><span>产品中心</span> </a>
+									
 									</div>
 									<div jwcid="@Conditional" condition="ognl:nav != 3">
-									<a jwcid="@Any" href="/home/products/Product.html" onmouseover="javascript:qiehuan(3)" id="mynav3"
-										class="nav_off"><span>产品中心</span> </a>
-									</div>									
+									<a jwcid="@Any" href="javascript:void(0)" onmouseover="javascript:qiehuan(3)" id="mynav3"
+										class="nav_off" onclick="redirectTo('Product', null, null);"><span>产品中心</span> </a>
+									</div>	
 								</li>
 								<li>
 									<div jwcid="@Conditional" condition="ognl:nav == 4">
-									<a jwcid="@Any" href="/home/techno/Technology.html" onmouseover="javascript:qiehuan(4)" id="mynav4"
-										class="nav_on"><span>技术中心</span> </a>
+									<a jwcid="@Any" href="javascript:void(0)" onmouseover="javascript:qiehuan(4)" id="mynav4"
+										class="nav_on" onclick="redirectTo('Techno', null, null);"><span>技术中心</span> </a>
+									
 									</div>
 									<div jwcid="@Conditional" condition="ognl:nav != 4">
-									<a jwcid="@Any" href="/home/techno/Technology.html" onmouseover="javascript:qiehuan(4)" id="mynav4"
-										class="nav_off"><span>技术中心</span> </a>
-									</div>									
+									<a jwcid="@Any" href="javascript:void(0)" onmouseover="javascript:qiehuan(4)" id="mynav4"
+										class="nav_off" onclick="redirectTo('Techno', null, null);"><span>技术中心</span> </a>
+									
+									
+									</div>	
+									
+																		
 								</li>
 								<li>
 									<div jwcid="@Conditional" condition="ognl:nav == 5">
