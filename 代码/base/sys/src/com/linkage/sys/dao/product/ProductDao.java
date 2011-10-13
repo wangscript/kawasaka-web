@@ -52,6 +52,31 @@ public class ProductDao extends CashierAppEntity{
 	}
 	
 	
+//	/**
+//	 * 查询产品小类信息
+//	 * @param pd
+//	 * @param data
+//	 * @return
+//	 * @throws Exception
+//	 * @author:wull
+//	 */
+//	public IDataset queryProductTypeLists(PageData pd, IData data, Pagination pagination) throws Exception {
+//		CashierAppEntity dao = new CashierAppEntity(pd);
+//    	SQLParser parser = new SQLParser(data);
+//		parser.addSQL("select t.* from TD_M_PRODUCT_CLASS u,TD_M_PRODUCT_TYPE t  where (1 = 1) ");
+//		parser.addSQL("and u.PRODUCT_CLASS = t.PRODUCT_CLASS ");
+//		parser.addSQL(" and t.ID=:ID ");
+//		parser.addSQL(" and u.PRODUCT_CLASS = :PRODUCT_CLASS");
+//		parser.addSQL(" and t.PRODUCT_TYPE like concat('%',:PRODUCT_TYPE,'%') ");
+//		parser.addSQL(" and t.CLASSORDER=:CLASSORDER ");
+//		parser.addSQL(" and t.ITEM_FLAG= :ITEM_FLAG ");
+//		parser.addSQL(" and u.ITEM_FLAG= :ITEM_FLAG ");
+//		parser.addSQL(" order by u.CLASSORDER desc,t.CLASSORDER desc");
+//		IDataset dataset = dao.queryList(parser, pagination);
+//		return dataset == null? new DatasetList() : dataset;
+//	}
+	
+	
 	/**
 	 * 查询产品小类信息
 	 * @param pd
@@ -64,9 +89,9 @@ public class ProductDao extends CashierAppEntity{
 		CashierAppEntity dao = new CashierAppEntity(pd);
     	SQLParser parser = new SQLParser(data);
 		parser.addSQL("select t.* from TD_M_PRODUCT_CLASS u,TD_M_PRODUCT_TYPE t  where (1 = 1) ");
-		parser.addSQL("and u.PRODUCT_CLASS = t.PRODUCT_CLASS ");
+		parser.addSQL("and u.ID = t.PRODUCT_CLASS ");
 		parser.addSQL(" and t.ID=:ID ");
-		parser.addSQL(" and u.PRODUCT_CLASS = :PRODUCT_CLASS");
+		parser.addSQL(" and u.ID = :PRODUCT_CLASS");
 		parser.addSQL(" and t.PRODUCT_TYPE like concat('%',:PRODUCT_TYPE,'%') ");
 		parser.addSQL(" and t.CLASSORDER=:CLASSORDER ");
 		parser.addSQL(" and t.ITEM_FLAG= :ITEM_FLAG ");
@@ -75,6 +100,7 @@ public class ProductDao extends CashierAppEntity{
 		IDataset dataset = dao.queryList(parser, pagination);
 		return dataset == null? new DatasetList() : dataset;
 	}
+	
 	
 	
 	/**
@@ -88,9 +114,10 @@ public class ProductDao extends CashierAppEntity{
 	public IDataset queryProductTypes(PageData pd, IData data, Pagination pagination) throws Exception {
 		CashierAppEntity dao = new CashierAppEntity(pd);
     	SQLParser parser = new SQLParser(data);
-		parser.addSQL("select t.PRODUCT_TYPE from TD_M_PRODUCT_CLASS u,TD_M_PRODUCT_TYPE t  where (1 = 1) ");
-		parser.addSQL("and u.PRODUCT_CLASS = t.PRODUCT_CLASS ");
-		parser.addSQL(" and u.PRODUCT_CLASS = :PRODUCT_CLASS");
+		parser.addSQL("select t.ID,t.PRODUCT_TYPE from TD_M_PRODUCT_CLASS u,TD_M_PRODUCT_TYPE t  where (1 = 1) ");
+		parser.addSQL("and u.ID = t.PRODUCT_CLASS ");
+//		parser.addSQL(" and u.PRODUCT_CLASS = :PRODUCT_CLASS");
+		parser.addSQL(" and t.PRODUCT_CLASS = :PRODUCT_CLASS");
 		parser.addSQL(" and t.ITEM_FLAG= :ITEM_FLAG ");
 		parser.addSQL(" and u.ITEM_FLAG= :ITEM_FLAG ");
 		parser.addSQL(" order by u.CLASSORDER desc,t.CLASSORDER desc");
@@ -111,8 +138,10 @@ public class ProductDao extends CashierAppEntity{
 	public IDataset queryProductLists(PageData pd, IData data, Pagination pagination) throws Exception {
 		CashierAppEntity dao = new CashierAppEntity(pd);
     	SQLParser parser = new SQLParser(data);
-		parser.addSQL("select t.* from TD_M_PRODUCT_CLASS u, TD_M_PRODUCT_TYPE v,TD_M_PRODUCT t where (1 = 1) ");
-		parser.addSQL(" and u.PRODUCT_CLASS = t.PRODUCT_CLASS ");
+		parser.addSQL("select t.* from TD_M_PRODUCT t   INNER JOIN TD_M_PRODUCT_CLASS u ON (t.PRODUCT_CLASS=u.ID AND u.ITEM_FLAG='1') ");
+		parser.addSQL(" LEFT JOIN TD_M_PRODUCT_TYPE v ON  (t.PRODUCT_TYPE=v.ID AND v.ITEM_FLAG='1') ");
+		parser.addSQL(" where (1 = 1) ");
+//		parser.addSQL(" and u.ID = t.PRODUCT_CLASS ");
 		parser.addSQL(" and t.PRODUCT_ID=:PRODUCT_ID ");
 		parser.addSQL(" and t.PRODUCT_CLASS = :PRODUCT_CLASS");
 		parser.addSQL(" and t.PRODUCT_TYPE = :PRODUCT_TYPE");
@@ -122,11 +151,7 @@ public class ProductDao extends CashierAppEntity{
 		parser.addSQL(" and t.PRODUCT_GOOD=:PRODUCT_GOOD ");
 		parser.addSQL(" and t.HOME_SHOW=:HOME_SHOW ");
 		parser.addSQL(" and t.ITEM_FLAG= :ITEM_FLAG ");
-		parser.addSQL(" and u.ITEM_FLAG= :ITEM_FLAG ");
-		parser.addSQL(" and v.ITEM_FLAG= :ITEM_FLAG ");
-		parser.addSQL(" and t.PRODUCT_CLASS=u.PRODUCT_CLASS ");
-		parser.addSQL(" and t.PRODUCT_TYPE=v.PRODUCT_TYPE ");
-		parser.addSQL(" order by u.CLASSORDER desc,v.CLASSORDER desc");
+		parser.addSQL(" order by u.CLASSORDER desc,v.CLASSORDER desc"); 
 		IDataset dataset = dao.queryList(parser, pagination);
 		return dataset == null? new DatasetList() : dataset;
 	}
