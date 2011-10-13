@@ -170,58 +170,15 @@
 									产品解决方案
 									<span class="sy_en"></span>SOLUTIONS
 								</div>
-								<select id="cygs" style="width: 143px; margin-top: 6px;"
-									class="input1">
-									<option>
-										请选择产品
-									</option>
-
-
-									<option value="/products/index.html#node38">
-										混凝土机械
-									</option>
-
-									<option value="/products/index.html#node42">
-										工程起重机械
-									</option>
-
-									<option value="/products/index.html#node44">
-										建筑起重机械
-									</option>
-
-									<option value="/products/index.html#node45">
-										筑养路机械
-									</option>
-
-									<option value="/products/index.html#node46">
-										桩工机械
-									</option>
-
-									<option value="/products/index.html#node48">
-										环卫环保机械
-									</option>
-
-									<option value="/products/index.html#node49">
-										土方机械
-									</option>
-
-									<option value="/products/index.html#node50">
-										消防机械
-									</option>
-
-									<option value="/products/index.html#node51">
-										专用车辆
-									</option>
-
-									<option value="/products/index.html#node352">
-										物料搬运（起重运输）机械
-									</option>
-
-									<option value="/products/index.html#node366">
-										车桥总成
-									</option>
-
-								</select>
+								<form jwcid="@Form">
+								<select jwcid="@PropertySelection"  style="width: 143px; margin-top: 6px;"
+									model="ognl:@com.linkage.component.util.Utility@getSelection(products, 'PRODUCT_ID', 'PRODUCT_NAME',true)"
+									value="ognl:info.PRODUCT_ID"  class="input1"
+								 onchange="if(value!='00')redirectTo('ProductDetail', null, '&PRODUCT_ID='+this.value, '_blank');"/>
+									</form>
+									 
+								
+								
 								<script type="text/javascript">
 	$('cygs').observe("change", function() {
 		window.location.href = this.value;
