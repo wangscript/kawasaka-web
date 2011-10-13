@@ -24,33 +24,18 @@
 								集团公司/部门成员
 								<SPAN class=sy_en>BRANCHES </SPAN>
 							</DIV>
-							<DIV class=di3anr>
+							<DIV class=di3anr  jwcid="@Foreach" source="ognl:deps" value="ognl:dep" element="div" index="ognl:rowIndex">
 								<H1>
 									<IMG height=9 src="./home/images/fk_l.gif" width=9/>
-										<A href="/">工程机械事业部</A>
-								</H1>
-								<H1>
-									<IMG height=9 src="./home/images/fk_l.gif" width=9/>
-										<A href="/">通讯软件事业部</A>
-								</H1>
-								<H1>
-									<IMG height=9 src="./home/images/fk_l.gif" width=9/>
-										<A href="/">机械设计事业部</A>
-								</H1>
-								<H1>
-									<IMG height=9 src="./home/images/fk_l.gif" width=9/>
-										<A href="/">进出口贸易事业部</A>
-								</H1>
-								<H1>
-									<IMG height=9 src="./home/images/fk_l.gif" width=9/>
-										<A href="/">矿产资源事业部</A>
-								</H1>
-								<DD>
-									<A href=""><IMG height=13 src="./home/images/sy_more.jpg"
+										<A jwcid="@Any"	href="javascript:void(0)" onclick="redirectTo('Gdetail', null, '&GROUP_ID='+this.GROUP_ID, '_blank');" GROUP_ID="ognl:dep.GROUP_ID"  title="ognl:dep.GROUP_NAME"><span jwcid="@Insert" value="ognl:dep.GROUP_NAME"/></A>
+								</H1>				
+							</DIV>
+							
+							<DD>
+									<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href="javascript:void(0)" redirectTo('Group', null, null); ><IMG height=13 src="./home/images/sy_more.jpg"
 											width=60 border=0/>
 									</A>
-								</DD>
-							</DIV>
+							</DD>
 
 							<!-- 公司公告 -->
 							<div class="di3anmm">
