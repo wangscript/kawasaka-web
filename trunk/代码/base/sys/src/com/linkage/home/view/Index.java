@@ -7,6 +7,7 @@ import com.linkage.appframework.data.IData;
 import com.linkage.appframework.data.IDataset;
 import com.linkage.component.AppSafePage;
 import com.linkage.component.PageData;
+import com.linkage.home.bean.GroupHomeBean;
 import com.linkage.home.bean.NewsHomeBean;
 
 
@@ -15,6 +16,7 @@ public abstract class Index extends AppSafePage {
 	public abstract void setNotes(IDataset notes);
 	public abstract void setThumbs(IDataset thumbs);
 	public abstract void setLastnewss(IDataset lastnewss);
+	public abstract void setDeps(IDataset deps);
 
 	public void pageBeginRender(PageEvent event)
 	{
@@ -38,7 +40,13 @@ public abstract class Index extends AppSafePage {
 			params.clear();
 			params.put("LIMIT", "10");
 			IDataset lastnewss = newsBean.queryLastNews(pd, params, pd.getPagination());
-			setLastnewss(lastnewss);			
+			setLastnewss(lastnewss);	
+			
+			GroupHomeBean groupBean = new GroupHomeBean();
+			IDataset groups = groupBean.queryGroups(pd, params, pd.getPagination());
+			IDataset deps = groupBean.queryGroup2(pd, params, pd.getPagination());
+			//setInfos(groups);
+			setDeps(deps);
 		} catch (Exception e) {
 			log.error("初始化页面执行失败！错误情况:" + e);
 		}finally{
