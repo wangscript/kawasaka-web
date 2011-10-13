@@ -38,17 +38,17 @@ public abstract class ProductTypeList extends CashierBasePage{
 		PageData pd = getPageData();
 		IData conditions = pd.getData("cond", true);
 		IData data = new DataMap();
-		if(null!=pd.getParameter("PRODUCT_CLASS")&&!"".equals(pd.getParameter("PRODUCT_CLASS","").trim()))
-				conditions.put("PRODUCT_CLASS", pd.getParameter("PRODUCT_CLASS",""));
+		if(null!=pd.getParameter("ID")&&!"".equals(pd.getParameter("ID","").trim()))
+				conditions.put("PRODUCT_CLASS", pd.getParameter("ID",""));
 		data.put("ITEM_FLAG", "1");
-		IDataset productclass = productBean.queryProductClassLists(pd, data, null);
+//		IDataset productclass = productBean.queryProductClassLists(pd, data, null);
 //		for(int i=0;i<productclass.size();i++)
 //			productclass.getData(i).put("PRODUCT_CLASS_ID", productclass.getData(i).getString("PRODUCT_CLASS","PRODUCT_CLASS"));
-		conditions.put("PRODUCTCLASS", productclass);
+//		conditions.put("PRODUCTCLASS", productclass);
 		this.setConditions(conditions); 
-		if(null!=pd.getParameter("PRODUCT_CLASS")&&!"".equals(pd.getParameter("PRODUCT_CLASS","").trim()))
+		if(null!=pd.getParameter("ID")&&!"".equals(pd.getParameter("ID","").trim()))
 		{
-			data.put("PRODUCT_CLASS", pd.getParameter("PRODUCT_CLASS",""));
+			data.put("PRODUCT_CLASS", pd.getParameter("ID",""));
 			IDataset productTypeList = productBean.queryProductTypeLists(pd, data, pd.getPagination());
 			this.setInfos(productTypeList);
 		}

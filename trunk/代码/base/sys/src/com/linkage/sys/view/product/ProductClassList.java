@@ -53,6 +53,9 @@ public abstract class ProductClassList extends CashierBasePage{
 		IData params = pd.getData("cond", true);
 		params.put("ITEM_FLAG", "1");
 		IDataset productClassList = productBean.queryProductClassLists(pd, params, pd.getPagination());
+		for(int i=0;i<productClassList.size();i++){
+			((IData)productClassList.getData(i)).put("TEST", "<h1>test</h1>");
+		}
 		this.setInfos(productClassList);
 		this.init(cycle); 
 	}
