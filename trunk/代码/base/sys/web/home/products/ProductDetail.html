@@ -72,7 +72,7 @@ $$("#l h1").each(function(item){
 									onclick="redirectTo('ProductClass', null, '&PRODUCT_CLASS='+this.PRODUCT_CLASS, '_blank');"
 											PRODUCT_CLASS="ognl:info.PRODUCT_CLASS"
 											title="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',info.PRODUCT_CLASS})"><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',info.PRODUCT_CLASS})"/></a>>
-									<span jwcid="@Conditional" condition="ognl:info.PRODUCT_TYPE!=null&&!info.PRODUCT_TYPE.equals('0')">
+									<span jwcid="@Conditional" condition="ognl:info.PRODUCT_TYPE!=null&&!info.PRODUCT_TYPE.equals('0')&&!info.PRODUCT_TYPE.equals('')">
 											
 									<a jwcid="@Any" href="javascript:void(0)"
 									onclick="redirectTo('ProductClass', null, '&PRODUCT_CLASS='+this.PRODUCT_CLASS+'&PRODUCT_TYPE='+this.PRODUCT_TYPE, '_blank');"

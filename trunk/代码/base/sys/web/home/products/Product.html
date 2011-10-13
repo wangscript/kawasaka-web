@@ -78,7 +78,7 @@ $$("#l h1").each(function(item){
 <td jwcid="@Foreach" source="ognl:infoProducts.infos" value="ognl:infoEach" element="td" index="ognl:rowIndex">
 <div align=center><a jwcid="@Any" href="javascript:void(0)"
 											onclick="redirectTo('ProductDetail', null, '&PRODUCT_ID='+this.PRODUCT_ID, '_blank');"
-											PRODUCT_ID="ognl:infoEach.PRODUCT_ID" title="ognl:infoEach.PRODUCT_NAME"><font color=#000000><img jwcid="@Any" border=0 src="ognl:(null==infoEach.PRODUCT_PICTURE||''.equals(infoEach.PRODUCT_PICTURE))?'image?file_id=':'image?file_id='+(infoEach.PRODUCT_PICTURE).substring(0,12)" width=110 height=110 /></font></a><br>
+											PRODUCT_ID="ognl:infoEach.PRODUCT_ID" title="ognl:infoEach.PRODUCT_NAME"><font color=#000000><img jwcid="@Any" border=0 src="ognl:(null==infoEach.PRODUCT_PICTURE||''.equals(infoEach.PRODUCT_PICTURE))?'image?file_id=xx':'image?file_id='+(infoEach.PRODUCT_PICTURE).substring(0,12)" width=110 height=110 /></font></a><br>
 											<a jwcid="@Any" href="javascript:void(0)"
 											onclick="redirectTo('ProductDetail', null, '&PRODUCT_ID='+this.PRODUCT_ID, '_blank');"
 											PRODUCT_ID="ognl:infoEach.PRODUCT_ID" title="ognl:infoEach.PRODUCT_NAME"><font color=#000000><span jwcid="@Insert"
