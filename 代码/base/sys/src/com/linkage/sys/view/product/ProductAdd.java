@@ -12,9 +12,7 @@ import com.linkage.appframework.data.IData;
 import com.linkage.appframework.data.IDataset;
 import com.linkage.common.bean.util.DualMgr;
 import com.linkage.component.PageData;
-import com.linkage.sys.bean.params.ParamsBean;
 import com.linkage.sys.bean.product.ProductBean;
-import com.linkage.sys.bean.staff.StaffBean;
 import com.linkage.sys.view.common.CashierBasePage;
 
 /**
@@ -26,6 +24,7 @@ public abstract class ProductAdd extends CashierBasePage{
 	public abstract void setInfos(IDataset infos);
 	public abstract void setConditions(IData conditions);
 	public abstract void setTypes(IData types);
+	public abstract void setProductClasses(IDataset productClasses);
 	
 	/**
 	 * 负责产品大类的业务操作Bean
@@ -40,11 +39,11 @@ public abstract class ProductAdd extends CashierBasePage{
 	public void init(IRequestCycle cycle) throws Exception {
 		PageData pd = getPageData();
 		IData conditions = pd.getData("cond", true);
-		conditions.put("ITEM_FLAG", "1");
-		IData data = new DataMap();
-		data.put("ITEM_FLAG", "1");
-		IDataset productclass = productBean.queryProductClassLists(pd, data, null);
-		conditions.put("PRODUCTCLASS", productclass);
+//		conditions.put("ITEM_FLAG", "1");
+//		IData data = new DataMap();
+//		data.put("ITEM_FLAG", "1");
+//		IDataset productclass = productBean.queryProductClassLists(pd, data, null);
+//		conditions.put("PRODUCTCLASS", productclass);
 //		if(null!=pd.getParameter("productClass")&&!"".equals(pd.getParameter("productClass","")))
 //			conditions.put("PRODUCT_CLASS", pd.getParameter("productClass",""));
 		this.setConditions(conditions);
@@ -71,6 +70,8 @@ public abstract class ProductAdd extends CashierBasePage{
 		
 		params.put("UPDATE_STAFF_ID", pd.getContext().getStaffId());
 		params.put("UPDATE_TIME", DualMgr.getSysDate(pd));
+		if("".equals(param.getString("PRODUCT_TYPE","")))
+		params.put("PRODUCT_TYPE","0");
 		
 		params.put("PRIVILEGE_PRICE", "".equals(params.getString("PRIVILEGE_PRICE",""))?null:params.getString("PRIVILEGE_PRICE"));
 		params.put("RETAIL_PRICE", "".equals(params.getString("RETAIL_PRICE",""))?null:params.getString("RETAIL_PRICE"));
@@ -85,6 +86,25 @@ public abstract class ProductAdd extends CashierBasePage{
 	}
 	
 	
+	/**
+	 * 根据部门查询大类
+	 * @param cycle
+	 * @throws Exception
+	 * @author:wull
+	 */
+	public void queryProductClass(IRequestCycle cycle) throws Exception {
+		PageData pd = getPageData();
+		String group_id = pd.getParameter("GROUP_ID","");
+		if (group_id != null && !"".equals(group_id)) {
+			IData types = new DataMap();
+			IData params = new DataMap();
+			params.put("GROUP_CLASS", "部门");
+			params.put("ITEM_FLAG", "1");
+			params.put("GROUP_ID", group_id);
+			setProductClasses(productBean.queryProductClass(pd, params,null));
+		}
+	}
+	
 	
 	/**
 	 * 根据大类查询小类
@@ -95,16 +115,18 @@ public abstract class ProductAdd extends CashierBasePage{
 	public void queryProductTypes(IRequestCycle cycle) throws Exception {
 		PageData pd = getPageData();
 		String product_class = pd.getParameter("PRODUCT_CLASS","");
-		
+	
 		if (product_class != null && !"".equals(product_class)) {
-			IData params = pd.getData("cond", true);
+			IData types = new DataMap();
+			IData params = new DataMap();
+			params.clear();
 			params.put("ITEM_FLAG", "1");
 			params.put("PRODUCT_CLASS", product_class);
-			IData types = new DataMap();
 			types.put("PRODUCTTYPE", productBean.queryProductTypes(pd, params,null));
 			setTypes(types);
 		}
 		else setTypes(null);
+		
 	}
 	
 	

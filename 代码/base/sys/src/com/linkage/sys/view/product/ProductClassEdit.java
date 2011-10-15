@@ -12,6 +12,7 @@ import com.linkage.appframework.data.IData;
 import com.linkage.appframework.data.IDataset;
 import com.linkage.common.bean.util.DualMgr;
 import com.linkage.component.PageData;
+import com.linkage.component.util.Utility;
 import com.linkage.sys.bean.params.ParamsBean;
 import com.linkage.sys.bean.product.ProductBean;
 import com.linkage.sys.bean.staff.StaffBean;
@@ -66,9 +67,10 @@ public abstract class ProductClassEdit extends CashierBasePage{
 		params.put("ID",pd.getParameter("ID",""));
 		params.put("ITEM_FLAG", "1");
 		String productclass = params.getString("PRODUCT_CLASS","");
+		String group_id = params.getString("GROUP_ID","");
 		Boolean exist = this.productBean.existsProductClassListById(pd, params, null);
 		if(exist){
-			common.error("产品大类【"+productclass+"】已存在，请重新输入！");
+			common.error("部门【"+Utility.getStaticValue(pd,"TD_M_GROUP",new java.lang.String[]{"GROUP_CLASS","GROUP_ID"},"GROUP_NAME", new java.lang.String[]{"部门",group_id})+"】中产品大类【"+productclass+"】已存在，请重新输入！");
 			return;
 		}
 		if(null==pd.getParameter("ID","")||"".equals(pd.getParameter("ID","")))
