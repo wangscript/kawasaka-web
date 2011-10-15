@@ -22,22 +22,32 @@
 					<div id="l">
 						<div class="l1s"><img src="../../home/images/l_top_bg.gif" border="0" /></div>
 						<div id="l1">
-							<span jwcid="@Foreach" source="ognl:infosProductClass"
-								value="ognl:infoProductClass" element="span"
+							<span jwcid="@Foreach" source="ognl:infosGroups"
+								value="ognl:infoGroups" element="span"
 								index="ognl:rowIndex">
 								<div class="l1">
+			<span jwcid="@Conditional" condition="ognl:!@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',infoGroups.GROUP_ID}).equals('进出口贸易事业部')&&!@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',infoGroups.GROUP_ID}).equals('机械设计事业部')&&!@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',infoGroups.GROUP_ID}).equals('矿产资源事业部')">
 									<h1 need="listen">
 										<a style="cursor: pointer"> <span jwcid="@Insert"
-											value="ognl:infoProductClass.PRODUCT_CLASS" /> </a>
+											value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',infoGroups.GROUP_ID})" /> </a>
 									</h1>
+									</span>
+								<span jwcid="@Conditional" condition="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',infoGroups.GROUP_ID}).equals('进出口贸易事业部')||@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',infoGroups.GROUP_ID}).equals('机械设计事业部')||@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',infoGroups.GROUP_ID}).equals('矿产资源事业部')">
+									<h1>
+									<a jwcid="@Any" href="javascript:void(0)" style="cursor: pointer" onclick="redirectTo('Gdetail', null, '&GROUP_ID='+this.GROUP_ID, '_blank');" GROUP_ID="ognl:infoGroups.GROUP_ID"  title="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',infoGroups.GROUP_ID})">
+					 <span  jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',infoGroups.GROUP_ID})"/>
+				</a>
+									
+									</h1>
+									</span>
 									<ul style="display: none;">
-										<span jwcid="@Foreach" source="ognl:infoProductClass.infos"
+										<span jwcid="@Foreach" source="ognl:infoGroups.infos"
 											value="ognl:infoEach" element="span" index="ognl:rowIndex">
 											<a jwcid="@Any" href="javascript:void(0)"
-											onclick="redirectTo('ProductClass', null, '&PRODUCT_CLASS='+this.PRODUCT_CLASS+'&PRODUCT_TYPE='+this.PRODUCT_TYPE, '_blank');"
-									PRODUCT_CLASS="ognl:infoEach.PRODUCT_CLASS"		PRODUCT_TYPE="ognl:infoEach.ID" title="ognl:infoEach.PRODUCT_TYPE">
+											onclick="redirectTo('ProductClass', null, '&PRODUCT_CLASS='+this.PRODUCT_CLASS+'&GROUP_ID='+this.GROUP_ID, '_blank');"
+									PRODUCT_CLASS="ognl:infoEach.ID"		GROUP_ID="ognl:infoEach.GROUP_ID" title="ognl:infoEach.PRODUCT_CLASS">
 												<font color="black"> &nbsp; <span jwcid="@Insert"
-													value="ognl:infoEach.PRODUCT_TYPE" /> </font> </a> <br /> </span>
+													value="ognl:infoEach.PRODUCT_CLASS" /> </font> </a> <br /> </span>
 									</ul>
 
 								</div> </span>
