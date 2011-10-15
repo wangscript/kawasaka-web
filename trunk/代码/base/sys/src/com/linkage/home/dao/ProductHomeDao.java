@@ -81,9 +81,12 @@ public class ProductHomeDao extends AppEntity{
 	public IDataset queryProductClassLists(PageData pd, IData data, Pagination pagination) throws Exception {
 		CashierAppEntity dao = new CashierAppEntity(pd);
     	SQLParser parser = new SQLParser(data);
-		parser.addSQL("select * from TD_M_PRODUCT_CLASS t  where (1 = 1) ");
+		parser.addSQL("select * from TD_M_PRODUCT_CLASS t ");
+		parser.addSQL(" inner join TD_M_GROUP g on (t.group_id = g.group_id and g.group_class = '部门' )" );
+		parser.addSQL(" where (1 = 1) ");
 		parser.addSQL(" and T.ID=:ID ");
-		parser.addSQL(" and T.PRODUCT_CLASS =:PRODUCT_CLASS ");
+		parser.addSQL(" and T.GROUP_ID=:GROUP_ID ");
+		parser.addSQL(" and T.PRODUCT_CLASS like concat('%',:PRODUCT_CLASS,'%') ");
 		parser.addSQL(" and T.CLASSORDER=:CLASSORDER ");
 		parser.addSQL(" and T.ITEM_FLAG=:ITEM_FLAG ");
 		parser.addSQL(" order by t.CLASSORDER desc");
@@ -127,12 +130,14 @@ public class ProductHomeDao extends AppEntity{
 	 */
 	public IDataset queryProducts(PageData pd, IData data, Pagination pagination) throws Exception {
 		CashierAppEntity dao = new CashierAppEntity(pd);
-    	SQLParser parser = new SQLParser(data);
-    	parser.addSQL("select t.* from TD_M_PRODUCT t   INNER JOIN TD_M_PRODUCT_CLASS u ON (t.PRODUCT_CLASS=u.ID AND u.ITEM_FLAG='1') ");
+		SQLParser parser = new SQLParser(data);
+		parser.addSQL("select t.* from TD_M_PRODUCT t   INNER JOIN TD_M_PRODUCT_CLASS u ON (t.PRODUCT_CLASS=u.ID AND u.ITEM_FLAG='1') ");
 		parser.addSQL(" LEFT JOIN TD_M_PRODUCT_TYPE v ON  (t.PRODUCT_TYPE=v.ID AND v.ITEM_FLAG='1') ");
+		parser.addSQL(" INNER JOIN TD_M_GROUP g ON  (t.GROUP_ID=g.GROUP_ID AND g.GROUP_CLASS='部门') ");
 		parser.addSQL(" where (1 = 1) ");
-//		parser.addSQL(" and u.PRODUCT_CLASS = t.PRODUCT_CLASS ");
+		// parser.addSQL(" and u.ID = t.PRODUCT_CLASS ");
 		parser.addSQL(" and t.PRODUCT_ID=:PRODUCT_ID ");
+		parser.addSQL(" and t.GROUP_ID=:GROUP_ID ");
 		parser.addSQL(" and t.PRODUCT_CLASS = :PRODUCT_CLASS");
 		parser.addSQL(" and t.PRODUCT_TYPE = :PRODUCT_TYPE");
 		parser.addSQL(" and t.PRODUCT_NAME like concat('%',:PRODUCT_NAME,'%') ");
@@ -141,10 +146,14 @@ public class ProductHomeDao extends AppEntity{
 		parser.addSQL(" and t.PRODUCT_GOOD=:PRODUCT_GOOD ");
 		parser.addSQL(" and t.HOME_SHOW=:HOME_SHOW ");
 		parser.addSQL(" and t.ITEM_FLAG= :ITEM_FLAG ");
-		parser.addSQL(" and t.ITEM_FLAG= :ITEM_FLAG ");
 		parser.addSQL(" order by u.CLASSORDER desc,v.CLASSORDER desc");
 		IDataset dataset = dao.queryList(parser, pagination);
-		return dataset == null? new DatasetList() : dataset;
+		return dataset == null ? new DatasetList() : dataset;
+		
+		
+		
+		
+		
 	}
 	
 	
