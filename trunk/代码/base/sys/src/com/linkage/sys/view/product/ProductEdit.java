@@ -26,6 +26,7 @@ public abstract class ProductEdit extends CashierBasePage{
 //	public abstract void setInfos(IDataset infos);
 	public abstract void setConditions(IData conditions);
 	public abstract void setTypes(IData types);
+	public abstract void setProductClasses(IDataset productClasses);
 	
 	/**
 	 * 负责产品管理这块的业务操作Bean
@@ -55,10 +56,24 @@ public abstract class ProductEdit extends CashierBasePage{
 		//设置大类
 		IDataset productclass = productBean.queryProductClassLists(pd, data, null);
 		conditions.put("PRODUCTCLASS", productclass);
+		
+		
+
+		//设置大类
+		String group_id = productTypeLists.getData(0).getString("GROUP_ID","");
+		if (group_id != null && !"".equals(group_id)) {
+			IData types = new DataMap();
+			IData param = new DataMap();
+			param.put("GROUP_CLASS", "部门");
+			param.put("ITEM_FLAG", "1");
+			param.put("GROUP_ID", group_id);
+			setProductClasses(productBean.queryProductClass(pd, param,null));
+		}
+		
 		//设置小类
 		String product_class=productTypeLists.getData(0).getString("PRODUCT_CLASS","");
 		if (product_class != null && !"".equals(product_class)) {
-			IData tmpparams = pd.getData("cond", true);
+			IData tmpparams = new DataMap();
 			tmpparams.put("ITEM_FLAG", "1");
 			tmpparams.put("PRODUCT_CLASS", product_class);
 			IData types = new DataMap();
@@ -93,6 +108,8 @@ public abstract class ProductEdit extends CashierBasePage{
 		params.put("RETAIL_PRICE", "".equals(params.getString("RETAIL_PRICE",""))?null:params.getString("RETAIL_PRICE"));
 		params.put("VIP_PRICE", "".equals(params.getString("VIP_PRICE",""))?null:params.getString("VIP_PRICE"));
 
+		if("".equals(params.getString("PRODUCT_TYPE","")))
+			params.put("PRODUCT_TYPE","0");
 		
 		if(!this.productBean.updateProduct(pd, params))
 		{
@@ -120,6 +137,26 @@ public abstract class ProductEdit extends CashierBasePage{
 		}
 		redirectToMsg(msg);
 	}
+	
+	/**
+	 * 根据部门查询大类
+	 * @param cycle
+	 * @throws Exception
+	 * @author:wull
+	 */
+	public void queryProductClass(IRequestCycle cycle) throws Exception {
+		PageData pd = getPageData();
+		String group_id = pd.getParameter("GROUP_ID","");
+		if (group_id != null && !"".equals(group_id)) {
+			IData types = new DataMap();
+			IData params = new DataMap();
+			params.put("GROUP_CLASS", "部门");
+			params.put("ITEM_FLAG", "1");
+			params.put("GROUP_ID", group_id);
+			setProductClasses(productBean.queryProductClass(pd, params,null));
+		}
+	}
+	
 	/**
 	 * 根据大类查询小类
 	 * @param cycle
@@ -131,7 +168,7 @@ public abstract class ProductEdit extends CashierBasePage{
 		String product_class = pd.getParameter("PRODUCT_CLASS","");
 		
 		if (product_class != null && !"".equals(product_class)) {
-			IData params = pd.getData("cond", true);
+			IData params = new DataMap();
 			params.put("ITEM_FLAG", "1");
 			params.put("PRODUCT_CLASS", product_class);
 			IData types = new DataMap();

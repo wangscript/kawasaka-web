@@ -12,9 +12,8 @@ import com.linkage.appframework.data.IData;
 import com.linkage.appframework.data.IDataset;
 import com.linkage.common.bean.util.DualMgr;
 import com.linkage.component.PageData;
-import com.linkage.sys.bean.params.ParamsBean;
+import com.linkage.component.util.Utility;
 import com.linkage.sys.bean.product.ProductBean;
-import com.linkage.sys.bean.staff.StaffBean;
 import com.linkage.sys.view.common.CashierBasePage;
 
 /**
@@ -65,7 +64,7 @@ public abstract class ProductTypeAdd extends CashierBasePage{
 		param.put("PRODUCT_TYPE", producttype);
 		Boolean exist = this.productBean.existsProductType(pd, param, null);
 		if(exist){
-			common.error("产品大类【"+productclass+"】中已经存在产品小类【"+producttype+"】,请重新输入！");
+			common.error("产品大类【"+Utility.getStaticValue(pd,"TD_M_PRODUCT_CLASS",new java.lang.String[]{"ITEM_FLAG","ID"},"PRODUCT_CLASS", new java.lang.String[]{"1",productclass})+"】中已经存在产品小类【"+producttype+"】,请重新输入！");
 			return;
 		}		
 		params.put("ITEM_FLAG", "1");
