@@ -47,6 +47,30 @@ public class GroupHomeDao extends AppEntity{
 		return dataset == null? new DatasetList() : dataset;
 	}
 	
+	
+	
+	/**
+	 * 查询部门或成员信息
+	 * @param pd
+	 * @param data
+	 * @param pagination
+	 * @return
+	 * @throws Exception
+	 * @author:wuLL
+	 */
+	public IDataset queryGroups(PageData pd, IData data, Pagination pagination) throws Exception {
+		CashierAppEntity dao = new CashierAppEntity(pd);
+    	SQLParser parser = new SQLParser(data);
+		parser.addSQL("select * from td_m_group t  where (1 = 1) ");
+		parser.addSQL("and  GROUP_CLASS= :GROUP_CLASS ");
+		parser.addSQL("and  GROUP_ID=:GROUP_ID ");
+		IDataset dataset = dao.queryList(parser,pagination);
+		return dataset == null? new DatasetList() : dataset;
+	}
+	
+	
+	
+	
 	public IDataset queryGroup2(PageData pd, IData data, Pagination pagination) throws Exception {
 		CashierAppEntity dao = new CashierAppEntity(pd);
     	SQLParser parser = new SQLParser(data);

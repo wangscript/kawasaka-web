@@ -47,8 +47,8 @@ public class NewsHomeDao extends AppEntity{
 		parser.addSQL(" and NEW_FLAG <> '0' ");
 		parser.addSQL(" and NEW_CID=:NEW_CID ");
 		parser.addSQL(" ORDER BY NEW_ID ");
-		parser.addSQL(" LIMIT :LIMIT");
-		IDataset dataset = dao.queryList(parser);
+//		parser.addSQL(" LIMIT :LIMIT");
+		IDataset dataset = dao.queryList(parser,pagination);
 		return dataset == null? new DatasetList() : dataset;
 	}
 	
@@ -72,8 +72,8 @@ public class NewsHomeDao extends AppEntity{
 		parser.addSQL(" and NEW_FLAG <> '0' ");
 		parser.addSQL(" and (NEW_CID=11 or NEW_CID=12 or NEW_CID=13) ");
 		parser.addSQL(" ORDER BY NEW_ID ");
-		parser.addSQL(" LIMIT :LIMIT");
-		IDataset dataset = dao.queryList(parser);
+//		parser.addSQL(" LIMIT :LIMIT");
+		IDataset dataset = dao.queryList(parser, pagination);
 		return dataset == null? new DatasetList() : dataset;		
 		
 	}
@@ -87,7 +87,7 @@ public class NewsHomeDao extends AppEntity{
 		parser.addSQL(" and (NEW_CID=11 or NEW_CID=12 or NEW_CID=13) ");
 		parser.addSQL(" and NEW_FLAG <> '0' ");
 		parser.addSQL(" ORDER BY NEW_ID ");
-		parser.addSQL(" LIMIT :LIMIT");
+//		parser.addSQL(" LIMIT :LIMIT");
 
 		/*
 		StringBuffer sql = new StringBuffer();
@@ -102,7 +102,7 @@ public class NewsHomeDao extends AppEntity{
 		}
 		
 		IDataset dataset = dao.queryList(sql.toString());*/
-		IDataset dataset = dao.queryList(parser);
+		IDataset dataset = dao.queryList(parser,pagination);
 		return dataset == null? new DatasetList() : dataset;		
 		
 	}	
