@@ -32,6 +32,19 @@ public class ProductBean extends CashierBaseBean{
 		return dao.queryProductClassLists(pd, data, pagination);
 	}
 	
+	/**
+	 * 只查询产品大类信息
+	 * @param pd
+	 * @param data
+	 * @return
+	 * @throws Exception
+	 * @author:wull
+	
+	 */
+	public IDataset queryProductClass(PageData pd,IData data, Pagination pagination) throws Exception {
+		ProductDao dao = new ProductDao(pd);
+		return dao.queryProductClass(pd, data, pagination);
+	}
 	
 	
 	/**
@@ -92,7 +105,8 @@ public class ProductBean extends CashierBaseBean{
 		ProductDao dao = new ProductDao(pd);
 		Parameter parameter = new Parameter();
 		parameter.add(data.getString("PRODUCT_CLASS", ""));
-		String sql = "SELECT COUNT(*) FROM TD_M_PRODUCT_CLASS WHERE ITEM_FLAG='1' AND PRODUCT_CLASS=?";
+		parameter.add(data.getString("GROUP_ID", ""));
+		String sql = "SELECT COUNT(*) FROM TD_M_PRODUCT_CLASS WHERE ITEM_FLAG='1' AND PRODUCT_CLASS=? AND GROUP_ID=? ";
 		return dao.getCount(sql, parameter)>=1?true:false;
 	}
 	
@@ -150,7 +164,8 @@ public class ProductBean extends CashierBaseBean{
 		Parameter parameter = new Parameter();
 		parameter.add(data.getString("PRODUCT_CLASS", ""));
 		parameter.add(data.getString("ID", ""));
-		String sql = "SELECT COUNT(*) FROM TD_M_PRODUCT_CLASS WHERE ITEM_FLAG='1' AND PRODUCT_CLASS=? and id <> ?";
+		parameter.add(data.getString("GROUP_ID", ""));
+		String sql = "SELECT COUNT(*) FROM TD_M_PRODUCT_CLASS WHERE ITEM_FLAG='1' AND PRODUCT_CLASS=? and id <> ? and GROUP_ID=? ";
 		return dao.getCount(sql, parameter)>=1?true:false;
 	}
 	
