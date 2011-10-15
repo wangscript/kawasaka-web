@@ -15,8 +15,21 @@
 	<div class="c_inputField l_mt">
 		<div class="top"></div>
 		<div class="body"><div class="aclinicOn">
-			<table class="col2">
+			<table class="col3">
 				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>部门：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_GROUP_ID@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page,'TD_M_GROUP','GROUP_ID','GROUP_NAME',new java.lang.String[]{'GROUP_CLASS'}, new java.lang.String[]{'部门'})"
+									value="ognl:conditions.GROUP_ID" desc="部门" class="e_select"
+									nullable="yes" />
+									
+							</div></div>
+						</div>
+					</td>
+			
 					<td class="li">
 						<div class="wrapper">
 							<div class="label"><span>产品大类：</span></div>
@@ -58,6 +71,7 @@
 			<table id="printTable">
       			<thead>
 		  			<tr>
+		  				<th>部门</th>
 						<th>产品大类</th>
 						<th>顺序</th>
 						<th>小类管理</th>
@@ -68,6 +82,7 @@
 				</thead>
 				<tbody>
 					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',info.GROUP_ID})"/></td>
 						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.PRODUCT_CLASS" classId="ognl:info.ID" onclick="popupDialog('sys.product.ProductClassEdit', 'queryProductClassList', '&refresh=true&classId='+ classId, '修改产品大类信息', '500', '300')" raw="false" /></td>
 						<td><span jwcid="@Insert" value="ognl:info.CLASSORDER"/></td>
 						<td><a jwcid="@wade:PageRedirect" source="ognl:info" columns="ID" value="编辑小类"  onclick="redirectTo('sys.product.ProductTypeList', 'init', parameters)"/></td>

@@ -6,5 +6,6 @@
 	<property-specification name="info" type="com.linkage.appframework.data.IData"/>
     <property-specification name="conditions" type="com.linkage.appframework.data.IData"/>
     <property-specification name="types" type="com.linkage.appframework.data.IData"/>
+    <property-specification name="productClasses" type="com.linkage.appframework.data.IDataset"/>
 
 </page-specification>

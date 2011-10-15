@@ -8,4 +8,5 @@
     <property-specification name="types" type="com.linkage.appframework.data.IData"/>
     <property-specification name="infos" type="com.linkage.appframework.data.IDataset"/>
 	<property-specification name="rowIndex" type="int"/>	
+    <property-specification name="productClasses" type="com.linkage.appframework.data.IDataset"/>
 </page-specification>
