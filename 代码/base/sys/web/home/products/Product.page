@@ -4,10 +4,9 @@
   "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
 
 <page-specification class="com.linkage.home.view.products.Product">
-    <property-specification name="infosProductClass" type="com.linkage.appframework.data.IDataset"/>    
-	<property-specification name="infoProductClass" type="com.linkage.appframework.data.IData"/> 
+    <property-specification name="infosGroups" type="com.linkage.appframework.data.IDataset"/>    
+	<property-specification name="infoGroups" type="com.linkage.appframework.data.IData"/> 
     <property-specification name="infoEach" type="com.linkage.appframework.data.IData"/>    
-    
     <property-specification name="infosProducts" type="com.linkage.appframework.data.IDataset"/>    
 	<property-specification name="infoProducts" type="com.linkage.appframework.data.IData"/> 
     

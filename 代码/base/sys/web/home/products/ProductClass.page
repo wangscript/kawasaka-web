@@ -4,15 +4,17 @@
   "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
 
 <page-specification class="com.linkage.home.view.products.ProductClass">
-    <property-specification name="infosProductClass" type="com.linkage.appframework.data.IDataset"/>    
-	<property-specification name="infoProductClass" type="com.linkage.appframework.data.IData"/> 
+   <property-specification name="infosGroups" type="com.linkage.appframework.data.IDataset"/>    
+	<property-specification name="infoGroups" type="com.linkage.appframework.data.IData"/> 
     <property-specification name="infoEach" type="com.linkage.appframework.data.IData"/>    
     
-    <property-specification name="infosProducts" type="com.linkage.appframework.data.IDataset"/>    
+    
+    <property-specification name="infosProducts" type="com.linkage.appframework.data.IDataset"/>   
+        <property-specification name="infoTypeProducts" type="com.linkage.appframework.data.IData"/>  
 	<property-specification name="infoProducts" type="com.linkage.appframework.data.IData"/> 
     
     
      <property-specification name="productClass" type="java.lang.String"/>
-      <property-specification name="productType" type="java.lang.String"/>
+      <property-specification name="GroupId" type="java.lang.String"/>
 	<property-specification name="rowIndex" type="int"/>   
 </page-specification>
