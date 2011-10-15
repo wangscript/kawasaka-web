@@ -8,11 +8,13 @@ import com.linkage.appframework.data.IData;
 import com.linkage.appframework.data.IDataset;
 import com.linkage.component.AppSafePage;
 import com.linkage.component.PageData;
+import com.linkage.home.bean.GroupHomeBean;
 import com.linkage.home.bean.ProductHomeBean;
 
 public abstract class ProductDetail extends AppSafePage {
 
-	public abstract void setInfosProductClass(IDataset infosProductClass);
+//	public abstract void setInfosProductClass(IDataset infosProductClass);
+	public abstract void setInfosGroups(IDataset infosGroups);
 
 	public abstract void setInfo(IData info);
 
@@ -28,21 +30,26 @@ public abstract class ProductDetail extends AppSafePage {
 			// Pagination pa = pd.getPagination();
 			// pa.setCount(5);
 			ProductHomeBean productBean = new ProductHomeBean();
+			GroupHomeBean groupHomeBean = new GroupHomeBean();
 			IData params = new DataMap();
-			params.clear();
 			params.put("ITEM_FLAG", "1");
-			IDataset infosProductClass = productBean.queryProductClassLists(pd,
-					params, null);
-			for (int i = 0; i < infosProductClass.size(); i++) {
-				if (!"".equals(infosProductClass.getData(i).getString(
-						"PRODUCT_CLASS", "")))
-					params.put("PRODUCT_CLASS", infosProductClass.getData(i)
-							.getString("ID", ""));
-				infosProductClass.getData(i).put("infos",
-						productBean.queryProductTypeLists(pd, params, null));
+//			IDataset infosProductClass = productBean.queryProductClassLists(pd, params, null);
+//			for(int i=0;i<infosProductClass.size();i++){
+//				if(!"".equals(infosProductClass.getData(i).getString("PRODUCT_CLASS", "")))
+//					params.put("PRODUCT_CLASS", infosProductClass.getData(i).getString("ID", ""));
+//				infosProductClass.getData(i).put("infos", productBean.queryProductTypeLists(pd, params, null));
+//			}
+//			
+//			setInfosProductClass(infosProductClass);
+			params.put("GROUP_CLASS", "²¿ÃÅ");
+			IDataset infosGroups = groupHomeBean.queryNormalGroups(pd, params, null);
+			for(int i=0;i<infosGroups.size();i++){
+				if(!"".equals(infosGroups.getData(i).getString("GROUP_ID", "")))
+					params.put("GROUP_ID", infosGroups.getData(i).getString("GROUP_ID", ""));
+				infosGroups.getData(i).put("infos", productBean.queryProductClassLists(pd, params, null));
 			}
-
-			setInfosProductClass(infosProductClass);
+			
+			setInfosGroups(infosGroups);
 			params.clear();
 			params.put("ITEM_FLAG", "1");
 			params.put("PRODUCT_ID", product_id);
