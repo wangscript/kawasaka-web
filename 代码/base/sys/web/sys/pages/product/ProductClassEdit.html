@@ -16,6 +16,23 @@
 		<div class="top"></div>
 		<div class="body"><div class="aclinicOn">
 			<table class="col1">
+			<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">部门：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_GROUP_ID@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page,'TD_M_GROUP','GROUP_ID','GROUP_NAME',new java.lang.String[]{'GROUP_CLASS'}, new java.lang.String[]{'部门'})"
+									value="ognl:info.GROUP_ID" desc="部门" class="e_select"
+									nullable="no" />
+									
+							</div></div>
+						</div>
+					</td>
+					</tr>
+			
+			
+			
 				<tr>
 					<td class="li">
 						<div class="wrapper">

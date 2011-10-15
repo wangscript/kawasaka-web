@@ -15,9 +15,8 @@
 		<div class="top"></div>
 		<div class="body"><div class="aclinicOn">
 			<table class="col3">
-				<tr>
-				
-				<td class="li">
+			<tr>
+					<td class="li">
 						<div class="wrapper">
 							<div class="label"><span>产品名称：</span></div>
 							<div class="inputArea"><div>
@@ -25,15 +24,53 @@
 							</div></div>
 						</div>
 					</td>
-					
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>产品型号：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PRODUCT_MODEL@TextField" value="ognl:conditions.PRODUCT_MODEL" desc="产品型号" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>生产厂商：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PRODUCT_FACTORY@TextField" value="ognl:conditions.PRODUCT_FACTORY" desc="生产厂商" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+				</tr>
+			
+			
+			
+				<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span >部门：</span></div>
+							<div class="inputArea"><div>
+								<select jwcid="cond_GROUP_ID@PropertySelection"
+									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page,'TD_M_GROUP','GROUP_ID','GROUP_NAME',new java.lang.String[]{'GROUP_CLASS'}, new java.lang.String[]{'部门'})"
+									value="ognl:conditions.GROUP_ID" desc="部门" class="e_select"
+									onchange="ajaxDirect(this, 'queryProductClass', '&GROUP_ID='+value, 'ProductClassPart')"
+									nullable="yes" />
+									
+							</div></div>
+						</div>
+					</td>
+				
+			
+			
 					<td class="li">
 						<div class="wrapper">
 							<div class="label"><span>产品大类：</span></div>
 							<div class="inputArea"><div>
+							<div id="ProductClassPart" jwcid="@wade:Part" optimize="true">
 								<select jwcid="cond_PRODUCT_CLASS@PropertySelection"
-									model="ognl:@com.linkage.component.util.Utility@getStaticSelection(page,'TD_M_PRODUCT_CLASS','ID','PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG'}, new java.lang.String[]{'1'})"
-									value="ognl:conditions.PRODUCT_CLASS" desc="产品大类" class="e_select" onchange="ajaxDirect(this, 'queryProductTypes', '&PRODUCT_CLASS='+value, 'ProductTypePart')"
-									/>
+									model="ognl:@com.linkage.component.util.Utility@getSelection(productClasses, 'ID', 'PRODUCT_CLASS')"
+									value="ognl:conditions.PRODUCT_CLASS" desc="产品大类" class="e_select"
+									nullable="yes" onchange="ajaxDirect(this, 'queryProductTypes', '&PRODUCT_CLASS='+value, 'ProductTypePart')"/>
+								</div>	
 							</div></div>
 						</div>
 					</td>
@@ -51,27 +88,7 @@
 						</div>
 					</td>
 					</tr>
-					<tr>
-					<td class="li">
-						<div class="wrapper">
-							<div class="label"><span>产品型号：</span></div>
-							<div class="inputArea"><div>
-								<input type="text" jwcid="cond_PRODUCT_MODEL@TextField" value="ognl:conditions.PRODUCT_MODEL" desc="产品型号" class="e_input"/>
-							</div></div>
-						</div>
-					</td>
-					<td class="li">
-						<div class="wrapper">
-							<div class="label"><span>生产厂商：</span></div>
-							<div class="inputArea"><div>
-								<input type="text" jwcid="cond_PRODUCT_FACTORY@TextField" value="ognl:conditions.PRODUCT_FACTORY" desc="生产厂商" class="e_input"/>
-							</div></div>
-						</div>
-					</td>
 					
-					
-					
-				</tr>
 			</table>
 		</div></div>
 		<div class="bottom e_rSet">
@@ -98,6 +115,7 @@
 		  				<th>产品名称</th>
 						<th>产品大类</th>
 						<th>产品小类</th>
+						<th>部门</th>
 						<th>型号</th>
 						<th>厂商</th>
 						<th>是否精品</th>
@@ -114,6 +132,7 @@
 						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.PRODUCT_NAME" productId="ognl:info.PRODUCT_ID" onclick="redirectTo('sys.product.ProductEdit', 'queryProduct', '&operType=edit&refresh=true&productId='+ productId, 'contentframe');" raw="false" /></td>
 						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_CLASS',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_CLASS', new java.lang.String[]{'1',info.PRODUCT_CLASS})"/></td>
 						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_PRODUCT_TYPE',new java.lang.String[]{'ITEM_FLAG','ID'},'PRODUCT_TYPE', new java.lang.String[]{'1',info.PRODUCT_TYPE})"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page,'TD_M_GROUP',new java.lang.String[]{'GROUP_CLASS','GROUP_ID'},'GROUP_NAME', new java.lang.String[]{'部门',info.GROUP_ID})"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_MODEL"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_FACTORY"/></td>
 						<td><span jwcid="@Insert" value="ognl:@com.linkage.component.util.Utility@getStaticValue(page, 'PRODUCT_GOOD', info.PRODUCT_GOOD)"/></td>
