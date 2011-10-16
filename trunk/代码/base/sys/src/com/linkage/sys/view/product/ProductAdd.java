@@ -70,7 +70,7 @@ public abstract class ProductAdd extends CashierBasePage{
 		
 		params.put("UPDATE_STAFF_ID", pd.getContext().getStaffId());
 		params.put("UPDATE_TIME", DualMgr.getSysDate(pd));
-		if("".equals(param.getString("PRODUCT_TYPE","")))
+		if("".equals(params.getString("PRODUCT_TYPE","")))
 		params.put("PRODUCT_TYPE","0");
 		
 		params.put("PRIVILEGE_PRICE", "".equals(params.getString("PRIVILEGE_PRICE",""))?null:params.getString("PRIVILEGE_PRICE"));
