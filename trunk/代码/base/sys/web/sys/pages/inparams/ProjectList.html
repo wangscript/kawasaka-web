@@ -77,12 +77,12 @@
 				</thead>
 				<tbody>
 					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
-						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.PROJECT_NAME" productId="ognl:info.PROJECT_NAME" onclick="redirectTo('sys.product.ProductEdit', 'queryProduct', '&operType=edit&refresh=true&productId='+ productId, 'contentframe');" raw="false" /></td>
+						<td><a jwcid="@wade:PageRedirect"  value="ognl:info.PROJECT_NAME" projectId="ognl:info.PROJECT_ID" onclick="redirectTo('sys.project.ProjectEdit', 'queryProductList', '&operType=edit&refresh=true&projectId='+ projectId, 'contentframe');" raw="false" /></td>
 						<td><span jwcid="@Insert" value="ognl:info.MODEL"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.GREAT_DATE"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.DESIGNER"/></td>
-						<td><span jwcid="@Insert" value="ognl:info.CHECKER"/></td>
-						<td><span jwcid="@Insert" value="ognl:info.APPONALER"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.CHECK_ER"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.APP_ER"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.APP_DATE"/></td>
 						<td><span jwcid="@Insert" value="ognl:info.REMARK"/></td>
 						
