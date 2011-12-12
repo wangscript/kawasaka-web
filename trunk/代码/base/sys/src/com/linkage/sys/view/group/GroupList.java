@@ -39,9 +39,9 @@ public abstract class GroupList extends CashierBasePage{
 	 * @throws Exception
 	 */
 	public void queryGroupList(IRequestCycle cycle) throws Exception {
+	
 		PageData pd = this.getPageData();
 		IData params = pd.getData("cond", true);
-		//params.put("ITEM_FLAG", "1");
 
 		IDataset GroupList = groupBean.queryGroupLists(pd, params, pd.getPagination());
 		this.setInfos(GroupList); 
