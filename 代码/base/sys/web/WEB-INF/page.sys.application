@@ -1,5 +1,6 @@
 <!-- Home begin-->
 <!--<page name="Home" specification-path="/home/Index.page"/>-->
+<!--
 <page name="News" specification-path="/home/news/News.page"/>
 <page name="NewsClass" specification-path="/home/news/NewsClass.page"/>
 <page name="NewsDetail" specification-path="/home/news/NewsDetail.page"/>
@@ -12,7 +13,7 @@
 <page name="Culture" specification-path="/home/about/Culture.page"/>
 <page name="Honor" specification-path="/home/about/Honor.page"/>
 <page name="Yearbook" specification-path="/home/about/Yearbook.page"/>
-
+-->
 <!-- Admin begin-->
 <page name="Home" specification-path="/common/Home.page"/>
 <page name="Main" specification-path="/common/Main.page"/>  
@@ -59,6 +60,7 @@
 
 
 <!--wull begin-->
+<!--
 <page name="sys.product.ProductClassList" specification-path="/sys/pages/product/ProductClassList.page"/>
 <page name="sys.product.ProductClassAdd" specification-path="/sys/pages/product/ProductClassAdd.page"/>
 <page name="sys.product.ProductClassEdit" specification-path="/sys/pages/product/ProductClassEdit.page"/>
@@ -78,9 +80,10 @@
 <page name="ProductDetail" specification-path="/home/products/ProductDetail.page"/>
 <page name="ProductClass" specification-path="/home/products/ProductClass.page"/>
 
-
+-->
 <!--wull end-->
 <!-- mujx begin -->
+<!--
 <page name="sys.group.GroupList" specification-path="/sys/pages/group/GroupList.page"/>
 <page name="sys.group.GroupAdd" specification-path="/sys/pages/group/GroupAdd.page"/>
 <page name="sys.group.GroupEdit" specification-path="/sys/pages/group/GroupEdit.page"/>
@@ -91,3 +94,4 @@
 <page name="sys.techno.SolutionList" specification-path="/sys/pages/techno/SolutionList.page"/>
 <page name="sys.techno.SolutionAdd" specification-path="/sys/pages/techno/SolutionAdd.page"/>
 <page name="sys.techno.SolutionEdit" specification-path="/sys/pages/techno/SolutionEdit.page"/>
+-->
