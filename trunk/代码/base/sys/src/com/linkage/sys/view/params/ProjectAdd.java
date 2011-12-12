@@ -11,6 +11,7 @@ import com.linkage.appframework.data.DatasetList;
 import com.linkage.appframework.data.IData;
 import com.linkage.appframework.data.IDataset;
 import com.linkage.common.bean.util.DualMgr;
+import com.linkage.common.bean.util.UtilDAO;
 import com.linkage.component.PageData;
 import com.linkage.sys.bean.project.ProjectBean;
 import com.linkage.sys.view.common.CashierBasePage;
@@ -67,11 +68,6 @@ public abstract class ProjectAdd extends CashierBasePage{
 			return;
 		}		
 		
-		//params.put("GREAT_DATE", DualMgr.getSysDate(pd));
-		log.debug("-------------------------------------------------");
-		log.debug(params.getString("APP_DATE"));
-		
-		log.debug(params.getString("GREAT_DATE"));
 		IDataset dataset = new DatasetList();
 		dataset.add(params);
 		this.ProjectBean.addProject(pd, dataset);
@@ -94,7 +90,57 @@ public abstract class ProjectAdd extends CashierBasePage{
 		this.setInfos(ProjectList); //	setProductClasses(productBean.queryProductClass(pd, params,null));
 		}
 	
+	/**
+	 * 
+	 * 传递参数到下页
+	 * transferName
+	 */
 	
+	public void transferName(IRequestCycle cycle) throws Exception {
+		PageData pd = this.getPageData();
+		IData params = pd.getData();
+		params.put("PROJECT_NAME", params.getString("projectName"));
+		
+		log.debug("-----------------------------");
+		log.debug(params);
+//log.debug(params.get(arg0)("projectName"));
+		//IDataset ProjectList = ProjectBean.queryProjctLists(pd, params, pd.getPagination());
+		this.setInfo(params); //	setProductClasses(productBean.queryProductClass(pd, params,null));
+		}
+	
+	/**
+	 * 新增参数
+	 * addinparams
+	 */
+	public void addinparams(IRequestCycle cycle) throws Exception {
+		PageData pd = this.getPageData();
+		IData conditions = new DataMap();
+		
+		UtilDAO dao = new UtilDAO(pd);
+		String msg = "新增成功！";
+		
+		IData params = pd.getData("cond", true);
+		String project_name = params.getString("PROGECT_NAME");
+		String Project_id = ProjectBean.queryProjctLists(pd, params, pd.getPagination()).getData(0).getString("PROJECT_ID");
+		params.put("PROJECT_ID", Project_id);
+		log.debug("kkkkkkkkkkkkkkkkkkkkk-------------------3");
+		log.debug(ProjectBean.queryProjctLists(pd, params, pd.getPagination()));
+		log.debug(Project_id);
+		IData param = new DataMap();
+		param.put("PROJECT_NAME", project_name);
+		param.put("PROJECT_ID", Project_id);
+		
+		Boolean exist = this.ProjectBean.existsInparams(pd, param, null);
+		if(exist){
+			common.error("该项目已存在输入参数，如需重新计算请直接修改后，再进行计算！");
+			return;
+		}		
+		log.debug("kkkkkkkkkkkkkkkkkkkkk-------------------2");
+		log.debug(params);
+		dao.insert("wt_d_inparam", params);
+		redirectToMsg(msg);
+	}
+
 	
 	/**
 	 * 根据大类查询小类
