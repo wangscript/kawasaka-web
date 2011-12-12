@@ -123,20 +123,17 @@ public abstract class ProjectAdd extends CashierBasePage{
 		String project_name = params.getString("PROGECT_NAME");
 		String Project_id = ProjectBean.queryProjctLists(pd, params, pd.getPagination()).getData(0).getString("PROJECT_ID");
 		params.put("PROJECT_ID", Project_id);
-		log.debug("kkkkkkkkkkkkkkkkkkkkk-------------------3");
-		log.debug(ProjectBean.queryProjctLists(pd, params, pd.getPagination()));
-		log.debug(Project_id);
-		IData param = new DataMap();
-		param.put("PROJECT_NAME", project_name);
-		param.put("PROJECT_ID", Project_id);
+
 		
-		Boolean exist = this.ProjectBean.existsInparams(pd, param, null);
+		Boolean exist = this.ProjectBean.existsInparams(pd, params, null);
+		
+		
+		log.debug("-----------------------------");
+		log.debug(exist);
 		if(exist){
 			common.error("该项目已存在输入参数，如需重新计算请直接修改后，再进行计算！");
 			return;
 		}		
-		log.debug("kkkkkkkkkkkkkkkkkkkkk-------------------2");
-		log.debug(params);
 		dao.insert("wt_d_inparam", params);
 		redirectToMsg(msg);
 	}
