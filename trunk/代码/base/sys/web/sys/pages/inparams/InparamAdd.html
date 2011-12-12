@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: init.html,v 1.1 2009/10/27 13:36:25 wangmo Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@wade:Head">
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>项目参数输入</title>
+<link jwcid="@wade:Style" href="component/ecl/skin/defaultSkin/defaultColor/color.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">
+<form jwcid="@Form">
+	<div jwcid="@wade:HintBar" hintInfo="ognl:hintInfo" alertInfo="ognl:alertInfo" errorInfo="ognl:errorInfo"/>
+	
+	<div class="c_inputField l_mt">
+		<div class="top"></div>
+		<div class="body"><div class="aclinicOn">
+			<table class="col1">
+						<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">项目名称：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_PROJECT_NAME@TextField" value="ognl:info.PROJECT_NAME" desc="项目名称"  nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" class="e_input" readonly />
+							</div></div>
+						</div>
+					</td>
+			</tr>
+			<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">型          号：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_xinghao@TextField" value="ognl:conditions.xinghao" desc="型          号"  nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+			       <td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">额定容量：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_edrl@TextField" value="ognl:conditions.edrl" desc="额定容量"  nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+			</tr>
+			<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">额定高压：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_edgy@TextField" value="ognl:conditions.edgy" desc="额定高压"  nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+			       <td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">额定低压：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_eddy@TextField" value="ognl:conditions.eddy" desc="项目名称"  nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+			</tr>		
+						<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">联结组标号：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_ljzbh@TextField" value="ognl:conditions.ljzbh" desc="联结组标号"  nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+			       <td class="li">
+						<div class="wrapper">
+							<div class="label"><span class="e_required">调压范围：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_tyfw@TextField" value="ognl:conditions.tyfw" desc="调压范围"  nullable="no" minsize="1" maxsize="50" datatype="text" maxLength="50" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+			</tr>		
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span >空载损耗：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_kzsh_b@TextField" value="ognl:conditions.kzsh_b" desc="生产厂商" maxsize="50" datatype="text" maxLength="50"  class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span >负载损耗：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_fzsh_b@TextField" value="ognl:conditions.fzsh_b" desc="生产厂商" maxsize="50" datatype="text" maxLength="50"  class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+			        <tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span >短路阻抗：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_dlzk_b@TextField" value="ognl:conditions.dlzk_b" desc="生产厂商" maxsize="50" datatype="text" maxLength="50"  class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					
+					
+					
+					
+					
+			
+					
+					
+					
+					
+				
+			</table>
+		</div></div>
+		<div class="bottom e_cSet">
+			<input type="submit" jwcid="bsubmit@Submit" value="新增" listener="ognl:listeners.addinparams" onclick="return queryAll(this);" class="e_button"/>
+		</div>
+	</div>	
+</form>	
+</div></div>
+</body>
+</html>
