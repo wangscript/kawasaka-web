@@ -54,7 +54,7 @@
 						<div class="wrapper">
 							<div class="label"><span >校核：</span></div>
 							<div class="inputArea"><div>
-								<input type="text" jwcid="cond_CHECKER@TextField" value="ognl:conditions.CHECKER" desc="生产厂商" maxsize="50" datatype="text" maxLength="50"  class="e_input"/>
+								<input type="text" jwcid="cond_CHECK_ER@TextField" value="ognl:conditions.CHECK_ER" desc="生产厂商" maxsize="50" datatype="text" maxLength="50"  class="e_input"/>
 							</div></div>
 						</div>
 					</td>
@@ -64,17 +64,7 @@
 						<div class="wrapper">
 							<div class="label"><span >批准：</span></div>
 							<div class="inputArea"><div>
-								<input type="text" jwcid="cond_APPONALER@TextField" value="ognl:conditions.APPONALER" desc="生产厂商" maxsize="50" datatype="text" maxLength="50"  class="e_input"/>
-							</div></div>
-						</div>
-					</td>
-					</tr>
-						        					<tr>
-					<td class="li">
-						<div class="wrapper">
-							<div class="label"><span >批准日期：</span></div>
-							<div class="inputArea"><div>
-								<input type="text" jwcid="cond_APP_DATE@TextField" value="ognl:conditions.APP_DATE" desc="生产厂商" maxsize="50" datatype="text" maxLength="50"  class="e_input"/>
+								<input type="text" jwcid="cond_APP_ER@TextField" value="ognl:conditions.APP_ER" desc="生产厂商" maxsize="50" datatype="text" maxLength="50"  class="e_input"/>
 							</div></div>
 						</div>
 					</td>
@@ -82,9 +72,19 @@
 					<tr>
 					<td class="li">
 						<div class="wrapper">
-							<div class="label"><span >创建日期：</span></div>
+							<div class="label"><span>批准日期：</span></div>
 							<div class="inputArea"><div>
-								<input type="text" jwcid="cond_GREAT_DATE@TextField" value="ognl:conditions.GREAT_DATE" desc="生产厂商" maxsize="25" datatype="text" maxLength="25"  class="e_input"/>
+								<input type="text" jwcid="cond_APP_DATE@wade:DateField" value="ognl:conditions.APP_DATE" maxName="cond_APP_DATE" desc="批准日期" format="yyyy-MM-dd HH:mm:ss" class="e_input"/>
+							</div></div>
+						</div>
+					</td>
+					</tr>
+					<tr>
+					<td class="li">
+						<div class="wrapper">
+							<div class="label"><span>创建日期：</span></div>
+							<div class="inputArea"><div>
+								<input type="text" jwcid="cond_GREAT_DATE@wade:DateField" value="ognl:conditions.GREAT_DATE" maxName="cond_GREAT_DATE" desc="创建日期" format="yyyy-MM-dd HH:mm:ss" class="e_input"/>
 							</div></div>
 						</div>
 					</td>
@@ -110,7 +110,7 @@
 			</table>
 		</div></div>
 		<div class="bottom e_cSet">
-			<input type="submit" jwcid="bsubmit@Submit" value="新增" listener="ognl:listeners.addProduct" onclick="return queryAll(this);" class="e_button"/>
+			<input type="submit" jwcid="bsubmit@Submit" value="新增" listener="ognl:listeners.addProgect" onclick="return queryAll(this);" class="e_button"/>
 		</div>
 	</div>	
 </form>	
