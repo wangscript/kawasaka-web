@@ -13,6 +13,7 @@ import com.linkage.appframework.data.IDataset;
 import com.linkage.common.bean.util.DualMgr;
 import com.linkage.common.bean.util.UtilDAO;
 import com.linkage.component.PageData;
+import com.linkage.dbframework.jdbc.SQLParser;
 import com.linkage.sys.bean.project.ProjectBean;
 import com.linkage.sys.view.common.CashierBasePage;
 
@@ -84,8 +85,6 @@ public abstract class ProjectAdd extends CashierBasePage{
 	public void queryProductList(IRequestCycle cycle) throws Exception {
 		PageData pd = this.getPageData();
 		IData params = pd.getData("cond", true);
-		//params.put("ITEM_FLAG", "1");
-
 		IDataset ProjectList = ProjectBean.queryProjctLists(pd, params, pd.getPagination());
 		this.setInfos(ProjectList); //	setProductClasses(productBean.queryProductClass(pd, params,null));
 		}
@@ -100,44 +99,113 @@ public abstract class ProjectAdd extends CashierBasePage{
 		PageData pd = this.getPageData();
 		IData params = pd.getData();
 		params.put("PROJECT_NAME", params.getString("projectName"));
-		
-		log.debug("-----------------------------");
-		log.debug(params);
-//log.debug(params.get(arg0)("projectName"));
-		//IDataset ProjectList = ProjectBean.queryProjctLists(pd, params, pd.getPagination());
-		this.setInfo(params); //	setProductClasses(productBean.queryProductClass(pd, params,null));
+		IDataset ProjectList = ProjectBean.queryProjctList(pd, params, pd
+				.getPagination());
+		IData ProjectL=null;
+		if(ProjectList!=null && ProjectList.size()>0){
+		 ProjectL = ProjectList.getData(0);}
+		if (ProjectL != null && ProjectL.size() > 0) {
+			ProjectL.put("PROJECT_NAME", params.getString("projectName"));
+			this.setInfo(ProjectL);
+		} else {
+			this.setInfo(params);
+
 		}
+
+	}
 	
 	/**
 	 * 新增参数
 	 * addinparams
 	 */
 	public void addinparams(IRequestCycle cycle) throws Exception {
-		PageData pd = this.getPageData();
-		IData conditions = new DataMap();
-		
+		PageData pd = this.getPageData();	
 		UtilDAO dao = new UtilDAO(pd);
 		String msg = "新增成功！";
-		
+		String Project_id =null;
 		IData params = pd.getData("cond", true);
-		String project_name = params.getString("PROGECT_NAME");
-		String Project_id = ProjectBean.queryProjctLists(pd, params, pd.getPagination()).getData(0).getString("PROJECT_ID");
-		params.put("PROJECT_ID", Project_id);
 
+		String project_name = params.getString("PROJECT_NAME");
+		String JXS = params.getString("JXS");
+		String JPK = params.getString("JPK");
+			if(project_name==null || project_name.equals("")){
+				common.error("项目为空，不能直接新增参数，请先新增项目！");
+				return;
+			}
+			Project_id = ProjectBean.queryProjctLists(pd, params, pd.getPagination()).getData(0).getString("PROJECT_ID");
+			params.put("PROJECT_ID", Project_id);
+			Boolean exist = this.ProjectBean.existsInparams(pd, params, null);
+			if(exist){
+				//common.error("确定需要修改参数！");
+				 msg = "修改成功！";
+				    this.jixu(JXS, JPK, project_name, Project_id, cycle);	
+					dao.save("wt_d_inparam", params);
+					redirectToMsg(msg);
+					return;
+			}
+			this.jixu(JXS, JPK, project_name, Project_id, cycle);
+			dao.insert("wt_d_inparam", params);
+			redirectToMsg(msg);
 		
-		Boolean exist = this.ProjectBean.existsInparams(pd, params, null);
-		
-		
-		log.debug("-----------------------------");
-		log.debug(exist);
-		if(exist){
-			common.error("该项目已存在输入参数，如需重新计算请直接修改后，再进行计算！");
-			return;
-		}		
-		dao.insert("wt_d_inparam", params);
-		redirectToMsg(msg);
 	}
 
+	
+	/**
+	 * 
+	 * 级序机算
+	 */
+	
+	 public void jixu (String jxs, String jpk,String projectname , String projectid ,IRequestCycle cycle) throws Exception {
+		   PageData pd = this.getPageData();	
+			UtilDAO dao = new UtilDAO(pd);
+			IDataset params = new DatasetList();
+			IData param = new DataMap();
+			IData param2 = new DataMap();
+			param2.put("PROJECT_ID", projectid);		
+			SQLParser parser = new SQLParser(param2);
+			parser.addSQL("delete from wt_b_jx  where  PROJECT_ID=:PROJECT_ID  ");
+            dao.executeUpdates(parser);
+			String [] jpkk = jpk.split(",");
+
+		 for (int i=0; i<=Integer.parseInt(jxs)-1; i++){
+			 
+			 param.put("JXS", i+1);
+			 param.put("JX", i+1);
+			 param.put("JPK", jpkk[i]);
+			 param.put("PROJECT_ID", projectid);
+			 param.put("PROJECT_NAME", projectname);
+
+			 dao.insert("wt_b_jx", param);
+		 }		
+	 }
+	
+	 /**
+	  * 
+	  * upinparams  
+	  * 
+	  */
+	public void upinparams(IRequestCycle cycle) throws Exception {
+		PageData pd = this.getPageData();	
+		UtilDAO dao = new UtilDAO(pd);
+		String msg = "修改成功！";
+		
+		IData params = pd.getData("cond", true);
+		String project_name = params.getString("PROJECT_NAME");
+//		if(project_name==null || project_name.equals("")){
+//			common.error("项目为空，不能直接新增参数，请先新增项目！");
+//			return;
+//		}
+		String Project_id = ProjectBean.queryProjctLists(pd, params, pd.getPagination()).getData(0).getString("PROJECT_ID");
+		params.put("PROJECT_ID", Project_id);
+		Boolean exist = this.ProjectBean.existsInparams(pd, params, null);
+		if(!exist){
+			common.error("该项目已参数已经被删除无法修改！");
+			return;
+		}		
+		dao.save("wt_d_inparam", params);
+		redirectToMsg(msg);
+	}
+	
 	
 	/**
 	 * 根据大类查询小类
